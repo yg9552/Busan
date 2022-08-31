@@ -58,6 +58,16 @@ public class HomeController {
 		
 		return "e";
 	}
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String index(Locale locale, Model model) {
+		
+		return "index";
+	}
+	@RequestMapping(value = "/codegroup", method = RequestMethod.GET)
+	public String codegroup(Locale locale, Model model) {
+		
+		return "codegroup";
+	}
 	
 	
 	
