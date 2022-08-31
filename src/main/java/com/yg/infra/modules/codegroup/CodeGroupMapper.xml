@@ -10,7 +10,7 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
+		a.* 
 		FROM CodeGroup a
 		WHERE 1=1
 			AND DelNy = 0
