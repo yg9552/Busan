@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.yg.infra.modules.code.CodeMapper">
+	<resultMap type="com.yg.infra.modules.code.Code" id="resultMapObj"></resultMap>
+	<select id="selectList" resultMap="resultMapObj">
+		select
+			a.cg_seq,
+			a.seq,
+		    a.name,
+		    b.name
+		from Code a
+		left join CodeGroup b on b.seq = a.cg_seq
+	</select>
+</mapper>

@@ -411,9 +411,13 @@
                             <th scope="col">#</th>
 						    <th scope="col">코드그룹 코드</th>
 						    <th scope="col">코드그룹 이름 (한글)</th>
-						    <th scope="col">코드그룹 이름 (영문)</th>
-						    <th scope="col">코드갯수</th>
-						    <th scope="col">등록일</th>
+						    <th scope="col">코드</th>
+						    <th scope="col">대체코드</th>
+						    <th scope="col">코드 이름 (한글)</th>
+						    <th scope="col">코드 이름 (영문)</th>
+						    <th scope="col">사용</th>
+							<th scope="col">순서</th>
+				      		<th scope="col">등록일</th>
 						    <th scope="col">수정일</th>
                           </tr>
                         </thead>
@@ -425,13 +429,17 @@
 			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 			                    </div>
 							</td>
-                            <td> <c:out value="${list.seq }"/> </td>
-                            <td>  </td>
-                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
+							<td> <c:out value="${list.seq }"/> </td>
+						    <td> <c:out value="${list.cg_seq }"/> </td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td><a href="#"> <c:out value="${list.name }"/> </a></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						    <td></td>
+							<td></td>
                           </tr>
                            </c:forEach>
                         </tbody>
