@@ -10,6 +10,6 @@ codegroup
 <br>
 
 <c:forEach items="${list}" var="list" varStatus="status">
-	<c:out value="${list.name }"/> / <c:out value="${list.DelNy }"/>
+	<c:out value="${list.seq }"/> / <c:out value="${list.name }"/>
 	<br>		
 </c:forEach>
