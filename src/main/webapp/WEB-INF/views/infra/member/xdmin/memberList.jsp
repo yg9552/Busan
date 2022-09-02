@@ -408,8 +408,8 @@
 		                            <td><a href="#"> <c:out value="${list.id }"/> </a></td>
 		                            <td> <c:out value="${list.nm }"/> </td>
 		                            <td> <c:out value="${list.email }"/> </td>
-		                            <td> May 15, 2015 </td>
-		                            <td> May 15, 2015 </td>
+		                            <td> <c:out value="${list.phonenum }"/> </td>
+		                            <td> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.dob}"/></td>
 		                            <td> May 15, 2015 </td>
 		                          </tr>
                           		</c:forEach>

@@ -12,7 +12,17 @@ public class Member {
 	private Date dob;
 	private Integer DelNy;
 	private Integer reserve;
+
 	
+	private Integer phonenum;
+	
+	
+	public Integer getPhonenum() {
+		return phonenum;
+	}
+	public void setPhonenum(Integer phonenum) {
+		this.phonenum = phonenum;
+	}
 	public String getSeq() {
 		return seq;
 	}

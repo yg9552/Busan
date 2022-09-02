@@ -11,6 +11,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.*
+			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
 		FROM member a
 		WHERE 1=1
 			AND DelNy = 0
