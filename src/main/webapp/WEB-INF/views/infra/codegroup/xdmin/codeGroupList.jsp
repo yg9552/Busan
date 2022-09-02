@@ -349,6 +349,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">코드그룹 관리</h4>
+                    <form> <!-- action="/codegroup/codeGroupList" -->
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control">
@@ -371,19 +372,21 @@
                     		<input type="text" class="form-control" placeholder="종료일">
                     	</div>
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>검색구분</option>
-		                        <option>N</option>
-		                        <option>Y</option>
+                    		<select class="form-control" id="shOption" name="shOption">
+		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름 (한글)</option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름 (영문)</option>
 		                    </select>
                     	</div>
                     	<div class="col">
-                    		<input type="search" class="form-control" placeholder="검색어">
+                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="button" class="btn btn-inverse-warning btn-fw">검색</button>
+                    		<button type="submit" class="btn btn-inverse-warning btn-fw">검색</button>
                     	</div>
                     </div>
+                    </form>
                     <div class="row mt-3 mb-3">
 				  		<div class="col">
 				  			<span>total : </span>
