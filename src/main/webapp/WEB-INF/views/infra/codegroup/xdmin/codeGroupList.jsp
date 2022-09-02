@@ -418,22 +418,33 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${list}" var="list" varStatus="status">
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-warning">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> <c:out value="${list.seq }"/> </td>
-                            <td>  </td>
-                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                          </tr>
-                           </c:forEach>
+                        <c:choose>
+                        	<c:when test="${fn:length(list) eq 0}">
+                        		<tr>
+                        			<td colspan="8">
+                        				There is no date!
+                        			</td>
+                        		</tr>
+							</c:when>
+							<c:otherwise>
+	                        	<c:forEach items="${list}" var="list" varStatus="status">
+		                          <tr>
+		                            <td>
+										<div class="form-check form-check-flat form-check-warning">
+					                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
+					                    </div>
+									</td>
+		                            <td></td>
+		                            <td> <c:out value="${list.seq }"/> </td>
+		                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
+		                            <td> May 15, 2015 </td>
+		                            <td> <c:out value="${list.seqCount }"/> </td>
+		                            <td> May 15, 2015 </td>
+		                            <td> May 15, 2015 </td>
+		                          </tr>
+	                           </c:forEach>
+	                        </c:otherwise>
+                        </c:choose>
                         </tbody>
                       </table>
                     </div>

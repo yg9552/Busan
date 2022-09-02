@@ -7,6 +7,8 @@ public class CodeGroup {
 	private String name;
 	private Integer DelNy;
 	
+	private Integer seqCount;
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -24,6 +26,12 @@ public class CodeGroup {
 	}
 	public void setDelNy(Integer delNy) {
 		DelNy = delNy;
+	}
+	public Integer getSeqCount() {
+		return seqCount;
+	}
+	public void setSeqCount(Integer seqCount) {
+		this.seqCount = seqCount;
 	}
 	
 	

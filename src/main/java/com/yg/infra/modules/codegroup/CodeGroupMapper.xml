@@ -12,7 +12,7 @@
 		SELECT
 			a.seq
 			,a.name
-			,(select count(aa.ifcdSeq) from infrCode aa where 1=1 and aa.ifcdDelNy = 0 and aa.ifcgSeq = a.ifcgSeq) as xifcdSeqCount
+			,(select count(aa.seq) from Code aa where 1=1 and aa.DelNy = 0 and aa.cg_seq = a.Seq) as seqCount
 		FROM CodeGroup a
 		WHERE 1=1
 			AND DelNy = 0
