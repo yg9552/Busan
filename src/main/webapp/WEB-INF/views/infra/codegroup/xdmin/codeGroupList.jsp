@@ -149,7 +149,7 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../../../../resources/assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -349,7 +349,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">코드그룹 관리</h4>
-                    <form> <!-- action="/codegroup/codeGroupList" -->
+                    <form action="/codeGroup/codeGroupList" autocomplete="off"> <!-- action="/codeGroup/codeGroupList" -->
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control">
