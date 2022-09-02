@@ -6,20 +6,18 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<html>
+
+<html lang="ko">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>코드관리</title>
+    <title>회원관리</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
-    <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -30,7 +28,7 @@
   </head>
   <body>
     <div class="container-scroller">
-      <!-- partial:../../partials/_sidebar.html -->
+      <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
           <a class="sidebar-brand brand-logo" href="../../index.html"><img src="../../../../../resources/images/lgo.png" alt="logo"></a>
@@ -118,7 +116,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="./reviewMain.html">
+            <a class="nav-link" href="../review/reviewMain.html">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
@@ -135,21 +133,30 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/codegroup.html"> 코드그룹 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/code.html"> 코드 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="../samples/codegroup.html"> 코드그룹 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../samples/code.html"> 코드 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Documentation</span>
+            </a>
           </li>
         </ul>
       </nav>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_navbar.html -->
+        <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -218,9 +225,6 @@
                   <h6 class="p-3 mb-0">Messages</h6>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="../../../../../resources/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
-                    </div>
                     <div class="preview-item-content">
                       <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
                       <p class="text-muted mb-0"> 1 Minutes ago </p>
@@ -228,9 +232,6 @@
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="../../../../../resources/assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
-                    </div>
                     <div class="preview-item-content">
                       <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
                       <p class="text-muted mb-0"> 15 Minutes ago </p>
@@ -238,9 +239,6 @@
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="../../../../../resources/assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
-                    </div>
                     <div class="preview-item-content">
                       <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
                       <p class="text-muted mb-0"> 18 Minutes ago </p>
@@ -342,13 +340,13 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> 코드관리 </h3>
+              <h3 class="page-title">회원관리</h3>
             </div>
             <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">코드그룹 관리</h4>
+                    <h4 class="card-title">회원목록</h4>
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control">
@@ -357,65 +355,45 @@
 		                        <option>Y</option>
 		                    </select>
                     	</div>
+                    	<div class="col">
+                    		<input type="search" class="form-control" placeholder="아이디">
+                    	</div>
+                    	<div class="col">
+                    		<input type="search" class="form-control" placeholder="이름">
+                    	</div>
+                    	<div class="col">
+                    		<input type="search" class="form-control" placeholder="이메일">
+                    	</div>
+                    	<div class="col">
+                    		<input type="search" class="form-control" placeholder="연락처">
+                    	</div>
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>수정일</option>
-		                        <option>N</option>
-		                        <option>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="text" class="form-control" placeholder="시작일">
-                    	</div>
-                    	<div class="col">
-                    		<input type="text" class="form-control" placeholder="종료일">
-                    	</div>
-                    	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>검색구분</option>
-		                        <option>N</option>
-		                        <option>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" class="form-control" placeholder="검색어">
+                    		<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="등급">
+							<datalist id="datalistOptions">
+							  <option value="Silver">
+							  <option value="Gold">
+							  <option value="VIP">
+							</datalist>	
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="button" class="btn btn-inverse-warning btn-fw">검색</button>
+                    		<button type="button" class="btn btn-inverse-success btn-fw">검색</button>
                     	</div>
                     </div>
-                    <div class="row mt-3 mb-3">
-				  		<div class="col">
-				  			<span>total : </span>
-				  		</div>
-				  		<div class="col-1">
-				  			<select class="form-select" aria-label="Default select example">
-					  			<option selected>10</option>
-					  			<option value="1">1</option>
-					  			<option value="2">2</option>
-							</select>
-				  		</div>
-				  	</div>
                     <div class="table-responsive">
-                      <table class="table table-dark text-warning text-center mb-3">
+                      <table class="table table-dark text-center table-hover text-warning">
                         <thead>
                           <tr>
-                            <th>
-                            	<div class="form-check form-check-flat form-check-warning">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-                            </th>
-                            <th scope="col">#</th>
-						    <th scope="col">코드그룹 코드</th>
-						    <th scope="col">코드그룹 이름 (한글)</th>
-						    <th scope="col">코드그룹 이름 (영문)</th>
-						    <th scope="col">코드갯수</th>
-						    <th scope="col">등록일</th>
-						    <th scope="col">수정일</th>
+                            <th> # </th>
+                            <th> 아이디 </th>
+                            <th> 이름 </th>
+                            <th> 이메일 </th>
+                            <th> 연락처 </th>
+                            <th> 가입일 </th>
+                            <th> 등급 </th>
                           </tr>
                         </thead>
                         <tbody>
-                        <c:choose>
+                         <c:choose>
                         	<c:when test="${fn:length(list) eq 0}">
                         		<tr>
                         			<td colspan="8">
@@ -424,66 +402,26 @@
                         		</tr>
 							</c:when>
 							<c:otherwise>
-	                        	<c:forEach items="${list}" var="list" varStatus="status">
+								<c:forEach items="${list}" var="list" varStatus="status">
 		                          <tr>
-		                            <td>
-										<div class="form-check form-check-flat form-check-warning">
-					                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-					                    </div>
-									</td>
-		                            <td></td>
 		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
+		                            <td><a href="#"> <c:out value="${list.id }"/> </a></td>
+		                            <td> <c:out value="${list.nm }"/> </td>
+		                            <td> <c:out value="${list.email }"/> </td>
 		                            <td> May 15, 2015 </td>
-		                            <td> <c:out value="${list.seqCount }"/> </td>
 		                            <td> May 15, 2015 </td>
 		                            <td> May 15, 2015 </td>
 		                          </tr>
-	                           </c:forEach>
-	                        </c:otherwise>
-                        </c:choose>
+                          		</c:forEach>
+                          	</c:otherwise>
+                         </c:choose>
                         </tbody>
                       </table>
                     </div>
-                    
-                   
-                    <nav aria-label="Page navigation example">
-					  <ul class="pagination pagination-sm justify-content-center">
-					  	<li class="page-item">
-					      <a class="page-link" href="#" aria-label="Previous">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
-					      </a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></i></a>
-					    </li>
-					    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#" aria-label="Next">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
-					      </a>
-					    </li>
-					  </ul>
-					</nav>
-					<div class="row">
-						<div class="col">
-							<a class="btn btn-success" href="./codegroupReg.html" role="button">등록 <i class="fa-solid fa-pencil"></i></a>
-						</div>
-						<div class="col-auto">
-							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
-							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
-						</div>
-					</div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+              
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
@@ -503,7 +441,6 @@
     <script src="../../../../../resources/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../../../../../resources/assets/vendors/chart.js/Chart.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="../../../../../resources/assets/js/off-canvas.js"></script>
@@ -512,10 +449,5 @@
     <script src="../../../../../resources/assets/js/settings.js"></script>
     <script src="../../../../../resources/assets/js/todolist.js"></script>
     <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="../../../../../resources/assets/js/file-upload.js"></script>
-    <script src="../../../../../resources/assets/js/typeahead.js"></script>
-    <script src="../../../../../resources/assets/js/select2.js"></script>
-    <!-- End custom js for this page -->
   </body>
 </html>
