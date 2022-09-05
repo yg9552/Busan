@@ -14,13 +14,13 @@ public class Member {
 	private Integer reserve;
 
 	
-	private Integer phonenum;
+	private String phonenum;
 	
 	
-	public Integer getPhonenum() {
+	public String getPhonenum() {
 		return phonenum;
 	}
-	public void setPhonenum(Integer phonenum) {
+	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
 	public String getSeq() {
