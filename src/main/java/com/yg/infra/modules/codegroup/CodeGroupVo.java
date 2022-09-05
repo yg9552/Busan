@@ -4,7 +4,7 @@ public class CodeGroupVo {
 
 	private String shValue;
 	private Integer shOption;
-	
+	private Integer shDelNy;
 	
 	public String getShValue() {
 		return shValue;
@@ -17,6 +17,12 @@ public class CodeGroupVo {
 	}
 	public void setShOption(Integer shOption) {
 		this.shOption = shOption;
+	}
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
 	}
 	
 }

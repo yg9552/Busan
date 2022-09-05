@@ -33,10 +33,13 @@
 			
 			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 			<choose>
+				<when test="shDelNy == 1">AND DelNy = 0</when>
+				<when test="shDelNy == 2">AND DelNy = 1</when>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
+			
 	</select>
 	
 </mapper>

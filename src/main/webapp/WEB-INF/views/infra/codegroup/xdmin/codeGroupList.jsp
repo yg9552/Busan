@@ -359,10 +359,10 @@
 		                    </select>
                     	</div>
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>수정일</option>
-		                        <option>N</option>
-		                        <option>Y</option>
+                    		<select class="form-control" id="shDelNy" name="shDelNy">
+		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>수정일</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col">
