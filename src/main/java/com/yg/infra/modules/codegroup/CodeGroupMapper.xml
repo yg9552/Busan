@@ -27,4 +27,4 @@
 			AND DelNy = 0
 			AND name LIKE CONCAT ('%',#{shValue},'%')
 	</select>
-</mapper>	
+</mapper>
