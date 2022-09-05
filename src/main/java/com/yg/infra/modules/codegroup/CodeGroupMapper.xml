@@ -14,10 +14,14 @@
 		WHERE 1=1
 			<if test="shDelNy !=null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1"></when>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND name LIKE CONCAT ('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND name LIKE CONCAT ('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
 			</choose>
 	</sql>
- -->	
+ -->
+ 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.*
@@ -25,6 +29,14 @@
 		FROM CodeGroup a
 		WHERE 1=1
 			AND DelNy = 0
-			AND name LIKE CONCAT ('%',#{shValue},'%')
+			
+			
+			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
 	</select>
+	
 </mapper>
