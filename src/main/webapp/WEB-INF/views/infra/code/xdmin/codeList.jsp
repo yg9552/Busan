@@ -348,13 +348,14 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">코드그룹 관리</h4>
+                    <h4 class="card-title">코드 관리</h4>
+                    <form action="/code/codeList" autocomplete="off">
                     <div class="row mb-3">
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>삭제여부</option>
-		                        <option>N</option>
-		                        <option>Y</option>
+                    		<select class="form-control" id="shDelNy" name="shDelNy">
+		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col-1">
@@ -371,19 +372,21 @@
                     		<input type="text" class="form-control" placeholder="종료일">
                     	</div>
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>검색구분</option>
-		                        <option>N</option>
-		                        <option>Y</option>
+                    		<select class="form-control" id="shOption" name="shOption">
+		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드번호</option>
+		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드 이름 (한글)</option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드 이름 (영문)</option>
 		                    </select>
                     	</div>
                     	<div class="col">
-                    		<input type="search" class="form-control" placeholder="검색어">
+                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="button" class="btn btn-inverse-warning btn-fw">검색</button>
+                    		<button type="submit" class="btn btn-inverse-warning btn-fw">검색</button>
                     	</div>
                     </div>
+                    </form>
                     <div class="row mt-3 mb-3">
 				  		<div class="col">
 				  			<span>total : </span>
@@ -396,9 +399,6 @@
 							</select>
 				  		</div>
 				  	</div>
-				  	
-	 		
-
                     <div class="table-responsive">
                       <table class="table table-dark text-warning text-center mb-3">
                         <thead>
@@ -422,29 +422,41 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${list}" var="list" varStatus="status">
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-warning">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-							<td> <c:out value="${list.seq }"/> </td>
-						    <td> <c:out value="${list.cg_seq }"/> </td>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						    <td><a href="#"> <c:out value="${list.name }"/> </a></td>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-						    <td></td>
-							<td></td>
-                          </tr>
-                           </c:forEach>
+	                        <c:choose>
+	                        	<c:when test="${fn:length(list) eq 0}">
+                        		<tr>
+                        			<td colspan="8">
+                        				There is no date!
+                        			</td>
+                        		</tr>
+								</c:when>
+								<c:otherwise>
+			                        <c:forEach items="${list}" var="list" varStatus="status">
+			                          <tr>
+			                            <td>
+											<div class="form-check form-check-flat form-check-warning">
+						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
+						                    </div>
+										</td>
+										<td> <c:out value="${list.seq }"/> </td>
+									    <td> <c:out value="${list.cg_seq }"/> </td>
+									    <td> <c:out value="${list.codegroupname }"/> </td>
+									    <td></td>
+									    <td></td>
+									    <td><a href="#"> <c:out value="${list.name }"/> </a></td>
+									    <td></td>
+									    <td></td>
+									    <td></td>
+									    <td></td>
+										<td></td>
+			                          </tr>
+			                        </c:forEach>
+		                        </c:otherwise>
+	                        </c:choose>
                         </tbody>
                       </table>
                     </div>
+                    
                     
                    
                     <nav aria-label="Page navigation example">

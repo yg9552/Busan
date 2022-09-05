@@ -1,21 +1,15 @@
 package com.yg.infra.modules.code;
 
-import com.yg.infra.modules.codegroup.CodeGroup;
-
 public class Code {
 
-	CodeGroup codeGroup;
-	
-	public CodeGroup getCodeGroup() {
-		return codeGroup;
-	}
-	public void setCodeGroup(CodeGroup codeGroup) {
-		this.codeGroup = codeGroup;
-	}
 	
 	private String seq;
 	private String name;
 	private String cg_seq;
+	
+	private String codegroupname;
+	
+	
 
 	public String getName() {
 		return name;
@@ -35,6 +29,14 @@ public class Code {
 	}
 	public void setCg_seq(String cg_seq) {
 		this.cg_seq = cg_seq;
+	}
+	
+	
+	public String getCodegroupname() {
+		return codegroupname;
+	}
+	public void setCodegroupname(String codegroupname) {
+		this.codegroupname = codegroupname;
 	}
 	
 	
