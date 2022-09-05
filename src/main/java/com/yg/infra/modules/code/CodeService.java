@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface CodeService {
 
-	public List<Code> selectlist() throws Exception;
+	public List<Code> selectlist(CodeVo vo) throws Exception;
 }

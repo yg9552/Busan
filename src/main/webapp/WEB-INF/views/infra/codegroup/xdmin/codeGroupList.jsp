@@ -352,17 +352,17 @@
                     <form action="/codeGroup/codeGroupList" autocomplete="off"> <!-- action="/codeGroup/codeGroupList" -->
                     <div class="row mb-3">
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>삭제여부</option>
-		                        <option>N</option>
-		                        <option>Y</option>
+                    		<select class="form-control" id="shDelNy" name="shDelNy">
+		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col-1">
-                    		<select class="form-control" id="shDelNy" name="shDelNy">
-		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>수정일</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+                    		<select class="form-control">
+		                        <option>수정일</option>
+		                        <option>N</option>
+		                        <option>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col">
@@ -383,7 +383,7 @@
                     		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-warning btn-fw">검색</button>
+                    		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
                     	</div>
                     </div>
                     </form>
@@ -400,11 +400,11 @@
 				  		</div>
 				  	</div>
                     <div class="table-responsive">
-                      <table class="table table-dark text-warning text-center mb-3">
+                      <table class="table table-dark text-info text-center mb-3">
                         <thead>
                           <tr>
                             <th>
-                            	<div class="form-check form-check-flat form-check-warning">
+                            	<div class="form-check form-check-flat form-check-info">
 			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 			                    </div>
                             </th>
@@ -430,7 +430,7 @@
 	                        	<c:forEach items="${list}" var="list" varStatus="status">
 		                          <tr>
 		                            <td>
-										<div class="form-check form-check-flat form-check-warning">
+										<div class="form-check form-check-flat form-check-info">
 					                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 					                    </div>
 									</td>

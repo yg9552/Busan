@@ -17,6 +17,9 @@ public class CodeDao {
 	
 	private static String namespace = "com.yg.infra.modules.code.CodeMapper";
 	
-	public List<Code> selectlist(){ return sqlSession.selectList(namespace + ".selectList","");}
+	public List<Code> selectList(CodeVo vo){
+		List<Code> list = sqlSession.selectList("com.yg.infra.modules.code.CodeMapper.selectList", vo);
+		return list;
+	}
 	
 }
