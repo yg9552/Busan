@@ -358,10 +358,9 @@
                       
                       <div class="form-group">
                         <label for="codegroupname">코드그룹 이름 (한글)</label>
-                        
                         <select class="form-control" id="codegroupname" name="codegroupname">
                         	<c:forEach items="${list}" var="list" varStatus="status">
-                          		<option> <c:out value="${list.name }"/> </option>
+                          		<option> <c:out value="${list.codegroupname }"/> </option>
                           	</c:forEach>
                         </select>
                         
