@@ -6,6 +6,7 @@ public class Code {
 	private String seq;
 	private String name;
 	private String cg_seq;
+	private Integer DelNy;
 	
 	private String codegroupname;
 	
@@ -32,6 +33,13 @@ public class Code {
 	}
 	
 	
+	
+	public Integer getDelNy() {
+		return DelNy;
+	}
+	public void setDelNy(Integer delNy) {
+		DelNy = delNy;
+	}
 	public String getCodegroupname() {
 		return codegroupname;
 	}
