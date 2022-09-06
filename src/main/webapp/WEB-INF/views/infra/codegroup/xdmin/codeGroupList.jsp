@@ -94,7 +94,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../member/memberMain.html">
+            <a class="nav-link" href="http://localhost:8080/member/memberList">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
@@ -136,7 +136,7 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/codegroup.html"> 코드그룹 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/code.html"> 코드 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="http://localhost:8080/code/codeList"> 코드 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
               </ul>
