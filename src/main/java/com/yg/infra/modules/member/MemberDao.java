@@ -17,5 +17,5 @@ public class MemberDao {
 	
 	private static String namespace = "com.yg.infra.modules.member.MemberMapper";
 	
-	public List<Member> selecList() { return sqlSession.selectList(namespace + ".selectList",""); }
+	public List<Member> selecList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectList",vo); }
 }

@@ -15,6 +15,17 @@
 		FROM member a
 		WHERE 1=1
 			AND DelNy = 0
+			
+		<choose>
+			<when test="shDelNy == 1">AND DelNy = 0</when>
+			<when test="shDelNy == 2">AND DelNy = 1</when>
+			<when test="shOption == 1">AND nm LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND email LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND dob LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 5">AND phonenum LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
 	</select>
 
 </mapper>

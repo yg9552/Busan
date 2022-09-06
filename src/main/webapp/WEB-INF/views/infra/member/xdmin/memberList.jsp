@@ -350,38 +350,33 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">회원목록</h4>
+                    <form action="/member/memberList" autocomplete="off">
                     <div class="row mb-3">
                     	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>삭제여부</option>
-		                        <option>N</option>
-		                        <option>Y</option>
+                    		<select class="form-control" id="shDelNy" name="shDelNy">
+		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+		                    </select>
+                    	</div>
+                    	<div class="col-1">
+                    		<select class="form-control" id="shOption" name="shOption">
+		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
+		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>이메일</option>
+		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>생년월일</option>
+		                        <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>연락처</option>
 		                    </select>
                     	</div>
                     	<div class="col">
-                    		<input type="search" class="form-control" placeholder="아이디">
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" class="form-control" placeholder="이름">
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" class="form-control" placeholder="이메일">
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" class="form-control" placeholder="연락처">
-                    	</div>
-                    	<div class="col-1">
-                    		<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="등급">
-							<datalist id="datalistOptions">
-							  <option value="Silver">
-							  <option value="Gold">
-							  <option value="VIP">
-							</datalist>	
+                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="button" class="btn btn-inverse-success btn-fw">검색</button>
+                    		<button type="submit" class="btn btn-inverse-success btn-fw">검색</button>
                     	</div>
                     </div>
+                    </form>
                     <div class="table-responsive">
                       <table class="table table-dark text-center table-hover text-warning">
                         <thead>
