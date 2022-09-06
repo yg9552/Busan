@@ -475,7 +475,7 @@
 					</nav>
 					<div class="row">
 						<div class="col">
-							<a class="btn btn-success" href="./codegroupReg.html" role="button">등록 <i class="fa-solid fa-pencil"></i></a>
+							<a class="btn btn-success" href="./codegroupReg.html" role="button">코드등록 <i class="fa-solid fa-pencil"></i></a>
 						</div>
 						<div class="col-auto">
 							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
