@@ -14,6 +14,7 @@
 		WHERE 1=1
 		AND DelNy = 0
 		
+		Order by a.seq asc
 		
 		<choose>
 			<when test="shDelNy == 1">AND DelNy = 0</when>
@@ -23,4 +24,22 @@
 			<otherwise></otherwise>
 		</choose>
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO Code(
+			seq
+			,name
+			,cg_seq
+			,DelNy
+			)
+		VALUES(
+			#{seq }
+			,#{name }
+			,#{cg_seq }
+			,0
+			)
+			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+			</selectKey>
+	</insert>
 </mapper>
