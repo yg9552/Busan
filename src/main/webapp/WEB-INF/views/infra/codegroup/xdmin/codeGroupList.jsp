@@ -388,11 +388,9 @@
                     </div>
                     </form>
                     <div class="row mt-3 mb-3">
-				  		<div class="col">
-				  			<span>total : </span>
-				  		</div>
+				  		<div class="col my-auto">total : </div>
 				  		<div class="col-1">
-				  			<select class="form-select" aria-label="Default select example">
+				  			<select class="form-control">
 					  			<option selected>10</option>
 					  			<option value="1">1</option>
 					  			<option value="2">2</option>
