@@ -94,7 +94,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../member/memberMain.html">
+            <a class="nav-link" href="/member/memberList">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
@@ -135,8 +135,8 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/codegroup.html"> 코드그룹 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/code.html"> 코드 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/codeGroup/codeGroupList"> 코드그룹 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/code/codeList"> 코드 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
               </ul>
@@ -400,11 +400,11 @@
 				  		</div>
 				  	</div>
                     <div class="table-responsive">
-                      <table class="table table-dark text-warning text-center mb-3">
+                      <table class="table table-dark text-info text-center mb-3">
                         <thead>
                           <tr>
                             <th>
-                            	<div class="form-check form-check-flat form-check-warning">
+                            	<div class="form-check form-check-flat form-check-info">
 			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 			                    </div>
                             </th>
@@ -434,7 +434,7 @@
 			                        <c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td>
-											<div class="form-check form-check-flat form-check-warning">
+											<div class="form-check form-check-flat form-check-info">
 						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 						                    </div>
 										</td>

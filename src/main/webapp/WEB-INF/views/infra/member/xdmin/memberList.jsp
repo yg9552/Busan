@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -92,7 +95,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../member/memberMain.html">
+            <a class="nav-link" href="/member/memberList">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
@@ -134,8 +137,8 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li> -->
-                <li class="nav-item"> <a class="nav-link" href="../samples/codegroup.html"> 코드그룹 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/code.html"> 코드 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/codeGroup/codeGroupList"> 코드그룹 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/code/codeList"> 코드 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
               </ul>
