@@ -24,6 +24,12 @@ public class CodeGroupDao {
 		return list;
 	}
 	
+	public List<CodeGroup> selectList(){
+		List<CodeGroup> list = sqlSession.selectList("com.yg.infra.modules.codegroup.CodeGroupMapper.selectList", "");
+		return list;
+	}
+	
+	
 	
 	public int insert(CodeGroup dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);

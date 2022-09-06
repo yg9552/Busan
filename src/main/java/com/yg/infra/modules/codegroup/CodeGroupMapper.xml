@@ -41,6 +41,15 @@
 			</choose>
 	</select>
 	
+	<select id="selectmini" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.name
+		FROM CodeGroup a
+		WHERE 1=1
+			AND DelNy = 0
+	</select>
+	
 	<insert id="insert">
 	INSERT INTO CodeGroup (
 		seq

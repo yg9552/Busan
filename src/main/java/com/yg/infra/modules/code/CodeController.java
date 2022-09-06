@@ -7,12 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yg.infra.modules.codegroup.CodeGroup;
+import com.yg.infra.modules.codegroup.CodeGroupServiceImpl;
+
 @Controller
 @RequestMapping(value ="/code/")
 public class CodeController {
 
 	@Autowired
 	CodeServiceImpl service;
+	
+	@Autowired
+	CodeGroupServiceImpl service2;
 	
 	@RequestMapping(value = "codeList")
 	public String codeList(Model model,CodeVo vo) throws Exception {
@@ -27,8 +33,9 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeForm")
-	public String codeForm() throws Exception {
-		
+	public String codeForm(Model model) throws Exception {
+		List<CodeGroup> list2 = service2.selectList();
+		model.addAttribute("list2", list2);
 		return "infra/code/xdmin/codeForm";
 	}
 	
