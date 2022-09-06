@@ -354,6 +354,19 @@
                         <label for="seq">코드번호</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${seq }"></c:out>">
                       </div>
+                      
+                      
+                      <div class="form-group">
+                        <label for="codegroupname">코드그룹 이름 (한글)</label>
+                        
+                        <select class="form-control" id="codegroupname" name="codegroupname">
+                        	<c:forEach items="${list}" var="list" varStatus="status">
+                          		<option> <c:out value="${list.name }"/> </option>
+                          	</c:forEach>
+                        </select>
+                        
+                      </div>
+                      
                       <div class="form-group">
                         <label for="cg_seq">코드그룹 코드</label>
                         <input type="text" class="form-control" id="cg_seq" name="cg_seq" placeholder="코드그룹 코드" value="<c:out value="${cg_seq }"></c:out>">
