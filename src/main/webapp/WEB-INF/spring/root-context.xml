@@ -8,8 +8,9 @@
 	
 	<!-- mysql s 2022.02.15 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://dylan-y.cdj2aoluqpkr.ap-northeast-2.rds.amazonaws.com:33062/busan" />
+		<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="url" value="jdbc:log4jdbc:mysql://dylan-y.cdj2aoluqpkr.ap-northeast-2.rds.amazonaws.com:33062/busan" />
 		<property name="username" value="yg4583" />
 		<property name="password" value="Didrk0330!~" />
 	</bean>
@@ -18,7 +19,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 	<!-- <property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" /> -->	<!-- 기본설정 : 패키지 변경으로 아래와 같이 수정 -->
-	        	<property name="mapperLocations" value="classpath:com/yg/infra/**/**/*Mapper.xml"/>
+	    <property name="mapperLocations" value="classpath:com/yg/infra/**/**/*Mapper.xml"/>
 	</bean>
 		
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
