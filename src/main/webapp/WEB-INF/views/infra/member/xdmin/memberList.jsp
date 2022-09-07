@@ -386,8 +386,8 @@
                             <th> 이름 </th>
                             <th> 이메일 </th>
                             <th> 연락처 </th>
+                            <th> 생년월일 </th>
                             <th> 가입일 </th>
-                            <th> 등급 </th>
                           </tr>
                         </thead>
                         <tbody>

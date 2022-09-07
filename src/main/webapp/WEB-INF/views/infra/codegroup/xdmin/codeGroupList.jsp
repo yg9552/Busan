@@ -406,7 +406,6 @@
 			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 			                    </div>
                             </th>
-                            <th scope="col">#</th>
 						    <th scope="col">코드그룹 코드</th>
 						    <th scope="col">코드그룹 이름 (한글)</th>
 						    <th scope="col">코드그룹 이름 (영문)</th>
@@ -419,7 +418,7 @@
                         <c:choose>
                         	<c:when test="${fn:length(list) eq 0}">
                         		<tr>
-                        			<td colspan="8">
+                        			<td colspan="7">
                         				There is no date!
                         			</td>
                         		</tr>
@@ -432,7 +431,6 @@
 					                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 					                    </div>
 									</td>
-		                            <td></td>
 		                            <td> <c:out value="${list.seq }"/> </td>
 		                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
