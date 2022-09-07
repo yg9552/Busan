@@ -349,7 +349,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">코드그룹 등록</h4>
-                    <form class="forms-sample" action="/codeGroup/codeGroupInst" autocomplete="off">
+                    <form class="forms-sample" action="/codeGroup/codeGroupInst" autocomplete="off" id="codegroupform">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${seq }"></c:out>">
@@ -363,10 +363,10 @@
                         <input type="text" class="form-control" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${CodeGroupNameEN }"></c:out>">
                       </div>
                       <div class="form-group">
-                        <label for="exampleSelectDeliveryInfo">삭제여부</label>
-                        <select class="form-control" id="exampleSelectDeliveryInfo">
-                          <option>N</option>
-                          <option>Y</option>
+                        <label for="DelNy">삭제여부</label>
+                        <select class="form-control" id="DelNy" name="DelNy">
+                          <option value="0">N</option>
+                          <option value="1">Y</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -374,8 +374,24 @@
                         <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
                       
+                      <div class="form-check form-check-info">
+                        <label class="form-check-label" for="check1"><input type="checkbox" class="form-check-input" id="check1">체크</label>
+                      </div>
+                      <div class="form-check form-check-info">
+                        <label class="form-check-label" for="check3"><input type="checkbox" class="form-check-input" id="check3">체크</label>
+                      </div>
+                      <div class="form-check form-check-info">
+                        <label class="form-check-label" for="check2"><input type="checkbox" class="form-check-input" id="check2">체크</label>
+                      </div>
                       
-                      <button type="submit" class="btn btn-success mr-2">코드등록</button>
+                      <div class="form-group">
+                        <input type="radio" id="M" name="gender" value="1">남성
+                        <input type="radio" id="W" name="gender" value="2">여성
+                        <input type="radio" id="etc" name="gender" value="3">기타
+                      </div>
+                      
+                      
+                      <button type="button" class="btn btn-success mr-2" onclick="test();">코드등록</button>
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>
                       <a href="./productMain.html" class="btn btn-dark">목록</a>
                     </form>
@@ -384,6 +400,46 @@
               </div>
             </div>
           </div>
+          <script type="text/javascript">
+          	function test() {
+				alert("test");
+				
+				/* alert(document.getElementById('name').value);
+				alert(document.getElementById('seq').value);
+				alert(document.getElementById('CodeGroupNameEN').value);
+				alert(document.getElementById('DelNy').options[document.getElementById('DelNy').selectedIndex].value);
+				alert(document.getElementById('DelNy').value); */
+				/* alert(document.querySelector("input[name='gender']:checked").value); */
+				
+				/* if(document.getElementById("M").checked != true && document.getElementById("W").checked != true && document.getElementById("etc").checked != true){
+					alert("처리상태를 체크해주십시오.");
+					document.getElementById("etc").focus();
+					return;
+				} */
+				
+				/* if($('input:radio[name=gender]').is(':checked') == false) {
+					alert("성별을 선택하세요");
+					return false;
+				} */
+				
+				if (document.querySelector('input[type=radio][name=gender]:checked') == null) {
+	 				alert("성별을 선택하세요");
+	 			} else {
+	 				alert(document.querySelector('input[name=gender]:checked').value);
+	 			}
+				
+				if(document.getElementById("name").value == "" || document.getElementById("name").value == null){
+					alert("입력하세요");
+					document.getElementById("name").value="";
+					document.getElementById("name").focus();
+					return false;
+				}
+				
+				
+				document.getElementById("codegroupform").submit();
+				
+			}
+          </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
