@@ -6,7 +6,28 @@ public class CodeGroup {
 	private String seq;
 	private String name;
 	private Integer DelNy;
+	private String CodeGroupNameEN;
+	private String CodeGroupRegDate;
+	private String CodeGroupModDate;
 	
+	public String getCodeGroupNameEN() {
+		return CodeGroupNameEN;
+	}
+	public void setCodeGroupNameEN(String codeGroupNameEN) {
+		CodeGroupNameEN = codeGroupNameEN;
+	}
+	public String getCodeGroupRegDate() {
+		return CodeGroupRegDate;
+	}
+	public void setCodeGroupRegDate(String codeGroupRegDate) {
+		CodeGroupRegDate = codeGroupRegDate;
+	}
+	public String getCodeGroupModDate() {
+		return CodeGroupModDate;
+	}
+	public void setCodeGroupModDate(String codeGroupModDate) {
+		CodeGroupModDate = codeGroupModDate;
+	}
 	private Integer seqCount;
 	
 	public String getSeq() {

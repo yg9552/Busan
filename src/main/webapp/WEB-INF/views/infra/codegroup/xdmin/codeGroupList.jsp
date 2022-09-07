@@ -435,10 +435,10 @@
 		                            <td></td>
 		                            <td> <c:out value="${list.seq }"/> </td>
 		                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
-		                            <td> May 15, 2015 </td>
+		                            <td> <c:out value="${list.CodeGroupNameEN }"/> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
-		                            <td> May 15, 2015 </td>
-		                            <td> May 15, 2015 </td>
+		                            <td> <c:out value="${list.CodeGroupRegDate }"/> </td>
+		                            <td> <c:out value="${list.CodeGroupModDate }"/> </td>
 		                          </tr>
 	                           </c:forEach>
 	                        </c:otherwise>

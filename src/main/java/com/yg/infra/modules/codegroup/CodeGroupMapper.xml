@@ -37,6 +37,7 @@
 				<when test="shDelNy == 2">AND DelNy = 1</when>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND CodeGroupNameEN LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>
@@ -54,11 +55,13 @@
 	INSERT INTO CodeGroup (
 		seq
 		,name
+		,CodeGroupNameEN
 		,DelNy
 		)
 	VALUES(
 		#{seq}
 		,#{name}
+		,#{CodeGroupNameEN}
 		,0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
