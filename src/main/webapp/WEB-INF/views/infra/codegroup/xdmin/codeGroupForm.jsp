@@ -359,8 +359,8 @@
                         <input type="text" class="form-control" id="name" name="name" placeholder="한글" value="<c:out value="${name }"></c:out>">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputNameEN">코드그룹 이름 (영문)</label>
-                        <input type="email" class="form-control" id="exampleInputNameEN" placeholder="영문">
+                        <label for="CodeGroupNameEN">코드그룹 이름 (영문)</label>
+                        <input type="text" class="form-control" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${CodeGroupNameEN }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="exampleSelectDeliveryInfo">삭제여부</label>

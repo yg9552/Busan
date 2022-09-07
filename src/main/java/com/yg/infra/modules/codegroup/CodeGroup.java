@@ -10,24 +10,17 @@ public class CodeGroup {
 	private String CodeGroupRegDate;
 	private String CodeGroupModDate;
 	
+	
+	
+	
+	
 	public String getCodeGroupNameEN() {
 		return CodeGroupNameEN;
 	}
 	public void setCodeGroupNameEN(String codeGroupNameEN) {
 		CodeGroupNameEN = codeGroupNameEN;
 	}
-	public String getCodeGroupRegDate() {
-		return CodeGroupRegDate;
-	}
-	public void setCodeGroupRegDate(String codeGroupRegDate) {
-		CodeGroupRegDate = codeGroupRegDate;
-	}
-	public String getCodeGroupModDate() {
-		return CodeGroupModDate;
-	}
-	public void setCodeGroupModDate(String codeGroupModDate) {
-		CodeGroupModDate = codeGroupModDate;
-	}
+	
 	private Integer seqCount;
 	
 	public String getSeq() {
@@ -54,6 +47,19 @@ public class CodeGroup {
 	public void setSeqCount(Integer seqCount) {
 		this.seqCount = seqCount;
 	}
+	public String getCodeGroupRegDate() {
+		return CodeGroupRegDate;
+	}
+	public void setCodeGroupRegDate(String codeGroupRegDate) {
+		CodeGroupRegDate = codeGroupRegDate;
+	}
+	public String getCodeGroupModDate() {
+		return CodeGroupModDate;
+	}
+	public void setCodeGroupModDate(String codeGroupModDate) {
+		CodeGroupModDate = codeGroupModDate;
+	}
+	
 	
 	
 }

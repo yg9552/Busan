@@ -371,7 +371,7 @@
                     	<div class="col">
                     		<input type="text" class="form-control" placeholder="종료일">
                     	</div>
-                    	<div class="col-1">
+                    	<div class="col-2">
                     		<select class="form-control" id="shOption" name="shOption">
 		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
 		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
@@ -435,10 +435,10 @@
 		                            <td></td>
 		                            <td> <c:out value="${list.seq }"/> </td>
 		                            <td><a href="#"> <c:out value="${list.name }"/> </a></td>
-		                            <td> <c:out value="${list.CodeGroupNameEN }"/> </td>
+		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
-		                            <td> <c:out value="${list.CodeGroupRegDate }"/> </td>
-		                            <td> <c:out value="${list.CodeGroupModDate }"/> </td>
+		                            <td> <c:out value="${list.codeGroupRegDate }"></c:out> </td>
+		                            <td> <c:out value="${list.codeGroupModDate }"></c:out> </td>
 		                          </tr>
 	                           </c:forEach>
 	                        </c:otherwise>

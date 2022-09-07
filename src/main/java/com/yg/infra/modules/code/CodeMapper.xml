@@ -29,13 +29,13 @@
 		INSERT INTO Code(
 			seq
 			,name
-			<!-- ,cg_seq -->
+			,cg_seq
 			,DelNy
 			)
 		VALUES(
 			#{seq }
 			,#{name }
-			<!-- ,#{cg_seq } -->
+			,#{cg_seq }
 			,0
 			)
 			<selectKey resultType="String" keyProperty="seq" order="AFTER">

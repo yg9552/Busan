@@ -24,7 +24,11 @@
  	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
+			a.seq
+			,a.name
+			,a.CodeGroupNameEN
+			,a.CodeGroupRegDate
+			,a.CodeGroupModDate
 			,(select count(aa.seq) from Code aa where 1=1 and aa.DelNy = 0 and aa.cg_seq = a.seq) as seqCount
 		FROM CodeGroup a
 		WHERE 1=1
