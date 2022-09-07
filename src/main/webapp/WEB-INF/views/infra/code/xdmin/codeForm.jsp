@@ -372,9 +372,9 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleSelectDeliveryInfo">삭제여부</label>
-                        <select class="form-control" id="exampleSelectDeliveryInfo">
-                          <option>N</option>
-                          <option>Y</option>
+                        <select class="form-control" id="DelNy" name="DelNy">
+                          <option value="0">N</option>
+                          <option value="1">Y</option>
                         </select>
                       </div>
                       <div class="form-group">

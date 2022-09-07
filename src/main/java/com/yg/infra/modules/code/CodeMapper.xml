@@ -36,7 +36,7 @@
 			#{seq }
 			,#{name }
 			,#{cg_seq }
-			,0
+			,#{DelNy }
 			)
 			<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
