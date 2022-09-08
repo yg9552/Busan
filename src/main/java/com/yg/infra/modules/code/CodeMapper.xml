@@ -8,24 +8,25 @@
 	<resultMap type="com.yg.infra.modules.code.Code" id="resultMapObj"></resultMap>
 	<select id="selectList" resultMap="resultMapObj">
 		select
-			a.seq
+			a.codeSeq
+			,a.seq
 			,a.name
 			,a.cg_seq
 			,a.DelNy
-			,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq AND aa.DelNy = 0) as codegroupname
-		from Code a
+			,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupname
+		FROM Code a
 		WHERE 1=1
-		AND DelNy = 0
+			AND DelNy = 0
 		
-		Order by a.seq asc
 		
+		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shDelNy == 1">AND DelNy = 0</when>
-			<when test="shDelNy == 2">AND DelNy = 1</when>
 			<when test="shOption == 1">AND seq = #{shValue}</when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
 		</choose>
+		
+		Order by a.seq asc
 	</select>
 	
 	<insert id="insert">

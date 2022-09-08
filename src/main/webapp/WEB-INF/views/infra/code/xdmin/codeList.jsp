@@ -354,8 +354,8 @@
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
 		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+		                        <option value="0" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col-1">
@@ -376,7 +376,6 @@
 		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
 		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드번호</option>
 		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드 이름 (한글)</option>
-		                        <%-- <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드 이름 (영문)</option> --%>
 		                    </select>
                     	</div>
                     	<div class="col">
@@ -438,10 +437,10 @@
 						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 						                    </div>
 										</td>
-										<td> <c:out value="${list.seq }"/> </td>
+										<td> <c:out value="${list.codeSeq }"/> </td>
 									    <td> <c:out value="${list.cg_seq }"/> </td>
 									    <td> <c:out value="${list.codegroupname }"/> </td>
-									    <td></td>
+									    <td> <c:out value="${list.seq }"/> </td>
 									    <td></td>
 									    <td><a href="#"> <c:out value="${list.name }"/> </a></td>
 									    <td></td>

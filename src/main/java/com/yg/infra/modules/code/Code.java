@@ -5,13 +5,26 @@ public class Code {
 	
 	private String seq;
 	private String name;
-	private String cg_seq;
 	private Integer DelNy;
-	
+	private String cg_seq;
+	private String codeSeq;
 	private String codegroupname;
 	
 	
 
+	
+	public Integer getDelNy() {
+		return DelNy;
+	}
+	public void setDelNy(Integer delNy) {
+		DelNy = delNy;
+	}
+	public String getCodeSeq() {
+		return codeSeq;
+	}
+	public void setCodeSeq(String codeSeq) {
+		this.codeSeq = codeSeq;
+	}
 	public String getName() {
 		return name;
 	}
@@ -34,12 +47,7 @@ public class Code {
 	
 	
 	
-	public Integer getDelNy() {
-		return DelNy;
-	}
-	public void setDelNy(Integer delNy) {
-		DelNy = delNy;
-	}
+	
 	public String getCodegroupname() {
 		return codegroupname;
 	}
