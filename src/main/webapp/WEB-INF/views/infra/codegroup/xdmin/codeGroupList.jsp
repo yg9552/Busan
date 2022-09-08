@@ -398,7 +398,7 @@
 				  		</div>
 				  	</div>
                     <div class="table-responsive">
-                      <table class="table table-dark text-info text-center mb-3">
+                      <table class="table table-dark text-info text-center table-hover mb-3">
                         <thead>
                           <tr>
                             <th>

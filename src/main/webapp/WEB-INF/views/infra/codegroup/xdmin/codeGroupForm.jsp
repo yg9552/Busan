@@ -375,14 +375,16 @@
                       </div>
                       
                       <div class="form-check form-check-info">
-                        <label class="form-check-label" for="check1"><input type="checkbox" class="form-check-input" id="check1">체크</label>
+                        <label class="form-check-label" for="check1"><input type="checkbox" class="form-check-input" id="check1" name="check" value="체크1">체크1</label>
                       </div>
                       <div class="form-check form-check-info">
-                        <label class="form-check-label" for="check3"><input type="checkbox" class="form-check-input" id="check3">체크</label>
+                        <label class="form-check-label" for="check3"><input type="checkbox" class="form-check-input" id="check3" name="check" value="체크2">체크2</label>
                       </div>
                       <div class="form-check form-check-info">
-                        <label class="form-check-label" for="check2"><input type="checkbox" class="form-check-input" id="check2">체크</label>
+                        <label class="form-check-label" for="check2"><input type="checkbox" class="form-check-input" id="check2" name="check" value="체크3">체크3</label>
                       </div>
+                      
+
                       
                       <div class="form-group">
                         <input type="radio" id="M" name="gender" value="1">남성
@@ -393,7 +395,7 @@
                       
                       <button type="button" class="btn btn-success mr-2" onclick="test();">코드등록</button>
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>
-                      <a href="./productMain.html" class="btn btn-dark">목록</a>
+                      <a href="/codeGroup/codeGroupList" class="btn btn-dark">목록</a>
                     </form>
                   </div>
                 </div>
@@ -421,6 +423,40 @@
 					alert("성별을 선택하세요");
 					return false;
 				} */
+				
+	 			/* var obj_length = document.getElementsByName("check").length;
+			 	if (document.querySelector('input[type=checkbox][name=check]:checked') == null) {
+					alert("하나이상 선택해주세요");
+				} else {
+					for (var i=0; i<obj_length; i++) {
+			            if (document.getElementsByName("check")[i].checked == true) {
+			            	alert(document.getElementsByName("check")[i].value);
+			            }
+			        } 
+				}  */
+				
+				if (document.querySelector('input[type=checkbox][name=check]:checked') == null) {
+					alert("하나이상 선택해주세요");
+				} else {
+					const query = 'input[name="check"]:checked';
+					  const selectedEls = 
+					      document.querySelectorAll(query);
+					  // 선택된 목록에서 value 찾기
+					  var result = '';
+					  selectedEls.forEach((el) => {
+					    result += el.value + ' ';
+					  });
+					  // 출력
+					  alert(result);
+				}
+		
+			 	/* var obj_length = document.getElementsByName("check").length;
+			 	  
+		        for (var i=0; i<obj_length; i++) {
+		            if (document.getElementsByName("check")[i].checked == true) {
+		                alert(document.getElementsByName("check")[i].value);
+		            }
+		        } */
 				
 				if (document.querySelector('input[type=radio][name=gender]:checked') == null) {
 	 				alert("성별을 선택하세요");
