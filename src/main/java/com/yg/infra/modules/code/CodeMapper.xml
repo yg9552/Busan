@@ -25,7 +25,6 @@
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
 		</choose>
-		
 		Order by a.seq asc
 	</select>
 	
