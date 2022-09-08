@@ -407,15 +407,15 @@
 				alert("test");
 				
 				/* alert(document.getElementById('name').value);
+				alert(document.getElementById("exampleTextarea1").value);
 				alert(document.getElementById('seq').value);
 				alert(document.getElementById('CodeGroupNameEN').value);
 				alert(document.getElementById('DelNy').options[document.getElementById('DelNy').selectedIndex].value);
 				alert(document.getElementById('DelNy').value); */
-				/* alert(document.querySelector("input[name='gender']:checked").value); */
+				
 				
 				/* if(document.getElementById("M").checked != true && document.getElementById("W").checked != true && document.getElementById("etc").checked != true){
 					alert("처리상태를 체크해주십시오.");
-					document.getElementById("etc").focus();
 					return;
 				} */
 				

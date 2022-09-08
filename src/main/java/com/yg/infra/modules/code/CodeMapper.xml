@@ -8,7 +8,10 @@
 	<resultMap type="com.yg.infra.modules.code.Code" id="resultMapObj"></resultMap>
 	<select id="selectList" resultMap="resultMapObj">
 		select
-			a.*
+			a.seq
+			,a.name
+			,a.cg_seq
+			,a.DelNy
 			,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq AND aa.DelNy = 0) as codegroupname
 		from Code a
 		WHERE 1=1
