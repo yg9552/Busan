@@ -11,7 +11,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>코드그룹관리</title>
+    <title>코드그룹View</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
@@ -94,7 +94,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/member/memberList">
+            <a class="nav-link" href="http://localhost:8080/member/memberList">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
@@ -348,141 +348,35 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">코드그룹 관리</h4>
-                    <form action="/codeGroup/codeGroupList" autocomplete="off"> <!-- action="/codeGroup/codeGroupList" -->
-                    <div class="row mb-3">
-                    	<div class="col-1">
-                    		<select class="form-control" id="shDelNy" name="shDelNy">
-		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>수정일</option>
-		                        <option>N</option>
-		                        <option>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="text" class="form-control" placeholder="시작일">
-                    	</div>
-                    	<div class="col">
-                    		<input type="text" class="form-control" placeholder="종료일">
-                    	</div>
-                    	<div class="col-2">
-                    		<select class="form-control" id="shOption" name="shOption">
-		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
-		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름 (한글)</option>
-		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름 (영문)</option>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
-                    	</div>
-                    	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
-                    	</div>
-                    </div>
-                    </form>
-                    <div class="row mt-3 mb-3">
-				  		<div class="col my-auto">total : </div>
-				  		<div class="col-1">
-				  			<select class="form-control">
-					  			<option selected>10</option>
-					  			<option value="1">1</option>
-					  			<option value="2">2</option>
-							</select>
-				  		</div>
-				  	</div>
-                    <div class="table-responsive">
-                      <table class="table table-dark text-info text-center table-hover mb-3">
-                        <thead>
-                          <tr>
-                            <th>
-                            	<div class="form-check form-check-flat form-check-info">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-                            </th>
-						    <th scope="col">코드그룹 코드</th>
-						    <th scope="col">코드그룹 이름 (한글)</th>
-						    <th scope="col">코드그룹 이름 (영문)</th>
-						    <th scope="col">코드갯수</th>
-						    <th scope="col">등록일</th>
-						    <th scope="col">수정일</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        <c:choose>
-                        	<c:when test="${fn:length(list) eq 0}">
-                        		<tr>
-                        			<td colspan="7">
-                        				There is no date!
-                        			</td>
-                        		</tr>
-							</c:when>
-							<c:otherwise>
-	                        	<c:forEach items="${list}" var="list" varStatus="status">
-		                          <tr>
-		                            <td>
-										<div class="form-check form-check-flat form-check-info">
-					                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-					                    </div>
-									</td>
-		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td><a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
-		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
-		                            <td> <c:out value="${list.seqCount }"/> </td>
-		                            <td> <c:out value="${list.codeGroupRegDate }"></c:out> </td>
-		                            <td> <c:out value="${list.codeGroupModDate }"></c:out> </td>
-		                          </tr>
-	                           </c:forEach>
-	                        </c:otherwise>
-                        </c:choose>
-                        </tbody>
-                      </table>
-                    </div>
-                    
-                   
-                    <nav aria-label="Page navigation example">
-					  <ul class="pagination pagination-sm justify-content-center">
-					  	<li class="page-item">
-					      <a class="page-link" href="#" aria-label="Previous">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
-					      </a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></i></a>
-					    </li>
-					    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#" aria-label="Next">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
-					      </a>
-					    </li>
-					  </ul>
-					</nav>
-					<div class="row">
-						<div class="col">
-							<a class="btn btn-success" href="/codeGroup/codeGroupForm" role="button">코드등록 <i class="fa-solid fa-pencil"></i></a>
-						</div>
-						<div class="col-auto">
-							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
-							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
-						</div>
-					</div>
+                    <h4 class="card-title">코드그룹 View</h4>
+                      <div class="form-group">
+                        <label for="seq">코드그룹 코드</label>
+                        <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="name">코드그룹 이름 (한글)</label>
+                        <input type="text" class="form-control text-info" id="name" name="name" placeholder="한글" value="<c:out value="${item.name }"></c:out>" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="CodeGroupNameEN">코드그룹 이름 (영문)</label>
+                        <input type="text" class="form-control text-info" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${item.codeGroupNameEN }"></c:out>" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="DelNy">삭제여부</label>
+                        <input type="text" class="form-control text-info" id="DelNy" name="DelNy" placeholder="영문" value="<c:out value="${item.delNy }"></c:out>" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">상세정보</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                      </div>
+                      
+                      <a href="/codeGroup/codeGroupList" class="btn btn-dark">목록</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">

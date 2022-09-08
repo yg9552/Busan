@@ -55,6 +55,17 @@
 			AND DelNy = 0
 	</select>
 	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.name
+			,a.CodeGroupNameEN
+			,a.DelNy
+		FROM CodeGroup a
+		WHERE 1=1
+		AND seq = #{seq}
+	</select>
+	
 	<insert id="insert">
 	INSERT INTO CodeGroup (
 		seq

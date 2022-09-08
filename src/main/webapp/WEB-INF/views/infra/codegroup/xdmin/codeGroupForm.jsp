@@ -352,7 +352,7 @@
                     <form class="forms-sample" action="/codeGroup/codeGroupInst" autocomplete="off" id="codegroupform">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
-                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${seq }"></c:out>">
+                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" <%-- value="<c:out value="${seq }"></c:out>" --%> value="<c:out value="${item.seq }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
