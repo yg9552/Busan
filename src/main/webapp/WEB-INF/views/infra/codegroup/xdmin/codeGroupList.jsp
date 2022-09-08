@@ -432,7 +432,7 @@
 					                    </div>
 									</td>
 		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td><a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
+		                            <td> <a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
 		                            <td> <c:out value="${list.codeGroupRegDate }"></c:out> </td>
