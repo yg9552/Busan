@@ -16,7 +16,7 @@
 			,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupname
 		FROM Code a
 		WHERE 1=1
-			AND DelNy = 0
+			
 		
 		
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>

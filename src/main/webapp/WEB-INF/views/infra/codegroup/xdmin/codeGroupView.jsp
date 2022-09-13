@@ -348,29 +348,41 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">코드그룹 View</h4>
+                    <h4 class="card-title"><c:out value="${item.name }"></c:out></h4>
+                      <form>
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
-                        <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" disabled>
+                        <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
-                        <input type="text" class="form-control text-info" id="name" name="name" placeholder="한글" value="<c:out value="${item.name }"></c:out>" disabled>
+                        <input type="text" class="form-control text-info" id="name" name="name" placeholder="한글" value="<c:out value="${item.name }"></c:out>" >
                       </div>
                       <div class="form-group">
                         <label for="CodeGroupNameEN">코드그룹 이름 (영문)</label>
-                        <input type="text" class="form-control text-info" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${item.codeGroupNameEN }"></c:out>" disabled>
+                        <input type="text" class="form-control text-info" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${item.codeGroupNameEN }"></c:out>" >
                       </div>
                       <div class="form-group">
                         <label for="DelNy">삭제여부</label>
-                        <input type="text" class="form-control text-info" id="DelNy" name="DelNy" placeholder="영문" value="<c:out value="${item.delNy }"></c:out>" disabled>
+                        <select class="form-control" id="DelNy" name="DelNy" >
+		                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>> N </option>
+		                        <option value="1" <c:if test="${itme.delNy eq 1}">selected</c:if>> Y </option>
+	                    </select>
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">상세정보</label>
                         <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
-                      
-                      <a href="/codeGroup/codeGroupList" class="btn btn-dark">목록</a>
+                      <div class="row">
+						<div class="col">
+							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
+						</div>
+						<div class="col-auto">
+							<button class="btn btn-success" href="#" role="button">수정<i class="fa-solid fa-upload"></i></button>
+							<button class="btn btn-danger mx-auto" href="/codeGroup/codeGroupDele" role="button">삭제 <i class="fa-solid fa-trash-can"></i></button>
+						</div>
+					  </div>
+					  </form>
                   </div>
                 </div>
               </div>

@@ -348,32 +348,33 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">코드그룹 등록</h4>
+                    <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
                     <form class="forms-sample" action="/codeGroup/codeGroupInst" autocomplete="off" id="codegroupform">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
-                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" <%-- value="<c:out value="${seq }"></c:out>" --%> value="<c:out value="${item.seq }"></c:out>">
+                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="한글" value="<c:out value="${name }"></c:out>">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="한글" value="<c:out value="${item.name }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="CodeGroupNameEN">코드그룹 이름 (영문)</label>
-                        <input type="text" class="form-control" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${CodeGroupNameEN }"></c:out>">
+                        <input type="text" class="form-control" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${item.codeGroupNameEN }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="DelNy">삭제여부</label>
-                        <select class="form-control" id="DelNy" name="DelNy">
-                          <option value="0">N</option>
-                          <option value="1">Y</option>
-                        </select>
+                        <select class="form-control" id="DelNy" name="DelNy" >
+		                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>> N </option>
+		                        <option value="1" <c:if test="${itme.delNy eq 1}">selected</c:if>> Y </option>
+	                    </select>
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">상세정보</label>
                         <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
                       
+                      <!-- 
                       <div class="form-check form-check-info">
                         <label class="form-check-label" for="check1"><input type="checkbox" class="form-check-input" id="check1" name="check" value="체크1">체크1</label>
                       </div>
@@ -391,7 +392,7 @@
                         <input type="radio" id="W" name="gender" value="2">여성
                         <input type="radio" id="etc" name="gender" value="3">기타
                       </div>
-                      
+                       -->
                       
                       <button type="button" class="btn btn-success mr-2" onclick="test();">코드등록</button>
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>

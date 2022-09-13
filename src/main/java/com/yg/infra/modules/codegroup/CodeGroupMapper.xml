@@ -32,7 +32,7 @@
 			,(select count(aa.seq) from Code aa where 1=1 and aa.DelNy = 0 and aa.cg_seq = a.seq) as seqCount
 		FROM CodeGroup a
 		WHERE 1=1
-			AND DelNy = 0
+			
 			
 			
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
@@ -75,12 +75,38 @@
 		#{seq}
 		,#{name}
 		,#{CodeGroupNameEN}
-		,0
+		,#{DelNy }
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>	
 	
 	</insert>
+	
+	<update id="update">
+		UPDATE CodeGroup
+		SET
+			seq = #{seq}
+			,name = #{name}
+			,CodeGroupNameEN = #{CodeGroupNameEN}
+			,DelNy = #{DelNy}
+			,CodeGroupRegDate = #{CodeGroupRegDate}
+			,CodeGroupModDate = #{CodeGroupModDate}
+			<!-- <include refid="Base.updateModColumnValue" /> -->
+		WHERE
+			seq = #{seq}	
+	</update>
+	
+	<update id="uelete">
+		UPDATE CodeGroup
+		SET
+			DelNy = 1
+			<!-- <include refid="Base.updateModColumnValue" /> -->
+		WHERE seq = #{seq}	
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM CodeGroup WHERE seq = #{seq}
+	</delete>
 	
 </mapper>

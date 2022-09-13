@@ -40,7 +40,7 @@
 
 <nav class="navbar navbar-expand-lg mb-4">
   <div class="container">
-    <a class="navbar-brand" href="#"><img src="../../../../../resources/image/lgo.png" alt="logo" width="210" height="80" class="d-inline-block align-text-top"></a>
+    <a class="navbar-brand" href="/"><img src="../../../../../resources/image/lgo.png" alt="logo" width="210" height="80" class="d-inline-block align-text-top"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -210,6 +210,25 @@
 <div class="container text-center">
 	<h3 class="mb-4">BEST상품</h3>
 	<div class="row mb-3 mx-auto">
+			<c:forEach items="${list}" var="list" varStatus="status">
+			<div class="col-3 mb-3">
+				<a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>">
+					<div class="card" style="width: 18rem;">
+	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
+	  					<div class="card-body">
+	    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
+	  					</div>
+					  	<ul class="list-group list-group-flush">
+						    <li class="list-group-item"> 가격 : <c:out value="${list.price }"/>원 </li>
+						    <li class="list-group-item text-danger"> 할인가: 80,000</li>
+						    <li class="list-group-item"> 배송정보 : <c:out value="${list.deliveryinfo }"/> </li>
+						    <li class="list-group-item"> 원산지 : <c:out value="${list.origin }"/> </li>
+						    <li class="list-group-item"> 적립금 : <c:out value="${list.reserve }"/>원 </li>
+					  	</ul>
+					</div>
+				</a>
+			</div>
+			</c:forEach>
 			<div class="col-3">
 				<a href="../prod/prodView.html">
 					<div class="card" style="width: 18rem;">
@@ -279,7 +298,7 @@
 
 <footer class="container-fluid bg-light text-center p-2" style="clear: both;">
 	<div>
-		<a class="navbar-brand" href="../main/main.html"><img src="../../../../../resources/image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
+		<a class="navbar-brand" href="/product/"><img src="../../../../../resources/image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
 	</div>
 	<span class="fs-6 fw-light">회사명 : OOO | 대표자 : OOO | 사업자등록번호 : 000 | 통신판매신고번호 : 000 | 개인정보관리책임자 : OOO | 전화번호 : 000</span><br>
 	<ul class="list-inline">
