@@ -20,4 +20,11 @@ public class ProductController {
 		model.addAttribute("list", list);
 		return "infra/product/xdmin/productList";
 	}
+	
+	@RequestMapping(value = "/")
+	public String main(Model model) throws Exception {
+		List<Product> list = sevice.selectList();
+		model.addAttribute("list", list);
+		return "infra/product/xdmin/Main";
+	}
 }
