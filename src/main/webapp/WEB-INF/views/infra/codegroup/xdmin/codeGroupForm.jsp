@@ -349,10 +349,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
-                    <form class="forms-sample" action="/codeGroup/codeGroupInst" autocomplete="off" id="codegroupform">
+                    <form class="forms-sample" autocomplete="off" id="codegroupform" name="form">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
+                        <input type="hidden" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
@@ -374,6 +375,12 @@
                         <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
                       
+                      <%-- <div class="form-group">
+                        <label for="CodeGroupModDate">작성시간</label>
+                        <input type="text" class="form-control" id="CodeGroupModDate" name="CodeGroupModDate" value="<fmt:formatDate value="${item.codeGroupModDate}" pattern="yyyy-MM-DD HH:mm:ss"/>">
+                      </div> --%>
+                      
+                      
                       <!-- 
                       <div class="form-check form-check-info">
                         <label class="form-check-label" for="check1"><input type="checkbox" class="form-check-input" id="check1" name="check" value="체크1">체크1</label>
@@ -394,8 +401,10 @@
                       </div>
                        -->
                       
-                      <button type="button" class="btn btn-success mr-2" onclick="test();">코드등록</button>
+                      <button type="button" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>
+                      <button type="button" class="btn btn-danger mr-2" id="btnUelete">삭제</button>
+                      <button type="button" class="btn btn-danger mr-2" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
                       <a href="/codeGroup/codeGroupList" class="btn btn-dark">목록</a>
                     </form>
                   </div>
@@ -404,6 +413,7 @@
             </div>
           </div>
           <script type="text/javascript">
+          
           	function test() {
 				alert("test");
 				
@@ -476,6 +486,63 @@
 				document.getElementById("codegroupform").submit();
 				
 			}
+          	
+        	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+        	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+        	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+        	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+        	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+        	
+        	var seq = $("input:hidden[name=seq]");				/* #-> */
+        	
+        	var form = $("form[name=form]");
+        	var formVo = $("form[name=formVo]");
+        	
+        	
+        	$("#btnSave").on("click", function(){
+        		if (seq.val() == "0" || seq.val() == ""){
+        	   		// insert
+        	   		/* if (validationInst() == false) return false; */
+        	   		form.attr("action", goUrlInst).submit();
+        	   	} else {
+        	   		// update
+        	   		/* keyName.val(atob(keyName.val())); */
+        	   		/* if (validationUpdt() == false) return false; */
+        	   		form.attr("action", goUrlUpdt).submit();
+        	   	}
+        	}); 
+        	
+
+        	$("#btnUelete").on("click", function(){
+        		$("input:hidden[name=exDeleteType]").val(1);
+        		$(".modal-title").text("확 인");
+        		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+        		$("#btnModalUelete").show();
+        		$("#btnModalDelete").hide();
+        		$("#modalConfirm").modal("show");
+        	});
+        	
+
+        	$("#btnDelete").on("click", function(){
+        		$("input:hidden[name=exDeleteType]").val(2);
+        		$(".modal-title").text("확 인");
+        		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+        		$("#btnModalUelete").hide();
+        		$("#btnModalDelete").show();
+        		$("#modalConfirm").modal("show");
+        	});
+        	
+        	
+        	$("#btnModalUelete").on("click", function(){
+        		$("#modalConfirm").modal("hide");
+        		formVo.attr("action", goUrlUele).submit();
+        	});
+        	
+        	
+        	$("#btnModalDelete").on("click", function(){
+        		$("#modalConfirm").modal("hide");
+        		formVo.attr("action", goUrlDele).submit();
+        	});
           </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->

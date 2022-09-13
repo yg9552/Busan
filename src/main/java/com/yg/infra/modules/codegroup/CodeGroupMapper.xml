@@ -58,6 +58,8 @@
 			a.seq
 			,a.name
 			,a.CodeGroupNameEN
+			,a.CodeGroupRegDate
+			,a.CodeGroupModDate
 			,a.DelNy
 		FROM CodeGroup a
 		WHERE 1=1
