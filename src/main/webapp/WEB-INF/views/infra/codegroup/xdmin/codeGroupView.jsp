@@ -378,7 +378,7 @@
 							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
 						</div>
 						<div class="col-auto">
-							<button class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
+							<button type="submit" class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
 							<button class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
 	                        <button type="reset" class="btn btn-warning mr-2">초기화</button>
 	                        <button type="button" class="btn btn-danger mr-2" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
@@ -404,6 +404,23 @@
 	      	var form = $("form[name=form]");
 	      	var formVo = $("form[name=formVo]");
 	      	
+	      	
+	      	$("#btnSave").on("click", function(){
+	      		if (seq.val() == "0" || seq.val() == ""){
+	      			
+	      			form.attr("action", goUrlInst).submit();
+	      	   		// insert
+	      	   		/* if (validationInst() == false) return false; */
+	      	   		
+	      	   	} else {
+	      	   		
+	      	   		form.attr("action", goUrlUpdt).submit();
+	      	   		// update
+	      	   		/* keyName.val(atob(keyName.val())); */
+	      	   		/* if (validationUpdt() == false) return false; */
+	      	   		
+	      	   	}
+	      	});
 	      	
 	      	$("#btnSave").on("click", function(){
 	      		if (seq.val() == "0" || seq.val() == ""){
