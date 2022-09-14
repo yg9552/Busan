@@ -17,7 +17,7 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupList(Model model,@ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
@@ -28,33 +28,42 @@ public class CodeGroupController {
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
-//	@RequestMapping(value = "codeGroupForm")
-//	public String codeGroupForm() throws Exception {
-//		return "infra/codegroup/xdmin/codeGroupForm";
-//	}
-	
 	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm(Model model,@ModelAttribute("vo") CodeGroupVo vo) throws Exception {
-		CodeGroup result = service.selectOne(vo);
-		model.addAttribute("item", result);
+	public String codeGroupForm() throws Exception {
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
+	
+//	@RequestMapping(value = "codeGroupForm")
+//	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
+//		if (vo.getSeq().equals("0") || vo.getSeq().equals("")) {
+//			//insert
+//		} else {
+//			CodeGroup result = service.selectOne(vo);
+//			model.addAttribute("item", result);
+//		}
+//		CodeGroup result = service.selectOne(vo);
+//		model.addAttribute("item", result);
+//		return "infra/codegroup/xdmin/codeGroupForm";
+//	}
 	
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroup dto) throws Exception {
 		
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
-		
 		return "redirect:/codeGroup/codeGroupList";
 	}
-	@RequestMapping(value = "codeGroupView")
-	public String codeGroupView(Model model,@ModelAttribute("vo") CodeGroupVo vo) throws Exception {
-		CodeGroup result = service.selectOne(vo);
-		model.addAttribute("item", result);
-		
-		return "infra/codegroup/xdmin/codeGroupView";
-	}
+
+	
+	  @RequestMapping(value = "codeGroupView") 
+	  public String codeGroupView(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception { 
+		  CodeGroup result = service.selectOne(vo); 
+		  model.addAttribute("item", result);
+	  
+	  	  return "infra/codegroup/xdmin/codeGroupView"; 
+	  }
+	
+	
 	@RequestMapping (value = "codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
 		service.update(dto);

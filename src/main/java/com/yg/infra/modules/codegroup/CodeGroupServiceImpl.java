@@ -50,7 +50,7 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 
 	@Override
 	public int update(CodeGroup dto) throws Exception {
-
+//		setRegMod(dto);
 		return dao.update(dto);
 	}
 

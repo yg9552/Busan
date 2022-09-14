@@ -386,7 +386,7 @@
                     		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
                     	</div>
                     </div>
-                    </form>
+                    
                     <div class="row mt-3 mb-3">
 				  		<div class="col my-auto">total : </div>
 				  		<div class="col-1">
@@ -432,7 +432,7 @@
 					                    </div>
 									</td>
 		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td> <a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
+		                            <td> <a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
 		                            <td> <c:out value="${list.codeGroupRegDate }"></c:out> </td>
@@ -478,6 +478,7 @@
 							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
 						</div>
 					</div>
+					</form>
                   </div>
                 </div>
               </div>

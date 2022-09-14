@@ -353,6 +353,7 @@
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
+                        <input type="hidden" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
@@ -378,8 +379,10 @@
 							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
 						</div>
 						<div class="col-auto">
-							<button class="btn btn-success" href="#" role="button">수정<i class="fa-solid fa-upload"></i></button>
-							<button class="btn btn-danger mx-auto" href="/codeGroup/codeGroupDele" role="button">삭제 <i class="fa-solid fa-trash-can"></i></button>
+							<button class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
+							<button class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
+	                        <button type="reset" class="btn btn-warning mr-2">초기화</button>
+	                        <button type="button" class="btn btn-danger mr-2" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
 						</div>
 					  </div>
 					  </form>
@@ -388,6 +391,66 @@
               </div>
             </div>
           </div>
+          
+          <script type="text/javascript">
+          
+            var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	      	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	      	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	      	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	      	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	      	
+	      	var seq = $("input:hidden[name=seq]");				/* #-> */
+	      	
+	      	var form = $("form[name=form]");
+	      	var formVo = $("form[name=formVo]");
+	      	
+	      	
+	      	$("#btnSave").on("click", function(){
+	      		if (seq.val() == "0" || seq.val() == ""){
+	      	   		// insert
+	      	   		/* if (validationInst() == false) return false; */
+	      	   		form.attr("action", goUrlInst).submit();
+	      	   	} else {
+	      	   		// update
+	      	   		/* keyName.val(atob(keyName.val())); */
+	      	   		/* if (validationUpdt() == false) return false; */
+	      	   		form.attr("action", goUrlUpdt).submit();
+	      	   	}
+	      	}); 
+	      	
+	
+	      	$("#btnUelete").on("click", function(){
+	      		$("input:hidden[name=exDeleteType]").val(1);
+	      		$(".modal-title").text("확 인");
+	      		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+	      		$("#btnModalUelete").show();
+	      		$("#btnModalDelete").hide();
+	      		$("#modalConfirm").modal("show");
+	      	});
+	      	
+	
+	      	$("#btnDelete").on("click", function(){
+	      		$("input:hidden[name=exDeleteType]").val(2);
+	      		$(".modal-title").text("확 인");
+	      		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+	      		$("#btnModalUelete").hide();
+	      		$("#btnModalDelete").show();
+	      		$("#modalConfirm").modal("show");
+	      	});
+	      	
+	      	
+	      	$("#btnModalUelete").on("click", function(){
+	      		$("#modalConfirm").modal("hide");
+	      		formVo.attr("action", goUrlUele).submit();
+	      	});
+	      	
+	      	
+	      	$("#btnModalDelete").on("click", function(){
+	      		$("#modalConfirm").modal("hide");
+	      		formVo.attr("action", goUrlDele).submit();
+	      	});
+          </script>
           
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
