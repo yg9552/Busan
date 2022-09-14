@@ -1,6 +1,6 @@
 package com.yg.infra.modules.codegroup;
 
-public class CodeGroup {
+public class CodeGroup{
 
 //	codegroup
 	private String seq;

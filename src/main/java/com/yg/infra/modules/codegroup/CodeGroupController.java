@@ -25,6 +25,32 @@ public class CodeGroupController {
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
+//		//페이징[s]
+//		Pagination pagination = new Pagination();
+//		pagination.setCurrentPageNo(vo.getPageIndex());
+//		pagination.setRecordCountPerPage(vo.getPageUnit());
+//		pagination.setPageSize(vo.getPageSize());
+//
+//		vo.setFirstIndex(pagination.getFirstRecordIndex());
+//		vo.setRecordCountPerPage(pagination.getRecordCountPerPage());
+//
+//		List<CodeGroup> boardList = service.selectList(vo);
+//		int totCnt = service.getListCnt(vo);
+//
+//		pagination.setTotalRecordCount(totCnt);
+//
+//		searchVO.setEndDate(pagination.getLastPageNoOnPageList());
+//		searchVO.setStartDate(pagination.getFirstPageNoOnPageList());
+//		searchVO.setPrev(pagination.getXprev());
+//		searchVO.setNext(pagination.getXnext());
+//		searchVO.setRealEnd(paginationInfo.getRealEnd());
+//
+//		model.addAttribute("boardList",boardList);
+//		model.addAttribute("totCnt",totCnt);
+//		model.addAttribute("totalPageCnt",(int)Math.ceil(totCnt / (double)searchVO.getPageUnit()));
+//		model.addAttribute("pagination",pagination);
+//		//페이징[e]
+		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
