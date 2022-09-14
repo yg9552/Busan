@@ -17,7 +17,7 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model,@ModelAttribute("vo") CodeGroupVo vo) throws Exception {
+	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
@@ -57,12 +57,11 @@ public class CodeGroupController {
 	
 	  @RequestMapping(value = "codeGroupView") 
 	  public String codeGroupView(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception { 
-		  CodeGroup result = service.selectOne(vo); 
+		  CodeGroup result = service.selectOne(vo);
 		  model.addAttribute("item", result);
 	  
 	  	  return "infra/codegroup/xdmin/codeGroupView"; 
 	  }
-	
 	
 	@RequestMapping (value = "codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
@@ -70,6 +69,7 @@ public class CodeGroupController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/codeGroup/codeGroupList";
 	}
+	
 	@RequestMapping (value = "codeGroupUele")
 	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.uelete(dto);

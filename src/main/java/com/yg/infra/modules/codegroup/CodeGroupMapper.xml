@@ -30,10 +30,9 @@
 			,a.CodeGroupRegDate
 			,a.CodeGroupModDate
 			,(select count(aa.seq) from Code aa where 1=1 and aa.DelNy = 0 and aa.cg_seq = a.seq) as seqCount
+			,a.DelNy
 		FROM CodeGroup a
 		WHERE 1=1
-			
-			
 			
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<choose>
@@ -63,7 +62,7 @@
 			,a.DelNy
 		FROM CodeGroup a
 		WHERE 1=1
-		AND seq = #{seq}
+		AND a.seq = #{seq}
 	</select>
 	
 	<insert id="insert">
@@ -91,12 +90,9 @@
 			seq = #{seq}
 			,name = #{name}
 			,CodeGroupNameEN = #{CodeGroupNameEN}
-			,DelNy = #{DelNy}
-			<!-- ,CodeGroupRegDate = #{CodeGroupRegDate}
-			,CodeGroupModDate = #{CodeGroupModDate} -->
-			<!-- <include refid="Base.updateModColumnValue" /> -->
+			
 		WHERE
-			seq = #{seq}	
+			seq = #{seq}
 	</update>
 	
 	<update id="uelete">

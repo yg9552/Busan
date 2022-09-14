@@ -510,6 +510,7 @@
         	   	}
         	}); 
         	
+/*         	
 
         	$("#btnUelete").on("click", function(){
         		$("input:hidden[name=exDeleteType]").val(1);
@@ -540,7 +541,9 @@
         	$("#btnModalDelete").on("click", function(){
         		$("#modalConfirm").modal("hide");
         		formVo.attr("action", goUrlDele).submit();
-        	});
+        	}); 
+        	
+        	*/ 
           </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->

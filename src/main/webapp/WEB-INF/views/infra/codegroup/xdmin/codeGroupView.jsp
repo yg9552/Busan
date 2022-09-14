@@ -349,11 +349,10 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><c:out value="${item.name }"></c:out></h4>
-                      <form>
+                      <form name="form" id="form" method="post" autocomplete="off">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
-                        <input type="hidden" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
@@ -400,7 +399,7 @@
 	      	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 	      	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
 	      	
-	      	var seq = $("input:hidden[name=seq]");				/* #-> */
+	      	var seq = $("input:hidden[name=seq]");					/* #-> */
 	      	
 	      	var form = $("form[name=form]");
 	      	var formVo = $("form[name=formVo]");
@@ -408,14 +407,18 @@
 	      	
 	      	$("#btnSave").on("click", function(){
 	      		if (seq.val() == "0" || seq.val() == ""){
+	      			
+	      			form.attr("action", goUrlInst).submit();
 	      	   		// insert
 	      	   		/* if (validationInst() == false) return false; */
-	      	   		form.attr("action", goUrlInst).submit();
+	      	   		
 	      	   	} else {
+	      	   		
+	      	   		form.attr("action", goUrlUpdt).submit();
 	      	   		// update
 	      	   		/* keyName.val(atob(keyName.val())); */
 	      	   		/* if (validationUpdt() == false) return false; */
-	      	   		form.attr("action", goUrlUpdt).submit();
+	      	   		
 	      	   	}
 	      	}); 
 	      	
