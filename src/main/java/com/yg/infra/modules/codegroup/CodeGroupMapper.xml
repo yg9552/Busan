@@ -92,8 +92,8 @@
 			,name = #{name}
 			,CodeGroupNameEN = #{CodeGroupNameEN}
 			,DelNy = #{DelNy}
-			,CodeGroupRegDate = #{CodeGroupRegDate}
-			,CodeGroupModDate = #{CodeGroupModDate}
+			<!-- ,CodeGroupRegDate = #{CodeGroupRegDate}
+			,CodeGroupModDate = #{CodeGroupModDate} -->
 			<!-- <include refid="Base.updateModColumnValue" /> -->
 		WHERE
 			seq = #{seq}	

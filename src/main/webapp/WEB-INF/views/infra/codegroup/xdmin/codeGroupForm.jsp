@@ -6,6 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
 <html>
   <head>
     <!-- Required meta tags -->
@@ -349,7 +350,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
-                    <form class="forms-sample" autocomplete="off" id="codegroupform" name="form">
+                    <form class="forms-sample" autocomplete="off" id="form" name="form">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
@@ -401,7 +402,7 @@
                       </div>
                        -->
                       
-                      <button type="button" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
+                      <button class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>
                       <button type="button" class="btn btn-danger mr-2" id="btnUelete">삭제</button>
                       <button type="button" class="btn btn-danger mr-2" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
