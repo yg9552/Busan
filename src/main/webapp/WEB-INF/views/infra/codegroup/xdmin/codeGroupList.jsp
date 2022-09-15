@@ -408,6 +408,7 @@
 			                    </div>
                             </th>
 						    <th scope="col">코드그룹 코드</th>
+						    <th scope="col">코드그룹 코드</th>
 						    <th scope="col">코드그룹 이름 (한글)</th>
 						    <th scope="col">코드그룹 이름 (영문)</th>
 						    <th scope="col">코드갯수</th>
@@ -432,6 +433,7 @@
 					                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 					                    </div>
 									</td>
+		                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
 		                            <td> <c:out value="${list.seq }"/> </td>
 		                            <td> <a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>

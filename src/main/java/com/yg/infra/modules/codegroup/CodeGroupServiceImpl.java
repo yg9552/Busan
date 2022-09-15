@@ -65,6 +65,14 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		
 	}
 
+	@Override
+	public int selectOneCount(CodeGroupVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
+
+
+	
 
 
 
