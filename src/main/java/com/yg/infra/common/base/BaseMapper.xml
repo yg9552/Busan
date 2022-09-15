@@ -9,10 +9,13 @@
 		select aa.* from (
 	</sql>
 	
-	
 	<sql id="selectListLowerForMysql">	
 		) aa
 		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</sql>
+	
+	<sql id="orderByLimitForMysql">
+		limit 99999999999	
 	</sql>
 
 

@@ -47,7 +47,7 @@ public class CodeGroupDao {
 	
 	//paging
 	public int selectOneCount(CodeGroupVo vo){
-		int result = sqlSession.selectOneCount(namespace + ".selectOneCount", vo);
+		int result = sqlSession.selectOne(namespace + ".selectOneCount", vo);
 		return result;
 	} 
 }

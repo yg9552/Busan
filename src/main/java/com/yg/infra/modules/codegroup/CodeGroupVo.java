@@ -2,7 +2,7 @@ package com.yg.infra.modules.codegroup;
 
 import com.yg.infra.common.base.BaseVo;
 
-public class CodeGroupVo extends BaseVo{
+public class CodeGroupVo extends BaseVo {
 
 	private String shValue;
 	private Integer shOption;

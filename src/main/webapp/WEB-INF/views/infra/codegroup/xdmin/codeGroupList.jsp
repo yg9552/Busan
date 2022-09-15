@@ -18,6 +18,7 @@
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
@@ -349,7 +350,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">코드그룹 관리</h4>
-                    <form action="/codeGroup/codeGroupList" autocomplete="off"> <!-- action="/codeGroup/codeGroupList" -->
+                    <form name="formList" id="formList" autocomplete="off" method="post"> <!-- action="/codeGroup/codeGroupList" -->
+	                    <input type="hidden" name="mainkey">
+	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+	                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+	                    <input type="hidden" name="checkboxSeqArray">
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
@@ -389,7 +394,7 @@
                     </div>
                     
                     <div class="row mt-3 mb-3">
-				  		<div class="col my-auto">total : </div>
+				  		<div class="col my-auto"> Total : <c:out value="${vo.totalRows }"></c:out> </div>
 				  		<div class="col-1">
 				  			<select class="form-control">
 					  			<option selected>10</option>
@@ -407,7 +412,7 @@
 			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 			                    </div>
                             </th>
-						    <th scope="col">코드그룹 코드</th>
+						    <th scope="col"> #</th>
 						    <th scope="col">코드그룹 코드</th>
 						    <th scope="col">코드그룹 이름 (한글)</th>
 						    <th scope="col">코드그룹 이름 (영문)</th>
@@ -451,29 +456,6 @@
 						<%@include file="../../../common/xdmin/pagination.jsp"%>
 					<!-- pagination e -->
                    
-                    <nav aria-label="Page navigation example">
-					  <ul class="pagination pagination-sm justify-content-center">
-					  	<li class="page-item">
-					      <a class="page-link" href="#" aria-label="Previous">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
-					      </a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></i></a>
-					    </li>
-					    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#" aria-label="Next">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
-					      </a>
-					    </li>
-					  </ul>
-					</nav>
 					<div class="row">
 						<div class="col">
 							<a class="btn btn-success" href="/codeGroup/codeGroupForm" role="button">코드등록 <i class="fa-solid fa-pencil"></i></a>
@@ -489,6 +471,21 @@
               </div>
             </div>
           </div>
+          <script type="text/javascript">
+          	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	      	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	      	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	      	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	      	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	      	
+	      	var form = $("form[name=formList]");
+	      	
+	      	goList = function(thisPage) {
+	      		$("input:hidden[name=thisPage]").val(thisPage);
+	      		form.attr("action", goUrlList).submit();
+	      	}
+	      	
+          </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">

@@ -31,7 +31,8 @@
 			,(select count(aa.seq) from Code aa where 1=1 and aa.DelNy = 0 and aa.cg_seq = a.seq) as seqCount
 			,a.DelNy
 			<include refid="selectCommon" />
-			<!-- ORDER BY a.ifcgSeq DESC -->
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
