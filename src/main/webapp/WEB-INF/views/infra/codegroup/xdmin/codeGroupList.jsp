@@ -384,7 +384,7 @@
                     	</div>
                     	<div class="col-auto my-auto">
                     		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
-                    		<button type="reset" class="btn btn-inverse-warning"><i class="fa-solid fa-rotate"></i></button>
+                    		<button type="button" class="btn btn-inverse-warning"><i class="fa-solid fa-rotate"></i></button>
                     	</div>
                     </div>
                     
@@ -445,7 +445,9 @@
                         </tbody>
                       </table>
                     </div>
-                    
+                    <!-- pagination s -->
+						<%@include file="../../../common/xdmin/pagination.jsp"%>
+					<!-- pagination e -->
                    
                     <nav aria-label="Page navigation example">
 					  <ul class="pagination pagination-sm justify-content-center">

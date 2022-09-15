@@ -8,20 +8,40 @@
 
     <resultMap id="resultMapObj" type="com.yg.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-<!-- 	
-	<sql id="selectCommon">
+ 	<sql id ="selectCommon">
 		FROM CodeGroup a
 		WHERE 1=1
-			<if test="shDelNy !=null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND name LIKE CONCAT ('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND name LIKE CONCAT ('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND CodeGroupNameEN LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</sql>
- -->
- 	
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+			a.seq
+			,a.name
+			,a.CodeGroupNameEN
+			,a.CodeGroupRegDate
+			,a.CodeGroupModDate
+			,(select count(aa.seq) from Code aa where 1=1 and aa.DelNy = 0 and aa.cg_seq = a.seq) as seqCount
+			,a.DelNy
+			<include refid="Base.selectRegModWithAlies" />
+			<include refid="selectCommon" />
+			<!-- ORDER BY a.ifcgSeq DESC -->
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+<!--  	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.seq
@@ -42,7 +62,7 @@
 				<otherwise></otherwise>
 			</choose>
 	</select>
-	
+-->
 	<select id="selectmini" resultMap="resultMapObj">
 		SELECT
 			a.seq

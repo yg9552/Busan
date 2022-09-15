@@ -1,6 +1,8 @@
 package com.yg.infra.modules.codegroup;
 
-public class CodeGroupVo extends PageVo{
+import com.yg.infra.common.base.BaseVo;
+
+public class CodeGroupVo extends BaseVo{
 
 	private String shValue;
 	private Integer shOption;
@@ -31,6 +33,7 @@ public class CodeGroupVo extends PageVo{
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+	
 	
 	
 	
