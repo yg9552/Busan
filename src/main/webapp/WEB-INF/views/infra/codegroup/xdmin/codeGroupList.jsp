@@ -354,8 +354,8 @@
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
 		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="0" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+		                        <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col-1">
@@ -384,6 +384,7 @@
                     	</div>
                     	<div class="col-auto my-auto">
                     		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
+                    		<button type="reset" class="btn btn-inverse-warning"><i class="fa-solid fa-rotate"></i></button>
                     	</div>
                     </div>
                     

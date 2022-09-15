@@ -19,6 +19,7 @@
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
@@ -350,7 +351,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
-                    <form class="forms-sample" autocomplete="off" id="codegroupform" name="form" action="/codeGroup/codeGroupInst">
+                    <form class="forms-sample" autocomplete="off" id="codegroupform" name="form">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
@@ -401,7 +402,7 @@
                       </div>
                        -->
                       
-                      <button type="submit" class="btn btn-success mr-2">코드등록</button> <!--  onclick="test();" -->
+                      <button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>
                       <a href="/codeGroup/codeGroupList" class="btn btn-dark">목록</a>
                     </form>

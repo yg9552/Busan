@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
+    
     <!-- Plugin css for this page -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -348,8 +350,8 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+                  	<form name="viewform" id="viewform" method="post" autocomplete="off">
                     <h4 class="card-title"><c:out value="${item.name }"></c:out></h4>
-                      <form name="form" id="form" method="post" autocomplete="off">
                       <div class="form-group">
                         <label for="seq">코드그룹 코드</label>
                         <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
@@ -378,8 +380,8 @@
 							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
 						</div>
 						<div class="col-auto">
-							<button type="submit" class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
-							<button class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
+							<button type="button" class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
+							<button type="button" class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
 	                        <button type="reset" class="btn btn-warning mr-2">초기화</button>
 	                        <button type="button" class="btn btn-danger mr-2" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
 						</div>
@@ -401,7 +403,7 @@
 	      	
 	      	var seq = $("input:hidden[name=seq]");					/* #-> */
 	      	
-	      	var form = $("form[name=form]");
+	      	var form = $("form[name=viewform]");
 	      	var formVo = $("form[name=formVo]");
 	      	
 	      	
@@ -422,24 +424,8 @@
 	      	   	}
 	      	});
 	      	
-	      	$("#btnSave").on("click", function(){
-	      		if (seq.val() == "0" || seq.val() == ""){
-	      			
-	      			form.attr("action", goUrlInst).submit();
-	      	   		// insert
-	      	   		/* if (validationInst() == false) return false; */
-	      	   		
-	      	   	} else {
-	      	   		
-	      	   		form.attr("action", goUrlUpdt).submit();
-	      	   		// update
-	      	   		/* keyName.val(atob(keyName.val())); */
-	      	   		/* if (validationUpdt() == false) return false; */
-	      	   		
-	      	   	}
-	      	}); 
-	      	
-	
+
+	/* 
 	      	$("#btnUelete").on("click", function(){
 	      		$("input:hidden[name=exDeleteType]").val(1);
 	      		$(".modal-title").text("확 인");
@@ -448,27 +434,26 @@
 	      		$("#btnModalDelete").hide();
 	      		$("#modalConfirm").modal("show");
 	      	});
-	      	
+	      	 */
 	
+	      	
+	      	$("#btnUelete").on("click", function(){
+	      		if(!confirm("삭제 하시겠습니까?")){
+        			return false;
+        		}else{
+        			form.attr("action", goUrlUele).submit();
+        		}
+	      		
+	      	});
+	      	
+	      	
 	      	$("#btnDelete").on("click", function(){
-	      		$("input:hidden[name=exDeleteType]").val(2);
-	      		$(".modal-title").text("확 인");
-	      		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
-	      		$("#btnModalUelete").hide();
-	      		$("#btnModalDelete").show();
-	      		$("#modalConfirm").modal("show");
-	      	});
-	      	
-	      	
-	      	$("#btnModalUelete").on("click", function(){
-	      		$("#modalConfirm").modal("hide");
-	      		formVo.attr("action", goUrlUele).submit();
-	      	});
-	      	
-	      	
-	      	$("#btnModalDelete").on("click", function(){
-	      		$("#modalConfirm").modal("hide");
-	      		formVo.attr("action", goUrlDele).submit();
+	      		if(!confirm("삭제 하시겠습니까?")){
+        			return false;
+        		}else{
+        			form.attr("action", goUrlDele).submit();
+        		}
+	      		
 	      	});
           </script>
           
