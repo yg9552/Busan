@@ -419,6 +419,7 @@
 						    <th scope="col">코드갯수</th>
 						    <th scope="col">등록일</th>
 						    <th scope="col">수정일</th>
+						    <th scope="col">삭제여부</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -445,6 +446,7 @@
 		                            <td> <c:out value="${list.seqCount }"/> </td>
 		                            <td> <c:out value="${list.codeGroupRegDate }"></c:out> </td>
 		                            <td> <c:out value="${list.codeGroupModDate }"></c:out> </td>
+		                            <td> <c:out value="${list.delNy }"></c:out> </td>
 		                          </tr>
 	                           </c:forEach>
 	                        </c:otherwise>
