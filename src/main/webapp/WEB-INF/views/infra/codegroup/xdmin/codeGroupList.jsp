@@ -394,7 +394,9 @@
                     </div>
                     
                     <div class="row mt-3 mb-3">
-				  		<div class="col my-auto"> Total : <c:out value="${vo.totalRows }"></c:out> </div>
+				  		<div class="col my-auto">
+				  			 Total : <c:out value="${vo.totalRows }"></c:out> 
+				  		</div>
 				  		<div class="col-1">
 				  			<select class="form-control">
 					  			<option selected>10</option>
@@ -417,9 +419,9 @@
 						    <th scope="col">코드그룹 이름 (한글)</th>
 						    <th scope="col">코드그룹 이름 (영문)</th>
 						    <th scope="col">코드갯수</th>
+						    <th scope="col">삭제여부</th>
 						    <th scope="col">등록일</th>
 						    <th scope="col">수정일</th>
-						    <th scope="col">삭제여부</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -444,9 +446,9 @@
 		                            <td> <a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
+		                            <td> <c:out value="${list.delNy }"></c:out> </td>
 		                            <td> <c:out value="${list.codeGroupRegDate }"></c:out> </td>
 		                            <td> <c:out value="${list.codeGroupModDate }"></c:out> </td>
-		                            <td> <c:out value="${list.delNy }"></c:out> </td>
 		                          </tr>
 	                           </c:forEach>
 	                        </c:otherwise>

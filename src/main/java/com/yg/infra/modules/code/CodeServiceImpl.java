@@ -24,10 +24,23 @@ public class CodeServiceImpl implements CodeService {
 		int result = dao.insert(dto);
 		return result;
 	}
+
+	@Override
+	public Code selectOne(CodeVo vo) throws Exception {
+		Code result = dao.selectOne(vo);
+		System.out.println("service result: " + result);
+		return result;
+	}
+
+	@Override
+	public int selectOneCount(CodeVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
 	
-//	public List<Code> selectlist() throws Exception{
-//		return dao.selectlist();
-//	}
+	
+
+	
 	
 	
 	

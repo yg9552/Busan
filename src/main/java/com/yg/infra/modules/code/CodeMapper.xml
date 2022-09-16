@@ -6,8 +6,42 @@
     
 <mapper namespace="com.yg.infra.modules.code.CodeMapper">
 	<resultMap type="com.yg.infra.modules.code.Code" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		FROM Code a
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND codeSeq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND cg_seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
+	
 	<select id="selectList" resultMap="resultMapObj">
-		select
+			<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.codeSeq
+				,a.seq
+				,a.name
+				,a.cg_seq
+				,a.DelNy
+				,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupname
+			<include refid="selectCommon" />
+			ORDER BY a.codeSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
 			a.codeSeq
 			,a.seq
 			,a.name
@@ -16,16 +50,7 @@
 			,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupname
 		FROM Code a
 		WHERE 1=1
-			
-		
-		
-		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
-		<choose>
-			<when test="shOption == 1">AND seq = #{shValue}</when>
-			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			<otherwise></otherwise>
-		</choose>
-		Order by a.seq asc
+		AND a.codeSeq = #{codeSeq}
 	</select>
 	
 	<insert id="insert">
@@ -41,7 +66,7 @@
 			,#{cg_seq }
 			,#{DelNy }
 			)
-			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			<selectKey resultType="String" keyProperty="codeSeq" order="AFTER">
 			SELECT last_insert_id()
 			</selectKey>
 	</insert>

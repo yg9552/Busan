@@ -365,8 +365,8 @@
                         <input type="text" class="form-control text-info" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${item.codeGroupNameEN }"></c:out>" >
                       </div>
                       <div class="form-group">
-                        <label for="delNy">삭제여부</label>
-                        <select class="form-control" id="delNy" name="delNy" >
+                        <label for="DelNy">삭제여부</label>
+                        <select class="form-control" id="DelNy" name="DelNy" >
 		                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>>N</option>
 		                        <option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>>Y</option>
 	                    </select>

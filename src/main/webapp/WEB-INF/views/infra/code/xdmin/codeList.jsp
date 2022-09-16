@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -349,13 +350,17 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">코드 관리</h4>
-                    <form action="/code/codeList" autocomplete="off">
+                    <form autocomplete="off" name="formList" id="formList" method="post">
+                    <input type="hidden" name="mainkey">
+                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+                    <input type="hidden" name="checkboxSeqArray">
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
 		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="0" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+		                        <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
 		                    </select>
                     	</div>
                     	<div class="col-1">
@@ -373,9 +378,11 @@
                     	</div>
                     	<div class="col-1">
                     		<select class="form-control" id="shOption" name="shOption">
-		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드번호</option>
-		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드 이름 (한글)</option>
+		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>> 검색구분 </option>
+		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>> 대체코드 </option>
+		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>> 코드 이름 (한글) </option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 코드 </option>
+		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>> 코드그룹 코드 </option>
 		                    </select>
                     	</div>
                     	<div class="col">
@@ -388,7 +395,7 @@
                     </form>
                     <div class="row mt-3 mb-3">
 				  		<div class="col my-auto">
-				  			total : 
+				  			Total : <c:out value="${vo.totalRows }"></c:out>
 				  		</div>
 				  		<div class="col-1">
 				  			<select class="form-control" aria-label="Default select example">
@@ -415,7 +422,7 @@
 						    <th scope="col">코드 이름 (한글)</th>
 						    <th scope="col">코드 이름 (영문)</th>
 						    <th scope="col">사용</th>
-							<th scope="col">순서</th>
+							<th scope="col">삭제여부</th>
 				      		<th scope="col">등록일</th>
 						    <th scope="col">수정일</th>
                           </tr>
@@ -437,17 +444,17 @@
 						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 						                    </div>
 										</td>
-										<td> <c:out value="${list.codeSeq }"/> </td>
+										<td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
 									    <td> <c:out value="${list.cg_seq }"/> </td>
 									    <td> <c:out value="${list.codegroupname }"/> </td>
+									    <td> <c:out value="${list.codeSeq }"/> </td>
 									    <td> <c:out value="${list.seq }"/> </td>
 									    <td></td>
-									    <td><a href="#"> <c:out value="${list.name }"/> </a></td>
+									    <td><a href="/code/codeForm?codeSeq=<c:out value="${list.codeSeq }"/>"> <c:out value="${list.name }"/> </a></td>
+									    <td></td>
+									    <td> <c:out value="${list.delNy }"/> </td>
 									    <td></td>
 									    <td></td>
-									    <td></td>
-									    <td></td>
-										<td></td>
 			                          </tr>
 			                        </c:forEach>
 		                        </c:otherwise>
@@ -456,31 +463,10 @@
                       </table>
                     </div>
                     
-                    
+                    <!-- pagination s -->
+						<%@include file="../../../common/xdmin/pagination.jsp"%>
+					<!-- pagination e -->
                    
-                    <nav aria-label="Page navigation example">
-					  <ul class="pagination pagination-sm justify-content-center">
-					  	<li class="page-item">
-					      <a class="page-link" href="#" aria-label="Previous">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
-					      </a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></i></a>
-					    </li>
-					    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item"><a class="page-link" href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item">
-					      <a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
-					    </li>
-					    <li class="page-item">
-					      <a class="page-link" href="#" aria-label="Next">
-					        <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
-					      </a>
-					    </li>
-					  </ul>
-					</nav>
 					<div class="row">
 						<div class="col">
 							<a class="btn btn-success" href="/code/codeForm" role="button">등록 <i class="fa-solid fa-pencil"></i></a>
@@ -495,6 +481,22 @@
               </div>
             </div>
           </div>
+          
+          <script type="text/javascript">
+          	var goUrlList = "/code/codeList"; 			/* #-> */
+	      	var goUrlInst = "/code/codeInst"; 			/* #-> */
+	      	var goUrlUpdt = "/code/codeUpdt";				/* #-> */
+	      	var goUrlUele = "/code/codeUele";				/* #-> */
+	      	var goUrlDele = "/code/codeDele";				/* #-> */
+	      	
+	      	var form = $("form[name=formList]");
+	      	
+	      	goList = function(thisPage) {
+	      		$("input:hidden[name=thisPage]").val(thisPage);
+	      		form.attr("action", goUrlList).submit();
+	      	}
+	      	
+          </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">

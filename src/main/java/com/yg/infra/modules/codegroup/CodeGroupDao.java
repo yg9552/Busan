@@ -24,8 +24,8 @@ public class CodeGroupDao {
 		return list;
 	}
 	
-	public List<CodeGroup> selectList(){
-		List<CodeGroup> list = sqlSession.selectList("com.yg.infra.modules.codegroup.CodeGroupMapper.selectList", "");
+	public List<CodeGroup> selectMini(){
+		List<CodeGroup> list = sqlSession.selectList("com.yg.infra.modules.codegroup.CodeGroupMapper.selectMini", "");
 		return list;
 	}
 	

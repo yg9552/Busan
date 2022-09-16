@@ -18,6 +18,7 @@
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
@@ -351,31 +352,35 @@
                     <h4 class="card-title">코드 등록</h4>
                     <form class="forms-sample" action="/code/codeInst" autocomplete="off">
                       <div class="form-group">
-                        <label for="seq">코드번호</label>
-                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${seq }"></c:out>">
+                        <label for="seq">대체코드</label>
+                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${seq }"></c:out> <c:out value="${item.seq }"></c:out>">
+                      </div>
+                      <div class="form-group">
+                        <label for="name">코드그룹 이름 (한글)</label>
+                        <input type="text" class="form-control" value=" <c:out value="${item.cg_seq }"/>. <c:out value="${item.codegroupname }"/>">
                       </div>
                       <div class="form-group">
                         <label for="codegroupname">코드그룹 이름 (한글)</label>
                         <select class="form-control" id="cg_seq" name="cg_seq">
                         	<c:forEach items="${list2}" var="list2" varStatus="status">
-                          		<option value="<c:out value="${cg_seq }"/> <c:out value="${list2.seq }"/>"> <c:out value="${list2.seq }"/>. <c:out value="${list2.name }"/> </option>
+                          		<option value="<c:out value="${cg_seq }"/> <c:out value="${list2.seq }"/>"> . <c:out value="${list2.name }"/></option>
                           	</c:forEach>
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="name">코드 이름 (한글)</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="한글" value="<c:out value="${name }"></c:out>">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="한글" value="<c:out value="${name }"></c:out> <c:out value="${item.name }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputNameEN">코드이름 (영문)</label>
                         <input type="email" class="form-control" id="exampleInputNameEN" placeholder="영문">
                       </div>
                       <div class="form-group">
-                        <label for="exampleSelectDeliveryInfo">삭제여부</label>
-                        <select class="form-control" id="DelNy" name="DelNy">
-                          <option value="0">N</option>
-                          <option value="1">Y</option>
-                        </select>
+                        <label for="DelNy">삭제여부</label>
+                        <select class="form-control" id="DelNy" name="DelNy" >
+		                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>>N</option>
+		                        <option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>>Y</option>
+	                    </select>
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">상세정보</label>

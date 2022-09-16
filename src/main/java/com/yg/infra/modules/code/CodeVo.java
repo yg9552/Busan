@@ -1,11 +1,14 @@
 package com.yg.infra.modules.code;
 
-public class CodeVo {
+import com.yg.infra.common.base.BaseVo;
+
+public class CodeVo extends BaseVo{
 
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelNy;
 	private String seq;
+	private String codeSeq;
 	
 	public String getShValue() {
 		return shValue;
@@ -31,5 +34,12 @@ public class CodeVo {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+	public String getCodeSeq() {
+		return codeSeq;
+	}
+	public void setCodeSeq(String codeSeq) {
+		this.codeSeq = codeSeq;
+	}
+	
 	
 }
