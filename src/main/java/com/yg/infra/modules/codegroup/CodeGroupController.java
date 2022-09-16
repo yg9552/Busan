@@ -76,14 +76,14 @@ public class CodeGroupController {
 	  }
 	
 	@RequestMapping (value = "codeGroupUpdt")
-	public String codeGroupUpdt(@ModelAttribute("vo") CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
+	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping (value = "codeGroupUele")
-	public String codeGroupUele(@ModelAttribute("vo") CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.uelete(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/codeGroup/codeGroupList";

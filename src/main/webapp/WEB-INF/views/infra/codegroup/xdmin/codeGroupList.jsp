@@ -355,6 +355,7 @@
 	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
 	                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
 	                    <input type="hidden" name="checkboxSeqArray">
+	                    <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
@@ -442,7 +443,7 @@
 					                    </div>
 									</td>
 		                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-		                            <td> <c:out value="${list.codeGroupCode }"/> <input type="hidden" name="seq" value="<c:out value="${list.seq }"/>"> </td>
+		                            <td> <c:out value="${list.codeGroupCode }"/> </td>
 		                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
