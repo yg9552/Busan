@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
@@ -349,154 +349,55 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">코드 관리</h4>
-                    <form autocomplete="off" name="formList" id="formList" method="post">
-                    <input type="hidden" name="mainkey">
-                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
-                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
-                    <input type="hidden" name="checkboxSeqArray">
-                    <div class="row mb-3">
-                    	<div class="col-1">
-                    		<select class="form-control" id="shDelNy" name="shDelNy">
-		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col-1">
-                    		<select class="form-control">
-		                        <option>수정일</option>
-		                        <option>N</option>
-		                        <option>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="text" class="form-control" placeholder="시작일">
-                    	</div>
-                    	<div class="col">
-                    		<input type="text" class="form-control" placeholder="종료일">
-                    	</div>
-                    	<div class="col-1">
-                    		<select class="form-control" id="shOption" name="shOption">
-		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>> 검색구분 </option>
-		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>> 대체코드 </option>
-		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>> 코드 이름 (한글) </option>
-		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 코드 </option>
-		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>> 코드그룹 코드 </option>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
-                    	</div>
-                    	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-warning btn-fw">검색</button>
-                    	</div>
-                    </div>
-                    </form>
-                    <div class="row mt-3 mb-3">
-				  		<div class="col my-auto">
-				  			Total : <c:out value="${vo.totalRows }"></c:out>
-				  		</div>
-				  		<div class="col-1">
-				  			<select class="form-control" aria-label="Default select example">
-					  			<option selected>10</option>
-					  			<option value="1">1</option>
-					  			<option value="2">2</option>
-							</select>
-				  		</div>
-				  	</div>
-                    <div class="table-responsive">
-                      <table class="table table-dark text-info text-center table-hover mb-3">
-                        <thead>
-                          <tr>
-                            <th>
-                            	<div class="form-check form-check-flat form-check-info">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-                            </th>
-                            <th scope="col">#</th>
-						    <th scope="col">코드그룹 코드</th>
-						    <th scope="col">코드그룹 이름 (한글)</th>
-						    <th scope="col">코드</th>
-						    <th scope="col">대체코드</th>
-						    <th scope="col">코드 이름 (한글)</th>
-						    <th scope="col">코드 이름 (영문)</th>
-						    <th scope="col">사용</th>
-							<th scope="col">삭제여부</th>
-				      		<th scope="col">등록일</th>
-						    <th scope="col">수정일</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-	                        <c:choose>
-	                        	<c:when test="${fn:length(list) eq 0}">
-                        		<tr>
-                        			<td colspan="13">
-                        				There is no date!
-                        			</td>
-                        		</tr>
-								</c:when>
-								<c:otherwise>
-			                        <c:forEach items="${list}" var="list" varStatus="status">
-			                          <tr>
-			                            <td>
-											<div class="form-check form-check-flat form-check-info">
-						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-						                    </div>
-										</td>
-										<td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-									    <td> <c:out value="${list.cg_seq }"/> </td>
-									    <td> <c:out value="${list.codegroupname }"/> </td>
-									    <td> <c:out value="${list.codeSeq }"/> </td>
-									    <td> <c:out value="${list.seq }"/> </td>
-									    <td></td>
-									    <td><a href="/code/codeView?codeSeq=<c:out value="${list.codeSeq }"/>"> <c:out value="${list.name }"/> </a></td>
-									    <td></td>
-									    <td> <c:out value="${list.delNy }"/> </td>
-									    <td></td>
-									    <td></td>
-			                          </tr>
-			                        </c:forEach>
-		                        </c:otherwise>
-	                        </c:choose>
-                        </tbody>
-                      </table>
-                    </div>
-                    
-                    <!-- pagination s -->
-						<%@include file="../../../common/xdmin/pagination.jsp"%>
-					<!-- pagination e -->
-                   
-					<div class="row">
+                    <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
+                    <form class="forms-sample" action="/code/codeInst" autocomplete="off">
+                      <div class="form-group">
+                        <label for="seq">대체코드</label>
+                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
+                      </div>
+                      <div class="form-group">
+                        <label for="cg_seq">코드그룹 코드</label>
+                        <input type="text" class="form-control" id="cg_seq" name="cg_seq" value="<c:out value="${item.cg_seq }"/> <c:out value="${item.codegroupname }"/>">
+                      </div>
+                      <div class="form-group">
+                        <label for="name">코드 이름 (한글)</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="한글" value="<c:out value="${item.name }"></c:out>">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputNameEN">코드이름 (영문)</label>
+                        <input type="email" class="form-control" id="exampleInputNameEN" placeholder="영문">
+                      </div>
+                      <div class="form-group">
+                        <label for="DelNy">삭제여부</label>
+                        <select class="form-control" id="DelNy" name="DelNy" >
+		                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>>N</option>
+		                        <option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>>Y</option>
+	                    </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">상세정보</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                      </div>
+                      
+                      <div class="row">
 						<div class="col">
-							<a class="btn btn-success" href="/code/codeForm" role="button">등록 <i class="fa-solid fa-pencil"></i></a>
+							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
 						</div>
 						<div class="col-auto">
-							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
-							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
+							<button type="button" class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
+							<button type="button" class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
+	                        <button type="reset" class="btn btn-warning mr-2">초기화</button>
+	                        <button type="button" class="btn btn-danger mr-2" id="btnDelete"><i class="fa-solid fa-trash-can"></i></button>
 						</div>
-					</div>
+					  </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           
-          <script type="text/javascript">
-          	var goUrlList = "/code/codeList"; 			/* #-> */
-	      	var goUrlInst = "/code/codeInst"; 			/* #-> */
-	      	var goUrlUpdt = "/code/codeUpdt";				/* #-> */
-	      	var goUrlUele = "/code/codeUele";				/* #-> */
-	      	var goUrlDele = "/code/codeDele";				/* #-> */
-	      	
-	      	var form = $("form[name=formList]");
-	      	
-	      	goList = function(thisPage) {
-	      		$("input:hidden[name=thisPage]").val(thisPage);
-	      		form.attr("action", goUrlList).submit();
-	      	}
-	      	
-          </script>
+          
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">

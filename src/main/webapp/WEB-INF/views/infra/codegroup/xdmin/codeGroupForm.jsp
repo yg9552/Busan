@@ -350,11 +350,14 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
-                    <form class="forms-sample" autocomplete="off" id="codegroupform" name="form">
+                    <h4 class="card-title"> 코드그룹 등록 </h4>
+                    <form class="forms-sample" autocomplete="off" id="form" name="form" method="post">
+                    <!-- *Vo.jsp s -->
+					<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
                       <div class="form-group">
-                        <label for="seq">코드그룹 코드</label>
-                        <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
+                        <label for="CodeGroupCode">코드그룹 코드</label>
+                        <input type="text" class="form-control" id="CodeGroupCode" name="CodeGroupCode" placeholder="숫자" value="<c:out value="${item.codeGroupCode }"></c:out>">
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
@@ -404,8 +407,15 @@
                       
                       <button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
                       <button type="reset" class="btn btn-warning mr-2">초기화</button>
-                      <a href="/codeGroup/codeGroupList" class="btn btn-dark">목록</a>
+                      <button type="button" class="btn btn-dark" id="btnList">목록</button>
                     </form>
+                    
+                    <form name="formVo" id="formVo" method="post">
+					<!-- *Vo.jsp s -->
+					<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
+					</form>
+					
                   </div>
                 </div>
               </div>
@@ -499,17 +509,12 @@
         	
         	
         	$("#btnSave").on("click", function(){
-        		if (seq.val() == "0" || seq.val() == ""){
-        	   		// insert
-        	   		/* if (validationInst() == false) return false; */
-        	   		form.attr("action", goUrlInst).submit();
-        	   	} else {
-        	   		// update
-        	   		/* keyName.val(atob(keyName.val())); */
-        	   		/* if (validationUpdt() == false) return false; */
-        	   		form.attr("action", goUrlUpdt).submit();
-        	   	}
+        	   	form.attr("action", goUrlInst).submit();
         	}); 
+        	
+        	$("#btnList").on("click", function(){
+	    		formVo.attr("action", goUrlList).submit();
+	    	});
         	
 /*         	
 

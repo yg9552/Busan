@@ -389,7 +389,7 @@
                     	</div>
                     	<div class="col-auto my-auto">
                     		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
-                    		<button type="button" class="btn btn-inverse-warning"><i class="fa-solid fa-rotate"></i></button>
+                    		<a role="button" class="btn btn-inverse-warning" id="btnReset"><i class="fa-solid fa-rotate"></i></a>
                     	</div>
                     </div>
                     
@@ -442,8 +442,8 @@
 					                    </div>
 									</td>
 		                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td> <a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>"> <c:out value="${list.name }"/> </a></td>
+		                            <td> <c:out value="${list.codeGroupCode }"/> <input type="hidden" name="seq" value="<c:out value="${list.seq }"/>"> </td>
+		                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></a></td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
 		                            <td> <c:out value="${list.delNy }"></c:out> </td>
@@ -462,7 +462,7 @@
                    
 					<div class="row">
 						<div class="col">
-							<a class="btn btn-success" href="/codeGroup/codeGroupForm" role="button">코드등록 <i class="fa-solid fa-pencil"></i></a>
+							<button type="button" class="btn btn-success" id="btnForm">코드등록 <i class="fa-solid fa-pencil"></i></button>
 						</div>
 						<div class="col-auto">
 							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
@@ -481,13 +481,36 @@
 	      	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
 	      	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 	      	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	      	var goUrlForm = "/codeGroup/codeGroupForm";				/* #-> */
+	      	var goUrlView = "/codeGroup/codeGroupView";				/* #-> */
 	      	
+	      	
+	      	var seq = $("input:hidden[name=seq]");
 	      	var form = $("form[name=formList]");
 	      	
 	      	goList = function(thisPage) {
 	      		$("input:hidden[name=thisPage]").val(thisPage);
 	      		form.attr("action", goUrlList).submit();
 	      	}
+	      	
+	      	$('#btnForm').on("click", function() {
+	    		goForm(0);                
+	    	});
+
+	    	goForm = function(keyValue) {
+	        	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	        	seq.val(keyValue);
+	    		form.attr("action", goUrlForm).submit();
+	    	}
+	    	
+	    	goView = function(keyValue) {
+	    		seq.val(keyValue);
+	    		form.attr("action", goUrlView).submit();
+	    	}
+	    	
+	    	$("#btnReset").on("click", function() {
+	    		$(location).attr("href", goUrlList);
+	    	});
 	      	
           </script>
           <!-- content-wrapper ends -->

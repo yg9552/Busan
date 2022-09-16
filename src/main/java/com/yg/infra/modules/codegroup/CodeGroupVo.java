@@ -8,6 +8,7 @@ public class CodeGroupVo extends BaseVo {
 	private Integer shOption;
 	private Integer shDelNy;
 	private String seq;
+	private String CodeGroupCode;
 	
 	public String getShValue() {
 		return shValue;
@@ -32,6 +33,12 @@ public class CodeGroupVo extends BaseVo {
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getCodeGroupCode() {
+		return CodeGroupCode;
+	}
+	public void setCodeGroupCode(String codeGroupCode) {
+		CodeGroupCode = codeGroupCode;
 	}
 	
 	

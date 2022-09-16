@@ -356,14 +356,10 @@
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${seq }"></c:out> <c:out value="${item.seq }"></c:out>">
                       </div>
                       <div class="form-group">
-                        <label for="name">코드그룹 이름 (한글)</label>
-                        <input type="text" class="form-control" value=" <c:out value="${item.cg_seq }"/>. <c:out value="${item.codegroupname }"/>">
-                      </div>
-                      <div class="form-group">
                         <label for="codegroupname">코드그룹 이름 (한글)</label>
                         <select class="form-control" id="cg_seq" name="cg_seq">
                         	<c:forEach items="${list2}" var="list2" varStatus="status">
-                          		<option value="<c:out value="${cg_seq }"/> <c:out value="${list2.seq }"/>"> . <c:out value="${list2.name }"/></option>
+                          		<option value="<c:out value="${cg_seq }"/> <c:out value="${list2.seq }"/>">  <c:out value="${list2.seq }"/> <c:out value="${list2.name }"/></option>
                           	</c:forEach>
                         </select>
                       </div>

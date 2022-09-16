@@ -19,6 +19,11 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+//		vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());
+//		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
+		
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
 		
@@ -31,7 +36,7 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm() throws Exception {
+	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
@@ -49,11 +54,16 @@ public class CodeGroupController {
 //	}
 	
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception {
+	public String codeGroupInst(@ModelAttribute("vo") CodeGroupVo vo,CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
-		return "redirect:/codeGroup/codeGroupList";
+		
+		vo.setSeq(dto.getSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/codeGroup/codeGroupView";
 	}
 
 	
@@ -66,14 +76,14 @@ public class CodeGroupController {
 	  }
 	
 	@RequestMapping (value = "codeGroupUpdt")
-	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
+	public String codeGroupUpdt(@ModelAttribute("vo") CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping (value = "codeGroupUele")
-	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeGroupUele(@ModelAttribute("vo") CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.uelete(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/codeGroup/codeGroupList";

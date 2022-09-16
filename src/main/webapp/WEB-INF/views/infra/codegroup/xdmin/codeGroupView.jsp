@@ -351,10 +351,13 @@
                 <div class="card">
                   <div class="card-body">
                   	<form name="viewform" id="viewform" method="post" autocomplete="off">
+<!-- *Vo.jsp s -->
+<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
                     <h4 class="card-title"><c:out value="${item.name }"></c:out></h4>
                       <div class="form-group">
-                        <label for="seq">코드그룹 코드</label>
-                        <input type="text" class="form-control text-info" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>" >
+                        <label for="CodeGroupCode">코드그룹 코드</label>
+                        <input type="text" class="form-control text-info" id="CodeGroupCode" name="CodeGroupCode" placeholder="숫자" value="<c:out value="${item.codeGroupCode }"></c:out>" >
                       </div>
                       <div class="form-group">
                         <label for="name">코드그룹 이름 (한글)</label>
@@ -377,7 +380,7 @@
                       </div>
                       <div class="row">
 						<div class="col">
-							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
+							<button type="button" class="btn btn-dark" id="btnList">목록 <i class="fa-solid fa-list"></i></button>
 						</div>
 						<div class="col-auto">
 							<button type="button" class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
@@ -387,6 +390,11 @@
 						</div>
 					  </div>
 					  </form>
+					<form name="formVo" id="formVo" method="post">
+					<!-- *Vo.jsp s -->
+					<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
+					</form>
                   </div>
                 </div>
               </div>
@@ -400,6 +408,8 @@
 	      	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
 	      	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 	      	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	      	var goUrlForm = "/codeGroup/codeGroupForm";				/* #-> */
+	      	
 	      	
 	      	var seq = $("input:hidden[name=seq]");					/* #-> */
 	      	
@@ -423,20 +433,28 @@
 	      	   		
 	      	   	}
 	      	});
-	      	
 
-	/* 
-	      	$("#btnUelete").on("click", function(){
-	      		$("input:hidden[name=exDeleteType]").val(1);
-	      		$(".modal-title").text("확 인");
-	      		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
-	      		$("#btnModalUelete").show();
-	      		$("#btnModalDelete").hide();
-	      		$("#modalConfirm").modal("show");
-	      	});
-	      	 */
-	
+	    	$('#btnForm').on("click", function() {
+	    		goForm(0);                
+	    	});
+
+	    	goForm = function(keyValue) {
+	        	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	        	seq.val(keyValue);
+	    		form.attr("action", goUrlForm).submit();
+	    	}
 	      	
+	    	$("#btnList").on("click", function(){
+	    		formVo.attr("action", goUrlList).submit();
+	    	});
+	      	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
 	      	$("#btnUelete").on("click", function(){
 	      		if(!confirm("삭제 하시겠습니까?")){
         			return false;
@@ -455,6 +473,17 @@
         		}
 	      		
 	      	});
+	      	
+	    	/* 
+	      	$("#btnUelete").on("click", function(){
+	      		$("input:hidden[name=exDeleteType]").val(1);
+	      		$(".modal-title").text("확 인");
+	      		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+	      		$("#btnModalUelete").show();
+	      		$("#btnModalDelete").hide();
+	      		$("#modalConfirm").modal("show");
+	      	});
+	      	 */
           </script>
           
           <!-- content-wrapper ends -->

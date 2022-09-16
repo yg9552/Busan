@@ -12,6 +12,7 @@
 		FROM CodeGroup a
 		WHERE 1=1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
 			<choose>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
@@ -23,7 +24,8 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT
-			a.seq
+			a.CodeGroupCode
+			,a.seq
 			,a.name
 			,a.CodeGroupNameEN
 			,a.CodeGroupRegDate
@@ -73,7 +75,8 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.seq
+			a.CodeGroupCode
+			,a.seq
 			,a.name
 			,a.CodeGroupNameEN
 			,a.CodeGroupRegDate
@@ -86,13 +89,13 @@
 	
 	<insert id="insert">
 	INSERT INTO CodeGroup (
-		seq
+		CodeGroupCode
 		,name
 		,CodeGroupNameEN
 		,DelNy
 		)
 	VALUES(
-		#{seq}
+		#{CodeGroupCode}
 		,#{name}
 		,#{CodeGroupNameEN}
 		,#{DelNy }
@@ -106,7 +109,7 @@
 	<update id="update">
 		UPDATE CodeGroup
 		SET
-			seq = #{seq}
+			CodeGroupCode = #{CodeGroupCode}
 			,name = #{name}
 			,CodeGroupNameEN = #{CodeGroupNameEN}
 			

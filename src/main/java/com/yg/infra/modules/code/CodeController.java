@@ -37,18 +37,25 @@ public class CodeController {
 	
 	@RequestMapping(value = "codeForm")
 	public String codeForm(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
-		if (vo.getCodeSeq().equals("0") || vo.getCodeSeq().equals("")) {
-			//insert
-		} else {
-			Code result = service.selectOne(vo);
-			model.addAttribute("item", result);
-		}
 		
 		List<CodeGroup> list2 = service2.selectMini();
 		model.addAttribute("list2", list2);
 		
 		return "infra/code/xdmin/codeForm";
 	}
+	
+	@RequestMapping(value = "codeView") 
+	  public String codeGroupView(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception { 
+		
+		Code result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		
+		List<CodeGroup> list2 = service2.selectMini();
+		model.addAttribute("list2", list2);
+	  
+	  	  return "infra/code/xdmin/codeView"; 
+	  }
+	
 	
 	@RequestMapping(value = "codeInst")
 	public String codeInst(Code dto) throws Exception {

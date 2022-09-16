@@ -9,6 +9,7 @@ public class CodeGroup{
 	private String CodeGroupNameEN;
 	private String CodeGroupRegDate;
 	private String CodeGroupModDate;
+	private String CodeGroupCode;
 	
 	
 	
@@ -59,6 +60,13 @@ public class CodeGroup{
 	public void setCodeGroupModDate(String codeGroupModDate) {
 		CodeGroupModDate = codeGroupModDate;
 	}
+	public String getCodeGroupCode() {
+		return CodeGroupCode;
+	}
+	public void setCodeGroupCode(String codeGroupCode) {
+		CodeGroupCode = codeGroupCode;
+	}
+	
 	
 	
 	
