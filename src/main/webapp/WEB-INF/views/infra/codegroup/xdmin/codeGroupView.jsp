@@ -447,13 +447,6 @@
 	    	$("#btnList").on("click", function(){
 	    		formVo.attr("action", goUrlList).submit();
 	    	});
-	      	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
 	    	
 	      	$("#btnUelete").on("click", function(){
 	      		if(!confirm("삭제 하시겠습니까?")){

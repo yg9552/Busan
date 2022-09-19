@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yg.infra.modules.codegroup.CodeGroup;
 import com.yg.infra.modules.codegroup.CodeGroupServiceImpl;
@@ -58,10 +59,36 @@ public class CodeController {
 	
 	
 	@RequestMapping(value = "codeInst")
-	public String codeInst(Code dto) throws Exception {
+	public String codeInst(Code dto, @ModelAttribute("vo") CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
+		
+		vo.setCodeSeq(dto.getCodeSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/code/codeView";
+	}
+	
+	@RequestMapping(value = "codeUpdt")
+	public String codeUpdt(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/code/codeList";
+	}
+	
+	@RequestMapping(value = "codeUele")
+	public String codeUele(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.uelete(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/code/codeList";
+	}
+	
+	@RequestMapping(value = "codeDele")
+	public String codeDele(CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/code/codeList";
 	}
 }

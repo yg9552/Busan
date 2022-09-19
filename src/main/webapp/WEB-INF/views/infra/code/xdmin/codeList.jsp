@@ -355,6 +355,7 @@
                     <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
                     <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
                     <input type="hidden" name="checkboxSeqArray">
+                    <input type="hidden" name="codeSeq" value="<c:out value="${vo.codeSeq }"/>">
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
@@ -389,7 +390,8 @@
                     		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-warning btn-fw">검색</button>
+                    		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
+                    		<a role="button" class="btn btn-inverse-warning" id="btnReset"><i class="fa-solid fa-rotate"></i></a>
                     	</div>
                     </div>
                     </form>
@@ -450,7 +452,7 @@
 									    <td> <c:out value="${list.codeSeq }"/> </td>
 									    <td> <c:out value="${list.seq }"/> </td>
 									    <td></td>
-									    <td><a href="/code/codeView?codeSeq=<c:out value="${list.codeSeq }"/>"> <c:out value="${list.name }"/> </a></td>
+									    <td><a href="javascript:goView(<c:out value="${list.codeSeq }"/>)"> <c:out value="${list.name }"/> </a></td>
 									    <td></td>
 									    <td> <c:out value="${list.delNy }"/> </td>
 									    <td></td>
@@ -469,7 +471,7 @@
                    
 					<div class="row">
 						<div class="col">
-							<a class="btn btn-success" href="/code/codeForm" role="button">등록 <i class="fa-solid fa-pencil"></i></a>
+							<button type="button" class="btn btn-success" id="btnForm">등록 <i class="fa-solid fa-pencil"></i></button>
 						</div>
 						<div class="col-auto">
 							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
@@ -485,16 +487,39 @@
           <script type="text/javascript">
           	var goUrlList = "/code/codeList"; 			/* #-> */
 	      	var goUrlInst = "/code/codeInst"; 			/* #-> */
-	      	var goUrlUpdt = "/code/codeUpdt";				/* #-> */
-	      	var goUrlUele = "/code/codeUele";				/* #-> */
-	      	var goUrlDele = "/code/codeDele";				/* #-> */
+	      	var goUrlUpdt = "/code/codeUpdt";			/* #-> */
+	      	var goUrlUele = "/code/codeUele";			/* #-> */
+	      	var goUrlDele = "/code/codeDele";			/* #-> */
+	      	var goUrlForm = "/code/codeForm";				/* #-> */
+	      	var goUrlView = "/code/codeView";				/* #-> */
 	      	
+	      	
+	      	var seq = $("input:hidden[name=codeSeq]");
 	      	var form = $("form[name=formList]");
 	      	
 	      	goList = function(thisPage) {
 	      		$("input:hidden[name=thisPage]").val(thisPage);
 	      		form.attr("action", goUrlList).submit();
 	      	}
+	      	
+	      	$('#btnForm').on("click", function() {
+	    		goForm(0);                
+	    	});
+
+	    	goForm = function(keyValue) {
+	        	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	        	seq.val(keyValue);
+	    		form.attr("action", goUrlForm).submit();
+	    	}
+	    	
+	    	goView = function(keyValue) {
+	    		seq.val(keyValue);
+	    		form.attr("action", goUrlView).submit();
+	    	}
+	    	
+	    	$("#btnReset").on("click", function() {
+	    		$(location).attr("href", goUrlList);
+	    	});
 	      	
           </script>
           <!-- content-wrapper ends -->

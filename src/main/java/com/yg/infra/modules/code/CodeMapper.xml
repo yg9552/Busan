@@ -12,7 +12,7 @@
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND codeSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND cg_seq LIKE CONCAT('%',#{shValue},'%')</when>
@@ -70,4 +70,26 @@
 			SELECT last_insert_id()
 			</selectKey>
 	</insert>
+	
+	<update id="update">
+		UPDATE Code
+		SET
+			seq = #{seq}
+			,name = #{name}
+			,cg_seq = #{cg_seq}
+		WHERE
+			codeSeq = #{codeSeq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE Code
+		SET
+			DelNy = 1
+			<!-- <include refid="Base.updateModColumnValue" /> -->
+		WHERE codeSeq = #{codeSeq}	
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM Code WHERE codeSeq = #{codeSeq}
+	</delete>
 </mapper>

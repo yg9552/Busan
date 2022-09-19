@@ -19,6 +19,7 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
+		//검색창 초기값
 		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 //		vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());
 //		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));

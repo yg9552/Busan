@@ -37,6 +37,24 @@ public class CodeServiceImpl implements CodeService {
 		// TODO Auto-generated method stub
 		return dao.selectOneCount(vo);
 	}
+
+	@Override
+	public int update(Code dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.update(dto);
+	}
+
+	@Override
+	public int uelete(Code dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.uelete(dto);
+	}
+
+	@Override
+	public int delete(CodeVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.delete(vo);
+	}
 	
 	
 

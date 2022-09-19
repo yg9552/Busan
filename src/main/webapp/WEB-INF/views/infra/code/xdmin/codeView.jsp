@@ -349,15 +349,28 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+                  	<form class="forms-sample" autocomplete="off" id="viewform" name="viewform" method="post">
+<!-- *Vo.jsp s -->
+<%@include file="codeVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
                     <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
-                    <form class="forms-sample" action="/code/codeInst" autocomplete="off">
                       <div class="form-group">
                         <label for="seq">대체코드</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
                       </div>
-                      <div class="form-group">
-                        <label for="cg_seq">코드그룹 코드</label>
-                        <input type="text" class="form-control" id="cg_seq" name="cg_seq" value="<c:out value="${item.cg_seq }"/> <c:out value="${item.codegroupname }"/>">
+                      <div class="row">
+                      	<div class="col">
+                      		<div class="form-group">
+		                        <label for="cg_seq">코드그룹 코드</label>
+		                        <input type="text" class="form-control" id="cg_seq" name="cg_seq" value="<c:out value="${item.cg_seq }"/>">
+		                    </div>
+                      	</div>
+                      	<div class="col">
+                      		<div class="form-group">
+		                        <label for="codegroupname">코드그룹 이름 (한글)</label>
+		                        <input type="text" class="form-control" id="codegroupname" name="codegroupname" value="<c:out value="${item.codegroupname }"/>">
+		                    </div>
+                      	</div>
                       </div>
                       <div class="form-group">
                         <label for="name">코드 이름 (한글)</label>
@@ -381,7 +394,7 @@
                       
                       <div class="row">
 						<div class="col">
-							<a class="btn btn-dark" href="/codeGroup/codeGroupList" role="button">목록 <i class="fa-solid fa-list"></i></a>
+							<button type="button" class="btn btn-dark" id="btnList">목록 <i class="fa-solid fa-list"></i></button>
 						</div>
 						<div class="col-auto">
 							<button type="button" class="btn btn-success" id="btnSave">수정<i class="fa-solid fa-upload"></i></button>
@@ -391,12 +404,71 @@
 						</div>
 					  </div>
                     </form>
+                    <form name="formVo" id="formVo" method="post">
+					<!-- *Vo.jsp s -->
+					<%@include file="codeVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
+					</form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
+          <script type="text/javascript">
+          	var goUrlList = "/code/codeList"; 			/* #-> */
+	      	var goUrlInst = "/code/codeInst"; 			/* #-> */
+	      	var goUrlUpdt = "/code/codeUpdt";			/* #-> */
+	      	var goUrlUele = "/code/codeUele";			/* #-> */
+	      	var goUrlDele = "/code/codeDele";			/* #-> */
+	      	var goUrlForm = "/code/codeForm";			/* #-> */
+          	
+			var seq = $("input:hidden[name=codeSeq]");		/* #-> */
+	      	
+	      	var form = $("form[name=viewform]");
+	      	var formVo = $("form[name=formVo]");
+	      	
+	      	$("#btnSave").on("click", function(){
+	      		if (seq.val() == "0" || seq.val() == ""){
+	      			// insert
+	      			form.attr("action", goUrlInst).submit();
+	      	   	} else {
+	      	   		form.attr("action", goUrlUpdt).submit();
+	      	   		// update
+	      	   	}
+	      	});
+	      	
+	      	$('#btnForm').on("click", function() {
+	    		goForm(0);                
+	    	});
+	      	
+	      	goForm = function(keyValue) {
+	        	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	        	seq.val(keyValue);
+	    		form.attr("action", goUrlForm).submit();
+	    	}
+	      	
+	    	$("#btnList").on("click", function(){
+	    		formVo.attr("action", goUrlList).submit();
+	    	});
+	    	
+	    	$("#btnUelete").on("click", function(){
+	      		if(!confirm("삭제 하시겠습니까?")){
+        			return false;
+        		}else{
+        			form.attr("action", goUrlUele).submit();
+        		}
+	      		
+	      	});
+	      	
+	      	$("#btnDelete").on("click", function(){
+	      		if(!confirm("삭제 하시겠습니까?")){
+        			return false;
+        		}else{
+        			form.attr("action", goUrlDele).submit();
+        		}
+	      		
+	      	});
+          </script>
           
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->

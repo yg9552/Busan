@@ -20,7 +20,7 @@
 	</c:choose>
 </c:forEach>                
 <c:if test="${vo.endPage ne vo.totalPages}">                
-                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angles-right"></i></a></li>
 </c:if>
                 <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
             </ul>
