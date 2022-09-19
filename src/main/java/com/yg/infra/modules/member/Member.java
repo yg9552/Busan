@@ -12,6 +12,8 @@ public class Member {
 	private Date dob;
 	private Integer DelNy;
 	private Integer reserve;
+	private Integer memberRegDate;
+	
 
 	
 	private String phonenum;
@@ -71,5 +73,12 @@ public class Member {
 	public void setReserve(Integer reserve) {
 		this.reserve = reserve;
 	}
+	public Integer getMemberRegDate() {
+		return memberRegDate;
+	}
+	public void setMemberRegDate(Integer memberRegDate) {
+		this.memberRegDate = memberRegDate;
+	}
+	
 	
 }

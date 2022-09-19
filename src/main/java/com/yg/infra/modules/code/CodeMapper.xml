@@ -29,6 +29,7 @@
 				,a.cg_seq
 				,a.DelNy
 				,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupname
+				,(select CodeGroupCode from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupcode
 			<include refid="selectCommon" />
 			ORDER BY a.codeSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
@@ -48,6 +49,7 @@
 			,a.cg_seq
 			,a.DelNy
 			,(select name from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupname
+			,(select CodeGroupCode from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupcode
 		FROM Code a
 		WHERE 1=1
 		AND a.codeSeq = #{codeSeq}

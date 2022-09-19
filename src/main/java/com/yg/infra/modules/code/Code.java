@@ -9,6 +9,7 @@ public class Code {
 	private String cg_seq;
 	private String codeSeq;
 	private String codegroupname;
+	private String codegroupcode;
 	
 	
 
@@ -53,6 +54,12 @@ public class Code {
 	}
 	public void setCodegroupname(String codegroupname) {
 		this.codegroupname = codegroupname;
+	}
+	public String getCodegroupcode() {
+		return codegroupcode;
+	}
+	public void setCodegroupcode(String codegroupcode) {
+		this.codegroupcode = codegroupcode;
 	}
 	
 	
