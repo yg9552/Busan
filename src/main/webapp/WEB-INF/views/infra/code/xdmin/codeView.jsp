@@ -50,6 +50,7 @@
 <!-- *Vo.jsp e -->
                     <h4 class="card-title"> <c:out value="${item.name }"></c:out> </h4>
                       <div class="form-group">
+                      	<input type="hidden" class="form-control" id="cg_seq" name="cg_seq" value="<c:out value="${item.cg_seq }"/>">
                         <label for="seq">대체코드</label>
                         <input type="text" class="form-control" id="seq" name="seq" placeholder="숫자" value="<c:out value="${item.seq }"></c:out>">
                       </div>

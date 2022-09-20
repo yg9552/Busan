@@ -55,9 +55,9 @@
                       </div>
                       <div class="form-group">
                         <label for="codegroupname">코드그룹 이름 (한글)</label>
-                        <select class="form-control" id="codegroupcode" name="codegroupcode">
+                        <select class="form-control" id="cg_seq" name="cg_seq">
                         	<c:forEach items="${list2}" var="list2" varStatus="status">
-                          		<option value="<c:out value="${cg_seq }"/> <c:out value="${list2.seq }"/>">  <c:out value="${list2.seq }"/> <c:out value="${list2.name }"/></option>
+                          		<option value="<c:out value="${cg_seq }"/> <c:out value="${list2.seq }"/>">  <c:out value="${list2.codeGroupCode }"/> <c:out value="${list2.name }"/></option>
                           	</c:forEach>
                         </select>
                       </div>
