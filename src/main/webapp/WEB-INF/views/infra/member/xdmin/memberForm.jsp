@@ -64,11 +64,11 @@
                         	<input type="email" class="form-control" id="email" name="email" value="<c:out value="${item.email }"></c:out>">
                         </div>
 	                    <div class="form-group">
-                        	<label for="memberGender">성별</label>
-                        	<select class="form-control" id="DelNy" name="memberGender" >
-		                        <option value="1" <c:if test="${item.memberGender eq 1}">selected</c:if>> 남성 </option>
-		                        <option value="2" <c:if test="${itme.memberGender eq 2}">selected</c:if>> 여성 </option>
-		                        <option value="3" <c:if test="${itme.memberGender eq 3}">selected</c:if>> 기타 </option>
+                        	<label for="gender_code">성별</label>
+                        	<select class="form-control" id="gender_code" name="gender_code" >
+		                        <option value="201" <c:if test="${item.gender_code eq 201}">selected</c:if>> 남성 </option>
+		                        <option value="202" <c:if test="${itme.gender_code eq 202}">selected</c:if>> 여성 </option>
+		                        <option value="203" <c:if test="${itme.gender_code eq 203}">selected</c:if>> 기타 </option>
 	                    	</select>
                         </div>
                         <div class="form-group">

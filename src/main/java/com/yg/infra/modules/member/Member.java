@@ -10,6 +10,7 @@ public class Member {
 	private String password;
 	private String email;
 	private String gender_code;
+	private String email_code;
 	private Date dob;
 	private Integer DelNy;
 	private Integer reserve;
@@ -88,6 +89,12 @@ public class Member {
 	}
 	public void setGender_code(String gender_code) {
 		this.gender_code = gender_code;
+	}
+	public String getEmail_code() {
+		return email_code;
+	}
+	public void setEmail_code(String email_code) {
+		this.email_code = email_code;
 	}
 	
 	

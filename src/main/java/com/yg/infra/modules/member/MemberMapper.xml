@@ -18,7 +18,7 @@
 			<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND email LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND dob LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 5">AND memberGender LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 5">AND gender_code LIKE CONCAT('%',#{shValue},'%')</when>
 			<!-- <when test="shOption == 5">AND phonenum LIKE CONCAT('%',#{shValue},'%')</when> -->
 			<otherwise></otherwise>
 		</choose>
@@ -35,9 +35,9 @@
 			,a.dob
 			,a.reserve
 			,a.DelNy
+			,a.email_code
 			,a.gender_code
 			,a.memberRegDate
-			,a.memberGender
 			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
 			<include refid="selectCommon"></include>
 			ORDER BY a.seq DESC
@@ -57,11 +57,12 @@
 			,a.id
 			,a.password
 			,a.email
+			,a.gender_code
+			,a.email_code
 			,a.dob
 			,a.reserve
 			,a.DelNy
 			,a.memberRegDate
-			,a.memberGender
 			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
 		FROM member a
 		WHERE 1=1
@@ -74,22 +75,24 @@
 			,id
 			,password
 			,email
+			,gender_code
+			,email_code
 			,dob
 			,reserve
 			,DelNy
 			,memberRegDate
-			,memberGender
 			)
 		VALUES(
 			,#{nm }
 			,#{id }
 			,#{password }
 			,#{email }
+			,#{gender_code }
+			,#{email_code }
 			,#{dob }
 			,#{reserve }
 			,#{DelNy }
 			,#{memberRegDate }
-			,#{memberGender }
 			)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -103,10 +106,11 @@
 			,id = #{id }
 			,password = #{password }
 			,email = #{email }
+			,gender_code = #{gender_code }
+			,email_code = #{email_code }
 			,dob = #{dob }
 			,reserve = #{reserve }
 			,memberRegDate = #{memberRegDate }
-			,memberGender = #{memberGender }
 		WHERE
 			seq = #{seq }
 	</update>

@@ -69,7 +69,7 @@
 			                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
 			                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>이메일</option>
 			                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>생년월일</option>
-			                        <option value="5" <c:if test="${vo.shOption eq 4}">selected</c:if>>성별</option>
+			                        <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>성별</option>
 			                        <%-- <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>연락처</option> --%>
 			                    </select>
 	                    	</div>
@@ -96,6 +96,7 @@
 					  	</div>
 					  	
 				  		<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+				  		<c:set var="listCodeTel" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 	                    <div class="table-responsive">
 	                      <table class="table table-dark text-center table-hover text-warning">
 	                        <thead>
