@@ -9,6 +9,7 @@ public class Member {
 	private String id;
 	private String password;
 	private String email;
+	private String gender_code;
 	private Date dob;
 	private Integer DelNy;
 	private Integer reserve;
@@ -81,6 +82,12 @@ public class Member {
 	}
 	public void setMemberGender(Integer memberGender) {
 		this.memberGender = memberGender;
+	}
+	public String getGender_code() {
+		return gender_code;
+	}
+	public void setGender_code(String gender_code) {
+		this.gender_code = gender_code;
 	}
 	
 	

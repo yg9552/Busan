@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
 <%@ page session="false" %>
 
 <html lang="ko">
@@ -41,80 +42,160 @@
             <div class="page-header">
               <h3 class="page-title">회원관리</h3>
             </div>
+            
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">회원목록</h4>
-                    <form action="/member/memberList" autocomplete="off">
-                    <div class="row mb-3">
-                    	<div class="col-1">
-                    		<select class="form-control" id="shDelNy" name="shDelNy">
-		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
-		                    </select>
-                    	</div>
-                    	<div class="col-1">
-                    		<select class="form-control" id="shOption" name="shOption">
-		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
-		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
-		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>이메일</option>
-		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>생년월일</option>
-		                        <%-- <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>연락처</option> --%>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
-                    	</div>
-                    	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-success btn-fw">검색</button>
-                    	</div>
-                    </div>
+                    <form autocomplete="off" name="formList" id="formList" method="post">
+                    	<input type="hidden" name="mainkey">
+	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+	                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+	                    <input type="hidden" name="checkboxSeqArray">
+	                    <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+	                    <div class="row mb-3">
+	                    	<div class="col-1">
+	                    		<select class="form-control" id="shDelNy" name="shDelNy">
+			                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+			                        <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+			                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
+			                    </select>
+	                    	</div>
+	                    	<div class="col-1">
+	                    		<select class="form-control" id="shOption" name="shOption">
+			                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+			                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
+			                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
+			                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>이메일</option>
+			                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>생년월일</option>
+			                        <option value="5" <c:if test="${vo.shOption eq 4}">selected</c:if>>성별</option>
+			                        <%-- <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>연락처</option> --%>
+			                    </select>
+	                    	</div>
+	                    	<div class="col">
+	                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
+	                    	</div>
+	                    	<div class="col-auto my-auto">
+	                    		<button type="submit" class="btn btn-inverse-warning btn-fw">검색</button>
+	                    		<a role="button" class="btn btn-inverse-primary" id="btnReset"><i class="fa-solid fa-rotate"></i></a>
+	                    	</div>
+	                    </div>
+                    
+	                    <div class="row mt-3 mb-3">
+					  		<div class="col my-auto">
+					  			 Total : <c:out value="${vo.totalRows }"></c:out> 
+					  		</div>
+					  		<div class="col-1">
+					  			<select class="form-control">
+						  			<option selected>10</option>
+						  			<option value="1">1</option>
+						  			<option value="2">2</option>
+								</select>
+					  		</div>
+					  	</div>
+					  	
+				  		<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+	                    <div class="table-responsive">
+	                      <table class="table table-dark text-center table-hover text-warning">
+	                        <thead>
+	                          <tr>
+	                            <th> # </th>
+	                            <th> 아이디 </th>
+	                            <th> 이름 </th>
+	                            <th> 이메일 </th>
+	                            <th> 연락처 </th>
+	                            <th> 성별 </th>
+	                            <th> 생년월일 </th>
+	                            <th> 가입일 </th>
+	                          </tr>
+	                        </thead>
+	                        <tbody>
+	                         <c:choose>
+	                        	<c:when test="${fn:length(list) eq 0}">
+	                        		<tr>
+	                        			<td colspan="8">
+	                        				There is no date!
+	                        			</td>
+	                        		</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${list}" var="list" varStatus="status">
+			                          <tr>
+			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
+			                            <td><a href="#"> <c:out value="${list.id }"/> </a></td>
+			                            <td> <c:out value="${list.nm }"/> </td>
+			                            <td> <c:out value="${list.email }"/> </td>
+			                            <td> <c:out value="${list.phonenum }"/> </td>
+			                            <td> 
+			                            	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+												<c:if test="${list.gender_code eq listGender.seq}"><c:out value="${listGender.name }"/></c:if>
+											</c:forEach>
+			                            </td>
+			                            <td> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.dob}"/></td>
+			                            <td> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.memberRegDate}"/></td>
+			                          </tr>
+	                          		</c:forEach>
+	                          	</c:otherwise>
+	                         </c:choose>
+	                        </tbody>
+	                      </table>
+	                    </div>
+	                    <!-- pagination s -->
+						<%@include file="../../../common/xdmin/pagination.jsp"%>
+						<!-- pagination e -->
+						<div class="row">
+							<div class="col">
+								<button type="button" class="btn btn-success" id="btnForm">회원등록 <i class="fa-solid fa-pencil"></i></button>
+							</div>
+							<div class="col-auto">
+								<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
+								<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
+							</div>
+						</div>
                     </form>
-                    <div class="table-responsive">
-                      <table class="table table-dark text-center table-hover text-warning">
-                        <thead>
-                          <tr>
-                            <th> # </th>
-                            <th> 아이디 </th>
-                            <th> 이름 </th>
-                            <th> 이메일 </th>
-                            <th> 연락처 </th>
-                            <th> 생년월일 </th>
-                            <th> 가입일 </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                         <c:choose>
-                        	<c:when test="${fn:length(list) eq 0}">
-                        		<tr>
-                        			<td colspan="8">
-                        				There is no date!
-                        			</td>
-                        		</tr>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${list}" var="list" varStatus="status">
-		                          <tr>
-		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td><a href="#"> <c:out value="${list.id }"/> </a></td>
-		                            <td> <c:out value="${list.nm }"/> </td>
-		                            <td> <c:out value="${list.email }"/> </td>
-		                            <td> <c:out value="${list.phonenum }"/> </td>
-		                            <td> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.dob}"/></td>
-		                            <td> May 15, 2015 </td>
-		                          </tr>
-                          		</c:forEach>
-                          	</c:otherwise>
-                         </c:choose>
-                        </tbody>
-                      </table>
-                    </div>
                   </div>
                 </div>
               </div>
+              
+              <script type="text/javascript">
+          	var goUrlList = "/member/memberList"; 			/* #-> */
+	      	var goUrlInst = "/member/memberInst"; 			/* #-> */
+	      	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+	      	var goUrlUele = "/member/memberUele";			/* #-> */
+	      	var goUrlDele = "/member/memberDele";			/* #-> */
+	      	var goUrlForm = "/member/memberForm";			/* #-> */
+	      	var goUrlView = "/member/memberpView";			/* #-> */
+	      	
+	      	
+	      	var seq = $("input:hidden[name=seq]");
+	      	var form = $("form[name=formList]");
+	      	
+	      	goList = function(thisPage) {
+	      		$("input:hidden[name=thisPage]").val(thisPage);
+	      		form.attr("action", goUrlList).submit();
+	      	}
+	      	
+	      	$('#btnForm').on("click", function() {
+	    		goForm(0);                
+	    	});
+
+	    	goForm = function(keyValue) {
+	        	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	        	seq.val(keyValue);
+	    		form.attr("action", goUrlForm).submit();
+	    	}
+	    	
+	    	goView = function(keyValue) {
+	    		seq.val(keyValue);
+	    		form.attr("action", goUrlView).submit();
+	    	}
+	    	
+	    	$("#btnReset").on("click", function() {
+	    		$(location).attr("href", goUrlList);
+	    	});
+	      	
+          </script>
               
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->

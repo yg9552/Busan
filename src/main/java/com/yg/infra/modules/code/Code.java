@@ -1,5 +1,8 @@
 package com.yg.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 
 	
@@ -11,7 +14,8 @@ public class Code {
 	private String codegroupname;
 	private String codegroupcode;
 	
-	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 
 	
 	public Integer getDelNy() {
@@ -45,9 +49,6 @@ public class Code {
 	public void setCg_seq(String cg_seq) {
 		this.cg_seq = cg_seq;
 	}
-	
-	
-	
 	
 	public String getCodegroupname() {
 		return codegroupname;

@@ -18,6 +18,7 @@
 			<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND email LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND dob LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 5">AND memberGender LIKE CONCAT('%',#{shValue},'%')</when>
 			<!-- <when test="shOption == 5">AND phonenum LIKE CONCAT('%',#{shValue},'%')</when> -->
 			<otherwise></otherwise>
 		</choose>
@@ -34,6 +35,7 @@
 			,a.dob
 			,a.reserve
 			,a.DelNy
+			,a.gender_code
 			,a.memberRegDate
 			,a.memberGender
 			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum

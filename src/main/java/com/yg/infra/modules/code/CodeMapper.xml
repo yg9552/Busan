@@ -94,4 +94,16 @@
 	<delete id="delete">
 		DELETE FROM Code WHERE codeSeq = #{codeSeq}
 	</delete>
+	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,name
+			,cg_seq
+		FROM
+			Code
+		WHERE 1=1
+			AND DelNy = 0
+		    <!-- AND UseNy = 1 -->
+    </select>
 </mapper>
