@@ -124,7 +124,7 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-			                            <td><a href="#"> <c:out value="${list.id }"/> </a></td>
+			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.id }"/> </a></td>
 			                            <td> <c:out value="${list.nm }"/> </td>
 			                            <td> <c:out value="${list.email }"/> </td>
 			                            <td> <c:out value="${list.phonenum }"/> </td>
@@ -166,7 +166,7 @@
 	      	var goUrlUele = "/member/memberUele";			/* #-> */
 	      	var goUrlDele = "/member/memberDele";			/* #-> */
 	      	var goUrlForm = "/member/memberForm";			/* #-> */
-	      	var goUrlView = "/member/memberpView";			/* #-> */
+	      	var goUrlView = "/member/memberView";			/* #-> */
 	      	
 	      	
 	      	var seq = $("input:hidden[name=seq]");

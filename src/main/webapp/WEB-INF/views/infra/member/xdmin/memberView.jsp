@@ -11,7 +11,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><c:out value="${item.name }"></c:out></title>
+    <title><c:out value="${item.nm }"></c:out></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
@@ -39,7 +39,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> 코드관리 </h3>
+              <h3 class="page-title"> 회원관리 </h3>
             </div>
             <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
@@ -47,20 +47,28 @@
                   <div class="card-body">
                   	<form name="viewform" id="viewform" method="post" autocomplete="off">
 <!-- *Vo.jsp s -->
-<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+<%@include file="memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
-                    <h4 class="card-title"><c:out value="${item.name }"></c:out></h4>
+                    <h4 class="card-title"><c:out value="${item.nm }"></c:out></h4>
                       <div class="form-group">
-                        <label for="CodeGroupCode">코드그룹 코드</label>
-                        <input type="text" class="form-control text-info" id="CodeGroupCode" name="CodeGroupCode" placeholder="숫자" value="<c:out value="${item.codeGroupCode }"></c:out>" >
+                        <label for="nm">이름</label>
+                        <input type="text" class="form-control text-warning" id="nm" name="nm" placeholder="숫자" value="<c:out value="${item.nm }"></c:out>" >
                       </div>
                       <div class="form-group">
-                        <label for="name">코드그룹 이름 (한글)</label>
-                        <input type="text" class="form-control text-info" id="name" name="name" placeholder="한글" value="<c:out value="${item.name }"></c:out>" >
+                        <label for="id">아이디</label>
+                        <input type="text" class="form-control text-warning" id="id" name="id" placeholder="한글" value="<c:out value="${item.id }"></c:out>" >
                       </div>
                       <div class="form-group">
-                        <label for="CodeGroupNameEN">코드그룹 이름 (영문)</label>
-                        <input type="text" class="form-control text-info" id="CodeGroupNameEN" name="CodeGroupNameEN" placeholder="영문" value="<c:out value="${item.codeGroupNameEN }"></c:out>" >
+                        <label for="email">이메일</label>
+                        <input type="email" class="form-control text-warning" id="email" name="email" placeholder="영문" value="<c:out value="${item.email }"></c:out>" >
+                      </div>
+                      <div class="form-group">
+                        <label for="gender_code">성별</label>
+                        <select class="form-control" id="gender_code" name="gender_code" >
+		                        <option value="201" <c:if test="${item.gender_code eq 201}">selected</c:if>>남성</option>
+		                        <option value="202" <c:if test="${item.gender_code eq 202}">selected</c:if>>여성</option>
+		                        <option value="203" <c:if test="${item.gender_code eq 203}">selected</c:if>>기타</option>
+	                    </select>
                       </div>
                       <div class="form-group">
                         <label for="DelNy">삭제여부</label>
@@ -70,9 +78,9 @@
 	                    </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">상세정보</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                      </div>
+	                        <label for="dob">생년월일</label>
+	                        <input type="date" class="form-control" id="dob" name="dob" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${item.dob}"/>">
+	                    </div>
                       <div class="row">
 						<div class="col">
 							<button type="button" class="btn btn-dark" id="btnList">목록 <i class="fa-solid fa-list"></i></button>
@@ -87,7 +95,7 @@
 					  </form>
 					<form name="formVo" id="formVo" method="post">
 					<!-- *Vo.jsp s -->
-					<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+					<%@include file="memberVo.jsp"%>		<!-- #-> -->
 					<!-- *Vo.jsp e -->
 					</form>
                   </div>
@@ -98,12 +106,13 @@
           
           <script type="text/javascript">
           
-            var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	      	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-	      	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	      	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-	      	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
-	      	var goUrlForm = "/codeGroup/codeGroupForm";				/* #-> */
+        	var goUrlList = "/member/memberList"; 			/* #-> */
+	      	var goUrlInst = "/member/memberInst"; 			/* #-> */
+	      	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+	      	var goUrlUele = "/member/memberUele";			/* #-> */
+	      	var goUrlDele = "/member/memberDele";			/* #-> */
+	      	var goUrlForm = "/member/memberForm";			/* #-> */
+	      	var goUrlView = "/member/memberView";			/* #-> */
 	      	
 	      	
 	      	var seq = $("input:hidden[name=seq]");					/* #-> */

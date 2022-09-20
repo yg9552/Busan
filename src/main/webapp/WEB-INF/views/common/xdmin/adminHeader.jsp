@@ -2,8 +2,8 @@
 	<!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="../../index.html"><img src="../../../../../resources/images/lgo.png" alt="logo"></a>
-          <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../../../../resources/images/smlogo.png" alt="logo"></a>
+          <a class="sidebar-brand brand-logo" href="/"><img src="../../../../../resources/images/lgo.png" alt="logo"></a>
+          <a class="sidebar-brand brand-logo-mini" href="/"><img src="../../../../../resources/images/smlogo.png" alt="logo"></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="http://localhost:8080/member/memberList">
+            <a class="nav-link" href="/member/memberList">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
