@@ -13,11 +13,8 @@ public class Member {
 	private Integer DelNy;
 	private Integer reserve;
 	private Integer memberRegDate;
-	
-
-	
+	private Integer memberGender;
 	private String phonenum;
-	
 	
 	public String getPhonenum() {
 		return phonenum;
@@ -78,6 +75,12 @@ public class Member {
 	}
 	public void setMemberRegDate(Integer memberRegDate) {
 		this.memberRegDate = memberRegDate;
+	}
+	public Integer getMemberGender() {
+		return memberGender;
+	}
+	public void setMemberGender(Integer memberGender) {
+		this.memberGender = memberGender;
 	}
 	
 	

@@ -45,73 +45,45 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">회원목록</h4>
-                    <form action="/member/memberList" autocomplete="off">
-                    <div class="row mb-3">
-                    	<div class="col-1">
-                    		<select class="form-control" id="shDelNy" name="shDelNy">
-		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-		                        <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+                    <h4 class="card-title">회원등록</h4>
+                    <form autocomplete="off" id="form" name="form" method="post">
+                    <!-- *Vo.jsp s -->
+					<%@include file="memberVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
+						<div class="form-group">
+	                        <label for="nm">이름</label>
+	                        <input type="text" class="form-control" id="nm" name="nm" value="<c:out value="${item.nm }"></c:out>">
+	                    </div>
+						<div class="form-group">
+	                        <label for="id">아이디</label>
+	                        <input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>">
+	                        <input type="hidden" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
+	                    </div>
+	                    <div class="form-group">
+                        	<label for="email">이메일</label>
+                        	<input type="email" class="form-control" id="email" name="email" value="<c:out value="${item.email }"></c:out>">
+                        </div>
+	                    <div class="form-group">
+                        	<label for="memberGender">성별</label>
+                        	<select class="form-control" id="DelNy" name="memberGender" >
+		                        <option value="1" <c:if test="${item.memberGender eq 1}">selected</c:if>> 남성 </option>
+		                        <option value="2" <c:if test="${itme.memberGender eq 2}">selected</c:if>> 여성 </option>
+		                        <option value="3" <c:if test="${itme.memberGender eq 3}">selected</c:if>> 기타 </option>
+	                    	</select>
+                        </div>
+                        <div class="form-group">
+	                        <label for="DelNy">삭제여부</label>
+	                        <select class="form-control" id="DelNy" name="DelNy" >
+			                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>> N </option>
+			                        <option value="1" <c:if test="${itme.delNy eq 1}">selected</c:if>> Y </option>
 		                    </select>
-                    	</div>
-                    	<div class="col-1">
-                    		<select class="form-control" id="shOption" name="shOption">
-		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
-		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>아이디</option>
-		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>이메일</option>
-		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>생년월일</option>
-		                        <%-- <option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>연락처</option> --%>
-		                    </select>
-                    	</div>
-                    	<div class="col">
-                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
-                    	</div>
-                    	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-success btn-fw">검색</button>
-                    	</div>
-                    </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="dob">생년월일</label>
+	                        <input type="date" class="form-control" id="dob" name="dob" value="<c:out value="${item.dob }"></c:out>">
+	                    </div>
                     </form>
-                    <div class="table-responsive">
-                      <table class="table table-dark text-center table-hover text-warning">
-                        <thead>
-                          <tr>
-                            <th> # </th>
-                            <th> 아이디 </th>
-                            <th> 이름 </th>
-                            <th> 이메일 </th>
-                            <th> 연락처 </th>
-                            <th> 생년월일 </th>
-                            <th> 가입일 </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                         <c:choose>
-                        	<c:when test="${fn:length(list) eq 0}">
-                        		<tr>
-                        			<td colspan="8">
-                        				There is no date!
-                        			</td>
-                        		</tr>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${list}" var="list" varStatus="status">
-		                          <tr>
-		                            <td> <c:out value="${list.seq }"/> </td>
-		                            <td><a href="#"> <c:out value="${list.id }"/> </a></td>
-		                            <td> <c:out value="${list.nm }"/> </td>
-		                            <td> <c:out value="${list.email }"/> </td>
-		                            <td> <c:out value="${list.phonenum }"/> </td>
-		                            <td> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.dob}"/></td>
-		                            <td> May 15, 2015 </td>
-		                          </tr>
-                          		</c:forEach>
-                          	</c:otherwise>
-                         </c:choose>
-                        </tbody>
-                      </table>
-                    </div>
+                    
                   </div>
                 </div>
               </div>

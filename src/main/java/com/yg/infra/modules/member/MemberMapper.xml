@@ -8,14 +8,9 @@
 
 	<resultMap type="com.yg.infra.modules.member.Member" id="resultMapObj"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.*
-			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+	<sql id="selectCommon">
 		FROM member a
 		WHERE 1=1
-			AND DelNy = 0
-			
 		<choose>
 			<when test="shDelNy == 1">AND DelNy = 0</when>
 			<when test="shDelNy == 2">AND DelNy = 1</when>
@@ -23,9 +18,105 @@
 			<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND email LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND dob LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 5">AND phonenum LIKE CONCAT('%',#{shValue},'%')</when>
+			<!-- <when test="shOption == 5">AND phonenum LIKE CONCAT('%',#{shValue},'%')</when> -->
 			<otherwise></otherwise>
 		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq
+			,a.nm
+			,a.id
+			,a.password
+			,a.email
+			,a.dob
+			,a.reserve
+			,a.DelNy
+			,a.memberRegDate
+			,a.memberGender
+			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+			<include refid="selectCommon"></include>
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
 	</select>
-
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.nm
+			,a.id
+			,a.password
+			,a.email
+			,a.dob
+			,a.reserve
+			,a.DelNy
+			,a.memberRegDate
+			,a.memberGender
+			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+		FROM member a
+		WHERE 1=1
+		AND a.seq = #{seq}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO member(
+			,nm
+			,id
+			,password
+			,email
+			,dob
+			,reserve
+			,DelNy
+			,memberRegDate
+			,memberGender
+			)
+		VALUES(
+			,#{nm }
+			,#{id }
+			,#{password }
+			,#{email }
+			,#{dob }
+			,#{reserve }
+			,#{DelNy }
+			,#{memberRegDate }
+			,#{memberGender }
+			)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE member
+		SET
+			,nm = #{nm }
+			,id = #{id }
+			,password = #{password }
+			,email = #{email }
+			,dob = #{dob }
+			,reserve = #{reserve }
+			,memberRegDate = #{memberRegDate }
+			,memberGender = #{memberGender }
+		WHERE
+			seq = #{seq }
+	</update>
+	
+	<update id="uelete">
+		UPDATE member
+		SET
+			DelNy = 1
+		WHERE seq = #{seq }
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM member WHERE seq = #{seq }
+	</delete>
 </mapper>

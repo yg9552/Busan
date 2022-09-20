@@ -91,8 +91,6 @@
                         <label class="form-check-label" for="check2"><input type="checkbox" class="form-check-input" id="check2" name="check" value="체크3">체크3</label>
                       </div>
                       
-
-                      
                       <div class="form-group">
                         <input type="radio" id="M" name="gender" value="1">남성
                         <input type="radio" id="W" name="gender" value="2">여성
@@ -100,8 +98,18 @@
                       </div>
                        -->
                       
-                      <button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
-                      <button type="reset" class="btn btn-warning mr-2">초기화</button>
+                      <div class="row">
+						<div class="col">
+							<button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
+						</div>
+						<div class="col-auto">
+							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
+							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
+						</div>
+					  </div>
+                      
+                      <button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> 
+                      <button type="button" class="btn btn-warning mr-2"><i class="fa-solid fa-rotate"></i></button>
                       <button type="button" class="btn btn-dark" id="btnList">목록</button>
                     </form>
                     
