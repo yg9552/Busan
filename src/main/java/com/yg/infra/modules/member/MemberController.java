@@ -57,4 +57,26 @@ public class MemberController {
 		
 		return "infra/member/xdmin/memberView";
 	}
+	
+	@RequestMapping(value = "memberUpdt")
+	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/memberView";
+	}
+	
+	@RequestMapping(value = "memberUele")
+	public String memberUele(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.uelete(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/memberView";
+	}
+	
+	@RequestMapping(value = "memberDele")
+	public String memberDele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/memberList";
+	}
+	
 }

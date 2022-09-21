@@ -100,17 +100,15 @@
                       
                       <div class="row">
 						<div class="col">
-							<button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
+							<button type="button" class="btn btn-success mr-2" id="btnSave">코드등록</button> <!--  onclick="test();" -->
 						</div>
 						<div class="col-auto">
-							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
-							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
+							<button type="reset" class="btn btn-warning mr-2"><i class="fa-solid fa-rotate"></i></button>
+							<button type="button" class="btn btn-dark" id="btnList">목록</button>
 						</div>
 					  </div>
                       
-                      <button type="submit" class="btn btn-success mr-2" id="btnSave">코드등록</button> 
-                      <button type="button" class="btn btn-warning mr-2"><i class="fa-solid fa-rotate"></i></button>
-                      <button type="button" class="btn btn-dark" id="btnList">목록</button>
+                      
                     </form>
                     
                     <form name="formVo" id="formVo" method="post">

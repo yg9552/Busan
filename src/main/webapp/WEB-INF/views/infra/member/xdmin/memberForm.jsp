@@ -82,12 +82,46 @@
 	                        <label for="dob">생년월일</label>
 	                        <input type="date" class="form-control" id="dob" name="dob" value="<c:out value="${item.dob }"></c:out>">
 	                    </div>
+                      	<div class="row">
+						<div class="col">
+							<button type="button" class="btn btn-success mr-2" id="btnSave">회원등록</button> <!--  onclick="test();" -->
+						</div>
+							<div class="col-auto">
+								<button type="reset" class="btn btn-warning mr-2"><i class="fa-solid fa-rotate"></i></button>
+								<button type="button" class="btn btn-dark" id="btnList">목록</button>
+							</div>
+					  	</div>
+	                    
                     </form>
-                    
+                    <form name="formVo" id="formVo" method="post">
+					<!-- *Vo.jsp s -->
+					<%@include file="memberVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
+					</form>
                   </div>
                 </div>
               </div>
+              <script type="text/javascript">
               
+          		var goUrlList = "/member/memberList"; 			/* #-> */
+		      	var goUrlInst = "/member/memberInst"; 			/* #-> */
+		      	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+		      	var goUrlUele = "/member/memberUele";			/* #-> */
+		      	var goUrlDele = "/member/memberDele";			/* #-> */
+		      	var goUrlForm = "/member/memberForm";			/* #-> */
+		      	var goUrlView = "/member/memberView";			/* #-> */
+              	
+	        	var form = $("form[name=form]");
+	        	var formVo = $("form[name=formVo]");
+	        	
+	        	$("#btnSave").on("click", function(){
+	        	   	form.attr("action", goUrlInst).submit();
+	        	}); 
+	        	
+	        	$("#btnList").on("click", function(){
+		    		formVo.attr("action", goUrlList).submit();
+		    	});
+              </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">

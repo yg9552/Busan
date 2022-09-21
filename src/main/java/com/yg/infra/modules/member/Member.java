@@ -2,6 +2,8 @@ package com.yg.infra.modules.member;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Member {
 
 	private String seq;
@@ -11,6 +13,7 @@ public class Member {
 	private String email;
 	private String gender_code;
 	private String email_code;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 	private Integer DelNy;
 	private Integer reserve;
@@ -60,6 +63,7 @@ public class Member {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+	
 	public Integer getDelNy() {
 		return DelNy;
 	}

@@ -12,8 +12,8 @@
 		FROM member a
 		WHERE 1=1
 		<choose>
-			<when test="shDelNy == 1">AND DelNy = 0</when>
-			<when test="shDelNy == 2">AND DelNy = 1</when>
+			<when test="shDelNy == 0">AND DelNy = 0</when>
+			<when test="shDelNy == 1">AND DelNy = 1</when>
 			<when test="shOption == 1">AND nm LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND email LIKE CONCAT('%',#{shValue},'%')</when>
@@ -71,26 +71,24 @@
 	
 	<insert id="insert">
 		INSERT INTO member(
-			,nm
+			nm
 			,id
 			,password
 			,email
 			,gender_code
 			,email_code
 			,dob
-			,reserve
 			,DelNy
 			,memberRegDate
 			)
 		VALUES(
-			,#{nm }
+			#{nm }
 			,#{id }
 			,#{password }
 			,#{email }
 			,#{gender_code }
 			,#{email_code }
 			,#{dob }
-			,#{reserve }
 			,#{DelNy }
 			,#{memberRegDate }
 			)
@@ -102,7 +100,7 @@
 	<update id="update">
 		UPDATE member
 		SET
-			,nm = #{nm }
+			nm = #{nm }
 			,id = #{id }
 			,password = #{password }
 			,email = #{email }
