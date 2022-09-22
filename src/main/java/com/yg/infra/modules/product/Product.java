@@ -16,6 +16,7 @@ public class Product {
 	private String option_code;
 	private String brand_code;
 	private String manufacturer_code;
+	private String DelNy;
 	
 	
 	public String getSeq() {
@@ -101,6 +102,12 @@ public class Product {
 	}
 	public void setManufacturer_code(String manufacturer_code) {
 		this.manufacturer_code = manufacturer_code;
+	}
+	public String getDelNy() {
+		return DelNy;
+	}
+	public void setDelNy(String delNy) {
+		DelNy = delNy;
 	}
 	
 	

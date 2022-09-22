@@ -75,17 +75,17 @@
                     	<div class="col-1">
                     		<select class="form-control" id="shOption" name="shOption">
 		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>> 검색구분 </option>
-		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>> 대체코드 </option>
-		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>> 코드 이름 (한글) </option>
-		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 코드 </option>
-		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>> 코드그룹 코드 </option>
+		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>> 상품번호 </option>
+		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>> 상품명 </option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 브랜드 </option>
+		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>> 브랜드 </option>
 		                    </select>
                     	</div>
                     	<div class="col">
                     		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
                     	</div>
                     	<div class="col-auto my-auto">
-                    		<button type="submit" class="btn btn-inverse-info btn-fw">검색</button>
+                    		<button type="submit" class="btn btn-inverse-danger btn-fw">검색</button>
                     		<a role="button" class="btn btn-inverse-warning" id="btnReset"><i class="fa-solid fa-rotate"></i></a>
                     	</div>
                     </div>
@@ -103,11 +103,11 @@
 				  		</div>
 				  	</div>
                     <div class="table-responsive">
-                      <table class="table table-dark text-info text-center table-hover mb-3">
+                      <table class="table table-dark text-danger text-center table-hover mb-3">
                         <thead>
                           <tr>
                             <th>
-                            	<div class="form-check form-check-flat form-check-info">
+                            	<div class="form-check form-check-flat form-check-danger">
 			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 			                    </div>
                             </th>
@@ -135,7 +135,7 @@
 			                        <c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td>
-											<div class="form-check form-check-flat form-check-info">
+											<div class="form-check form-check-flat form-check-danger">
 						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
 						                    </div>
 										</td>

@@ -18,7 +18,7 @@ public class ProductDao {
 	private static String namespace = "com.yg.infra.modules.product.ProductMapper";
 	
 	public List<Product> selectList(ProductVo vo){
-		List<Product> list = sqlSession.selectList(namespace + ".selectList","");
+		List<Product> list = sqlSession.selectList(namespace + ".selectList", vo);
 		return list;
 	}
 	
