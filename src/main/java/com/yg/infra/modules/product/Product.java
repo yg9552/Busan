@@ -14,6 +14,8 @@ public class Product {
 	private String newNy;
 	private String bestNy;
 	private String option_code;
+	private String brand_code;
+	private String manufacturer_code;
 	
 	
 	public String getSeq() {
@@ -87,6 +89,18 @@ public class Product {
 	}
 	public void setOption_code(String option_code) {
 		this.option_code = option_code;
+	}
+	public String getBrand_code() {
+		return brand_code;
+	}
+	public void setBrand_code(String brand_code) {
+		this.brand_code = brand_code;
+	}
+	public String getManufacturer_code() {
+		return manufacturer_code;
+	}
+	public void setManufacturer_code(String manufacturer_code) {
+		this.manufacturer_code = manufacturer_code;
 	}
 	
 	

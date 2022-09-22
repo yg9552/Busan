@@ -8,8 +8,46 @@
 
     <resultMap id="resultMapObj" type="com.yg.infra.modules.product.Product"></resultMap>
 	
- 	
+ 	<sql id="selectCommon">
+		FROM product a
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND brand_code LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
+	
 	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.seq
+			    ,a.product_name
+			    ,a.price
+			    ,a.discount_percent
+			    ,a.reserve
+			    ,(select nation from origin aa WHERE 1=1 AND a.origin_seq = aa.seq) as origin
+			    ,a.deliverycost
+			    ,a.deliveryinfo
+			    ,a.option_code
+			    ,a.newNy
+			    ,a.bestNy
+			    ,a.manufacturer_code
+			    ,a.brand_code
+			<include refid="selectCommon" />
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.seq
 		    ,a.product_name
@@ -20,12 +58,13 @@
 		    ,a.deliverycost
 		    ,a.deliveryinfo
 		    ,a.option_code
-		    ,b.name
 		    ,a.newNy
 		    ,a.bestNy
+		    ,a.manufacturer_code
+		    ,a.brand_code
 		FROM product a
-		JOIN Code b on b.seq = a.brand_code
 		WHERE 1=1
+		AND a.seq = #{seq}
 	</select>
 	
 	

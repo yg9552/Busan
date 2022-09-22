@@ -12,10 +12,24 @@ public class ProductServiceImpl implements ProductService {
 	ProductDao dao;
 	
 	@Override
-	public List<Product> selectList() throws Exception {
-		List<Product> list = dao.selectList();
+	public List<Product> selectList(ProductVo vo) throws Exception {
+		List<Product> list = dao.selectList(vo);
 		return list;
 	}
+
+	@Override
+	public Product selectOne(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOne(vo);
+	}
+
+	@Override
+	public int selectOneCount(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
+	
+	
 
 	
 }

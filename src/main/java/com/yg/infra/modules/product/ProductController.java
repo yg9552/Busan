@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,19 +13,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductController {
 
 	@Autowired
-	ProductServiceImpl sevice;
+	ProductServiceImpl service;
 	
 	@RequestMapping(value = "productList")
-	public String productList(Model model) throws Exception {
-		List<Product> list = sevice.selectList();
+	public String productList(Model model,@ModelAttribute("vo") ProductVo vo) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/product/xdmin/productList";
 	}
 	
-	@RequestMapping(value = "/")
-	public String main(Model model) throws Exception {
-		List<Product> list = sevice.selectList();
+	@RequestMapping(value = "productListX")
+	public String main(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+		
+		System.out.println("vo.getShValue(): " + vo.getShValue());
+		System.out.println("vo.getShOption(): " + vo.getShOption());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		return "infra/product/xdmin/Main";
+		return "infra/product/xdmin/productListX";
 	}
 }

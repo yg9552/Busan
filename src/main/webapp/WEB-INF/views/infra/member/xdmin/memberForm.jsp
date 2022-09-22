@@ -21,6 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End Plugin css for this page -->
@@ -122,6 +123,18 @@
 			                        <input type="text" class="form-control" id="sample4_extraAddress" name="sample4_extraAddress">
 		                    	</div>
 	                    	</div>
+	                    	<div class="col-6">
+	                    		<div class="form-group">
+			                        <label for="lat">위도</label>
+			                        <input type="text" class="form-control" id="lat" name="lat">
+		                    	</div>
+	                    	</div>
+	                    	<div class="col-6">
+	                    		<div class="form-group">
+			                        <label for="lng">경도</label>
+			                        <input type="text" class="form-control" id="lng" name="lng">
+		                    	</div>
+	                    	</div>
 	                    </div>
 	                    
                       	<div class="row">
@@ -179,6 +192,7 @@
 				    function sample4_execDaumPostcode() {
 				        new daum.Postcode({
 				            oncomplete: function(data) {
+				            	
 				                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 				
 				                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
@@ -227,10 +241,25 @@
 				                    guideTextBox.innerHTML = '';
 				                    guideTextBox.style.display = 'none';
 				                }
-				            }
+				                
+				                var geocoder = new kakao.maps.services.Geocoder();
+				                
+				                geocoder.addressSearch(roadAddr, function(result, status) {
+
+				                    // 정상적으로 검색이 완료됐으면 
+				                     if (status === kakao.maps.services.Status.OK) {
+				                    	 
+				                        /* var coords = new kakao.maps.LatLng(result[0].y, result[0].x); */
+				                        
+				                        document.getElementById("lat").value = result[0].y;
+				                        document.getElementById("lng").value = result[0].x;
+				                    }
+				                });
+				             },
 				        }).open();
 				    }
 				</script>
+				
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
