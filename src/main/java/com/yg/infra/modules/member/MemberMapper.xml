@@ -50,6 +50,13 @@
 		<include refid="selectCommon" />
 	</select>
 	
+	<select id="selectOneIdCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM member
+		WHERE 1=1
+		AND id = #{id}
+	</select>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.seq

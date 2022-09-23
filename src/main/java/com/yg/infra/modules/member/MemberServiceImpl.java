@@ -51,6 +51,14 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.selectOneCount(vo);
 	}
+
+	//id check
+	@Override
+	public int selectOneIdCheck(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneIdCheck(dto);
+	}
+	
 	
 	
 }
