@@ -7,7 +7,6 @@ public class Product {
 	private Integer price;
 	private String discount_percent;
 	private Integer reserve;
-	private String origin;
 	private String deliverycost;
 	private String deliveryinfo;
 	private String name;
@@ -16,6 +15,7 @@ public class Product {
 	private String option_code;
 	private String brand_code;
 	private String manufacturer_code;
+	private String origin_code;
 	private String DelNy;
 	
 	
@@ -48,12 +48,6 @@ public class Product {
 	}
 	public void setReserve(Integer reserve) {
 		this.reserve = reserve;
-	}
-	public String getOrigin() {
-		return origin;
-	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
 	}
 	public String getDeliverycost() {
 		return deliverycost;
@@ -108,6 +102,12 @@ public class Product {
 	}
 	public void setDelNy(String delNy) {
 		DelNy = delNy;
+	}
+	public String getOrigin_code() {
+		return origin_code;
+	}
+	public void setOrigin_code(String origin_code) {
+		this.origin_code = origin_code;
 	}
 	
 	

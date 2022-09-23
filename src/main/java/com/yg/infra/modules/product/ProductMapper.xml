@@ -28,7 +28,7 @@
 			    ,a.price
 			    ,a.discount_percent
 			    ,a.reserve
-			    ,(select nation from origin aa WHERE 1=1 AND a.origin_seq = aa.seq) as origin
+			    ,a.origin_code
 			    ,a.deliverycost
 			    ,a.deliveryinfo
 			    ,a.option_code
@@ -36,6 +36,7 @@
 			    ,a.bestNy
 			    ,a.manufacturer_code
 			    ,a.brand_code
+			    ,a.DelNy
 			<include refid="selectCommon" />
 			ORDER BY a.seq DESC
 			<include refid="Base.orderByLimitForMysql" />
@@ -54,7 +55,7 @@
 		    ,a.price
 		    ,a.discount_percent
 		    ,a.reserve
-		    ,(select nation from origin aa WHERE 1=1 AND a.origin_seq = aa.seq) as origin
+		    ,a.origin_code
 		    ,a.deliverycost
 		    ,a.deliveryinfo
 		    ,a.option_code
@@ -62,6 +63,7 @@
 		    ,a.bestNy
 		    ,a.manufacturer_code
 		    ,a.brand_code
+		    ,a.DelNy
 		FROM product a
 		WHERE 1=1
 		AND a.seq = #{seq}

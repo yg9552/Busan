@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
 <%@ page session="false" %>
 <html>
   <head>
@@ -77,8 +78,8 @@
 		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>> 검색구분 </option>
 		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>> 상품번호 </option>
 		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>> 상품명 </option>
-		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 브랜드 </option>
-		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>> 브랜드 </option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 브랜드 코드 </option>
+		                        <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>> 제조사 코드 </option>
 		                    </select>
                     	</div>
                     	<div class="col">
@@ -102,6 +103,9 @@
 							</select>
 				  		</div>
 				  	</div>
+				  	
+				  	<c:set var="listCodebrandMFC" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
+				  	<c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
                     <div class="table-responsive">
                       <table class="table table-dark text-danger text-center table-hover mb-3">
                         <thead>
@@ -141,10 +145,22 @@
 										</td>
 										<td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
 									    <td> <a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.product_name }"/> </a></td>
-									    <td> <c:out value="${list.price }"/> </td>
-									    <td> <c:out value="${list.brand_code }"/> </td>
-									    <td> <c:out value="${list.manufacturer_code }"/> </td>
-									    <td> <c:out value="${list.origin }"/> </td>
+									    <td> <c:out value="${list.price }"/>원</td>
+									    <td> 
+									    	<c:forEach items="${listCodebrandMFC}" var="listbrandMFC" varStatus="statusbrandMFC">
+												<c:if test="${list.brand_code eq listbrandMFC.seq}"><c:out value="${listbrandMFC.name }"/></c:if>
+											</c:forEach>
+									    </td>
+									    <td> 
+									    	<c:forEach items="${listCodebrandMFC}" var="listbrandMFC" varStatus="statusbrandMFC">
+												<c:if test="${list.manufacturer_code eq listbrandMFC.seq}"><c:out value="${listbrandMFC.name }"/></c:if>
+											</c:forEach>
+									    </td>
+									    <td> 
+									    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
+												<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
+											</c:forEach>
+									    </td>
 									    <td> <c:out value="${list.delNy }"/> </td>
 									    <td></td>
 									    <td></td>

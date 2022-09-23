@@ -89,7 +89,7 @@
 			,#{gender_code }
 			,#{email_code }
 			,#{dob }
-			,#{DelNy }
+			,0
 			,#{memberRegDate }
 			)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">

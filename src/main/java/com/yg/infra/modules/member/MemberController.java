@@ -79,4 +79,9 @@ public class MemberController {
 		return "redirect:/member/memberList";
 	}
 	
+	@RequestMapping(value = "memberLogin")
+	public String memberLogin() throws Exception {
+		return "infra/member/xdmin/memberLogin";
+	}
+	
 }

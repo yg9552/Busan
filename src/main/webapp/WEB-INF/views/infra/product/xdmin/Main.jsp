@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
 <%@ page session="false" %>
 
 <html lang="ko">
@@ -13,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MAIN</title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<style type="text/css">
 	
@@ -58,6 +60,7 @@
 	</div>
 </div>
 
+<c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
 <div class="container text-center">
 	<h3 class="mb-4">BEST상품</h3>
 	<div class="row mb-3 mx-auto">
@@ -73,7 +76,11 @@
 						    <li class="list-group-item"> 가격 : <c:out value="${list.price }"/>원 </li>
 						    <li class="list-group-item text-danger"> 할인가: 80,000</li>
 						    <li class="list-group-item"> 배송정보 : <c:out value="${list.deliveryinfo }"/> </li>
-						    <li class="list-group-item"> 원산지 : <c:out value="${list.origin }"/> </li>
+						    <li class="list-group-item"> 원산지 :
+						    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
+									<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
+								</c:forEach>
+						    </li>
 						    <li class="list-group-item"> 적립금 : <c:out value="${list.reserve }"/>원 </li>
 					  	</ul>
 					</div>
