@@ -190,9 +190,9 @@
 	        	//id check ajax
 	        		$("#id").on("focusout", function(){
 		
-					if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
-						return false;
-					} else {
+				//	if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+				//		return false;
+				//	} else {
 						$.ajax({
 							async: true 
 							,cache: false
@@ -204,19 +204,21 @@
 							,success: function(response) {
 								if(response.rt == "success") {
 									document.getElementById("id").classList.add('is-valid');
+									document.getElementById("id").classList.remove('is-invalid');
 				
 									document.getElementById("idFeedback").classList.remove('invalid-feedback');
 									document.getElementById("idFeedback").classList.add('valid-feedback');
-									document.getElementById("idFeedback").innerText = "사용 가능 합니다.";
+									document.getElementById("idFeedback").innerText = "사용 가능한 아이디 입니다.";
 									
 									document.getElementById("ifmmIdAllowedNy").value = 1;
 									
 								} else {
 									document.getElementById("id").classList.add('is-invalid');
+									document.getElementById("id").classList.remove('is-valid');
 									
 									document.getElementById("idFeedback").classList.remove('valid-feedback');
 									document.getElementById("idFeedback").classList.add('invalid-feedback');
-									document.getElementById("idFeedback").innerText = "사용 불가능 합니다";
+									document.getElementById("idFeedback").innerText = "사용 불가능한 아이디 입니다";
 									
 									document.getElementById("ifmmIdAllowedNy").value = 0;
 								}
@@ -225,7 +227,7 @@
 								alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 							}
 						});
-					}
+					//}
 				});
               </script>
               

@@ -13,6 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<style type="text/css">
 		ul.navbar-nav li.dropdown:hover > ul.dropdown-menu {
@@ -42,8 +43,10 @@
 		<div class="border rounded m-auto w-25 mb-3 p-3">
 			<div class="row justify-content-center">
 				<div class="col-11 mb-3">
-				  <label for="id" class="form-label">아이디</label>
-				  <input type="text" class="form-control" id="id" placeholder="아이디">
+					<label for="id">아이디</label>
+                    <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
+                    <input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>">
+                    <div class="valid-feedback" id="idFeedback"></div>
 				</div>
 			</div>
 			<div class="row justify-content-center mb-5">
@@ -89,7 +92,7 @@
 	</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 
 //Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -111,6 +114,50 @@
     }, false)
   })
 })()
+</script> -->
+<script type="text/javascript">
+//id check ajax
+$("#id").on("focusout", function(){
+
+// if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+//	return false;
+//} else { 
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/checkId"
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "id" : $("#id").val() }
+		,success: function(response) {
+			if(response.rt == "success") {
+				document.getElementById("id").classList.add('is-valid');
+				document.getElementById("id").classList.remove('is-invalid');
+
+				document.getElementById("idFeedback").classList.remove('invalid-feedback');
+				document.getElementById("idFeedback").classList.add('valid-feedback');
+				document.getElementById("idFeedback").innerText = "사용 가능 합니다.";
+				
+				document.getElementById("ifmmIdAllowedNy").value = 1;
+				
+			} else {
+				document.getElementById("id").classList.add('is-invalid');
+				document.getElementById("id").classList.remove('is-valid');
+				
+				document.getElementById("idFeedback").classList.remove('valid-feedback');
+				document.getElementById("idFeedback").classList.add('invalid-feedback');
+				document.getElementById("idFeedback").innerText = "사용 불가능 합니다.";
+				
+				document.getElementById("ifmmIdAllowedNy").value = 0;
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+//}
+});
 </script>
 </body>
 </html>
