@@ -45,7 +45,7 @@
 				<div class="col-11 mb-3">
 					<label for="id">아이디</label>
                     <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
-                    <input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${item.id }"></c:out>">
                     <div class="valid-feedback" id="idFeedback"></div>
 				</div>
 			</div>
