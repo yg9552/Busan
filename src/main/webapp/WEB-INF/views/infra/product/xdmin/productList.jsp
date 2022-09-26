@@ -202,7 +202,7 @@
 					  	<ul class="list-group list-group-flush">
 						    <li class="list-group-item"> 가격 : <c:out value="${list.price }"/>원 </li>
 						    <li class="list-group-item"> 배송정보 : <c:out value="${list.deliveryinfo }"/> </li>
-						    <li class="list-group-item"> 원산지 : <c:out value="${list.origin }"/> </li>
+						    <li class="list-group-item"> 원산지 :  </li>
 						    <li class="list-group-item"> 적립금 : <c:out value="${list.reserve }"/>원 </li>
 					  	</ul>
 					</div>

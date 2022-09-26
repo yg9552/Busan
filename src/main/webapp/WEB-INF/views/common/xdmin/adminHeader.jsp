@@ -71,7 +71,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../product/productMain.html">
+            <a class="nav-link" href="/product/productListX">
               <span class="menu-icon">
                 <i class="mdi mdi-format-list-bulleted"></i>
               </span>
