@@ -139,7 +139,7 @@
 									</td>
 		                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
 		                            <td> <c:out value="${list.codeGroupCode }"/> </td>
-		                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></a></td>
+		                            <td> <a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.name }"/></a> </td>
 		                            <td> <c:out value="${list.codeGroupNameEN }"></c:out> </td>
 		                            <td> <c:out value="${list.seqCount }"/> </td>
 		                            <td> <c:out value="${list.delNy }"></c:out> </td>

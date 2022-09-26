@@ -25,7 +25,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "productListX")
-	public String main(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+	public String productListX(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
@@ -34,5 +34,12 @@ public class ProductController {
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/product/xdmin/productListX";
+	}
+	
+	@RequestMapping(value = "productView")
+	public String productView(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+		Product result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		return "infra/product/xdmin/productView";
 	}
 }

@@ -63,10 +63,16 @@
 <c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
 <div class="container text-center">
 	<h3 class="mb-4">BEST상품</h3>
+	<form name="MainList" id="MainList" autocomplete="off" method="post">
+	<input type="hidden" name="mainkey">
+    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+    <input type="hidden" name="checkboxSeqArray">
+    <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 	<div class="row mb-3 mx-auto">
 			<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="col-3 mb-3">
-				<a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>">
+				<a href="javascript:goView(<c:out value="${list.seq }"/>)">
 					<div class="card" style="width: 18rem;">
 	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
 	  					<div class="card-body">
@@ -120,7 +126,7 @@
 				</a>
 			</div>
 			<div class="col-3">
-				<a href="../prod/prodView2.html">
+				<a href="#">
 					<div class="card" style="width: 18rem;">
 	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
 	  					<div class="card-body">
@@ -152,7 +158,9 @@
 				</a>
 			</div>
 		</div>
+		</form>
 </div>
+
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
@@ -166,6 +174,21 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
+		
+</script>
+<script type="text/javascript">
+var goUrlView = "/product/productView";			/* #-> */
+
+var seq = $("input:hidden[name=seq]");
+var form = $("form[name=MainList]");
+
+goView = function(keyValue) {
+	seq.val(keyValue);
+	form.attr("action", goUrlView).submit();
+}
+
+
 </script>
 </body>
 </html>

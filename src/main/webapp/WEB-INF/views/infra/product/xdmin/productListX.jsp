@@ -192,13 +192,13 @@
           </div>
           
           <script type="text/javascript">
-          	var goUrlList = "/code/codeList"; 			/* #-> */
+          	var goUrlList = "/product/productList"; 			/* #-> */
 	      	var goUrlInst = "/code/codeInst"; 			/* #-> */
 	      	var goUrlUpdt = "/code/codeUpdt";			/* #-> */
 	      	var goUrlUele = "/code/codeUele";			/* #-> */
 	      	var goUrlDele = "/code/codeDele";			/* #-> */
 	      	var goUrlForm = "/code/codeForm";				/* #-> */
-	      	var goUrlView = "/code/codeView";				/* #-> */
+	      	var goUrlView = "/product/productView";				/* #-> */
 	      	
 	      	
 	      	var seq = $("input:hidden[name=codeSeq]");
