@@ -69,5 +69,73 @@
 		AND a.seq = #{seq}
 	</select>
 	
+	<insert id="insert">
+	INSERT INTO product (
+		product_name
+		,price
+		,discount_percent
+		,reserve
+		,origin_code
+		,deliverycost
+		,deliveryinfo
+		,option_code
+		,newNy
+		,bestNy
+		,manufacturer_code
+		,brand_code
+		,DelNy
+	)
+	VALUES(
+		#{product_name}
+		,#{price}
+		,#{discount_percent}
+		,#{reserve}
+		,#{origin_code}
+		,#{deliverycost}
+		,#{deliveryinfo}
+		,#{option_code}
+		,#{newNy}
+		,#{bestNy}
+		,#{manufacturer_code}
+		,#{brand_code}
+		,#{DelNy}
+	)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE product
+		SET
+			product_name = #{product_name}
+			,price = #{price}
+			,discount_percent = #{discount_percent}
+			,reserve = #{reserve}
+			,origin_code = #{origin_code}
+			,deliverycost = #{deliverycost}
+			,deliveryinfo = #{deliveryinfo}
+			,option_code = #{option_code}
+			,newNy = #{newNy}
+			,bestNy = #{bestNy}
+			,manufacturer_code = #{manufacturer_code}
+			,brand_code = #{brand_code}
+			,DelNy = #{DelNy}
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE product
+		SET
+			DelNy = 1
+		WHERE 
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM product WHERE seq = #{seq}
+	</delete>
+	
 	
 </mapper>

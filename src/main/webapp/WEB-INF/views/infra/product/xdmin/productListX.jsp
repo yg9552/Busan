@@ -192,16 +192,16 @@
           </div>
           
           <script type="text/javascript">
-          	var goUrlList = "/product/productList"; 			/* #-> */
-	      	var goUrlInst = "/code/codeInst"; 			/* #-> */
-	      	var goUrlUpdt = "/code/codeUpdt";			/* #-> */
-	      	var goUrlUele = "/code/codeUele";			/* #-> */
-	      	var goUrlDele = "/code/codeDele";			/* #-> */
-	      	var goUrlForm = "/code/codeForm";				/* #-> */
-	      	var goUrlView = "/product/productView";				/* #-> */
+	  		var goUrlList = "/product/productListX"; 		/* #-> */
+	      	var goUrlInst = "/product/productInst"; 		/* #-> */
+	      	var goUrlUpdt = "/product/productUpdt";			/* #-> */
+	      	var goUrlUele = "/product/productUele";			/* #-> */
+	      	var goUrlDele = "/product/productDele";			/* #-> */
+	      	var goUrlForm = "/product/productForm";			/* #-> */
+	      	var goUrlView = "/product/productViewX";			/* #-> */
 	      	
 	      	
-	      	var seq = $("input:hidden[name=codeSeq]");
+	      	var seq = $("input:hidden[name=seq]");
 	      	var form = $("form[name=formList]");
 	      	
 	      	goList = function(thisPage) {

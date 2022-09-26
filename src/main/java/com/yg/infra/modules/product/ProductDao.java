@@ -26,6 +26,22 @@ public class ProductDao {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
 	
+	public int insert(Product dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
+	
+	public int update(Product dto) {
+		return sqlSession.insert(namespace + ".update", dto);
+	}
+	
+	public int uelete(Product dto) {
+		return sqlSession.insert(namespace + ".uelete", dto);
+	}
+	
+	public int delete(ProductVo vo) {
+		return sqlSession.insert(namespace + ".delete", vo);
+	}
+	
 	//paging
 	public int selectOneCount(ProductVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);

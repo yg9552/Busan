@@ -12,7 +12,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>회원관리</title>
+    <title>회원등록</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/css/vendor.bundle.base.css">
@@ -71,15 +71,15 @@
                         	<label for="gender_code">성별</label>
                         	<select class="form-control" id="gender_code" name="gender_code" >
 		                        <option value="201" <c:if test="${item.gender_code eq 201}">selected</c:if>> 남성 </option>
-		                        <option value="202" <c:if test="${itme.gender_code eq 202}">selected</c:if>> 여성 </option>
-		                        <option value="203" <c:if test="${itme.gender_code eq 203}">selected</c:if>> 기타 </option>
+		                        <option value="202" <c:if test="${item.gender_code eq 202}">selected</c:if>> 여성 </option>
+		                        <option value="203" <c:if test="${item.gender_code eq 203}">selected</c:if>> 기타 </option>
 	                    	</select>
                         </div>
                         <div class="form-group">
 	                        <label for="DelNy">삭제여부</label>
 	                        <select class="form-control" id="DelNy" name="DelNy" >
 			                        <option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>> N </option>
-			                        <option value="1" <c:if test="${itme.delNy eq 1}">selected</c:if>> Y </option>
+			                        <option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>> Y </option>
 		                    </select>
 	                    </div>
 	                    <div class="form-group">

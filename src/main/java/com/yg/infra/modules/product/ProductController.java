@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -41,5 +42,50 @@ public class ProductController {
 		Product result = service.selectOne(vo);
 		model.addAttribute("item", result);
 		return "infra/product/xdmin/productView";
+	}
+	
+	@RequestMapping(value = "productViewX")
+	public String productViewX(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+		Product result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		return "infra/product/xdmin/productViewX"; 
+	}
+	
+	@RequestMapping(value = "productForm")
+	public String productForm(@ModelAttribute("vo") ProductVo vo) throws Exception {
+		return "infra/product/xdmin/productForm";
+	}
+	
+	@RequestMapping(value = "productInst")
+	public String productInst(@ModelAttribute("vo") ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+		int result = service.insert(dto);
+		System.out.println(result);
+		
+		vo.setSeq(dto.getSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/product/productViewX";
+	}
+	
+	@RequestMapping(value = "productUpdt")
+	public String productUpdt(@ModelAttribute("vo") ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productViewX";
+	}
+	
+	@RequestMapping(value = "productUele")
+	public String productUele(@ModelAttribute("vo") ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.uelete(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productViewX";
+	}
+	
+	@RequestMapping(value = "productDele")
+	public String productDele(ProductVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productListX";
 	}
 }

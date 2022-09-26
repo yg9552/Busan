@@ -28,6 +28,30 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return dao.selectOneCount(vo);
 	}
+
+	@Override
+	public int insert(Product dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insert(dto);
+	}
+
+	@Override
+	public int update(Product dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.update(dto);
+	}
+
+	@Override
+	public int uelete(Product dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.uelete(dto);
+	}
+
+	@Override
+	public int delete(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.delete(vo);
+	}
 	
 	
 
