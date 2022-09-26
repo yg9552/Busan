@@ -73,7 +73,7 @@
 			<a href="Findidpassword.html">비밀번호찾기</a>
 		</div>
 		<div class="col-4">
-			<a href="./RegForm.html">회원가입</a>
+			<a href="/member/memberReg">회원가입</a>
 		</div>
 	</div>
 </div>

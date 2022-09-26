@@ -18,7 +18,7 @@
             <a class="nav-link" aria-current="page" href="/member/memberLogin">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./RegForm.html">회원가입</a>
+            <a class="nav-link" href="/member/memberReg">회원가입</a>
           </li>
           <li class="nav-item" style="font-size: 0.5rem;">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">

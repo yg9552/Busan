@@ -41,6 +41,11 @@ public class MemberController {
 		return "infra/member/xdmin/memberForm";
 	}
 	
+	@RequestMapping(value = "memberReg")
+	public String memberReg(@ModelAttribute("vo") MemberVo vo) throws Exception {
+		return "infra/member/xdmin/memberReg";
+	}
+	
 	@RequestMapping(value = "memberInst")
 	public String memberInst(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		int result = service.insert(dto);
