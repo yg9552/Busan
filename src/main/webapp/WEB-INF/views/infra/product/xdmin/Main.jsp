@@ -30,10 +30,14 @@
 			color: white;
 		}
 		.white:hover {
-			color: #f4e638
+			color: #f4e638;
 		}
 		.clearboth {
 			clear: both;
+		}
+		
+		#btnLogout{
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -41,7 +45,7 @@
       <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-	  <div>
+	  <div class="d-none">
 	  	sessSeq: <c:out value="${sessSeq }"/><br>
 		sessName: <c:out value="${sessName }"/><br>
 		sessId: <c:out value="${sessId }"/><br>
@@ -182,6 +186,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 </script>
 <script type="text/javascript">
 var goUrlView = "/product/productView";			/* #-> */
+var goUrlMain = "/";
 
 var seq = $("input:hidden[name=seq]");
 var form = $("form[name=MainList]");
@@ -191,6 +196,27 @@ goView = function(keyValue) {
 	form.attr("action", goUrlView).submit();
 }
 
+$("#btnLogout").on("click", function(){
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/logoutProc"
+		/* ,data : $("#formLogout").serialize() */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = goUrlMain;
+			} else {
+				alert("회원없음");
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+	
+});
 
 </script>
 </body>

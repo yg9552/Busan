@@ -64,7 +64,7 @@
 	                    </div>
 	                    <div class="form-group">
                         	<label for="password">암호</label>
-                        	<input type="text" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
+                        	<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
                         </div>
 	                    <div class="form-group">
                         	<label for="email">이메일</label>

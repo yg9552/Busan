@@ -49,7 +49,7 @@
 			<div class="row justify-content-center mb-5">
 				<div class="col-11">
 				  <label for="password" class="form-label">비밀번호</label>
-				  <input type="text" class="form-control" id="password" name="password" placeholder="암호" value="<c:out value="${dto.password }"></c:out>">
+				  <input type="password" class="form-control" id="password" name="password" placeholder="암호" value="<c:out value="${dto.password }"></c:out>">
 				</div>
 			</div>
 			<div class="row">
