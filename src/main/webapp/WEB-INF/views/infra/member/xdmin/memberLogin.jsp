@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 
 <html lang="ko">
 <head>
@@ -37,25 +36,25 @@
 			<%@include file="../../../common/xdmin/noUserHeader.jsp"%>
 	  <!-- userHeader e -->
 
-<form action="/" method="post">
+<form method="post" id="formLogin" name="formLogin">
 	<div class="container mt-4 text-center mb-4">
 		<h3 class="mb-4">로그인</h3>
 		<div class="border rounded m-auto w-25 mb-3 p-3">
 			<div class="row justify-content-center">
 				<div class="col-11 mb-3">
 					<label for="id">아이디</label>
-                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${item.id }"></c:out>">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${dto.id }"></c:out>">
 				</div>
 			</div>
 			<div class="row justify-content-center mb-5">
 				<div class="col-11">
 				  <label for="password" class="form-label">비밀번호</label>
-				  <input type="password" class="form-control" id="password" placeholder="암호">
+				  <input type="text" class="form-control" id="password" name="password" placeholder="암호" value="<c:out value="${dto.password }"></c:out>">
 				</div>
 			</div>
 			<div class="row">
 				<div class="d-grid gap-2 col mx-auto">
-				  <button class="btn btn-info btn-lg" type="submit">로그인</button>
+				  <button class="btn btn-info btn-lg" type="button" id="btnLogin">로그인</button>
 				</div>
 			</div>
 		</div>
@@ -91,9 +90,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
+var goUrlMain = "/"; 			/* #-> */
+
 $("#btnLogin").on("click", function(){
-	if(validation() == false) return false;
-	
 	$.ajax({
 		async: true 
 		,cache: false
@@ -101,14 +101,10 @@ $("#btnLogin").on("click", function(){
 		/* ,dataType:"json" */
 		,url: "/member/loginProc"
 		/* ,data : $("#formLogin").serialize() */
-		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPassword" : $("#ifmmPassword").val(), "autoLogin" : $("#autoLogin").is(":checked")}
+		,data : { "id" : $("#id").val(), "password" : $("#password").val() }
 		,success: function(response) {
 			if(response.rt == "success") {
-				if(response.changePwd == "true") {
-					location.href = URL_CHANGE_PWD_FORM;
-				} else {
-					location.href = URL_INDEX_ADMIN;
-				}
+				location.href = goUrlMain;
 			} else {
 				alert("회원없음");
 			}
@@ -117,7 +113,12 @@ $("#btnLogin").on("click", function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
+	
 });
+/* validation = function() {
+	if(!checkNull($("#id"), $trim($("#id").val()), "아이디를 입력하세요")) return false;
+	if(!checkNull($("#password"), $trim($("#password").val()), "비밀번호를 입력하세요")) return false;
+} */
 </script>
 
 <!-- <script type="text/javascript">

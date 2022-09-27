@@ -64,6 +64,10 @@
 	                        <input type="hidden" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
 	                    </div>
 	                    <div class="form-group">
+                        	<label for="password">암호</label>
+                        	<input type="text" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
+                        </div>
+	                    <div class="form-group">
                         	<label for="email">이메일</label>
                         	<input type="email" class="form-control" id="email" name="email" value="<c:out value="${item.email }"></c:out>">
                         </div>

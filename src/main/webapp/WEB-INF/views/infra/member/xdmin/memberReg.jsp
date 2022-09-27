@@ -39,7 +39,7 @@
 			<%@include file="../../../common/xdmin/noUserHeader.jsp"%>
 	  <!-- userHeader e -->
 
-<form class="needs-validation" novalidate autocomplete="off">
+<form class="needs-validation" novalidate autocomplete="off" name="form" id="form">
 <!-- *Vo.jsp s -->
 <%@include file="memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->

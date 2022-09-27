@@ -6,7 +6,6 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
-<%@ page session="false" %>
 <html>
   <head>
     <!-- Required meta tags -->

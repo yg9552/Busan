@@ -6,7 +6,6 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
-<%@ page session="false" %>
 
 <html lang="ko">
 <head>
@@ -42,7 +41,11 @@
       <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-
+	  <div>
+	  	sessSeq: <c:out value="${sessSeq }"/><br>
+		sessName: <c:out value="${sessName }"/><br>
+		sessId: <c:out value="${sessId }"/><br>
+	  </div>
 
 <div class="container mb-5">
 	<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">

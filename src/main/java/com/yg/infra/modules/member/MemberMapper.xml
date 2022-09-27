@@ -70,10 +70,30 @@
 			,a.reserve
 			,a.DelNy
 			,a.memberRegDate
-			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
 		FROM member a
 		WHERE 1=1
 		AND a.seq = #{seq}
+	</select>
+	
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.id
+		FROM member a
+		WHERE 1=1
+		AND a.id = #{id}
+	</select>
+	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.id
+			,a.nm
+		FROM member a
+		WHERE 1=1
+		AND a.id = #{id}
+		<if test="password != null and !password.equals('')">AND a.password = #{password} </if>
 	</select>
 	
 	<insert id="insert">

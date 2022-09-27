@@ -135,6 +135,14 @@
 		</dependency>
 		<!-- for ajax e 2022.03.12 -->
 		
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		    <version>1.15</version>
+		</dependency>
+		
+		
 		<!-- mybatis s 2022.02.13 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
