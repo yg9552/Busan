@@ -63,12 +63,22 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/member/memberList">
+            <a class="nav-link" data-toggle="collapse" href="#auth1" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
-              <span class="menu-title">회원관리</span>
+              <span class="menu-title">회원 관리</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="auth1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/member/memberList"> 회원 목록 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/member/memberAddrList"> 주소 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/memberTel/memberTelList"> 전화번호 관리 </a></li>
+<!--                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> 전화번호 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li> -->
+              </ul>
+            </div>
           </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="/product/productListX">
@@ -111,6 +121,7 @@
               </ul>
             </div>
           </li>
+
         </ul>
       </nav>
       <!-- partial -->

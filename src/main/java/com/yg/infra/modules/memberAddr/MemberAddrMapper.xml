@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.yg.infra.modules.memberAddr.MemberAddrMapper">
+	<resultMap type="com.yg.infra.modules.memberAddr.MemberAddr" id="resultMapObj"></resultMap>
+
+	<sql id="selectCommon">
+		FROM memberAddr a
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND addr LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND addr_detail LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND zip LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
+
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+		    a.seq
+		    ,a.member_seq
+		    ,a.div_addr
+		    ,a.addr_defaultNy
+		    ,a.addr
+		    ,a.addr_detail
+		    ,a.zip
+		    ,a.DelNy
+		    ,a.memberAddrLat
+		    ,a.memberAddrLng
+		<include refid="selectCommon"></include>
+		ORDER BY a.seq DESC
+		<include refid="Base.orderByLimitForMysql" />
+	<include refid="Base.selectListLowerForMysql" />
+	</select>
+
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne">
+		SELECT
+		    a.seq
+		    ,a.member_seq
+		    ,a.div_addr
+		    ,a.addr_defaultNy
+		    ,a.addr
+		    ,a.addr_detail
+		    ,a.zip
+		    ,a.DelNy
+		    ,a.memberAddrLat
+		    ,a.memberAddrLng
+		FROM memberAddr a
+		WHERE 1=1
+		AND a.seq = #{seq}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO memberAddr(
+			seq
+			,member_seq
+			,div_addr
+			,addr_defaultNy
+			,addr
+			,addr_detail
+			,zip
+			,DelNy
+			,memberAddrLat
+			,memberAddrLng
+			)
+			VALUES(
+			#{seq }
+			,#{member_seq }
+			,#{div_addr }
+			,#{addr_defaultNy }
+			,#{addr }
+			,#{addr_detail }
+			,#{zip }
+			,#{DelNy }
+			,#{memberAddrLat }
+			,#{memberAddrLng }
+			)
+			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+			</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE memberAddr
+		SET
+			seq = #{seq }
+			,member_seq = #{member_seq }
+			,div_addr = #{div_addr }
+			,addr_defaultNy = #{addr_defaultNy }
+			,addr = #{addr }
+			,addr_detail = #{addr_detail }
+			,zip = #{zip }
+			,DelNy = #{DelNy }
+			,memberAddrLat = #{memberAddrLat }
+			,memberAddrLng = #{memberAddrLng }
+		WHERE seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE memberAddr
+		SET
+			DelNy = 1
+		WHERE seq = #{seq}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM memberAddr WHERE seq = #{seq}
+	</delete>
+
+</mapper>

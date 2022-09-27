@@ -38,7 +38,7 @@
 			,a.email_code
 			,a.gender_code
 			,a.memberRegDate
-			,(select tel from member_tel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
 			<include refid="selectCommon"></include>
 			ORDER BY a.seq DESC
 			<include refid="Base.orderByLimitForMysql" />

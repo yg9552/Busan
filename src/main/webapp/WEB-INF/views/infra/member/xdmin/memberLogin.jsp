@@ -44,9 +44,7 @@
 			<div class="row justify-content-center">
 				<div class="col-11 mb-3">
 					<label for="id">아이디</label>
-                    <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
                     <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${item.id }"></c:out>">
-                    <div class="valid-feedback" id="idFeedback"></div>
 				</div>
 			</div>
 			<div class="row justify-content-center mb-5">
@@ -92,6 +90,36 @@
 	</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$("#btnLogin").on("click", function(){
+	if(validation() == false) return false;
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/loginProc"
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPassword" : $("#ifmmPassword").val(), "autoLogin" : $("#autoLogin").is(":checked")}
+		,success: function(response) {
+			if(response.rt == "success") {
+				if(response.changePwd == "true") {
+					location.href = URL_CHANGE_PWD_FORM;
+				} else {
+					location.href = URL_INDEX_ADMIN;
+				}
+			} else {
+				alert("회원없음");
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
+</script>
+
 <!-- <script type="text/javascript">
 
 
@@ -115,13 +143,13 @@
   })
 })()
 </script> -->
-<script type="text/javascript">
-//id check ajax
+<!-- <script type="text/javascript">
+id check ajax
 $("#id").on("focusout", function(){
 
-// if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
-//	return false;
-//} else { 
+ if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+	return false;
+} else { 
 	$.ajax({
 		async: true 
 		,cache: false
@@ -156,8 +184,8 @@ $("#id").on("focusout", function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-//}
+}
 });
-</script>
+</script> -->
 </body>
 </html>
