@@ -101,6 +101,11 @@ public class MemberController {
 		return "infra/member/xdmin/xdminLogin";
 	}
 	
+	@RequestMapping(value = "memberMyPage")
+	public String memberMyPage() throws Exception {
+		return "infra/member/xdmin/memberMyPage";
+	}
+	
 	//id check
 	@ResponseBody
 	@RequestMapping(value = "checkId")
@@ -136,6 +141,7 @@ public class MemberController {
 				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
 				httpSession.setAttribute("sessName", rtMember2.getNm());
+				httpSession.setAttribute("sessReserve", rtMember2.getReserve());
 
 				returnMap.put("rt", "success");
 			} else {

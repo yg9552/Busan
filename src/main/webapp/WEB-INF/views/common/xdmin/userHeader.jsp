@@ -207,7 +207,7 @@
 				            </a>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-				            <a class="nav-link" href="../member/mypage.html">
+				            <a class="nav-link" href="/member/memberMyPage">
 				            	<i class="fa-solid fa-user fa-3x"></i></i>
 				            </a>
 				          </li>
