@@ -73,8 +73,9 @@
             <div class="collapse" id="auth1">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/member/memberList"> 회원 목록 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/member/memberAddrList"> 주소 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/member/memberTelList"> 전화번호 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/member/memberAddrList"> 주소 목록 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/member/memberCardList"> 카드 목록 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/member/memberTelList"> 전화번호 목록 </a></li>
 <!--                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> 전화번호 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li> -->
               </ul>

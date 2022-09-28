@@ -22,6 +22,6 @@ public class MemberCardController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<MemberCard> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		return "infra/memberTel/xdmin/memberCardList";
+		return "infra/memberCard/xdmin/memberCardList";
 	}
 }

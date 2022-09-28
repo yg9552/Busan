@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public class MemberCardDao {
 
 	@Inject
-	@Resource(name = "seqSession")
+	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.yg.infra.modules.memberCard.MemberCardMapper";
