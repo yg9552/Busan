@@ -35,6 +35,9 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	//for cache
+	public List<Member> selectListCachedMemberArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedMemberArrayList", null); }
+	
 	//id check
 	public int selectOneIdCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);

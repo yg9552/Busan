@@ -117,10 +117,11 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.member_seq }"/> </a></td>
+			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.membername }"/> </a></td>
 			                            <td> <c:out value="${list.div_tel }"/> </td>
 			                            <td> <c:out value="${list.tel }"/> </td>
-			                            <td>  </td>
+			                            <td>  
+			                            </td>
 			                            <td> <c:out value="${list.delNy }"/> </td>
 			                          </tr>
 	                          		</c:forEach>

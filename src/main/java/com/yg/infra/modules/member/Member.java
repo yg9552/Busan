@@ -1,6 +1,8 @@
 package com.yg.infra.modules.member;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,6 +22,9 @@ public class Member {
 	private Integer memberRegDate;
 	private Integer memberGender;
 	private String phonenum;
+	
+//	for cache
+	public static List<Member> cachedMemberArrayList = new ArrayList<Member>();
 	
 	public String getPhonenum() {
 		return phonenum;
@@ -99,6 +104,12 @@ public class Member {
 	}
 	public void setEmail_code(String email_code) {
 		this.email_code = email_code;
+	}
+	public static List<Member> getCachedMemberArrayList() {
+		return cachedMemberArrayList;
+	}
+	public static void setCachedMemberArrayList(List<Member> cachedMemberArrayList) {
+		Member.cachedMemberArrayList = cachedMemberArrayList;
 	}
 	
 	

@@ -10,7 +10,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">양진용</h5>
+                  <h5 class="mb-0 font-weight-normal"><c:out value="${sessName }"/></h5>
                   <span>Admin</span>
                 </div>
               </div>
@@ -117,8 +117,8 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/codeGroup/codeGroupList"> 코드그룹 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="/code/codeList"> 코드 관리 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/member/xdminLogin"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/"> Main </a></li>
               </ul>
             </div>
           </li>
@@ -281,7 +281,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">양진용</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><c:out value="${sessName }"/></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -299,7 +299,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a class="dropdown-item preview-item" id="btnLogout">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -319,3 +319,29 @@
             </button>
           </div>
         </nav>
+        
+        <script>
+var goUrlMain = "/member/xdminLogin";
+$("#btnLogout").on("click", function(){
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/logoutProc"
+		/* ,data : $("#formLogout").serialize() */
+		,data: {}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = goUrlMain;
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+	
+});
+</script>

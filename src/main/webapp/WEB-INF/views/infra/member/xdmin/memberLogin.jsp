@@ -100,10 +100,7 @@ $("#btnLogin").on("click", function(){
 	});
 	
 });
- validation = function() {
-	if(!checkNull($("#id"), $trim($("#id").val()), "아이디를 입력하세요")) return false;
-	if(!checkNull($("#password"), $trim($("#password").val()), "비밀번호를 입력하세요")) return false;
-} 
+
 </script>
 
 <!-- <script type="text/javascript">

@@ -96,6 +96,10 @@ public class MemberController {
 	public String memberLogin() throws Exception {
 		return "infra/member/xdmin/memberLogin";
 	}
+	@RequestMapping(value = "xdminLogin")
+	public String xdminLogin() throws Exception {
+		return "infra/member/xdmin/xdminLogin";
+	}
 	
 	//id check
 	@ResponseBody

@@ -1,6 +1,9 @@
 package com.yg.infra.modules.member;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,6 +79,42 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOneLogin(dto);
 	}
 	
+	//cache
+	@PostConstruct
+	public void selectListCachedMemberArrayList() throws Exception {
+		List<Member> memberListFromDb = (ArrayList<Member>) dao.selectListCachedMemberArrayList();
+		Member.cachedMemberArrayList.clear(); 
+		Member.cachedMemberArrayList.addAll(memberListFromDb);
+		System.out.println("cachedMemberArrayList: " + Member.cachedMemberArrayList.size() + " chached !");
+	}
+	
+	public static List<Member> selectListCachedMember(String seq) throws Exception {
+		List<Member> rt = new ArrayList<Member>();
+		for(Member memberRow : Member.cachedMemberArrayList) {
+			if (memberRow.getSeq().equals(seq)) {
+				rt.add(memberRow);
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+	}
+	
+	public static String selectOneCachedMember(int member) throws Exception {
+		String rt = "";
+		for(Member memberRow : Member.cachedMemberArrayList) {
+			if (memberRow.getSeq().equals(Integer.toString(member))) {
+				rt = memberRow.getNm();
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+	}
+	
+	public static void clear() throws Exception {
+		Member.cachedMemberArrayList.clear();
+	}
 	
 	
 	

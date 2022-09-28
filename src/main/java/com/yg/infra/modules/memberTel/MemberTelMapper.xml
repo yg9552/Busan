@@ -29,6 +29,7 @@
 			    ,a.tel
 			    ,a.tel_company_code
 			    ,a.DelNy
+			    ,(select nm from member aa where 1=1 and aa.seq = a.member_seq) as membername
 			<include refid="selectCommon" />
 			ORDER BY a.seq DESC    
 			<include refid="Base.orderByLimitForMysql" />
@@ -49,6 +50,7 @@
 		    ,a.tel
 		    ,a.tel_company_code
 		    ,a.DelNy
+		    ,(select nm from member aa where 1=1 and aa.seq = a.member_seq) as membername
 		FROM memberTel a
 		WHERE 1=1
 		AND a.seq = #{seq}

@@ -184,7 +184,7 @@ $("#btnLogout").on("click", function(){
 			if(response.rt == "success") {
 				location.href = goUrlMain;
 			} else {
-				alert("회원없음");
+				
 			}
 		}
 		,error : function(jqXHR, textStatus, errorThrown){

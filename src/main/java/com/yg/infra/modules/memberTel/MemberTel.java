@@ -9,7 +9,7 @@ public class MemberTel {
 	private String tel;
 	private Integer tel_company_code;
 	private Integer DelNy;
-	
+	private String membername;
 	
 	public String getSeq() {
 		return seq;
@@ -52,6 +52,12 @@ public class MemberTel {
 	}
 	public void setDelNy(Integer delNy) {
 		DelNy = delNy;
+	}
+	public String getMembername() {
+		return membername;
+	}
+	public void setMembername(String membername) {
+		this.membername = membername;
 	}
 	
 	

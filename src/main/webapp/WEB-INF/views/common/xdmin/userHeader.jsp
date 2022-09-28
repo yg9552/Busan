@@ -325,11 +325,12 @@ $("#btnLogout").on("click", function(){
 		/* ,dataType:"json" */
 		,url: "/member/logoutProc"
 		/* ,data : $("#formLogout").serialize() */
+		,data: {}
 		,success: function(response) {
 			if(response.rt == "success") {
 				location.href = goUrlMain;
 			} else {
-				alert("회원없음");
+				// by pass
 			}
 		}
 		,error : function(jqXHR, textStatus, errorThrown){

@@ -150,4 +150,19 @@
 	<delete id="delete">
 		DELETE FROM member WHERE seq = #{seq }
 	</delete>
+	
+	<select id="selectListCachedMemberArrayList" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,nm
+			,email
+			,reserve
+		FROM
+			member
+		WHERE 1=1
+			AND DelNy = 0
+		    <!-- AND UseNy = 1 -->
+    </select>
+	
+	
 </mapper>
