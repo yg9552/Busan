@@ -6,7 +6,6 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
-<%@ page session="false" %>
 
 <!doctype html>
 <html lang="ko">
@@ -15,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><c:out value="${item.product_name }"></c:out></title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<style type="text/css">
 		ul.navbar-nav li.dropdown:hover > ul.dropdown-menu {
@@ -33,6 +33,9 @@
 		}
 		.clearboth{
 			clear: both;
+		}
+		#btnLogout{
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -108,6 +111,7 @@
 				<div class="col-6 text-start">
 					<input class="form-control bg-white border-white" type="text" name="deliveryinfo" value="배송비 <c:out value="${item.deliverycost }"></c:out>원/<c:out value="${item.deliveryinfo }"></c:out>" disabled>
 				</div>
+				<%-- 
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">원산지</h5>
 				</div>
@@ -115,11 +119,8 @@
 					<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
 						<c:if test="${item.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
 					</c:forEach>
-					<%-- <input class="form-control bg-white border-white" type="text" name="origin" 
-						value="	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
-									<c:if test="${item.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
-								</c:forEach>" disabled> --%>
 				</div>
+				 --%>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">옵션</h5>
 				</div>

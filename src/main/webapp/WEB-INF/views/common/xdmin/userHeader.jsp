@@ -315,4 +315,27 @@
 				</div>
       		</c:otherwise>
       	</c:choose>
-
+<script>
+var goUrlMain = "/";
+$("#btnLogout").on("click", function(){
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/logoutProc"
+		/* ,data : $("#formLogout").serialize() */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = goUrlMain;
+			} else {
+				alert("회원없음");
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+	
+});
+</script>

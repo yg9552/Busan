@@ -29,14 +29,17 @@
 		.white:hover {
 			color: #f4e638
 		}
+		#btnLogout{
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
 	  <!-- userHeader s -->
-			<%@include file="../../../common/xdmin/noUserHeader.jsp"%>
+			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
 
-<form method="post" id="formLogin" name="formLogin">
+<form method="post" id="formLogin" name="formLogin" autocomplete="on">
 	<div class="container mt-4 text-center mb-4">
 		<h3 class="mb-4">로그인</h3>
 		<div class="border rounded m-auto w-25 mb-3 p-3">

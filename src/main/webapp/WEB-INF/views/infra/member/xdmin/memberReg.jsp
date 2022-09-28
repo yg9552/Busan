@@ -31,11 +31,14 @@
 		.white:hover {
 			color: #f4e638
 		}
+		#btnLogout{
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
 	  <!-- userHeader s -->
-			<%@include file="../../../common/xdmin/noUserHeader.jsp"%>
+			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
 
 <form class="needs-validation" novalidate autocomplete="off" name="form" id="form">
