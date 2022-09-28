@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+ul.navbar-nav li.dropdown:hover > ul.dropdown-menu {
+	display: block; 
+	margin: 0;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.white {
+	color: white;
+}
+.white:hover {
+	color: #f4e638
+}
+#btnLogout{
+	cursor: pointer;
+}
