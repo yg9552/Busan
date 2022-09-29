@@ -24,7 +24,8 @@
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 <!-- userHeader e -->
 
-<form action="../order/purchase.html" method="post" autocomplete="off">
+<form name="viewForm" method="post" autocomplete="off" id="viewForm">
+<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
@@ -128,7 +129,7 @@
 				  <button class="btn btn-lg btn-outline-primary" type="button">장바구니</button>
 				</div>
 				<div class="d-grid gap-2 col-6 mx-auto">
-				  <button class="btn btn-lg btn-primary" type="submit">주문하기</button>
+				  <a class="btn btn-lg btn-primary" href="/product/purchaseForm?seq=<c:out value="${item.seq }"/>">주문하기</a> <%-- "javascript:goPurchase(<c:out value="${item.seq }"/>)" --%>
 				</div>
 			</div>
 		</div>
@@ -352,6 +353,18 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+</script>
+<script type="text/javascript">
+
+	var goUrlPurchaseForm = "/product/purchaseForm";
+	
+	var seq = $("input:hidden[name=seq]");
+	var form = $("form[name=viewform]");
+	
+	goPurchase = function(keyValue) {
+		seq.val(keyValue);
+		form.attr("action", goUrlPurchaseForm).submit();
+	}
 </script>
 </body>
 </html>

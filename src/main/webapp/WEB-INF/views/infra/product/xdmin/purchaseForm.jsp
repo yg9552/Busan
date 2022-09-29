@@ -21,9 +21,10 @@
 	  <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-
-
-
+	  <form>
+<!-- *Vo.jsp s -->
+<%@include file="productVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
 <div class="container mb-5">
 	<h3>주문결제</h3>
 	<div class="row text-center mb-4 border">
@@ -35,10 +36,10 @@
 		<div class="col-2 border p-2">총합계</div>
 		<div class="col-6 p-2">
 			<img alt="..." src="../image/26650739290.20220517095259.png" style="width: 100px; height: 100px">
-			<span>더블 폭스헤드 반팔 티셔츠 / 사이즈: M 색상: beige</span>
+			<span><c:out value="${item.product_name }"></c:out></span>
 		</div>
 		<div class="col-1 p-3 my-auto">1</div>
-		<div class="col-1 p-3 my-auto">500,000원</div>
+		<div class="col-1 p-3 my-auto"><c:out value="${item.price }"></c:out>원</div>
 		<div class="col-1 my-auto p-3">0원</div>
 		<div class="col-1 my-auto p-3">3000원</div>
 		<div class="col-2 my-auto p-3">503,000</div>
@@ -163,7 +164,7 @@
 		</div>
 	</div>
 </div>
-
+</form>
 
 
 

@@ -23,8 +23,4 @@ public class PurchaseController {
 		return "infra/purchase/xdmin/purchaseListX";
 	}
 	
-	@RequestMapping(value = "purchaseForm")
-	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo) throws Exception{
-		return "infra/purchase/xdmin/purchaseForm";
-	}
 }
