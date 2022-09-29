@@ -105,6 +105,7 @@
               <span class="menu-title">리뷰관리</span>
             </a>
           </li>
+
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
@@ -122,7 +123,14 @@
               </ul>
             </div>
           </li>
-
+	      <li class="nav-item menu-items">
+            <a class="nav-link" href="/product/purchaseListX">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">주문관리</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

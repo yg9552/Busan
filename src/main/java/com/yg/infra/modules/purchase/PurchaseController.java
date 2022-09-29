@@ -22,4 +22,9 @@ public class PurchaseController {
 		model.addAttribute("list", list);
 		return "infra/purchase/xdmin/purchaseListX";
 	}
+	
+	@RequestMapping(value = "purchaseForm")
+	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo) throws Exception{
+		return "infra/purchase/xdmin/purchaseForm";
+	}
 }

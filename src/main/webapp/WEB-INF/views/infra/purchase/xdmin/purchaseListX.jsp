@@ -64,9 +64,9 @@
 	                    	<div class="col-1">
 	                    		<select class="form-control" id="shOption" name="shOption">
 			                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-			                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>번호</option>
-			                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>카드번호</option>
-			                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>회원번호</option>
+			                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>주문번호</option>
+			                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>회원이름</option>
+			                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>상품명</option>
 			                    </select>
 	                    	</div>
 	                    	<div class="col">
