@@ -98,6 +98,7 @@
 	                          <tr>
 	                            <th> # </th>
 	                            <th> 회원이름 </th>
+	                            <th> 회원아이디 </th>
 	                            <th> 전화번호구분 </th>
 	                            <th> 전화번호 </th>
 	                            <th> 통신사 </th>
@@ -108,7 +109,7 @@
 	                         <c:choose>
 	                        	<c:when test="${fn:length(list) eq 0}">
 	                        		<tr>
-	                        			<td colspan="6">
+	                        			<td colspan="7">
 	                        				There is no date!
 	                        			</td>
 	                        		</tr>
@@ -117,7 +118,8 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.membername }"/> </a></td>
+			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.nm }"/> </a></td>
+			                            <td> <c:out value="${list.id }"/> </td>
 			                            <td> <c:out value="${list.div_tel }"/> </td>
 			                            <td> <c:out value="${list.tel }"/> </td>
 			                            <td>  

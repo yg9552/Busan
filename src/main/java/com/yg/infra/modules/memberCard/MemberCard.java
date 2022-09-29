@@ -9,6 +9,10 @@ public class MemberCard {
 	private String card;
 	private Integer DelNy;
 	
+	//member
+	private String nm;
+	private String id;
+	
 	
 	public String getSeq() {
 		return seq;
@@ -46,6 +50,19 @@ public class MemberCard {
 	public void setDelNy(Integer delNy) {
 		DelNy = delNy;
 	}
+	public String getNm() {
+		return nm;
+	}
+	public void setNm(String nm) {
+		this.nm = nm;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 	
 }

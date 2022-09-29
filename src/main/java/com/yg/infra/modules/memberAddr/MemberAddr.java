@@ -13,6 +13,10 @@ public class MemberAddr {
 	private Integer memberAddrLat;
 	private Integer memberAddrLng;
 	
+	//member
+	private String nm;
+	private String id;
+	
 	
 	public String getSeq() {
 		return seq;
@@ -73,6 +77,18 @@ public class MemberAddr {
 	}
 	public void setMemberAddrLng(Integer memberAddrLng) {
 		this.memberAddrLng = memberAddrLng;
+	}
+	public String getNm() {
+		return nm;
+	}
+	public void setNm(String nm) {
+		this.nm = nm;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

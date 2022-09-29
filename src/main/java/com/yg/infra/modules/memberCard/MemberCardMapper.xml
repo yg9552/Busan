@@ -9,6 +9,7 @@
 
 	<sql id="selectCommon">
 		FROM memberCard a
+		left join member b on a.member_seq = b.seq
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
@@ -28,6 +29,8 @@
 			    ,a.card_defaultNy
 			    ,a.card
 			    ,a.DelNy
+			    ,b.nm
+			    ,b.id
 		    <include refid="selectCommon" />
 			ORDER BY a.seq DESC    
 			<include refid="Base.orderByLimitForMysql" />

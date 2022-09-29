@@ -11,6 +11,11 @@ public class MemberTel {
 	private Integer DelNy;
 	private String membername;
 	
+	//member
+	private String nm;
+	private String id;
+	
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -58,6 +63,18 @@ public class MemberTel {
 	}
 	public void setMembername(String membername) {
 		this.membername = membername;
+	}
+	public String getNm() {
+		return nm;
+	}
+	public void setNm(String nm) {
+		this.nm = nm;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

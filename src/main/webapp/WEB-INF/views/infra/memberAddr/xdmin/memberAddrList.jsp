@@ -100,8 +100,8 @@
 	                          <tr>
 	                            <th> # </th>
 	                            <th> 회원이름 </th>
-	                            <th> 우편번호 </th>
 	                            <th> 주소구분 </th>
+	                            <th> 우편번호 </th>
 	                            <th> 주소 </th>
 	                            <th> 상세주소 </th>
 	                            <th> 삭제여부 </th>
@@ -120,9 +120,9 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.member_seq }"/> </a></td>
+			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.nm }"/> </a></td>
+			                            <td> <c:out value="${list.div_addr }"/> </td>
 			                            <td> <c:out value="${list.zip }"/> </td>
-			                            <td> <c:out value="${list.addr_defaultNy }"/> </td>
 			                            <td> <c:out value="${list.addr }"/> </td>
 			                            <td> <c:out value="${list.addr_detail }"/> </td>
 			                            <td> <c:out value="${list.delNy }"/> </td>
