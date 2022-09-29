@@ -22,7 +22,8 @@
 		<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	<!-- userHeader e -->
 
-
+<form name="formList" method="post">
+<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 <div class="container mb-5">
 	<h3 class="mb-5 mt-4 text-center">마이페이지</h3>
 	<div class="row">
@@ -34,7 +35,7 @@
 			    <p class="card-text">입니다</p>
 			  </div>
 			  <ul class="list-group list-group-flush text-center">
-			    <li class="list-group-item"><a href="./memberModify.html">개인정보수정</a></li>
+			    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
 			    <li class="list-group-item"><a href="./mypageOrderedList.html">주문내역</a></li>
 			    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
 			  </ul>
@@ -47,7 +48,7 @@
 				<div class="col-3"><a href="#"><i class="fa-solid fa-cart-shopping fa-2x"></i><br>장바구니</a></div>
 				<div class="col-3"><a href="#"><i class="fa-solid fa-user-pen fa-2x"></i><br>내가작성한글</a></div>
 				<div class="col-3 p-4 fs-3">0건</div>
-				<div class="col-3 p-4 fs-3"><c:out value="${sessReserve }"/>원</div>
+				<div class="col-3 p-4 fs-3"><c:out value="${item.reserve }"/>원</div>
 				<div class="col-3 p-4 fs-3">0개</div>
 				<div class="col-3 p-4 fs-3">0개</div>
 			</div>
@@ -56,7 +57,7 @@
 	
 	
 </div>
-
+</form>
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
@@ -69,6 +70,23 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+</script>
+<script type="text/javascript">
+	var goUrlList = "/member/memberList"; 			/* #-> */
+  	var goUrlInst = "/member/memberInst"; 			/* #-> */
+  	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+  	var goUrlUele = "/member/memberUele";			/* #-> */
+  	var goUrlDele = "/member/memberDele";			/* #-> */
+  	var goUrlForm = "/member/memberForm";			/* #-> */
+  	var goUrlView = "/member/memberMod";			/* #-> */
+  	
+  	var seq = $("input:hidden[name=seq]");
+  	var form = $("form[name=formList]");
+  	
+  	goView = function(keyValue) {
+		seq.val(keyValue);
+		form.attr("action", goUrlView).submit();
+	}
 </script>
 </body>
 </html>

@@ -38,6 +38,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int update(Member dto) throws Exception {
 		// TODO Auto-generated method stub
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		return dao.update(dto);
 	}
 

@@ -53,6 +53,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberInst")
 	public String memberInst(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
 		
@@ -69,6 +70,13 @@ public class MemberController {
 		model.addAttribute("item", item);
 		
 		return "infra/member/xdmin/memberView";
+	}
+	@RequestMapping(value = "memberMod")
+	public String memberMod(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		return "infra/member/xdmin/memberMod";
 	}
 	
 	@RequestMapping(value = "memberUpdt")
@@ -102,7 +110,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberMyPage")
-	public String memberMyPage() throws Exception {
+	public String memberMyPage(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		return "infra/member/xdmin/memberMyPage";
 	}
 	
@@ -141,7 +151,6 @@ public class MemberController {
 				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
 				httpSession.setAttribute("sessName", rtMember2.getNm());
-				httpSession.setAttribute("sessReserve", rtMember2.getReserve());
 
 				returnMap.put("rt", "success");
 			} else {

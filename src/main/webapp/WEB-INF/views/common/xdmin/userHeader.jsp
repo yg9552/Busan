@@ -207,7 +207,7 @@
 				            </a>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-				            <a class="nav-link" href="/member/memberMyPage">
+				            <a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)">
 				            	<i class="fa-solid fa-user fa-3x"></i></i>
 				            </a>
 				          </li>
@@ -316,6 +316,7 @@
       		</c:otherwise>
       	</c:choose>
 <script>
+var goUrlMyPage = "/member/memberMyPage";
 var goUrlMain = "/";
 $("#btnLogout").on("click", function(){
 	$.ajax({
@@ -339,4 +340,9 @@ $("#btnLogout").on("click", function(){
 	});
 	
 });
+
+goMyPage = function(keyValue) {
+	seq.val(keyValue);
+	form.attr("action", goUrlMyPage).submit();
+}
 </script>

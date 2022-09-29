@@ -29,7 +29,7 @@
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
 	<div class="container">
-				<div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
+		<div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
 		  <div class="carousel-indicators">
 		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -37,13 +37,13 @@
 		  </div>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="../image/26650739290.png" class="d-block" alt="...">
+		      <img src="../../../../../resources/image/26650739290.png" class="d-block" alt="...">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="../image/26650739290.png" class="d-block" alt="...">
+		      <img src="../../../../../resources/image/26650739290.png" class="d-block" alt="...">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="../image/26650739290.png" class="d-block" alt="...">
+		      <img src="../../../../../resources/image/26650739290.png" class="d-block" alt="...">
 		    </div>
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -90,7 +90,7 @@
 				<div class="col-6 text-start">
 					<input class="form-control bg-white border-white" type="text" name="deliveryinfo" value="배송비 <c:out value="${item.deliverycost }"></c:out>원/<c:out value="${item.deliveryinfo }"></c:out>" disabled>
 				</div>
-				<%-- 
+				
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">원산지</h5>
 				</div>
@@ -99,7 +99,7 @@
 						<c:if test="${item.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
 					</c:forEach>
 				</div>
-				 --%>
+				
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">옵션</h5>
 				</div>
@@ -134,9 +134,7 @@
 		</div>
 	</div>
 </form>
-
-	<div class="container clearboth mt-5 mb-5" data-spy="scroll" data-target="#simple-list-example">
-		<div class="row simple-list-example-scrollspy text-center sticky-top mb-3" id="simple-list-example">
+		<div class="container row simple-list-example-scrollspy text-center sticky-top mb-3 mx-auto" id="simple-list-example">
 		  <div class="col-3 bg-light p-2">
 		      <a class="p-1 fs-4" href="#simple-list-item-1">상세정보</a>
 		  </div>
@@ -149,7 +147,9 @@
 		  <div class="col-3 bg-light p-2">
 		      <a class="p-1 fs-4" href="#simple-list-item-4">교환/반품정보</a>
 		  </div>
-		</div>  
+		</div>
+	
+	<div class="container mt-5 mb-5" data-spy="scroll" data-target="#simple-list-example">
 		  <div>
 		      <div id="simple-list-item-1"></div>
 		      <br>
@@ -184,14 +184,14 @@
 		      	<span><a href="#simple-list-item-3"><i class="fa-solid fa-circle-exclamation"></i> 상품정보 관련 문의사항은 Q&A에 남겨주세요</a></span>
 		      </div>
 		      <div class="text-center">
-			  	<img src="../image/prod_1.png" class="rounded" alt="...">
+			  	<img src="../../../../../resources/image/prod_1.png" class="rounded" alt="...">
 			  </div>
 			  <div class="text-center">
-			  	<img src="../image/prod_2.png" class="rounded" alt="...">
+			  	<img src="../../../../../resources/image/prod_2.png" class="rounded" alt="...">
 			  </div>
 		      <div class="text-center">
 		      	<h5>Size Info</h5>
-			  	<img src="../image/size.png" class="rounded" alt="...">
+			  	<img src="../../../../../resources/image/size.png" class="rounded" alt="...">
 			  </div>
 			  
 		    <div id="simple-list-item-2"></div>

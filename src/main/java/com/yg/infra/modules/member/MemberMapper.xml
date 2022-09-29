@@ -134,7 +134,6 @@
 			,gender_code = #{gender_code }
 			,email_code = #{email_code }
 			,dob = #{dob }
-			,reserve = #{reserve }
 			,memberRegDate = #{memberRegDate }
 		WHERE
 			seq = #{seq }

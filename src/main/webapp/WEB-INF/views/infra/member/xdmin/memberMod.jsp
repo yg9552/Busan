@@ -1,0 +1,219 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Modify</title>
+	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
+</head>
+<body>
+      <!-- userHeader s -->
+			<%@include file="../../../common/xdmin/userHeader.jsp"%>
+	  <!-- userHeader e -->
+
+<div class="container mb-5">
+	<h3 class="mb-5 mt-4 text-center">마이페이지</h3>
+	<div class="row">
+		<div class="col-3">
+			<div class="card">
+			  <div class="card-body p-4 text-center">
+			    <h5 class="card-title"><c:out value="${sessName }"/>회원님은</h5>
+			    <h5 class="card-title text-danger">VIP</h5>
+			    <p class="card-text">입니다</p>
+			  </div>
+			  <ul class="list-group list-group-flush text-center">
+			    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
+			    <li class="list-group-item"><a href="./mypageOrderedList.html">주문내역</a></li>
+			    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
+			  </ul>
+			</div>
+		</div>
+		<div class="col-9">
+			<h5 class="mb-3 text-center">개인정보수정</h5>
+			<form name="viewform" id="viewform" method="post" autocomplete="off">
+			<!-- *Vo.jsp s -->
+			<%@include file="memberVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
+				<div class="w-50 mx-auto">
+				  <div class="row g-3 mb-3">
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="text" readonly class="form-control" id="nm" name="nm" value="<c:out value="${item.nm }"></c:out>">
+			  				<label for="nm">이름</label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>" maxlength="20">
+			  				<label for="id">아이디</label>
+			  				<div class="valid-feedback" id="idFeedback"></div>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
+			  				<label for="password">비밀번호변경</label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="password" class="form-control" id="floatingInputpassre" placeholder="비밀번호">
+			  				<label for="floatingInputpassre">비밀번호확인</label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+				  			<input type="date" class="form-control" id="dob" name="dob" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${item.dob}"/>">
+			  				<label for="dob">생년월일</label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+					    <div class="form-floating">
+					      <select class="form-select" id="gender_code" name="gender_code">
+					        <option selected>선택</option>
+					        <option value="201" <c:if test="${item.gender_code eq 201}">selected</c:if>> 남성 </option>
+		                    <option value="202" <c:if test="${item.gender_code eq 202}">selected</c:if>> 여성 </option>
+		                    <option value="203" <c:if test="${item.gender_code eq 203}">selected</c:if>> 기타 </option>
+					      </select>
+					      <label for="gender_code">성별</label>
+					    </div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="text" class="form-control" id="floatingInputtel" placeholder="연락처" value="숫자만 입력하세요" required="required">
+			  				<label for="floatingInputtel">연락처 <i class="fa-solid fa-mobile-button"></i></label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="text" class="form-control" id="floatingInputtel2" placeholder="연락처" value="숫자만 입력하세요">
+			  				<label for="floatingInputtel2">연락처 <i class="fa-solid fa-phone-flip"></i></label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="email" class="form-control" id="email" name="email" value="<c:out value="${item.email }"></c:out>">
+			  				<label for="email">이메일</label>
+						</div>
+				  	</div>
+				  	<div class="col-7">
+				  		<div class="form-floating">
+			  				<input type="text" class="form-control" id="floatingInputzip" placeholder="zip">
+			  				<label for="floatingInputzip">우편번호</label>
+						</div>
+				  	</div>
+				  	<div class="col-5">
+			    		<button type="button" class="btn btn-info btn-lg my-1">주소찾기</button>
+			  		</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="text" class="form-control" id="floatingInputaddr" placeholder="주소">
+			  				<label for="floatingInputaddr">주소</label>
+						</div>
+				  	</div>
+				  	<div class="col-12">
+				  		<div class="form-floating">
+			  				<input type="text" class="form-control" id="floatingInputaddrdetail" placeholder="상세주소">
+			  				<label for="floatingInputaddrdetail">상세주소</label>
+						</div>
+				  	</div>
+				  </div>
+		  <div class="row text-center">
+    		<div class="col">
+      			<button type="button" class="btn btn-warning" id="btnSave">수정</button>
+      			<button type="reset" class="btn btn-danger">초기화</button>
+      			<button type="button" class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
+    			<button type="button" class="btn btn-danger mr-2" id="btnDelete">회원탈퇴<i class="fa-solid fa-trash-can"></i></button>
+    		</div>
+  		</div>
+		</div>
+			</form>
+			<form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="memberVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
+			</form>
+		</div>
+	</div>
+	
+	
+</div>
+
+      <!-- userFooter s -->
+			<%@include file="../../../common/xdmin/userFooter.jsp"%>
+	  <!-- userFooter e -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script type="text/javascript">
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+</script>
+<script type="text/javascript">
+	var goUrlList = "/member/memberList"; 			/* #-> */
+	var goUrlInst = "/member/memberInst"; 			/* #-> */
+	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+	var goUrlUele = "/member/memberUele";			/* #-> */
+	var goUrlDele = "/member/memberDele";			/* #-> */
+	var goUrlForm = "/member/memberForm";			/* #-> */
+	var goUrlView = "/member/memberMod";			/* #-> */
+	
+	var seq = $("input:hidden[name=seq]");
+	
+	var form = $("form[name=viewform]");
+  	var formVo = $("form[name=formVo]");
+	
+	$("#btnSave").on("click", function(){
+  		if (seq.val() == "0" || seq.val() == ""){
+  			
+  			form.attr("action", goUrlInst).submit();
+  	   		// insert
+  	   		/* if (validationInst() == false) return false; */
+  	   		
+  	   	} else {
+  	   		
+  	   		form.attr("action", goUrlUpdt).submit();
+  	   		// update
+  	   		/* keyName.val(atob(keyName.val())); */
+  	   		/* if (validationUpdt() == false) return false; */
+  	   		
+  	   	}
+  	});
+	goView = function(keyValue) {
+		seq.val(keyValue);
+		form.attr("action", goUrlView).submit();
+	}
+	
+	$("#btnUelete").on("click", function(){
+  		if(!confirm("삭제 하시겠습니까?")){
+			return false;
+		}else{
+			form.attr("action", goUrlUele).submit();
+		}
+  	});
+  	
+  	
+  	$("#btnDelete").on("click", function(){
+  		if(!confirm("삭제 하시겠습니까?")){
+			return false;
+		}else{
+			form.attr("action", goUrlDele).submit();
+		}
+  	});
+</script>
+</body>
+</html>
