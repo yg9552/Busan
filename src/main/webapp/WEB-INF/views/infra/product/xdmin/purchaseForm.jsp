@@ -21,10 +21,11 @@
 	  <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-	  <form>
+<form>
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
+
 <div class="container mb-5">
 	<h3>주문결제</h3>
 	<div class="row text-center mb-4 border">
