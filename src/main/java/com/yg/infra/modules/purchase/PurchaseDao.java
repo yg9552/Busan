@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public class PurchaseDao {
 	
 	@Inject
-	@Resource(name = "SqlSession")
+	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.yg.infra.modules.purchase.PurchaseMapper";
@@ -23,6 +23,10 @@ public class PurchaseDao {
 	
 	public Purchase selectOne(PurchaseVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
+	
+	public int selectOneCount(PurchaseVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 
 }
