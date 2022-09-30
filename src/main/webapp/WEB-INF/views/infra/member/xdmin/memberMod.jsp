@@ -12,9 +12,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Modify</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
@@ -74,8 +76,8 @@
 				  	</div>
 				  	<div class="col-12">
 				  		<div class="form-floating">
-				  			<input type="date" class="form-control" id="dob" name="dob" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${item.dob}"/>">
-			  				<label for="dob">생년월일</label>
+				  			<input type="text" class="form-control" id="datepicker" name="dob" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${item.dob}"/>">
+			  				<label for="datepicker">생년월일</label>
 						</div>
 				  	</div>
 				  	<div class="col-12">
@@ -214,6 +216,35 @@ myModal.addEventListener('shown.bs.modal', () => {
 			form.attr("action", goUrlDele).submit();
 		}
   	});
+</script>
+
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<!-- datepicker -->
+<script>
+  $(function() {
+      //input을 datepicker로 선언
+      $("#datepicker").datepicker({
+          dateFormat: 'yy-mm-dd' //달력 날짜 형태
+          ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+          ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+          ,changeYear: true //option값 년 선택 가능
+          ,changeMonth: true //option값  월 선택 가능                
+          ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+          ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+          ,buttonText: "선택" //버튼 호버 텍스트              
+          ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+          ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+          ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+          ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+          ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+          ,minDate: "-100Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+          ,maxDate: "+100y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
+          ,yearRange: 'c-50:c+50'
+      });                    
+      
+      //초기값을 오늘 날짜로 설정해줘야 합니다.
+      //$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+  });
 </script>
 </body>
 </html>

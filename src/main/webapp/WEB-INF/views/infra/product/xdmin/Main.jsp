@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -12,22 +12,22 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MAIN</title>
-	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+  	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
+
 </head>
 <body>
       <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-	  
 	  <div class="d-none">
 	  	sessSeq: <c:out value="${sessSeq }"/><br>
 		sessName: <c:out value="${sessName }"/><br>
 		sessId: <c:out value="${sessId }"/><br>
 	  </div>
-
 <div class="container mb-5">
 	<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 	  <div class="carousel-inner" style="width: 1296px; height: 600px;">
@@ -64,20 +64,20 @@
 	    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
 	  					</div>
 					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item"> 가격 : <c:out value="${list.price }"/>원 </li>
-						    <li class="list-group-item text-danger"> 할인가: <c:out value="${list.discountprice }"/>원</li>
+						    <li class="list-group-item"> 가격 : <fmt:formatNumber value="${list.price}" pattern="#,###"/>원</li>
+						    <li class="list-group-item text-danger"> 할인가: <fmt:formatNumber value="${list.discountprice}" pattern="#,###"/>원</li>
 						    <li class="list-group-item"> 배송정보 : 
 						    <c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
 								<c:if test="${list.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
 							</c:forEach>
 						    </li>
-   						    <li class="list-group-item"> 배송비 : <c:out value="${list.deliverycost }"/>원 </li>
+   						    <li class="list-group-item"> 배송비 : <fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원 </li>
 						    <li class="list-group-item"> 원산지 :
 						    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
 									<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
 								</c:forEach>
 						    </li>
-						    <li class="list-group-item"> 적립금 : <c:out value="${list.reserve }"/>원 </li>
+						    <li class="list-group-item"> 적립금 : <fmt:formatNumber value="${list.reserve}" pattern="#,###"/>원 </li>
 
 					  	</ul>
 					</div>
@@ -151,13 +151,29 @@
 		</div>
 		</form>
 </div>
-
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script>
+	$( function() {
+		$( "#dateStart" ).datepicker({
+	    	changeYear: true, 
+	    	dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+	    	yearRange:"1900:2023",
+	    	monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+			dateFormat: "yy.mm.dd"
+		});
+		$( "#dateEnd").datepicker({
+			changeYear: true, 
+	    	dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+	    	yearRange:"1900:2023",
+	    	monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+			dateFormat: "yy.mm.dd"
+		});
+	} );
+</script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -73,14 +73,22 @@
 				</div>
 				<div class="col-6">
 					<h5 class="">
-						<input class="form-control bg-white border-white" type="text" name="price" value="<c:out value="${item.price }"></c:out>원" disabled>
+						<input class="form-control bg-white border-white" type="text" name="price" value="<fmt:formatNumber value="${item.price}" pattern="#,###"/>원" disabled>
+					</h5>
+				</div>
+				<div class="col-6 mb-3">
+					<h5 class="mt-2">할인가격</h5>
+				</div>
+				<div class="col-6">
+					<h5 class="">
+						<input class="form-control bg-white border-white" type="text" name="price" value="<fmt:formatNumber value="${item.discountprice}" pattern="#,###"/>원" disabled>
 					</h5>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">적립금</h5>
 				</div>
 				<div class="col-6 text-start">
-					<input class="form-control bg-white border-white" type="text" name="reward" value="<c:out value="${item.reserve }"></c:out>원" disabled>
+					<input class="form-control bg-white border-white" type="text" name="reward" value="<fmt:formatNumber value="${item.reserve}" pattern="#,###"/>원" disabled>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">무이자할부</h5>
@@ -93,7 +101,7 @@
 				</div>
 				<div class="col-6 text-start">
 					
-					<input class="form-control bg-white border-white" type="text" name="deliverycost" value="<c:out value="${item.deliverycost }"></c:out>원" disabled>
+					<input class="form-control bg-white border-white" type="text" name="deliverycost" value="<fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원" disabled>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">배송정보</h5>
