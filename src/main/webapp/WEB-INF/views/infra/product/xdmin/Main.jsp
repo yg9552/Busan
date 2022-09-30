@@ -21,9 +21,7 @@
       <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-	<!-- *Vo.jsp s -->
-	<%@include file="../../member/xdmin/memberVo.jsp"%>		<!-- #-> -->
-	<!-- *Vo.jsp e -->
+	  
 	  <div class="d-none">
 	  	sessSeq: <c:out value="${sessSeq }"/><br>
 		sessName: <c:out value="${sessName }"/><br>

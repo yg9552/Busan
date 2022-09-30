@@ -29,6 +29,7 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/member/memberLogin" />
+			<exclude-mapping path="/member/memberReg" />
 			<exclude-mapping path="/member/xdminLogin" />
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/member/findIdPwdForm" />

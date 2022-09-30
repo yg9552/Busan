@@ -30,13 +30,13 @@
 		<div class="col-3">
 			<div class="card">
 			  <div class="card-body p-4 text-center">
-			    <h5 class="card-title"><c:out value="${sessName }"/>회원님은</h5>
+			    <h5 class="card-title"><c:out value="${sessName }"/>님은</h5>
 			    <h5 class="card-title text-danger">VIP</h5>
 			    <p class="card-text">입니다</p>
 			  </div>
 			  <ul class="list-group list-group-flush text-center">
 			    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
-			    <li class="list-group-item"><a href="./mypageOrderedList.html">주문내역</a></li>
+			    <li class="list-group-item"><a href="/product/purchaseList?member_seq=<c:out value="${sessSeq }"/>">주문내역</a></li>
 			    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
 			  </ul>
 			</div>
