@@ -91,7 +91,7 @@ $("#btnLogin").on("click", function(){
 			if(response.rt == "success") {
 				location.href = goUrlMain;
 			} else {
-				alert("회원없음");
+				alert("아이디와 비밀번호를 확인하세요");
 			}
 		}
 		,error : function(jqXHR, textStatus, errorThrown){

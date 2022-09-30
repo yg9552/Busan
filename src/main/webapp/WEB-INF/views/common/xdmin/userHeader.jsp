@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       	<c:choose>
       		<c:when test="${sessSeq eq null}">
 				<nav class="navbar navbar-expand-lg mb-4">
@@ -207,7 +208,8 @@
 				            </a>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-				            <a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)">
+				            <a class="nav-link" href="/member/memberMyPage?seq=<c:out value="${sessSeq }"/>">
+				            <%-- <a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)"> --%>
 				            	<i class="fa-solid fa-user fa-3x"></i></i>
 				            </a>
 				          </li>
@@ -318,6 +320,7 @@
 <script>
 var goUrlMyPage = "/member/memberMyPage";
 var goUrlMain = "/";
+
 $("#btnLogout").on("click", function(){
 	$.ajax({
 		async: true 

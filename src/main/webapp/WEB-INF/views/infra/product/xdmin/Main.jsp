@@ -21,6 +21,9 @@
       <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
+	<!-- *Vo.jsp s -->
+	<%@include file="../../member/xdmin/memberVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	  <div class="d-none">
 	  	sessSeq: <c:out value="${sessSeq }"/><br>
 		sessName: <c:out value="${sessName }"/><br>
@@ -44,6 +47,7 @@
 </div>
 
 <c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
+<c:set var="listCodeDeliInfo" value="${CodeServiceImpl.selectListCachedCode('10')}"/>
 <div class="container text-center">
 	<h3 class="mb-4">BEST상품</h3>
 	<form name="MainList" id="MainList" autocomplete="off" method="post">
@@ -63,14 +67,20 @@
 	  					</div>
 					  	<ul class="list-group list-group-flush">
 						    <li class="list-group-item"> 가격 : <c:out value="${list.price }"/>원 </li>
-						    <li class="list-group-item text-danger"> 할인가: 80,000</li>
-						    <li class="list-group-item"> 배송정보 : <c:out value="${list.deliveryinfo }"/> </li>
+						    <li class="list-group-item text-danger"> 할인가: <c:out value="${list.discountprice }"/>원</li>
+						    <li class="list-group-item"> 배송정보 : 
+						    <c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
+								<c:if test="${list.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
+							</c:forEach>
+						    </li>
+   						    <li class="list-group-item"> 배송비 : <c:out value="${list.deliverycost }"/>원 </li>
 						    <li class="list-group-item"> 원산지 :
 						    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
 									<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
 								</c:forEach>
 						    </li>
 						    <li class="list-group-item"> 적립금 : <c:out value="${list.reserve }"/>원 </li>
+
 					  	</ul>
 					</div>
 				</a>

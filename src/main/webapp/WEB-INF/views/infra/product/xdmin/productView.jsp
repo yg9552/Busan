@@ -14,12 +14,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><c:out value="${item.product_name }"></c:out></title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
-
 <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 <!-- userHeader e -->
@@ -28,6 +27,9 @@
 <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
+<!-- *Vo.jsp s -->
+<%@include file="../../member/xdmin/memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
 	<div class="container">
 		<div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
@@ -59,6 +61,7 @@
 		
 		<c:set var="listCodebrandMFC" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
 	  	<c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
+	  	<c:set var="listCodeDeliInfo" value="${CodeServiceImpl.selectListCachedCode('10')}"/>
 		
 		<div class="text-center">
 			<div class="row">
@@ -86,10 +89,19 @@
 					<input class="form-control bg-white border-white" type="text" name="reward" value="10개월" disabled>
 				</div>
 				<div class="col-6 mb-3">
-					<h5 class="mt-2">배송정보</h5>
+					<h5 class="mt-2">배송비</h5>
 				</div>
 				<div class="col-6 text-start">
-					<input class="form-control bg-white border-white" type="text" name="deliveryinfo" value="배송비 <c:out value="${item.deliverycost }"></c:out>원/<c:out value="${item.deliveryinfo }"></c:out>" disabled>
+					
+					<input class="form-control bg-white border-white" type="text" name="deliverycost" value="<c:out value="${item.deliverycost }"></c:out>원" disabled>
+				</div>
+				<div class="col-6 mb-3">
+					<h5 class="mt-2">배송정보</h5>
+				</div>
+				<div class="col-6 text-start my-2">
+					<c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
+						<c:if test="${item.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
+					</c:forEach>
 				</div>
 				
 				<div class="col-6 mb-3">
@@ -345,7 +357,6 @@
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')

@@ -37,6 +37,8 @@
 			    ,a.manufacturer_code
 			    ,a.brand_code
 			    ,a.DelNy
+			    ,(select a.deliverycost + a.price*(1 - a.discount_percent/100)) as totalprice
+			    ,(select a.price*(1 - a.discount_percent/100)) as discountprice
 			<include refid="selectCommon" />
 			ORDER BY a.seq DESC
 			<include refid="Base.orderByLimitForMysql" />
@@ -64,6 +66,7 @@
 		    ,a.manufacturer_code
 		    ,a.brand_code
 		    ,a.DelNy
+		    ,(select a.deliverycost + price*(1 - discount_percent/100)) as totalprice
 		FROM product a
 		WHERE 1=1
 		AND a.seq = #{seq}

@@ -17,7 +17,7 @@ public class MainController {
 	@RequestMapping(value = "/")
 	public String main(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		
-//		vo.setParamsPaging(service.selectOneCount(vo));
+		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);

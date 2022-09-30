@@ -16,6 +16,10 @@ public class Product {
 	private Integer manufacturer_code;
 	private Integer origin_code;
 	private Integer DelNy;
+	private int totalprice;
+	private int discountprice;
+	
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -99,6 +103,18 @@ public class Product {
 	}
 	public void setDelNy(Integer delNy) {
 		DelNy = delNy;
+	}
+	public int getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(int totalprice) {
+		this.totalprice = totalprice;
+	}
+	public int getDiscountprice() {
+		return discountprice;
+	}
+	public void setDiscountprice(int discountprice) {
+		this.discountprice = discountprice;
 	}
 	
 	

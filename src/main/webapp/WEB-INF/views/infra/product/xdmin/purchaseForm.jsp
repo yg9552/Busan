@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>구매</title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
@@ -27,23 +27,32 @@
 <!-- *Vo.jsp e -->
 
 <div class="container mb-5">
+
 	<h3>주문결제</h3>
 	<div class="row text-center mb-4 border">
-		<div class="col-6 border p-2">상품명/옵션</div>
+		<div class="col-5 border p-2">상품명/옵션</div>
 		<div class="col-1 border p-2">수량</div>
-		<div class="col-1 border p-2">상품금액</div>
-		<div class="col-1 border p-2">할인금액</div>
+		<div class="col-2 border p-2">상품금액</div>
+		<div class="col-1 border p-2">할인율</div>
 		<div class="col-1 border p-2">배송비</div>
 		<div class="col-2 border p-2">총합계</div>
-		<div class="col-6 p-2">
+		<div class="col-5 p-2">
 			<img alt="..." src="../image/26650739290.20220517095259.png" style="width: 100px; height: 100px">
 			<span><c:out value="${item.product_name }"></c:out></span>
 		</div>
-		<div class="col-1 p-3 my-auto">1</div>
-		<div class="col-1 p-3 my-auto"><c:out value="${item.price }"></c:out>원</div>
-		<div class="col-1 my-auto p-3">0원</div>
-		<div class="col-1 my-auto p-3">3000원</div>
-		<div class="col-2 my-auto p-3">503,000</div>
+		<div class="col-1 p-3 my-auto">
+			<input class="form-control text-center border border-white" type="number" value="1">
+		</div>
+		<div class="col-2 p-3 my-auto">
+			<input class="form-control text-center border border-white" type="text" value="<c:out value="${item.price }"></c:out>원">
+		</div>
+		<div class="col-1 my-auto p-3">
+			<input class="form-control text-center border border-white" type="text" value="<c:out value="${item.discount_percent }"></c:out>%">
+		</div>
+		<div class="col-1 my-auto p-3">
+			<input class="form-control text-center border border-white" type="text" value="<c:out value="${item.deliverycost }"></c:out>원">
+		</div>
+		<div class="col-2 my-auto p-3"><c:out value="${item.totalprice }"></c:out></div>
 	</div>
 	<div class="row">
 		<div class="col border">
@@ -51,7 +60,7 @@
 			<div class="row">
 				<div class="col-4 mb-3">수령인</div>
 				<div class="col-6">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="홍길동">
+					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:out value="${sessName }"></c:out>">
 				</div>
 				<div class="col-4 mb-3">연락처</div>
 				<div class="col-6">
@@ -141,11 +150,11 @@
 				      <div class="accordion-body">
 				        <div class="row g-1">
 				        	<div class="col-6">총금액</div>
-				        	<div class="col-6">503,000원</div>
-				        	<div class="col-6">할인금액</div>
-				        	<div class="col-6">0원</div>
+				        	<div class="col-6"><c:out value="${item.totalprice }"></c:out></div>
+				        	<div class="col-6">할인율</div>
+				        	<div class="col-6"><c:out value="${item.discount_percent }"></c:out>%</div>
 				        	<div class="col-6">배송비</div>
-				        	<div class="col-6">3,000원</div>
+				        	<div class="col-6"><c:out value="${item.deliverycost }"></c:out>원</div>
 				        </div>
 				      </div>
 				    </div>
