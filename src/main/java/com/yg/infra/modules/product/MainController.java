@@ -21,6 +21,7 @@ public class MainController {
 		
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		
 		return "infra/product/xdmin/Main";
 	}
 	
