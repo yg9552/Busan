@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yg.infra.modules.member.Member;
+import com.yg.infra.modules.member.MemberServiceImpl;
+import com.yg.infra.modules.member.MemberVo;
+
 @Controller
 @RequestMapping(value = "/product/")
 public class ProductController {
 
 	@Autowired
 	ProductServiceImpl service;
+	
+	@Autowired
+	MemberServiceImpl servicem;
 	
 	@RequestMapping(value = "productList")
 	public String productList(Model model,@ModelAttribute("vo") ProductVo vo) throws Exception {
@@ -45,9 +52,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "purchaseForm")
-	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo, MemberVo dto) throws Exception {
 		Product result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		Member item2 = servicem.selectOne(dto);
+		model.addAttribute("item2", item2);
 		return "infra/product/xdmin/purchaseForm";
 	}
 	
