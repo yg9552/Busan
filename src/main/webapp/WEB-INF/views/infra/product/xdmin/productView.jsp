@@ -371,10 +371,17 @@ myModal.addEventListener('shown.bs.modal', () => {
 })
 </script>
 <script type="text/javascript">
+alert(${sessSeq});
+
+alert("aaa");
+
+</script>
+<script type="text/javascript">
 
 	var goUrlPurchaseForm = "/product/purchaseForm";
 	
 	var seq = $("input:hidden[name=productSeq]");
+	//var memberseq = $("input:hidden[name=memberSeq]");
 	var form = $("form[name=viewForm]");
 	
 	goPurchase = function(keyValue) {

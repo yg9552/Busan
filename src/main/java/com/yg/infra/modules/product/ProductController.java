@@ -2,6 +2,7 @@ package com.yg.infra.modules.product;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,10 +53,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "purchaseForm")
-	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo, MemberVo dto) throws Exception {
+	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo, @ModelAttribute("dto") MemberVo dto) throws Exception {
 		Product result = service.selectOne(vo);
 		model.addAttribute("item", result);
-		Member item2 = servicem.selectOne(dto);
+		System.out.println("sdsd1s : " + vo.getMemberSeq());
+		System.out.println("sdsds : " + dto.getMemberSeq());
+        Member item2 = servicem.selectOne(dto);
 		model.addAttribute("item2", item2);
 		return "infra/product/xdmin/purchaseForm";
 	}

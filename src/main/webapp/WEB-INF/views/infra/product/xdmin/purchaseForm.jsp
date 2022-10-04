@@ -65,8 +65,9 @@
 				<div class="col-6">
 					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:out value="${sessName }"></c:out>">
 					<c:if test="${sessSeq eq item2.memberSeq}">
-						<c:out value="${item2.memberSeq }"></c:out>
+						<c:out value="${item2.nm }"></c:out>
 					</c:if>
+					<c:out value="${item2.gender_code }"></c:out>
 				</div>
 				<div class="col-4 mb-3">연락처</div>
 				<div class="col-6">
