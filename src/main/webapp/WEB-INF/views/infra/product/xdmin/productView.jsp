@@ -15,7 +15,7 @@
 	<title><c:out value="${item.product_name }"></c:out></title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
@@ -24,7 +24,6 @@
 <!-- userHeader e -->
 
 <form name="viewForm" method="post" autocomplete="off" id="viewForm">
-<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
@@ -100,8 +99,7 @@
 					<h5 class="mt-2">배송비</h5>
 				</div>
 				<div class="col-6 text-start">
-					
-					<input class="form-control bg-white border-white" type="text" name="deliverycost" value="<fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원" disabled>
+					<input class="form-control bg-white border-white" type="text" name="deliverycost" value="<fmt:formatNumber value="${item.deliverycost}" pattern="#,###"/>원" disabled>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">배송정보</h5>
@@ -111,7 +109,6 @@
 						<c:if test="${item.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
 					</c:forEach>
 				</div>
-				
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">원산지</h5>
 				</div>
@@ -149,7 +146,7 @@
 				  <button class="btn btn-lg btn-outline-primary" type="button">장바구니</button>
 				</div>
 				<div class="d-grid gap-2 col-6 mx-auto">
-				  <a class="btn btn-lg btn-primary" href="/product/purchaseForm?seq=<c:out value="${item.seq }"/>">주문하기</a> <%-- "javascript:goPurchase(<c:out value="${item.seq }"/>)" --%>
+				  <a class="btn btn-lg btn-primary" href="javascript:goPurchase(<c:out value="${item.productSeq }"/>)">주문하기</a>
 				</div>
 			</div>
 		</div>
@@ -180,7 +177,7 @@
 		      <div class="">
 		      	<div class="row">
 		      		<div class="col-2 bg-light p-2">상품번호</div>
-		      		<div class="col-4 p-2"><c:out value="${item.seq }"></c:out></div>
+		      		<div class="col-4 p-2"><c:out value="${item.productSeq }"></c:out></div>
 		      		<div class="col-2 bg-light p-2">상품상태</div>
 		      		<div class="col-4 p-2">신상품</div>
 		      		<div class="col-2 bg-light p-2">제조사</div>
@@ -377,13 +374,14 @@ myModal.addEventListener('shown.bs.modal', () => {
 
 	var goUrlPurchaseForm = "/product/purchaseForm";
 	
-	var seq = $("input:hidden[name=seq]");
-	var form = $("form[name=viewform]");
+	var seq = $("input:hidden[name=productSeq]");
+	var form = $("form[name=viewForm]");
 	
 	goPurchase = function(keyValue) {
 		seq.val(keyValue);
 		form.attr("action", goUrlPurchaseForm).submit();
 	}
+	
 </script>
 </body>
 </html>

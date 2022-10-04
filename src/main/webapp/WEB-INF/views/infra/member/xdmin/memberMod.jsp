@@ -63,10 +63,30 @@
 						</div>
 				  	</div>
 				  	<div class="col-12">
-				  		<div class="form-floating">
-			  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
-			  				<label for="password">비밀번호변경</label>
+						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#pwchange">
+						  비밀번호변경
+						</button>
+						<div class="modal fade" id="pwchange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h1 class="modal-title fs-5" id="staticBackdropLabel">비밀번호변경</h1>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body">
+						        <div class="form-floating">
+					  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
+					  				<label for="password">비밀번호변경</label>
+								</div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+						        <button type="button" class="btn btn-success">변경하기</button>
+						      </div>
+						    </div>
+						  </div>
 						</div>
+				  		
 				  	</div>
 				  	<div class="col-12">
 				  		<div class="form-floating">
@@ -174,7 +194,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 	var goUrlForm = "/member/memberForm";			/* #-> */
 	var goUrlView = "/member/memberMod";			/* #-> */
 	
-	var seq = $("input:hidden[name=seq]");
+	var seq = $("input:hidden[name=memberSeq]");
 	
 	var form = $("form[name=viewform]");
   	var formVo = $("form[name=formVo]");

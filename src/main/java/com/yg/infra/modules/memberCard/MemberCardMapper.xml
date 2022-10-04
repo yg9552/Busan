@@ -9,11 +9,11 @@
 
 	<sql id="selectCommon">
 		FROM memberCard a
-		left join member b on a.member_seq = b.seq
+		left join member b on a.member_seq = b.memberSeq
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND mcSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND card LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND member_seq LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
@@ -23,7 +23,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT 
-				a.seq
+				a.mcSeq
 			    ,a.member_seq
 			    ,a.div_memberCard
 			    ,a.card_defaultNy
@@ -32,7 +32,7 @@
 			    ,b.nm
 			    ,b.id
 		    <include refid="selectCommon" />
-			ORDER BY a.seq DESC    
+			ORDER BY a.mcSeq DESC    
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />	
 	</select>
@@ -44,7 +44,7 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT 
-			a.seq
+			a.mcSeq
 		    ,a.member_seq
 		    ,a.div_memberCard
 		    ,a.card_defaultNy
@@ -52,27 +52,25 @@
 		    ,a.DelNy
 		FROM memberCard a
 		WHERE 1=1
-		AND seq = #{seq}
+		AND mcSeq = #{mcSeq}
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO memberCard(
-			seq
-			,member_seq
+			member_seq
 			,div_memberCard
 			,card_defaultNy
 			,card
 			,DelNy
 			)
 		VALUES(
-			#{seq }
-			,#{member_seq }
+			#{member_seq }
 			,#{div_memberCard }
 			,#{card_defaultNy }
 			,#{card }
 			,#{DelNy }
 			)
-			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			<selectKey resultType="String" keyProperty="mcSeq" order="AFTER">
 			SELECT last_insert_id()
 			</selectKey>
 	</insert>
@@ -80,23 +78,22 @@
 	<update id="update">
 		UPDATE memberCard
 		SET
-		seq = #{seq }
-		,member_seq = #{member_seq }
+		member_seq = #{member_seq }
 		,div_memberCard = #{div_memberCard }
 		,card_defaultNy = #{card_defaultNy }
 		,card = #{card }
-		WHERE seq = #{seq}>
+		WHERE mcSeq = #{mcSeq}>
 	</update>
 	
 	<update id="uelete">
 		UPDATE memberCard
 		SET
 			DelNy = 1
-		WHERE seq = #{seq}
+		WHERE mcSeq = #{mcSeq}
 	</update>
 	
 	<delete id="delete">
 		DELETE FROM memberCard
-		WHERE seq = #{seq}
+		WHERE mcSeq = #{mcSeq}
 	</delete>
 </mapper>

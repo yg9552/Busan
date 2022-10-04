@@ -27,7 +27,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-			a.seq
+			a.memberSeq
 			,a.nm
 			,a.id
 			,a.password
@@ -38,9 +38,9 @@
 			,a.email_code
 			,a.gender_code
 			,a.memberRegDate
-			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.member_seq) as phonenum
 			<include refid="selectCommon"></include>
-			ORDER BY a.seq DESC
+			ORDER BY a.memberSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
@@ -59,7 +59,7 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.seq
+			a.memberSeq
 			,a.nm
 			,a.id
 			,a.password
@@ -70,15 +70,15 @@
 			,a.reserve
 			,a.DelNy
 			,a.memberRegDate
-			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.seq = aa.member_seq) as phonenum
+			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.member_seq) as phonenum
 		FROM member a
 		WHERE 1=1
-		AND a.seq = #{seq}
+		AND a.memberSeq = #{memberSeq}
 	</select>
 	
 	<select id="selectOneId" resultMap="resultMapObj">
 		SELECT
-			a.seq
+			a.memberSeq
 			,a.id
 		FROM member a
 		WHERE 1=1
@@ -87,7 +87,7 @@
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
-			a.seq
+			a.memberSeq
 			,a.id
 			,a.nm
 		FROM member a
@@ -119,7 +119,7 @@
 			,0
 			,#{memberRegDate }
 			)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -136,23 +136,23 @@
 			,dob = #{dob }
 			,memberRegDate = #{memberRegDate }
 		WHERE
-			seq = #{seq }
+			memberSeq = #{memberSeq }
 	</update>
 	
 	<update id="uelete">
 		UPDATE member
 		SET
 			DelNy = 1
-		WHERE seq = #{seq }
+		WHERE memberSeq = #{memberSeq }
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM member WHERE seq = #{seq }
+		DELETE FROM member WHERE memberSeq = #{memberSeq }
 	</delete>
 	
 	<select id="selectListCachedMemberArrayList" resultMap="resultMapObj">
 		SELECT 
-			seq
+			memberSeq
 			,nm
 			,email
 			,reserve

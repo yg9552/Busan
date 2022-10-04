@@ -29,4 +29,10 @@ public class PurchaseServiceImpl implements PurchaseService{
 		return dao.selectOneCount(vo);
 	}
 
+	@Override
+	public int insert(Purchase dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insert(dto);
+	}
+
 }

@@ -2,7 +2,7 @@ package com.yg.infra.modules.memberTel;
 
 public class MemberTel {
 	
-	private String seq;
+	private String mtSeq;
 	private String member_seq;
 	private Integer div_tel;
 	private Integer tel_defaultNy;
@@ -16,11 +16,12 @@ public class MemberTel {
 	private String id;
 	
 	
-	public String getSeq() {
-		return seq;
+	
+	public String getMtSeq() {
+		return mtSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setMtSeq(String mtSeq) {
+		this.mtSeq = mtSeq;
 	}
 	public String getMember_seq() {
 		return member_seq;

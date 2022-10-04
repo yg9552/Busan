@@ -77,7 +77,7 @@ public class ProductController {
 		int result = service.insert(dto);
 		System.out.println(result);
 		
-		vo.setSeq(dto.getSeq());
+		vo.setProductSeq(dto.getProductSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		

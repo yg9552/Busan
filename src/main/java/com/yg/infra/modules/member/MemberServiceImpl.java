@@ -92,7 +92,7 @@ public class MemberServiceImpl implements MemberService{
 	public static List<Member> selectListCachedMember(String seq) throws Exception {
 		List<Member> rt = new ArrayList<Member>();
 		for(Member memberRow : Member.cachedMemberArrayList) {
-			if (memberRow.getSeq().equals(seq)) {
+			if (memberRow.getMemberSeq().equals(seq)) {
 				rt.add(memberRow);
 			} else {
 				// by pass
@@ -104,7 +104,7 @@ public class MemberServiceImpl implements MemberService{
 	public static String selectOneCachedMember(int member) throws Exception {
 		String rt = "";
 		for(Member memberRow : Member.cachedMemberArrayList) {
-			if (memberRow.getSeq().equals(Integer.toString(member))) {
+			if (memberRow.getMemberSeq().equals(Integer.toString(member))) {
 				rt = memberRow.getNm();
 			} else {
 				// by pass

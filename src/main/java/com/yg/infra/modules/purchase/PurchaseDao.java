@@ -28,5 +28,9 @@ public class PurchaseDao {
 	public int selectOneCount(PurchaseVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	
+	public int insert(Purchase dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
 
 }

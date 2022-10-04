@@ -52,7 +52,7 @@
 	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
 	                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
 	                    <input type="hidden" name="checkboxSeqArray">
-	                    <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+	                    <input type="hidden" name="mtSeq" value="<c:out value="${vo.mtSeq }"/>">
 	                    <div class="row mb-3">
 	                    	<div class="col-1">
 	                    		<select class="form-control" id="shDelNy" name="shDelNy">
@@ -118,7 +118,7 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-			                            <td><a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.nm }"/> </a></td>
+			                            <td><a href="javascript:goView(<c:out value="${list.mtSeq }"/>)"> <c:out value="${list.nm }"/> </a></td>
 			                            <td> <c:out value="${list.id }"/> </td>
 			                            <td> <c:out value="${list.div_tel }"/> </td>
 			                            <td> <c:out value="${list.tel }"/> </td>
@@ -159,7 +159,7 @@
     	      	var goUrlView = "/member/memberAddrView";			/* #-> */
 	      	
 	      	
-	      	var seq = $("input:hidden[name=seq]");
+	      	var seq = $("input:hidden[name=mtSeq]");
 	      	var form = $("form[name=formList]");
 	      	
 	      	goList = function(thisPage) {

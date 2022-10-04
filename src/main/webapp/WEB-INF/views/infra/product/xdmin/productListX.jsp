@@ -51,7 +51,7 @@
                     <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
                     <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
                     <input type="hidden" name="checkboxSeqArray">
-                    <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+                    <input type="hidden" name="productSeq" value="<c:out value="${vo.productSeq }"/>">
                     <div class="row mb-3">
                     	<div class="col-1">
                     		<select class="form-control" id="shDelNy" name="shDelNy">
@@ -144,7 +144,7 @@
 						                    </div>
 										</td>
 										<td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-									    <td> <a href="javascript:goView(<c:out value="${list.seq }"/>)"> <c:out value="${list.product_name }"/> </a></td>
+									    <td> <a href="javascript:goView(<c:out value="${list.productSeq }"/>)"> <c:out value="${list.product_name }"/> </a></td>
 									    <td> <c:out value="${list.price }"/>원</td>
 									    <td> 
 									    	<c:forEach items="${listCodebrandMFC}" var="listbrandMFC" varStatus="statusbrandMFC">
@@ -201,7 +201,7 @@
 	      	var goUrlView = "/product/productViewX";			/* #-> */
 	      	
 	      	
-	      	var seq = $("input:hidden[name=seq]");
+	      	var seq = $("input:hidden[name=productSeq]");
 	      	var form = $("form[name=formList]");
 	      	
 	      	goList = function(thisPage) {

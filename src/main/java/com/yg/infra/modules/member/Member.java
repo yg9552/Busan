@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Member {
 
-	private String seq;
+	private String memberSeq;
 	private String nm;
 	private String id;
 	private String password;
@@ -31,12 +31,6 @@ public class Member {
 	}
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
-	}
-	public String getSeq() {
-		return seq;
-	}
-	public void setSeq(String seq) {
-		this.seq = seq;
 	}
 	public String getNm() {
 		return nm;
@@ -110,6 +104,12 @@ public class Member {
 	}
 	public static void setCachedMemberArrayList(List<Member> cachedMemberArrayList) {
 		Member.cachedMemberArrayList = cachedMemberArrayList;
+	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
 	}
 	
 	

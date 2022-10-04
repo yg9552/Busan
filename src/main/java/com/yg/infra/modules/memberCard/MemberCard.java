@@ -2,7 +2,7 @@ package com.yg.infra.modules.memberCard;
 
 public class MemberCard {
 
-	private String seq;
+	private String mcSeq;
 	private String member_seq;
 	private Integer div_memberCard;
 	private Integer card_defaultNy;
@@ -14,11 +14,13 @@ public class MemberCard {
 	private String id;
 	
 	
-	public String getSeq() {
-		return seq;
+	
+	
+	public String getMcSeq() {
+		return mcSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setMcSeq(String mcSeq) {
+		this.mcSeq = mcSeq;
 	}
 	public String getMember_seq() {
 		return member_seq;

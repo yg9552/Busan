@@ -9,11 +9,11 @@
 	
 	<sql id="selectCommon">
 		FROM memberTel a
-		left join member b on b.seq = a.member_seq
+		left join member b on b.memberSeq = a.member_seq
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND mtSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND tel LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND member_seq LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
@@ -23,7 +23,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT 
-				a.seq
+				a.mtSeq
 			    ,a.member_seq
 			    ,a.div_tel
 			    ,a.tel_defaultNy
@@ -45,23 +45,22 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT 
-			a.seq
+			a.mtSeq
 		    ,a.member_seq
 		    ,a.div_tel
 		    ,a.tel_defaultNy
 		    ,a.tel
 		    ,a.tel_company_code
 		    ,a.DelNy
-		    ,(select nm from member aa where 1=1 and aa.seq = a.member_seq) as membername
+		    ,(select nm from member aa where 1=1 and aa.memberSeq = a.member_seq) as membername
 		FROM memberTel a
 		WHERE 1=1
-		AND a.seq = #{seq}
+		AND a.mtSeq = #{mtSeq}
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO memberTel(
-			seq
-			,member_seq
+			member_seq
 			,div_tel
 			,tel_defaultNy
 			,tel
@@ -69,15 +68,14 @@
 			,DelNy
 			)
 		VALUES(
-			#{seq }
-			,#{member_seq }
+			#{member_seq }
 			,#{div_tel }
 			,#{tel_defaultNy }
 			,#{tel }
 			,#{tel_company_code }
 			,#{DelNy }
 			)
-			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			<selectKey resultType="String" keyProperty="mtSeq" order="AFTER">
 			SELECT last_insert_id()
 			</selectKey>
 	</insert>
@@ -85,24 +83,23 @@
 	<update id="update">
 		UPDATE memberTel
 		SET
-		seq = #{seq }
-		,member_seq = #{member_seq }
+		member_seq = #{member_seq }
 		,div_tel = #{div_tel }
 		,tel_defaultNy = #{tel_defaultNy }
 		,tel = #{tel }
 		,tel_company_code = #{tel_company_code }
-		WHERE seq = #{seq}>
+		WHERE mtSeq = #{mtSeq}>
 	</update>
 	
 	<update id="uelete">
 		UPDATE memberTel
 		SET
 			DelNy = 1
-		WHERE seq = #{seq}
+		WHERE mtSeq = #{mtSeq}
 	</update>
 	
 	<delete id="delete">
 		DELETE FROM memberTel
-		WHERE seq = #{seq}
+		WHERE mtSeq = #{mtSeq}
 	</delete>
 </mapper>

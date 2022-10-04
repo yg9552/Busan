@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -32,4 +33,13 @@ public class PurchaseController {
 		return "infra/purchase/xdmin/purchaseList";
 	}
 	
+	@RequestMapping(value = "purchaseInst")
+	public String purchaseInst(@ModelAttribute("vo") PurchaseVo vo, Purchase dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println(result);
+		vo.setPurchaseSeq(dto.getPurchaseSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "infra/product/xdmin/Main";
+	}
 }

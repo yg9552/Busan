@@ -53,11 +53,11 @@
     <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
     <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
     <input type="hidden" name="checkboxSeqArray">
-    <input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+    <input type="hidden" name="productSeq" value="<c:out value="${vo.productSeq }"/>">
 	<div class="row mb-3 mx-auto">
 			<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="col-3 mb-3">
-				<a href="javascript:goView(<c:out value="${list.seq }"/>)">
+				<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
 					<div class="card" style="width: 18rem;">
 	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
 	  					<div class="card-body">
@@ -188,7 +188,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 var goUrlView = "/product/productView";			/* #-> */
 var goUrlMain = "/";
 
-var seq = $("input:hidden[name=seq]");
+var seq = $("input:hidden[name=productSeq]");
 var form = $("form[name=MainList]");
 
 goView = function(keyValue) {

@@ -2,7 +2,7 @@ package com.yg.infra.modules.product;
 
 public class Product {
 
-	private String seq;
+	private String productSeq;
 	private String product_name;
 	private Integer price;
 	private String discount_percent;
@@ -20,11 +20,12 @@ public class Product {
 	private int discountprice;
 	
 	
-	public String getSeq() {
-		return seq;
+	
+	public String getProductSeq() {
+		return productSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setProductSeq(String productSeq) {
+		this.productSeq = productSeq;
 	}
 	public String getProduct_name() {
 		return product_name;

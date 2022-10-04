@@ -23,7 +23,7 @@
 	<!-- userHeader e -->
 
 <form name="formList" method="post">
-<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq }"/>">
 <div class="container mb-5">
 	<h3 class="mb-5 mt-4 text-center">마이페이지</h3>
 	<div class="row">
@@ -80,7 +80,7 @@ myModal.addEventListener('shown.bs.modal', () => {
   	var goUrlForm = "/member/memberForm";			/* #-> */
   	var goUrlView = "/member/memberMod";			/* #-> */
   	
-  	var seq = $("input:hidden[name=seq]");
+  	var seq = $("input:hidden[name=memberSeq]");
   	var form = $("form[name=formList]");
   	
   	goView = function(keyValue) {

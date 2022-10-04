@@ -25,6 +25,9 @@
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
+<!-- *Vo.jsp s -->
+<%@include file="../../member/xdmin/memberVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
 
 <div class="container mb-5">
 
@@ -61,6 +64,9 @@
 				<div class="col-4 mb-3">수령인</div>
 				<div class="col-6">
 					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:out value="${sessName }"></c:out>">
+					<c:if test="${sessSeq eq item2.memberSeq}">
+						<c:out value="${item2.memberSeq }"></c:out>
+					</c:if>
 				</div>
 				<div class="col-4 mb-3">연락처</div>
 				<div class="col-6">

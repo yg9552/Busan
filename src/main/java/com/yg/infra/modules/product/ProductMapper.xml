@@ -13,7 +13,7 @@
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND productSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND brand_code LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
@@ -23,7 +23,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT
-				a.seq
+				a.productSeq
 			    ,a.product_name
 			    ,a.price
 			    ,a.discount_percent
@@ -40,7 +40,7 @@
 			    ,(select a.deliverycost + a.price*(1 - a.discount_percent/100)) as totalprice
 			    ,(select a.price*(1 - a.discount_percent/100)) as discountprice
 			<include refid="selectCommon" />
-			ORDER BY a.seq DESC
+			ORDER BY a.productSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
@@ -52,7 +52,7 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.seq
+			a.productSeq
 		    ,a.product_name
 		    ,a.price
 		    ,a.discount_percent
@@ -70,7 +70,7 @@
 		    ,(select a.price*(1 - a.discount_percent/100)) as discountprice
 		FROM product a
 		WHERE 1=1
-		AND a.seq = #{seq}
+		AND a.productSeq = #{productSeq}
 	</select>
 	
 	<insert id="insert">
@@ -104,7 +104,7 @@
 		,#{brand_code}
 		,#{DelNy}
 	)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="productSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -126,7 +126,7 @@
 			,brand_code = #{brand_code}
 			,DelNy = #{DelNy}
 		WHERE
-			seq = #{seq}
+			productSeq = #{productSeq}
 	</update>
 	
 	<update id="uelete">
@@ -134,11 +134,11 @@
 		SET
 			DelNy = 1
 		WHERE 
-			seq = #{seq}
+			productSeq = #{productSeq}
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM product WHERE seq = #{seq}
+		DELETE FROM product WHERE productSeq = #{productSeq}
 	</delete>
 	
 	

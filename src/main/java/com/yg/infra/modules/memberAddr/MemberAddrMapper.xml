@@ -9,11 +9,11 @@
 
 	<sql id="selectCommon">
 		FROM memberAddr a
-		left join member b on a.member_seq = b.seq
+		left join member b on a.member_seq = b.memberSeq
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND maSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND addr LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND addr_detail LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND zip LIKE CONCAT('%',#{shValue},'%')</when>
@@ -24,7 +24,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT
-		    a.seq
+		    a.maSeq
 		    ,a.member_seq
 		    ,a.div_addr
 		    ,a.addr_defaultNy
@@ -37,7 +37,7 @@
 		    ,b.nm
 		    ,b.id
 		<include refid="selectCommon"></include>
-		ORDER BY a.seq DESC
+		ORDER BY a.maSeq DESC
 		<include refid="Base.orderByLimitForMysql" />
 	<include refid="Base.selectListLowerForMysql" />
 	</select>
@@ -49,7 +49,7 @@
 	
 	<select id="selectOne">
 		SELECT
-		    a.seq
+		    a.maSeq
 		    ,a.member_seq
 		    ,a.div_addr
 		    ,a.addr_defaultNy
@@ -61,13 +61,12 @@
 		    ,a.memberAddrLng
 		FROM memberAddr a
 		WHERE 1=1
-		AND a.seq = #{seq}
+		AND a.maSeq = #{maSeq}
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO memberAddr(
-			seq
-			,member_seq
+			member_seq
 			,div_addr
 			,addr_defaultNy
 			,addr
@@ -78,8 +77,7 @@
 			,memberAddrLng
 			)
 			VALUES(
-			#{seq }
-			,#{member_seq }
+			#{member_seq }
 			,#{div_addr }
 			,#{addr_defaultNy }
 			,#{addr }
@@ -89,7 +87,7 @@
 			,#{memberAddrLat }
 			,#{memberAddrLng }
 			)
-			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			<selectKey resultType="String" keyProperty="maSeq" order="AFTER">
 			SELECT last_insert_id()
 			</selectKey>
 	</insert>
@@ -97,8 +95,7 @@
 	<update id="update">
 		UPDATE memberAddr
 		SET
-			seq = #{seq }
-			,member_seq = #{member_seq }
+			member_seq = #{member_seq }
 			,div_addr = #{div_addr }
 			,addr_defaultNy = #{addr_defaultNy }
 			,addr = #{addr }
@@ -107,18 +104,18 @@
 			,DelNy = #{DelNy }
 			,memberAddrLat = #{memberAddrLat }
 			,memberAddrLng = #{memberAddrLng }
-		WHERE seq = #{seq}
+		WHERE maSeq = #{maSeq}
 	</update>
 	
 	<update id="uelete">
 		UPDATE memberAddr
 		SET
 			DelNy = 1
-		WHERE seq = #{seq}
+		WHERE maSeq = #{maSeq}
 	</update>
 
 	<delete id="delete">
-		DELETE FROM memberAddr WHERE seq = #{seq}
+		DELETE FROM memberAddr WHERE maSeq = #{maSeq}
 	</delete>
 
 </mapper>

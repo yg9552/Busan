@@ -152,7 +152,7 @@
 	      	var goUrlView = "/product/productViewX";			/* #-> */
 	      	
 	      	
-	      	var seq = $("input:hidden[name=seq]");					/* #-> */
+	      	var seq = $("input:hidden[name=productSeq]");					/* #-> */
 	      	
 	      	var form = $("form[name=viewform]");
 	      	var formVo = $("form[name=formVo]");

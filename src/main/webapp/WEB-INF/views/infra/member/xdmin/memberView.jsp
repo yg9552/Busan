@@ -156,7 +156,7 @@
 	      	var goUrlView = "/member/memberView";			/* #-> */
 	      	
 	      	
-	      	var seq = $("input:hidden[name=seq]");					/* #-> */
+	      	var seq = $("input:hidden[name=memberSeq]");					/* #-> */
 	      	
 	      	var form = $("form[name=viewform]");
 	      	var formVo = $("form[name=formVo]");

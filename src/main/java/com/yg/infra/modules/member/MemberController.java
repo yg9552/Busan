@@ -57,7 +57,7 @@ public class MemberController {
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);
 		
-		vo.setSeq(dto.getSeq());
+		vo.setMemberSeq(dto.getMemberSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
@@ -148,7 +148,7 @@ public class MemberController {
 			if (rtMember2 != null) {
 				
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
+				httpSession.setAttribute("sessSeq", rtMember2.getMemberSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
 				httpSession.setAttribute("sessName", rtMember2.getNm());
 

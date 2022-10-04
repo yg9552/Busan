@@ -7,7 +7,7 @@ public class MemberCardVo extends BaseVo{
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelNy;
-	private String seq;
+	private String mcSeq;
 	
 	public String getShValue() {
 		return shValue;
@@ -27,12 +27,13 @@ public class MemberCardVo extends BaseVo{
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
-	public String getSeq() {
-		return seq;
+	public String getMcSeq() {
+		return mcSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setMcSeq(String mcSeq) {
+		this.mcSeq = mcSeq;
 	}
+	
 	
 	
 }

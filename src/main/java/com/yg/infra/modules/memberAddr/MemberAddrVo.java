@@ -6,7 +6,7 @@ public class MemberAddrVo extends BaseVo{
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelNy;
-	private String seq;
+	private String maSeq;
 	
 	
 	public String getShValue() {
@@ -27,11 +27,11 @@ public class MemberAddrVo extends BaseVo{
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
-	public String getSeq() {
-		return seq;
+	public String getMaSeq() {
+		return maSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setMaSeq(String maSeq) {
+		this.maSeq = maSeq;
 	}
 
 	

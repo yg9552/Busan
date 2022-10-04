@@ -7,7 +7,8 @@ public class ProductVo extends BaseVo {
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelNy;
-	private String seq;
+	private String productSeq;
+	private String memberSeq;
 	
 	
 	public String getShValue() {
@@ -28,12 +29,19 @@ public class ProductVo extends BaseVo {
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
-	public String getSeq() {
-		return seq;
+	public String getProductSeq() {
+		return productSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setProductSeq(String productSeq) {
+		this.productSeq = productSeq;
 	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
+	}
+
 	
 	
 }

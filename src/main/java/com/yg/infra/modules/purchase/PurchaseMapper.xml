@@ -9,10 +9,10 @@
 	
 	<sql id="selectCommon">
 		FROM purchase a
-		left join member b on a.member_seq = b.seq
-		left join product c on a.member_seq = c.seq
+		left join member b on a.member_seq = b.memberSeq
+		left join product c on a.product_seq = c.productSeq
 		WHERE 1=1
-		AND a.member_seq = b.seq
+		AND a.member_seq = b.memberSeq
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
 			<choose>
@@ -62,5 +62,26 @@
 		AND purchaseSeq = #{purchaseSeq}
 	</select>
 	
+	<insert id="insert">
+		INSERT INTO purchase(
+			member_seq
+			,product_seq
+			,quantity
+			,memberAddr_seq
+			,paytype
+			,memberCard_seq
+			)
+			VALUES(
+			#{member_seq }
+			,#{product_seq }
+			,#{quantity }
+			,#{memberAddr_seq }
+			,#{paytype }
+			,#{memberCard_seq }
+			)
+		<selectKey resultType="String" keyProperty="purchaseSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	
 </mapper>

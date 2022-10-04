@@ -7,7 +7,7 @@ public class MemberVo extends BaseVo{
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelNy;
-	private String seq;
+	private String memberSeq;
 	
 	public String getShValue() {
 		return shValue;
@@ -27,12 +27,13 @@ public class MemberVo extends BaseVo{
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
-	public String getSeq() {
-		return seq;
+	public String getMemberSeq() {
+		return memberSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
 	}
+	
 	
 	
 }
