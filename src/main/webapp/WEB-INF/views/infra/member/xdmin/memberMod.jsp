@@ -76,7 +76,11 @@
 						      <div class="modal-body">
 						        <div class="form-floating">
 					  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
-					  				<label for="password">비밀번호변경</label>
+					  				<label for="password">변경비밀번호</label>
+								</div>
+						        <div class="form-floating">
+					  				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
+					  				<label for="passwordConfirm">비밀번호확인</label>
 								</div>
 						      </div>
 						      <div class="modal-footer">
