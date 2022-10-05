@@ -3,7 +3,7 @@ package com.yg.infra.modules.memberAddr;
 public class MemberAddr {
 	
 	private String maSeq;
-	private String member_seq;
+	private String memberSeq;
 	private Integer div_addr;
 	private Integer addr_defaultNy;
 	private String addr;
@@ -24,11 +24,12 @@ public class MemberAddr {
 	public void setMaSeq(String maSeq) {
 		this.maSeq = maSeq;
 	}
-	public String getMember_seq() {
-		return member_seq;
+	
+	public String getMemberSeq() {
+		return memberSeq;
 	}
-	public void setMember_seq(String member_seq) {
-		this.member_seq = member_seq;
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
 	}
 	public Integer getDiv_addr() {
 		return div_addr;
