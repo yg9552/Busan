@@ -27,7 +27,7 @@
 					<h3>아이디/비밀번호 찾기</h3>
 				</div>
 				<div class="d-flex mb-3">
-                  <button class="btn mr-2 col" id="search_1" onclick="search_check(1)">아이디 찾기</button>
+                  <button type="button" class="btn col" id="search_1" onclick="search_check(1)">아이디 찾기</button>
                   <button class="btn col" id="search_2" onclick="search_check(2)">비밀번호 찾기</button>
                 </div>
 				
