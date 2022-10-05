@@ -55,14 +55,14 @@
 			  				<label for="nm">이름</label>
 						</div>
 				  	</div>
-				  	<div class="col-12">
+				  	<div class="col-8">
 				  		<div class="form-floating">
-			  				<input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>" maxlength="20">
+			  				<input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>" maxlength="20" readonly>
 			  				<label for="id">아이디</label>
 			  				<div class="valid-feedback" id="idFeedback"></div>
 						</div>
 				  	</div>
-				  	<div class="col-12">
+				  	<div class="col-4 my-4">
 						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#pwchange">
 						  비밀번호변경
 						</button>
@@ -74,29 +74,24 @@
 						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						      </div>
 						      <div class="modal-body">
-						        <div class="form-floating">
+						        <div class="form-floating mb-3">
 					  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
 					  				<label for="password">변경비밀번호</label>
 								</div>
 						        <div class="form-floating">
-					  				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
-					  				<label for="passwordConfirm">비밀번호확인</label>
+					  				<input type="password" class="form-control" id="passwordConfirm" placeholder="비밀번호">
+	  								<label for="passwordConfirm">비밀번호확인</label>
+					  				<div class="valid-feedback" id="confirmMsg"></div>
 								</div>
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-						        <button type="button" class="btn btn-success">변경하기</button>
+						        <button type="button" class="btn btn-success" id="pwconfirm">변경하기</button>
 						      </div>
 						    </div>
 						  </div>
 						</div>
 				  		
-				  	</div>
-				  	<div class="col-12">
-				  		<div class="form-floating">
-			  				<input type="password" class="form-control" id="floatingInputpassre" placeholder="비밀번호">
-			  				<label for="floatingInputpassre">비밀번호확인</label>
-						</div>
 				  	</div>
 				  	<div class="col-12">
 				  		<div class="form-floating">
@@ -197,6 +192,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 	var goUrlDele = "/member/memberDele";			/* #-> */
 	var goUrlForm = "/member/memberForm";			/* #-> */
 	var goUrlView = "/member/memberMod";			/* #-> */
+	var goUrlUpdtPw = "/member/memberUpdtPw";			/* #-> */
 	
 	var seq = $("input:hidden[name=memberSeq]");
 	
@@ -223,6 +219,13 @@ myModal.addEventListener('shown.bs.modal', () => {
 		seq.val(keyValue);
 		form.attr("action", goUrlView).submit();
 	}
+	$("#pwconfirm").on("click", function(){
+  		if(!confirm("변경 하시겠습니까?")){
+			return false;
+		}else{
+			form.attr("action", goUrlUpdtPw).submit();
+		}
+  	});
 	
 	$("#btnUelete").on("click", function(){
   		if(!confirm("삭제 하시겠습니까?")){
@@ -241,6 +244,42 @@ myModal.addEventListener('shown.bs.modal', () => {
 		}
   	});
 </script>
+
+<!-- 비밀번호체크 -->
+              <script type="text/javascript">
+              $("#passwordConfirm").on("focusout", function passConfirm() {
+  	          	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+  	          	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+  	          	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+  	          		var password = document.getElementById('password');					//비밀번호 
+  	          		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
+  	          		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+  	          		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+  	          		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+  	          		
+  	          		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+  	          			document.getElementById("password").classList.add('is-valid');
+  						document.getElementById("password").classList.remove('is-invalid');
+  						passwordConfirm.classList.add('is-valid');
+  						passwordConfirm.classList.remove('is-invalid');
+  	          			document.getElementById('confirmMsg').classList.remove('invalid-feedback');
+  	          			document.getElementById('confirmMsg').classList.add('valid-feedback');
+  	          			document.getElementById("confirmMsg").innerText = "비밀번호 일치";
+  	          			//confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+  	          			//confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+  	          		}else{
+  	          			document.getElementById("password").classList.remove('is-valid');
+  						document.getElementById("password").classList.add('is-invalid');
+  						passwordConfirm.classList.remove('is-valid');
+  						passwordConfirm.classList.add('is-invalid');
+  	          			document.getElementById('confirmMsg').classList.add('invalid-feedback');
+  	          			document.getElementById('confirmMsg').classList.remove('valid-feedback');
+  	          			document.getElementById("confirmMsg").innerText = "비밀번호 불일치";
+  	          			//confirmMsg.style.color = wrongColor;
+  	          			//confirmMsg.innerHTML ="비밀번호 불일치";
+  	          		}
+  	          	});	
+              </script>
 
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <!-- datepicker -->

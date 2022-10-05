@@ -79,6 +79,18 @@ public class MemberController {
 		return "infra/member/xdmin/memberMod";
 	}
 	
+	@RequestMapping(value = "findIdPwForm")
+	public String findIdPwForm() throws Exception {
+		return "infra/member/xdmin/findIdPwForm";
+	}
+	
+	@RequestMapping(value = "memberUpdtPw")
+	public String memberUpdtPw(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.updatePw(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/member/memberMod";
+	}
+	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.update(dto);

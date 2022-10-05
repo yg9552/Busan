@@ -48,13 +48,10 @@
 
 <div class="container w-25 m-auto text-center">
 	<div class="row justify-content-center">
-		<div class="col-4">
-			<a href="Findidpassword.html">아이디찾기</a>
+		<div class="col">
+			<a href="/member/findIdPwForm">아이디/비밀번호 찾기</a>
 		</div>
-		<div class="col-4">
-			<a href="Findidpassword.html">비밀번호찾기</a>
-		</div>
-		<div class="col-4">
+		<div class="col mx-auto">
 			<a href="/member/memberReg">회원가입</a>
 		</div>
 	</div>

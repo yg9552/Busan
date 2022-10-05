@@ -62,7 +62,6 @@
 			a.memberSeq
 			,a.nm
 			,a.id
-			,a.password
 			,a.email
 			,a.gender_code
 			,a.email_code
@@ -129,12 +128,19 @@
 		SET
 			nm = #{nm }
 			,id = #{id }
-			,password = #{password }
 			,email = #{email }
 			,gender_code = #{gender_code }
 			,email_code = #{email_code }
 			,dob = #{dob }
 			,memberRegDate = #{memberRegDate }
+		WHERE
+			memberSeq = #{memberSeq }
+	</update>
+	
+	<update id="updatePw">
+		UPDATE member
+		SET
+			password = #{password }
 		WHERE
 			memberSeq = #{memberSeq }
 	</update>
