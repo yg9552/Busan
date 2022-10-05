@@ -46,9 +46,8 @@
 		  				<input type="email" class="form-control" id="email" name="email">
 		  				<label for="email">이메일</label>
 					</div>
-					
-					<div class="form-group">
-						<button id="searchBtn" type="button" onclick="idSearch_click()" class="btn btn-primary">확인</button>
+					<div class="form-group d-grid gap-2">
+						<button id="searchBtn" type="button" onclick="idSearch_click()" class="btn btn-primary">아이디찾기</button>
 						<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
 					</div>
 				</div>
@@ -61,10 +60,10 @@
 		  				<input type="email" class="form-control" id="email" name="email">
 		  				<label for="email">이메일</label>
 					</div>
-					<div class="form-group">
-						<button id="searchBtn2" type="button" class="btn btn-primary btn-block">확인</button>
-					<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
-				</div>
+					<div class="form-group d-grid gap-2">
+						<button id="searchBtn2" type="button" class="btn btn-primary btn-block">비밀번호찾기</button>
+						<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
+					</div>
 				</div>
 			</div>
 		</div>

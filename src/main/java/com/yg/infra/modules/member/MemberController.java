@@ -145,6 +145,22 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	//id find
+	@ResponseBody
+	@RequestMapping(value = "findId")
+	public Map<String, Object> findId(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int result = service.selectFindId(dto);
+		
+		if (result > 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+	
+	
 	//login
 	@ResponseBody
 	@RequestMapping(value = "loginProc")

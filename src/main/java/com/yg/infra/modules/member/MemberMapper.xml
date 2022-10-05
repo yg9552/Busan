@@ -95,6 +95,15 @@
 		<if test="password != null and !password.equals('')">AND a.password = #{password} </if>
 	</select>
 	
+	<select id="selectFindId" resultMap="int">
+		SELECT
+			a.id
+		FROM member a
+		WHERE 1=1
+		AND a.nm = #{nm}
+		AND a.email = #{email}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO member(
 			nm
