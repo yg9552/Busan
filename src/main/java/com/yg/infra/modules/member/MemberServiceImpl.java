@@ -76,7 +76,7 @@ public class MemberServiceImpl implements MemberService{
 		
 	//id find
 	@Override
-	public int selectFindId(Member dto) throws Exception {
+	public Member selectFindId(Member dto) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.selectFindId(dto);
 	}

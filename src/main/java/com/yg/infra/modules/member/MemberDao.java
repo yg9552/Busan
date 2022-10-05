@@ -45,7 +45,7 @@ public class MemberDao {
 	}
 	
 	//id find
-	public int selectFindId(Member dto) {
+	public Member selectFindId(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectFindId", dto);
 	}
 	

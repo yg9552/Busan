@@ -38,7 +38,7 @@
 			,a.email_code
 			,a.gender_code
 			,a.memberRegDate
-			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.member_seq) as phonenum
+			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.memberSeq) as phonenum
 			<include refid="selectCommon"></include>
 			ORDER BY a.memberSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
@@ -69,7 +69,7 @@
 			,a.reserve
 			,a.DelNy
 			,a.memberRegDate
-			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.member_seq) as phonenum
+			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.memberSeq) as phonenum
 		FROM member a
 		WHERE 1=1
 		AND a.memberSeq = #{memberSeq}
@@ -95,7 +95,7 @@
 		<if test="password != null and !password.equals('')">AND a.password = #{password} </if>
 	</select>
 	
-	<select id="selectFindId" resultMap="int">
+	<select id="selectFindId" resultMap="resultMapObj">
 		SELECT
 			a.id
 		FROM member a

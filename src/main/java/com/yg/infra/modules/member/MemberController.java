@@ -150,12 +150,14 @@ public class MemberController {
 	@RequestMapping(value = "findId")
 	public Map<String, Object> findId(Member dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		int result = service.selectFindId(dto);
 		
-		if (result > 0) {
+		Member result = service.selectFindId(dto);
+		
+		if (result == null) {
 			returnMap.put("rt", "fail");
 		} else {
 			returnMap.put("rt", "success");
+			returnMap.put("id", result.getId());
 		}
 		return returnMap;
 	}
