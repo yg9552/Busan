@@ -61,7 +61,7 @@
 		    ,a.memberAddrLng
 		FROM memberAddr a
 		WHERE 1=1
-		AND a.maSeq = #{maSeq}
+		AND a.memberSeq = #{memberSeq}
 	</select>
 	
 	<insert id="insert">

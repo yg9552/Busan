@@ -13,6 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.yg.infra.modules.member.Member;
 import com.yg.infra.modules.member.MemberServiceImpl;
 import com.yg.infra.modules.member.MemberVo;
+import com.yg.infra.modules.memberAddr.MemberAddr;
+import com.yg.infra.modules.memberAddr.MemberAddrServiceImpl;
+import com.yg.infra.modules.memberAddr.MemberAddrVo;
 import com.yg.infra.modules.product.Product;
 import com.yg.infra.modules.product.ProductServiceImpl;
 import com.yg.infra.modules.product.ProductVo;
@@ -26,9 +29,10 @@ public class PurchaseController {
 	
 	@Autowired
 	ProductServiceImpl servicep;
-	
 	@Autowired
 	MemberServiceImpl servicem;
+	@Autowired
+	MemberAddrServiceImpl servicema;
 	
 	@RequestMapping(value = "purchaseListX")
 	public String purchaseListX(@ModelAttribute("vo") PurchaseVo vo, Model model) throws Exception {
@@ -47,11 +51,15 @@ public class PurchaseController {
 		return "infra/purchase/xdmin/purchaseList";
 	}
 	@RequestMapping(value = "purchaseForm")
-	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom) throws Exception {
+	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom, MemberAddrVo voma) throws Exception {
+		Purchase item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		Product itemp = servicep.selectOne(vop);
 		model.addAttribute("itemp", itemp);
 		Member itemm = servicem.selectOne(vom);
 		model.addAttribute("itemm", itemm);
+		MemberAddr itemma = servicema.selectOne(voma);
+		model.addAttribute("listma", itemma);
 		return "infra/product/xdmin/purchaseForm";
 	}
 	

@@ -27,23 +27,12 @@
 <div class="container mb-5">
 	<h3 class="mb-5 mt-4 text-center">마이페이지</h3>
 	<div class="row">
-		<div class="col-3">
-			<div class="card">
-			  <div class="card-body p-4 text-center">
-			    <h5 class="card-title"><c:out value="${sessName }"/>회원님은</h5>
-			    <h5 class="card-title text-danger">VIP</h5>
-			    <p class="card-text">입니다</p>
-			  </div>
-			  <ul class="list-group list-group-flush text-center">
-			    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
-			    <li class="list-group-item"><a href="./mypageOrderedList.html">주문내역</a></li>
-			    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
-			  </ul>
-			</div>
-		</div>
+		<!-- side s -->
+		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
+		<!-- side e -->
 		<div class="col-9">
 			<h5 class="mb-3 text-center">개인정보수정</h5>
-			<form name="viewform" id="viewform" method="post" autocomplete="off">
+			<form name="mypageForm" id="viewform" method="post" autocomplete="off">
 			<!-- *Vo.jsp s -->
 			<%@include file="memberVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
@@ -192,10 +181,11 @@ myModal.addEventListener('shown.bs.modal', () => {
 	var goUrlForm = "/member/memberForm";			/* #-> */
 	var goUrlView = "/member/memberMod";			/* #-> */
 	var goUrlUpdtPw = "/member/memberUpdtPw";			/* #-> */
+	var goUrlPurchaseList = "/product/purchaseList";			/* #-> */
 	
 	var seq = $("input:hidden[name=memberSeq]");
 	
-	var form = $("form[name=viewform]");
+	var form = $("form[name=mypageForm]");
   	var formVo = $("form[name=formVo]");
 	
 	$("#btnSave").on("click", function(){
@@ -214,10 +204,6 @@ myModal.addEventListener('shown.bs.modal', () => {
   	   		
   	   	}
   	});
-	goView = function(keyValue) {
-		seq.val(keyValue);
-		form.attr("action", goUrlView).submit();
-	}
 	
 	$("#pwconfirm").on("click", function(){
   		if(!confirm("변경 하시겠습니까?")){

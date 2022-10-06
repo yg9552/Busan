@@ -19,27 +19,21 @@
 
 </head>
 <body>
+<form name="mypageForm" method="post">
 <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
  <!-- userHeader e -->
+ <!-- *Vo.jsp s -->
+<%@include file="purchaseVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
+ 
 
 <div class="container mb-5">
 	<h3 class="mb-5 mt-4 text-center">주문내역</h3>
 	<div class="row align-items-center mb-3">
-		<div class="col-3">
-			<div class="card">
-			  <div class="card-body p-4 text-center">
-			    <h5 class="card-title"><c:out value="${sessName }"/>님은</h5>
-			    <h5 class="card-title text-danger">VIP</h5>
-			    <p class="card-text">입니다</p>
-			  </div>
-			  <ul class="list-group list-group-flush text-center">
-			    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
-			    <li class="list-group-item"><a href="./mypageOrderedList.html">주문내역</a></li>
-			    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
-			  </ul>
-			</div>
-		</div>
+		<!-- side s -->
+		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
+		<!-- side e -->
 		<div class="col-9">
 			<div class="row text-center border rounded p-2">
 				<div class="col-4"><a href="#"><i class="fa-solid fa-truck fa-2x"></i><br>배송중</a></div>
@@ -78,15 +72,14 @@
 		</div>
 	</div>
 	<div class="row text-center w-75 m-auto">
-		<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="col-12">
 				<div class="row border rounded mb-3">
 					<div class="col-3">
 						<img alt=".." src="../image/basict.png" style="width: 150px; height: 150px;">
 					</div>
 						<div class="col my-auto">
-							<h4><c:out value="${list.product_name }"/></h4>
-							<span><c:out value="${list.price }"/>원</span>
+							<h4><c:out value="${item.product_name }"/></h4>
+							<span><c:out value="${item.price }"/>원</span>
 							 | <span>2022.07.21</span>
 						</div>
 					<div class="col-3 my-auto">
@@ -94,29 +87,12 @@
 					</div>
 				</div>
 			</div>
-		</c:forEach>
 	</div>
-	
-	
 </div>
-
-<footer class="container-fluid bg-light text-center p-2" style="clear: both;">
-	<div>
-		<a class="navbar-brand" href="../main/main.html"><img src="../image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
-	</div>
-	<span class="fs-6 fw-light">회사명 : OOO | 대표자 : OOO | 사업자등록번호 : 000 | 통신판매신고번호 : 000 | 개인정보관리책임자 : OOO | 전화번호 : 000</span><br>
-	<ul class="list-inline">
-		<li class="list-inline-item"><a href="https://www.navercorp.com" data-clk="intronhn">회사소개</a></li>
-		<li class="list-inline-item"><a href="https://recruit.navercorp.com/" data-clk="recruit">인재채용</a></li>
-		<li class="list-inline-item"><a href="https://www.navercorp.com/naver/proposalGuide" data-clk="contact">제휴제안</a></li>
-		<li class="list-inline-item"><a href="/policy/service.html" data-clk="service">이용약관</a></li>
-		<li class="list-inline-item"><a href="/policy/privacy.html" data-clk="privacy"><strong>개인정보처리방침</strong></a></li>
-		<li class="list-inline-item"><a href="/policy/youthpolicy.html" data-clk="youth">청소년보호정책</a></li>
-		<li class="list-inline-item"><a href="/policy/spamcheck.html" data-clk="policy">정책</a></li>
-		<li class="list-inline-item"><a href="https://help.naver.com/" data-clk="helpcenter">고객센터</a></li>
-	</ul>
-	<span class="m-auto"><i class="fa-solid fa-copyright"></i> copyright</span>
-</footer>
+</form>
+      <!-- userFooter s -->
+			<%@include file="../../../common/xdmin/userFooter.jsp"%>
+	  <!-- userFooter e -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -128,21 +104,6 @@ myModal.addEventListener('shown.bs.modal', () => {
 })
 </script>
 <script type="text/javascript">
-	var goUrlList = "/member/memberList"; 			/* #-> */
-  	var goUrlInst = "/member/memberInst"; 			/* #-> */
-  	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
-  	var goUrlUele = "/member/memberUele";			/* #-> */
-  	var goUrlDele = "/member/memberDele";			/* #-> */
-  	var goUrlForm = "/member/memberForm";			/* #-> */
-  	var goUrlView = "/member/memberMod";			/* #-> */
-  	
-  	var seq = $("input:hidden[name=seq]");
-  	var form = $("form[name=formList]");
-  	
-  	goView = function(keyValue) {
-		seq.val(keyValue);
-		form.attr("action", goUrlView).submit();
-	}
 </script>
 </body>
 </html>

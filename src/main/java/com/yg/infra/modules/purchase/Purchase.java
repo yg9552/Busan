@@ -3,8 +3,8 @@ package com.yg.infra.modules.purchase;
 public class Purchase {
 
 	private String purchaseSeq;
-	private String member_seq;
-	private String product_seq;
+	private String memberSeq;
+	private String productSeq;
 	private String memberAddr_seq;
 	private String memberCard_seq;
 	private Integer paytype;
@@ -24,17 +24,18 @@ public class Purchase {
 	public void setPurchaseSeq(String purchaseSeq) {
 		this.purchaseSeq = purchaseSeq;
 	}
-	public String getMember_seq() {
-		return member_seq;
+	
+	public String getMemberSeq() {
+		return memberSeq;
 	}
-	public void setMember_seq(String member_seq) {
-		this.member_seq = member_seq;
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
 	}
-	public String getProduct_seq() {
-		return product_seq;
+	public String getProductSeq() {
+		return productSeq;
 	}
-	public void setProduct_seq(String product_seq) {
-		this.product_seq = product_seq;
+	public void setProductSeq(String productSeq) {
+		this.productSeq = productSeq;
 	}
 	public String getMemberAddr_seq() {
 		return memberAddr_seq;

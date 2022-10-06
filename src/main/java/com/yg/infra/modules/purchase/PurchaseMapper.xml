@@ -9,10 +9,10 @@
 	
 	<sql id="selectCommon">
 		FROM purchase a
-		left join member b on a.member_seq = b.memberSeq
-		left join product c on a.product_seq = c.productSeq
+		left join member b on a.memberSeq = b.memberSeq
+		left join product c on a.productSeq = c.productSeq
 		WHERE 1=1
-		AND a.member_seq = b.memberSeq
+		AND a.memberSeq = b.memberSeq
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
 			<choose>
@@ -27,8 +27,8 @@
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT
 				a.purchaseSeq
-				,a.member_seq
-				,a.product_seq
+				,a.memberSeq
+				,a.productSeq
 				,a.quantity
 				,a.memberAddr_seq
 				,a.paytype
@@ -51,29 +51,32 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.purchaseSeq
-			,a.member_seq
-			,a.product_seq
+			,a.memberSeq
+			,a.productSeq
 			,a.quantity
 			,a.memberAddr_seq
 			,a.paytype
 			,a.memberCard_seq
+			,b.product_name
+			,b.price
 		FROM purchase a
+		left join product b on b.productSeq = a.productSeq
 		WHERE 1=1
-		AND purchaseSeq = #{purchaseSeq}
+		AND a.memberSeq = #{memberSeq}
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO purchase(
-			member_seq
-			,product_seq
+			memberSeq
+			,productSeq
 			,quantity
 			,memberAddr_seq
 			,paytype
 			,memberCard_seq
 			)
 			VALUES(
-			#{member_seq }
-			,#{product_seq }
+			#{memberSeq }
+			,#{productSeq }
 			,#{quantity }
 			,#{memberAddr_seq }
 			,#{paytype }

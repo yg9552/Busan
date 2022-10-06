@@ -85,18 +85,18 @@
 					  <label class="form-check-label" for="inlineRadio3">3</label>
 					</div>
 				</div>
-				<div class="col-3 offset-4 mb-3">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="우편번호">
-				</div>
-				<div class="col-4">
-					<button class="btn btn-sm btn-outline-dark" type="button">주소찾기</button>
-				</div>
-				<div class="col-4 offset-4 mb-3">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="주소">
-				</div>
-				<div class="col-4 mb-3">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="상세주소">
-				</div>
+					<div class="col-3 offset-4 mb-3">
+						<input class="form-control form-control-sm" type="text" name="zip" aria-label="우편번호" value="<c:if test="${itemma.memberSeq eq sessSeq }"><c:out value="${itemma.zip }"/></c:if>">
+					</div>
+					<div class="col-4">
+						<button class="btn btn-sm btn-outline-dark" type="button">주소찾기</button>
+					</div>
+					<div class="col-4 offset-4 mb-3">
+						<input class="form-control form-control-sm" type="text" name="addr" aria-label="주소" value="<c:if test="${itemma.memberSeq eq sessSeq }"><c:out value="${itemma.addr }"/></c:if>">
+					</div>
+					<div class="col-4 mb-3">
+						<input class="form-control form-control-sm" type="text" name="addr_detail" aria-label="상세주소" value="<c:if test="${itemma.memberSeq eq sessSeq }"><c:out value="${itemma.addr_detail }"/></c:if>">
+					</div>
 			</div>
 			
 			<h4 class="mb-3">결제수단</h4>
@@ -150,11 +150,11 @@
 				      <div class="accordion-body">
 				        <div class="row g-1">
 				        	<div class="col-6">총금액</div>
-				        	<div class="col-6"><c:out value="${item.totalprice }"></c:out></div>
+				        	<div class="col-6"><c:out value="${itemp.totalprice }"></c:out></div>
 				        	<div class="col-6">할인율</div>
-				        	<div class="col-6"><c:out value="${item.discount_percent }"></c:out>%</div>
+				        	<div class="col-6"><c:out value="${itemp.discount_percent }"></c:out>%</div>
 				        	<div class="col-6">배송비</div>
-				        	<div class="col-6"><c:out value="${item.deliverycost }"></c:out>원</div>
+				        	<div class="col-6"><c:out value="${itemp.deliverycost }"></c:out>원</div>
 				        </div>
 				      </div>
 				    </div>

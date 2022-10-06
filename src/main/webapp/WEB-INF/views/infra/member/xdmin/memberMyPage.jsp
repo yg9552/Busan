@@ -21,26 +21,19 @@
 	<!-- userHeader s -->
 		<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	<!-- userHeader e -->
+<form name="mypageForm" method="post">
+<!-- *Vo.jsp s -->
+<%@include file="memberVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
 
-<form name="formList" method="post">
-<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq }"/>">
+
 <div class="container mb-5">
 	<h3 class="mb-5 mt-4 text-center">마이페이지</h3>
 	<div class="row">
-		<div class="col-3">
-			<div class="card">
-			  <div class="card-body p-4 text-center">
-			    <h5 class="card-title"><c:out value="${sessName }"/>님은</h5>
-			    <h5 class="card-title text-danger">VIP</h5>
-			    <p class="card-text">입니다</p>
-			  </div>
-			  <ul class="list-group list-group-flush text-center">
-			    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
-			    <li class="list-group-item"><a href="/product/purchaseList?member_seq=<c:out value="${sessSeq }"/>">주문내역</a></li>
-			    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
-			  </ul>
-			</div>
-		</div>
+	
+		<!-- side s -->
+		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
+		<!-- side e -->
 		<div class="col-9">
 			<div class="row text-center border rounded p-2">
 				<div class="col-3"><a href="#"><i class="fa-solid fa-truck fa-2x"></i><br>주문배송</a></div>
@@ -72,21 +65,6 @@ myModal.addEventListener('shown.bs.modal', () => {
 })
 </script>
 <script type="text/javascript">
-	var goUrlList = "/member/memberList"; 			/* #-> */
-  	var goUrlInst = "/member/memberInst"; 			/* #-> */
-  	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
-  	var goUrlUele = "/member/memberUele";			/* #-> */
-  	var goUrlDele = "/member/memberDele";			/* #-> */
-  	var goUrlForm = "/member/memberForm";			/* #-> */
-  	var goUrlView = "/member/memberMod";			/* #-> */
-  	
-  	var seq = $("input:hidden[name=memberSeq]");
-  	var form = $("form[name=formList]");
-  	
-  	goView = function(keyValue) {
-		seq.val(keyValue);
-		form.attr("action", goUrlView).submit();
-	}
 </script>
 </body>
 </html>
