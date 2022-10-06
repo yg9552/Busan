@@ -72,29 +72,25 @@
 		</div>
 	</div>
 	<div class="row text-center w-75 m-auto">
-		<c:choose>
-			<c:when test="${list.memberSeq eq sessSeq }">
-				<c:forEach items="${list }" var="list" varStatus="status">
-					<div class="col-12">
-						<div class="row border rounded mb-3">
-							<div class="col-3">
-								<img alt=".." src="../image/basict.png" style="width: 150px; height: 150px;">
+		<c:forEach items="${list }" var="list" varStatus="status">
+			<c:if test="${list.memberSeq eq sessSeq }">
+				<div class="col-12">
+					<div class="row border rounded mb-3">
+						<div class="col-3">
+							<img alt=".." src="../image/basict.png" style="width: 150px; height: 150px;">
+						</div>
+							<div class="col my-auto">
+								<h4><c:out value="${list.product_name }"/></h4>
+								<span><c:out value="${list.price }"/>원</span>
+								 | <span>2022.07.21</span>
 							</div>
-								<div class="col my-auto">
-									<h4><c:out value="${list.product_name }"/></h4>
-									<span><c:out value="${list.price }"/>원</span>
-									 | <span>2022.07.21</span>
-								</div>
-							<div class="col-3 my-auto">
-								<span>배송완료</span>
-							</div>
+						<div class="col-3 my-auto">
+							<span>배송완료</span>
 						</div>
 					</div>
-				</c:forEach>
-			</c:when>
-			<c:otherwise></c:otherwise>
-		</c:choose>
-	
+				</div>
+			</c:if>	
+		</c:forEach>
 	</div>
 </div>
 </form>
