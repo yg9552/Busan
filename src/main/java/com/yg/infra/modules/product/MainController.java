@@ -14,7 +14,7 @@ public class MainController {
 	@Autowired
 	ProductServiceImpl service;
 	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/Main")
 	public String main(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));

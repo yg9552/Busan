@@ -2,7 +2,7 @@
 
 <footer class="container-fluid bg-light text-center p-2" style="clear: both;">
 	<div>
-		<a class="navbar-brand" href="/product/"><img src="../../../../../resources/image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
+		<a class="navbar-brand" href="/Main"><img src="../../../../../resources/image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
 	</div>
 	<span class="fs-6 fw-light">회사명 : OOO | 대표자 : OOO | 사업자등록번호 : 000 | 통신판매신고번호 : 000 | 개인정보관리책임자 : OOO | 전화번호 : 000</span><br>
 	<ul class="list-inline">

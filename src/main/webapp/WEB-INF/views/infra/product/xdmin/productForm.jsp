@@ -130,6 +130,10 @@
 			                        <option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>> Y </option>
 		                    </select>
 	                    </div>
+                        <div class="form-group mb-3">
+	                        <label for="formFile" class="form-label">사진첨부</label>
+							<input class="form-control" type="file" id="formFile">
+	                    </div>
 	                    
                       	<div class="row">
 							<div class="col">

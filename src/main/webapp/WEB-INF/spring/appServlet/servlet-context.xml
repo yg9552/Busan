@@ -40,6 +40,7 @@
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />
 			<exclude-mapping path="/" />
+			<exclude-mapping path="/Main" />
 			<beans:bean id="checkLoginSessionInterception" class="com.yg.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	

@@ -9,6 +9,7 @@
 	  </div>
 	  <ul class="list-group list-group-flush text-center">
 	    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
+	    <%-- <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)"">주문내역</a></li> --%>
 	    <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)"">주문내역</a></li>
 	    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
 	  </ul>

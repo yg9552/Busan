@@ -95,24 +95,6 @@
 			<c:otherwise></c:otherwise>
 		</c:choose>
 	
-		<%-- <c:forEach items="${list }" var="list" varStatus="status">
-			<div class="col-12">
-				<div class="row border rounded mb-3">
-					<div class="col-3">
-						<img alt=".." src="../image/basict.png" style="width: 150px; height: 150px;">
-					</div>
-						<div class="col my-auto">
-							<h4><c:out value="${list.product_name }"/></h4>
-							<span><c:out value="${list.price }"/>원</span>
-							 | <span>2022.07.21</span>
-						</div>
-					<div class="col-3 my-auto">
-						<span>배송완료</span>
-					</div>
-				</div>
-			</div>
-		</c:forEach> --%>
-	
 	</div>
 </div>
 </form>

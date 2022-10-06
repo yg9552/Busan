@@ -4,7 +4,7 @@
       		<c:when test="${sessSeq eq null}">
 				<nav class="navbar navbar-expand-lg mb-4">
 				  <div class="container">
-				    <a class="navbar-brand" href="/"><img src="../../../../../resources/image/lgo.png" alt="logo" width="210" height="80" class="d-inline-block align-text-top"></a>
+				    <a class="navbar-brand" href="/Main"><img src="../../../../../resources/image/lgo.png" alt="logo" width="210" height="80" class="d-inline-block align-text-top"></a>
 				    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
 				      <span class="navbar-toggler-icon"></span>
 				    </button>
@@ -164,7 +164,7 @@
       		<c:otherwise>
       			<nav class="navbar navbar-expand-lg mb-4">
 				  <div class="container">
-				    <a class="navbar-brand" href="/"><img src="../../../../../resources/image/lgo.png" alt="logo" width="210" height="80" class="d-inline-block align-text-top"></a>
+				    <a class="navbar-brand" href="/Main"><img src="../../../../../resources/image/lgo.png" alt="logo" width="210" height="80" class="d-inline-block align-text-top"></a>
 				    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
 				      <span class="navbar-toggler-icon"></span>
 				    </button>
@@ -319,7 +319,7 @@
       	</c:choose>
 <script>
 var goUrlMyPage = "/member/memberMyPage";
-var goUrlMain = "/";
+var goUrlMain = "/Main";
 
 $("#btnLogout").on("click", function(){
 	$.ajax({
