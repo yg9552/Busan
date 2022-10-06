@@ -187,7 +187,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 </script>
 <script type="text/javascript">
 var goUrlView = "/product/productView";			/* #-> */
-var goUrlMain = "/";
+var goUrlMain = "/Main";
 
 var seq = $("input:hidden[name=productSeq]");
 var form = $("form[name=MainList]");
@@ -197,27 +197,6 @@ goView = function(keyValue) {
 	form.attr("action", goUrlView).submit();
 }
 
-$("#btnLogout").on("click", function(){
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		/* ,dataType:"json" */
-		,url: "/member/logoutProc"
-		/* ,data : $("#formLogout").serialize() */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = goUrlMain;
-			} else {
-				
-			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});
-	
-});
 
 </script>
 </body>
