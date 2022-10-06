@@ -5,7 +5,7 @@ public class Product {
 	private String productSeq;
 	private String product_name;
 	private Integer price;
-	private String discount_percent;
+	private Integer discount_percent;
 	private Integer reserve;
 	private Integer deliverycost;
 	private Integer deliveryinfo;
@@ -39,10 +39,11 @@ public class Product {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public String getDiscount_percent() {
+	
+	public Integer getDiscount_percent() {
 		return discount_percent;
 	}
-	public void setDiscount_percent(String discount_percent) {
+	public void setDiscount_percent(Integer discount_percent) {
 		this.discount_percent = discount_percent;
 	}
 	public Integer getReserve() {
