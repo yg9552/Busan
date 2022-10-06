@@ -208,8 +208,8 @@
 				            </a>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-				            <a class="nav-link" href="/member/memberMyPage?seq=<c:out value="${sessSeq }"/>">
-				            <%-- <a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)"> --%>
+<%-- 				            <a class="nav-link" href="/member/memberMyPage?seq=<c:out value="${sessSeq }"/>">  --%>		
+		            <a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)">
 				            	<i class="fa-solid fa-user fa-3x"></i></i>
 				            </a>
 				          </li>

@@ -49,9 +49,8 @@
 <div class="container w-25 m-auto text-center">
 	<div class="row justify-content-center">
 		<div class="col">
-			<a href="/member/findIdPwForm">아이디/비밀번호 찾기</a>
-		</div>
-		<div class="col mx-auto">
+			<a href="/member/xdminLogin">관리자 로그인</a> | 
+			<a href="/member/findIdPwForm">아이디/비밀번호 찾기</a> | 
 			<a href="/member/memberReg">회원가입</a>
 		</div>
 	</div>

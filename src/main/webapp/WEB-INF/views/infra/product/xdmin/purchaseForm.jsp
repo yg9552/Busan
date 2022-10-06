@@ -25,9 +25,6 @@
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
-<!-- *Vo.jsp s -->
-<%@include file="../../member/xdmin/memberVo.jsp"%>		<!-- #-> -->
-<!-- *Vo.jsp e -->
 
 <div class="container mb-5">
 
@@ -41,21 +38,21 @@
 		<div class="col-2 border p-2">총합계</div>
 		<div class="col-5 p-2">
 			<img alt="..." src="../image/26650739290.20220517095259.png" style="width: 100px; height: 100px">
-			<span><c:out value="${item.product_name }"></c:out></span>
+			<span><c:out value="${itemp.product_name }"></c:out></span>
 		</div>
 		<div class="col-1 p-3 my-auto">
 			<input class="form-control text-center border border-white" type="number" value="1">
 		</div>
 		<div class="col-2 p-3 my-auto">
-			<input class="form-control text-center border border-white" type="text" value="<c:out value="${item.price }"></c:out>원">
+			<input class="form-control text-center border border-white" type="text" value="<c:out value="${itemp.price }"></c:out>원">
 		</div>
 		<div class="col-1 my-auto p-3">
-			<input class="form-control text-center border border-white" type="text" value="<c:out value="${item.discount_percent }"></c:out>%">
+			<input class="form-control text-center border border-white" type="text" value="<c:out value="${itemp.discount_percent }"></c:out>%">
 		</div>
 		<div class="col-1 my-auto p-3">
-			<input class="form-control text-center border border-white" type="text" value="<c:out value="${item.deliverycost }"></c:out>원">
+			<input class="form-control text-center border border-white" type="text" value="<c:out value="${itemp.deliverycost }"></c:out>원">
 		</div>
-		<div class="col-2 my-auto p-3"><c:out value="${item.totalprice }"></c:out></div>
+		<div class="col-2 my-auto p-3"><c:out value="${itemp.totalprice }"></c:out></div>
 	</div>
 	<div class="row">
 		<div class="col border">
@@ -63,11 +60,7 @@
 			<div class="row">
 				<div class="col-4 mb-3">수령인</div>
 				<div class="col-6">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:out value="${sessName }"></c:out>">
-					<c:if test="${sessSeq eq item2.memberSeq}">
-						<c:out value="${item2.nm }"></c:out>
-					</c:if>
-					<c:out value="${item2.gender_code }"></c:out>
+					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:if test="${sessSeq eq itemm.memberSeq}"><c:out value="${itemm.nm }"></c:out></c:if>">
 				</div>
 				<div class="col-4 mb-3">연락처</div>
 				<div class="col-6">

@@ -54,6 +54,7 @@
     <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
     <input type="hidden" name="checkboxSeqArray">
     <input type="hidden" name="productSeq" value="<c:out value="${vo.productSeq }"/>">
+    <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>">
 	<div class="row mb-3 mx-auto">
 			<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="col-3 mb-3">

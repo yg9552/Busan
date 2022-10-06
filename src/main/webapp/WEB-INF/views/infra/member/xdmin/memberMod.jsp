@@ -79,7 +79,7 @@
 					  				<label for="password">변경비밀번호</label>
 								</div>
 						        <div class="form-floating">
-					  				<input type="password" class="form-control" id="passwordConfirm" placeholder="비밀번호">
+					  				<input type="password" class="form-control" id="passwordConfirm">
 	  								<label for="passwordConfirm">비밀번호확인</label>
 					  				<div class="valid-feedback" id="confirmMsg"></div>
 								</div>

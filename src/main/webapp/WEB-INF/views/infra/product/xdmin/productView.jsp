@@ -27,9 +27,6 @@
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
-<!-- *Vo.jsp s -->
-<%@include file="../../member/xdmin/memberVo.jsp"%>		<!-- #-> -->
-<!-- *Vo.jsp e -->
 	<div class="container">
 		<div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
 		  <div class="carousel-indicators">
@@ -369,12 +366,6 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
-</script>
-<script type="text/javascript">
-alert(${sessSeq});
-
-alert("aaa");
-
 </script>
 <script type="text/javascript">
 

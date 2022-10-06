@@ -1,5 +1,6 @@
 package com.yg.infra.modules.purchase;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yg.infra.modules.member.Member;
+import com.yg.infra.modules.member.MemberServiceImpl;
+import com.yg.infra.modules.member.MemberVo;
+import com.yg.infra.modules.product.Product;
+import com.yg.infra.modules.product.ProductServiceImpl;
+import com.yg.infra.modules.product.ProductVo;
+
 @Controller
 @RequestMapping(value = "/product/")
 public class PurchaseController {
 
 	@Autowired
 	PurchaseServiceImpl service;
+	
+	@Autowired
+	ProductServiceImpl servicep;
+	
+	@Autowired
+	MemberServiceImpl servicem;
 	
 	@RequestMapping(value = "purchaseListX")
 	public String purchaseListX(@ModelAttribute("vo") PurchaseVo vo, Model model) throws Exception {
@@ -31,6 +45,14 @@ public class PurchaseController {
 		model.addAttribute("item", item);
 		model.addAttribute("list", list);
 		return "infra/purchase/xdmin/purchaseList";
+	}
+	@RequestMapping(value = "purchaseForm")
+	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom) throws Exception {
+		Product itemp = servicep.selectOne(vop);
+		model.addAttribute("itemp", itemp);
+		Member itemm = servicem.selectOne(vom);
+		model.addAttribute("itemm", itemm);
+		return "infra/product/xdmin/purchaseForm";
 	}
 	
 	@RequestMapping(value = "purchaseInst")

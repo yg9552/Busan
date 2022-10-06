@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.yg.infra.modules.member.Member;
 import com.yg.infra.modules.member.MemberServiceImpl;
-import com.yg.infra.modules.member.MemberVo;
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -51,18 +49,16 @@ public class ProductController {
 		model.addAttribute("item", result);
 		return "infra/product/xdmin/productView";
 	}
-	
-	@RequestMapping(value = "purchaseForm")
-	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo, @ModelAttribute("dto") MemberVo dto) throws Exception {
-		Product result = service.selectOne(vo);
-		model.addAttribute("item", result);
-		System.out.println("sdsd1s : " + vo.getMemberSeq());
-		System.out.println("sdsds : " + dto.getMemberSeq());
-        Member item2 = servicem.selectOne(dto);
-		model.addAttribute("item2", item2);
-		return "infra/product/xdmin/purchaseForm";
-	}
-	
+//	
+//	@RequestMapping(value = "purchaseForm")
+//	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo, MemberVo dto) throws Exception {
+//		Product result = service.selectOne(vo);
+//		model.addAttribute("item", result);
+//        Member item2 = servicem.selectOne(dto);
+//		model.addAttribute("item2", item2);
+//		return "infra/product/xdmin/purchaseForm";
+//	}
+//	
 	@RequestMapping(value = "productViewX")
 	public String productViewX(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		Product result = service.selectOne(vo);
