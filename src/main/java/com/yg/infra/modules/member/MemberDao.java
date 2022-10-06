@@ -44,9 +44,12 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);
 	}
 	
-	//id find
+	//id Pw find
 	public Member selectFindId(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectFindId", dto);
+	}
+	public Member selectFindPw(Member dto) {
+		return sqlSession.selectOne(namespace + ".selectFindPw", dto);
 	}
 	
 	//login

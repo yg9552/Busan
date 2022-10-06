@@ -81,6 +81,12 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectFindId(dto);
 	}
 	
+	@Override
+	public Member selectFindPw(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectFindPw(dto);
+	}
+
 	//login
 	@Override
 	public Member selectOneId(Member dto) throws Exception {

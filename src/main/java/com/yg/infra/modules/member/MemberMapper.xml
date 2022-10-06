@@ -104,6 +104,15 @@
 		AND a.email = #{email}
 	</select>
 	
+	<select id="selectFindPw" resultMap="resultMapObj">
+		SELECT
+			password
+		FROM member
+		WHERE 1=1
+		AND id = #{id}
+		AND email = #{email}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO member(
 			nm

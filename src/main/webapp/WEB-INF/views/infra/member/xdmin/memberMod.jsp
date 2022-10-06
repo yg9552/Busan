@@ -91,7 +91,6 @@
 						    </div>
 						  </div>
 						</div>
-				  		
 				  	</div>
 				  	<div class="col-12">
 				  		<div class="form-floating">
@@ -219,6 +218,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 		seq.val(keyValue);
 		form.attr("action", goUrlView).submit();
 	}
+	
 	$("#pwconfirm").on("click", function(){
   		if(!confirm("변경 하시겠습니까?")){
 			return false;
@@ -245,7 +245,7 @@ myModal.addEventListener('shown.bs.modal', () => {
   	});
 </script>
 
-<!-- 비밀번호체크 -->
+			  <!-- 비밀번호체크 -->
               <script type="text/javascript">
               $("#passwordConfirm").on("focusout", function passConfirm() {
   	          	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/

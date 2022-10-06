@@ -35,6 +35,8 @@
 			<exclude-mapping path="/member/findIdPwForm" />
 			<exclude-mapping path="/member/checkId" />
 			<exclude-mapping path="/member/findId" />
+			<exclude-mapping path="/member/findPw" />
+			<exclude-mapping path="/member/memberUpdtPw" />
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />
 			<exclude-mapping path="/" />

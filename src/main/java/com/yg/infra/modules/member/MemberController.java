@@ -145,7 +145,7 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	//id find
+	//id Pw find
 	@ResponseBody
 	@RequestMapping(value = "findId")
 	public Map<String, Object> findId(Member dto) throws Exception {
@@ -158,6 +158,19 @@ public class MemberController {
 		} else {
 			returnMap.put("rt", "success");
 			returnMap.put("id", result.getId());
+		}
+		return returnMap;
+	}
+	@ResponseBody
+	@RequestMapping(value = "findPw")
+	public Map<String, Object> findPw(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		Member result = service.selectFindPw(dto);
+		
+		if (result == null) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
 		}
 		return returnMap;
 	}
