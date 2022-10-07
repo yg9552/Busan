@@ -1,44 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="CodeServiceImpl" class="com.yg.infra.modules.code.CodeServiceImpl"/>
 
 <html lang="ko">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>prodList</title>
-	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 <body>
 	  <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
 	<div class="container text-center">
+	<form name="formList">
+	<input type="hidden" name="mainkey">
+    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+    <input type="hidden" name="checkboxSeqArray">
+    <!-- *Vo.jsp s -->
+	<%@include file="productVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
+	
+	<c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
+	<c:set var="listCodeDeliInfo" value="${CodeServiceImpl.selectListCachedCode('10')}"/>
 		<div class="row mb-3 mx-auto">
 			<c:forEach items="${list}" var="list" varStatus="status">
-			<div class="col-3 mb-3">
-				<a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item"> 가격 : <c:out value="${list.price }"/>원 </li>
-						    <li class="list-group-item"> 배송정보 : <c:out value="${list.deliveryinfo }"/> </li>
-						    <li class="list-group-item"> 원산지 :  </li>
-						    <li class="list-group-item"> 적립금 : <c:out value="${list.reserve }"/>원 </li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
+				<div class="col-3 mb-3">
+					<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
+						<div class="card" style="width: 18rem;">
+		  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
+		  					<div class="card-body">
+		    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
+		  					</div>
+						  	<ul class="list-group list-group-flush">
+							    <li class="list-group-item"> 가격 : <fmt:formatNumber value="${list.price}" pattern="#,###"/>원</li>
+							    <li class="list-group-item text-danger"> 할인가: <fmt:formatNumber value="${list.discountprice}" pattern="#,###"/>원</li>
+							    <li class="list-group-item"> 배송정보 : 
+							    <c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
+									<c:if test="${list.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
+								</c:forEach>
+							    </li>
+	   						    <li class="list-group-item"> 배송비 : <fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원 </li>
+							    <li class="list-group-item"> 원산지 :
+							    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
+										<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
+									</c:forEach>
+							    </li>
+							    <li class="list-group-item"> 적립금 : <fmt:formatNumber value="${list.reserve}" pattern="#,###"/>원 </li>
+	
+						  	</ul>
+						</div>
+					</a>
+				</div>
 			</c:forEach>
 			<div class="col-3">
 				<a href="./prodView.html">
@@ -89,53 +111,17 @@
 				</a>
 			</div>
 		</div>
-		<nav aria-label="Page navigation example">
-		  <ul class="pagination pagination-sm justify-content-center">
-		  	<li class="page-item">
-		      <a class="page-link" href="#" aria-label="Previous">
-		        <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
-		      </a>
-		    </li>
-		    <li class="page-item">
-		      <a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></i></a>
-		    </li>
-		    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		    <li class="page-item">
-		      <a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
-		    </li>
-		    <li class="page-item">
-		      <a class="page-link" href="#" aria-label="Next">
-		        <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+		<!-- pagination s -->
+			<%@include file="../../../common/xdmin/pagination.jsp"%>
+		<!-- pagination e -->
+	</form>	
 	</div>
 
 
 
-<!-- 
-<footer class="container-fluid bg-light text-center p-2" style="clear: both;">
-	<div>
-		<a class="navbar-brand" href="../main/main.html"><img src="../image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
-	</div>
-	<span class="fs-6 fw-light">회사명 : OOO | 대표자 : OOO | 사업자등록번호 : 000 | 통신판매신고번호 : 000 | 개인정보관리책임자 : OOO | 전화번호 : 000</span><br>
-	<ul class="list-inline">
-		<li class="list-inline-item"><a href="https://www.navercorp.com" data-clk="intronhn">회사소개</a></li>
-		<li class="list-inline-item"><a href="https://recruit.navercorp.com/" data-clk="recruit">인재채용</a></li>
-		<li class="list-inline-item"><a href="https://www.navercorp.com/naver/proposalGuide" data-clk="contact">제휴제안</a></li>
-		<li class="list-inline-item"><a href="/policy/service.html" data-clk="service">이용약관</a></li>
-		<li class="list-inline-item"><a href="/policy/privacy.html" data-clk="privacy"><strong>개인정보처리방침</strong></a></li>
-		<li class="list-inline-item"><a href="/policy/youthpolicy.html" data-clk="youth">청소년보호정책</a></li>
-		<li class="list-inline-item"><a href="/policy/spamcheck.html" data-clk="policy">정책</a></li>
-		<li class="list-inline-item"><a href="https://help.naver.com/" data-clk="helpcenter">고객센터</a></li>
-	</ul>
-	<span class="m-auto"><i class="fa-solid fa-copyright"></i> copyright</span>
-</footer>
- -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<!-- userFooter s -->
+			<%@include file="../../../common/xdmin/userFooter.jsp"%>
+  	<!-- userFooter e -->
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -143,6 +129,32 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
+</script>
+
+<script type="text/javascript">
+		var goUrlList = "/product/productList"; 		/* #-> */
+		var goUrlInst = "/product/productInst"; 		/* #-> */
+		var goUrlUpdt = "/product/productUpdt";			/* #-> */
+		var goUrlUele = "/product/productUele";			/* #-> */
+		var goUrlDele = "/product/productDele";			/* #-> */
+		var goUrlForm = "/product/productForm";			/* #-> */
+		var goUrlView = "/product/productView";			/* #-> */
+		
+		
+		var seq = $("input:hidden[name=productSeq]");
+		var form = $("form[name=formList]");
+		
+		goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+		
+		goView = function(keyValue) {
+			seq.val(keyValue);
+			form.attr("action", goUrlView).submit();
+		}
+</script>
 </script>
 </body>
 </html>

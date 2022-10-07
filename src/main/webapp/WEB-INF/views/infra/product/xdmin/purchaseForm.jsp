@@ -26,7 +26,7 @@
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
 <div class="container mb-5">
-
+<input type="hidden" name="memberSeq" value="<c:out value="${sessSeq}"/>"/>
 	<h3>주문결제</h3>
 	<div class="row text-center mb-4 border">
 		<div class="col-5 border p-2">상품명/옵션</div>
@@ -40,18 +40,18 @@
 			<span><c:out value="${itemp.product_name }"></c:out></span>
 		</div>
 		<div class="col-1 p-3 my-auto">
-			<input class="form-control text-center border border-white" type="number" value="1">
+			<input class="form-control text-center border border-white" type="number" value="">
 		</div>
 		<div class="col-2 p-3 my-auto">
-			<input class="form-control text-center border border-white" type="text" value="<c:out value="${itemp.price }"></c:out>원">
+			<fmt:formatNumber value="${itemp.price}" pattern="#,###"/>원
 		</div>
 		<div class="col-1 my-auto p-3">
-			<input class="form-control text-center border border-white" type="text" value="<c:out value="${itemp.discount_percent }"></c:out>%">
+			<c:out value="${itemp.discount_percent }"></c:out>%
 		</div>
 		<div class="col-1 my-auto p-3">
-			<input class="form-control text-center border border-white" type="text" value="<c:out value="${itemp.deliverycost }"></c:out>원">
+			<fmt:formatNumber value="${itemp.deliverycost }" pattern="#,###"/>원
 		</div>
-		<div class="col-2 my-auto p-3"><c:out value="${itemp.totalprice }"></c:out></div>
+		<div class="col-2 my-auto p-3"><fmt:formatNumber value="${itemp.totalprice }" pattern="#,###"/>원</div>
 	</div>
 	<div class="row">
 		<div class="col border">
@@ -59,7 +59,7 @@
 			<div class="row">
 				<div class="col-4 mb-3">수령인</div>
 				<div class="col-6">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:if test="${sessSeq eq itemm.memberSeq}"><c:out value="${itemm.nm }"></c:out></c:if>">
+					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:if test="${itemm.memberSeq eq sessSeq}"><c:out value="${itemm.nm }"></c:out></c:if>">
 				</div>
 				<div class="col-4 mb-3">연락처</div>
 				<c:forEach items="${listt }" var="listt" varStatus="status">
@@ -207,6 +207,7 @@ myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
 
+var seq = $("input:hidden[name=productSeq]");
 var form = $("form[name=purchaseform]");
 
 </script>

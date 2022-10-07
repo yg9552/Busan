@@ -17,7 +17,6 @@
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
   	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
-
 </head>
 <body>
       <!-- userHeader s -->
@@ -57,100 +56,39 @@
     <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>">
 	<div class="row mb-3 mx-auto">
 			<c:forEach items="${list}" var="list" varStatus="status">
-			<div class="col-3 mb-3">
-				<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item"> 가격 : <fmt:formatNumber value="${list.price}" pattern="#,###"/>원</li>
-						    <li class="list-group-item text-danger"> 할인가: <fmt:formatNumber value="${list.discountprice}" pattern="#,###"/>원</li>
-						    <li class="list-group-item"> 배송정보 : 
-						    <c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
-								<c:if test="${list.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
-							</c:forEach>
-						    </li>
-   						    <li class="list-group-item"> 배송비 : <fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원 </li>
-						    <li class="list-group-item"> 원산지 :
-						    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
-									<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
-								</c:forEach>
-						    </li>
-						    <li class="list-group-item"> 적립금 : <fmt:formatNumber value="${list.reserve}" pattern="#,###"/>원 </li>
-
-					  	</ul>
+				<c:if test="${list.bestNy eq 1 }">
+					<div class="col-3 mb-3">
+						<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
+							<div class="card" style="width: 18rem;">
+			  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
+			  					<div class="card-body">
+			    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
+			  					</div>
+							  	<ul class="list-group list-group-flush">
+								    <li class="list-group-item"> 가격 : <fmt:formatNumber value="${list.price}" pattern="#,###"/>원</li>
+								    <li class="list-group-item text-danger"> 할인가: <fmt:formatNumber value="${list.discountprice}" pattern="#,###"/>원</li>
+								    <li class="list-group-item"> 배송정보 : 
+								    <c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
+										<c:if test="${list.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
+									</c:forEach>
+								    </li>
+		   						    <li class="list-group-item"> 배송비 : <fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원 </li>
+								    <li class="list-group-item"> 원산지 :
+								    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
+											<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
+										</c:forEach>
+								    </li>
+								    <li class="list-group-item"> 적립금 : <fmt:formatNumber value="${list.reserve}" pattern="#,###"/>원 </li>
+		
+							  	</ul>
+							</div>
+						</a>
 					</div>
-				</a>
-			</div>
+				</c:if>
 			</c:forEach>
-			<div class="col-3">
-				<a href="../prod/prodView.html">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/0220416093432.jpg" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">피케티셔츠</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">100,000원</li>
-						    <li class="list-group-item text-danger">할인가: 80,000</li>
-						    <li class="list-group-item">무료배송</li>
-						    <li class="list-group-item">적립금: 100원</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
-			<div class="col-3">
-				<a href="#">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/basict.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">BASIC T-SHIRT</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">10,000원</li>
-						    <li class="list-group-item text-danger">할인가: 8,000원</li>
-						    <li class="list-group-item">무료배송</li>
-						    <li class="list-group-item">적립금: 10원</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
-			<div class="col-3">
-				<a href="#">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">더블 폭스헤드 반팔 티셔츠</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">500,000원</li>
-						    <li class="list-group-item text-danger">신상품</li>
-						    <li class="list-group-item">배송비 : 3000원</li>
-						    <li class="list-group-item">적립금: 500원</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
-			<div class="col-3">
-				<a href="#">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/coffee-g8719fce7c_640.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">상품명</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">상품가격</li>
-						    <li class="list-group-item">배송정보</li>
-						    <li class="list-group-item">원산지</li>
-						    <li class="list-group-item">적립금</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
 		</div>
 		</form>
+		
 </div>
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>

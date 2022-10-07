@@ -24,6 +24,9 @@
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../resources/xdmin/js/constantsXdmin.js">
+    <link rel="stylesheet" href="../../../../../resources/xdmin/js/validationXdmin.js">
+    <link rel="stylesheet" href="../../../../../resources/xdmin/js/commonXdmin.js">
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -163,6 +166,8 @@
 						
 	                    <!-- 이미지 들어오는 부분 -->
 						<div id="multipleContainer"></div>
+						
+	                    <button type="button" class="btn btn-danger" id="btnTest">테스트</button>
 	                    
                       	<div class="row">
 							<div class="col">
@@ -183,6 +188,43 @@
                 </div>
               </div>
               <script type="text/javascript">
+              $("#btnTest").on("click", function(){
+	        		if (upload("fileInput",1,5,0,2,5,1) == false) {return false};
+	          });
+              
+              upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType){
+            	  	
+            	  	var totalFileSize = 0;
+	          		var obj = $("#" + objName +"")[0].files;	
+	          		var fileCount = obj.length;
+	          		
+	          		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+	        		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+	        		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+              		alert(allowedMaxTotalFileNumber);
+	        		if(allowedMaxTotalFileNumber > 5, allowedEachFileSize > 1024, allowedTotalFileSize > 1024*5 == false) { return false; }
+              }
+              
+              </script>
+              
+              
+              <script type="text/javascript">
+              	validationInst = function() {
+              		var obj = document.getElementById("fileInput").files;
+              		
+              		alert(obj);
+              		alert(obj.length);
+              		
+              		for(var i=0; i<obj.length; i++){
+              			if (obj[i].size > 1024000) {
+              				alert("사이즈가 큽니다");
+              				return false;
+              			}
+              			alert(obj[i].name + " : " + obj[i].size);
+              		}
+              	}
+              </script>
+              <script type="text/javascript">
               
         		var goUrlList = "/product/productListX"; 		/* #-> */
 		      	var goUrlInst = "/product/productInst"; 		/* #-> */
@@ -196,7 +238,8 @@
 	        	var formVo = $("form[name=formVo]");
 	        	
 	        	$("#btnSave").on("click", function(){
-	        	   	form.attr("action", goUrlInst).submit();
+	        		if (validationInst() == false) return false;
+	        	   	/* form.attr("action", goUrlInst).submit(); */
 	        	}); 
 	        	
 	        	$("#btnList").on("click", function(){

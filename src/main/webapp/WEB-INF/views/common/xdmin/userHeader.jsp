@@ -225,7 +225,7 @@
 					    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 					      <ul class="navbar-nav mx-auto">
 					        <li class="nav-item dropdown me-4">
-					          <a class="nav-link dropdown-toggle white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					            신상품
 					          </a>
 					          <ul class="dropdown-menu dropdown-menu-dark">
@@ -344,7 +344,6 @@ $("#btnLogout").on("click", function(){
 
 
 </script>
-<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <script>
 goMyPage = function(keyValue) {
 	seq.val(keyValue);
