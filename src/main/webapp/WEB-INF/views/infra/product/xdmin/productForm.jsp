@@ -24,9 +24,7 @@
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="../../../../../resources/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../../resources/xdmin/js/constantsXdmin.js">
-    <link rel="stylesheet" href="../../../../../resources/xdmin/js/validationXdmin.js">
-    <link rel="stylesheet" href="../../../../../resources/xdmin/js/commonXdmin.js">
+    <script src="/resources/xdmin/js/commonXdmin.js"></script>
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -189,11 +187,15 @@
               </div>
               <script type="text/javascript">
               $("#btnTest").on("click", function(){
-	        		if (upload("fileInput",1,5,0,2,5,1) == false) {return false};
+	        		if (upload("fileInput", 1, 5, 1, 0, 0, 1) == false) {
+	        			alert("실패");
+	        			return false;
+	        		} else {
+	        			alert("성공");
+	        		}
 	          });
               
               upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType){
-            	  	
             	  	var totalFileSize = 0;
 	          		var obj = $("#" + objName +"")[0].files;	
 	          		var fileCount = obj.length;
@@ -201,11 +203,21 @@
 	          		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
 	        		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
 	        		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
-              		alert(allowedMaxTotalFileNumber);
-	        		if(allowedMaxTotalFileNumber > 5, allowedEachFileSize > 1024, allowedTotalFileSize > 1024*5 == false) { return false; }
+              		
+	        		if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; }
+	        		for (var i = 0 ; i < fileCount ; i++) {
+	        			/* if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, 1) == false) { return false; } */
+	        			if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
+	        			if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
+
+	        			totalFileSize += $("#" + objName +"")[0].files[i].size;
+	        		}
+	        		alert(totalFileSize);
+	        		
+	        		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
               }
-              
-              </script>
+              var extArray1 = new Array();
+              extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];              </script>
               
               
               <script type="text/javascript">

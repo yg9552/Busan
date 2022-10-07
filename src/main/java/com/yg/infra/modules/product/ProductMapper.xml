@@ -109,6 +109,9 @@
 		</selectKey>
 	</insert>
 	
+	<!-- 이미지 업로드 -->
+	<insert id=""></insert>
+	
 	<update id="update">
 		UPDATE product
 		SET
