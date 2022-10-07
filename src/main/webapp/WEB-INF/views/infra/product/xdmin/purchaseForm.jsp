@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -13,19 +13,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>구매</title>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
 	  <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
-<form>
+<form name="purchaseform" method="post">
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
-
 <div class="container mb-5">
 
 	<h3>주문결제</h3>
@@ -63,13 +62,14 @@
 					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:if test="${sessSeq eq itemm.memberSeq}"><c:out value="${itemm.nm }"></c:out></c:if>">
 				</div>
 				<div class="col-4 mb-3">연락처</div>
-				<div class="col-6">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="연락처" value="01011112222">
-				</div>
-				<div class="col-4 mb-3">연락처2</div>
-				<div class="col-6">
-					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="연락처2">
-				</div>
+				<c:forEach items="${listt }" var="listt" varStatus="status">
+					<c:if test="${listt.memberSeq eq sessSeq }">
+						<div class="col-4">
+							<input class="form-control form-control-sm" type="text" aria-label="연락처" value="<c:out value="${listt.tel }"/>">
+						</div>
+					</c:if>
+				</c:forEach>
+				
 				<div class="col-4 mb-3">배송지주소</div>
 				<div class="col-6">
 					<div class="form-check form-check-inline">
@@ -85,18 +85,23 @@
 					  <label class="form-check-label" for="inlineRadio3">3</label>
 					</div>
 				</div>
-					<div class="col-3 offset-4 mb-3">
-						<input class="form-control form-control-sm" type="text" name="zip" aria-label="우편번호" value="<c:if test="${itemma.memberSeq eq sessSeq }"><c:out value="${itemma.zip }"/></c:if>">
-					</div>
-					<div class="col-4">
-						<button class="btn btn-sm btn-outline-dark" type="button">주소찾기</button>
-					</div>
-					<div class="col-4 offset-4 mb-3">
-						<input class="form-control form-control-sm" type="text" name="addr" aria-label="주소" value="<c:if test="${itemma.memberSeq eq sessSeq }"><c:out value="${itemma.addr }"/></c:if>">
-					</div>
-					<div class="col-4 mb-3">
-						<input class="form-control form-control-sm" type="text" name="addr_detail" aria-label="상세주소" value="<c:if test="${itemma.memberSeq eq sessSeq }"><c:out value="${itemma.addr_detail }"/></c:if>">
-					</div>
+				<c:forEach items="${listma }" var="listma" varStatus="status">
+					<c:if test="${listma.memberSeq eq sessSeq }">
+						<div class="col-3 offset-4 mb-3">
+							<input class="form-control form-control-sm" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>">
+							<input class="form-control form-control-sm" type="text" name="maSeq" aria-label="우편번호" value="<c:out value="${listma.maSeq }"/>">
+						</div>
+						<div class="col-4">
+							<button class="btn btn-sm btn-outline-dark" type="button">주소찾기</button>
+						</div>
+						<div class="col-4 offset-4 mb-3">
+							<input class="form-control form-control-sm" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>">
+						</div>
+						<div class="col-4 mb-3">
+							<input class="form-control form-control-sm" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${listma.addr_detail }"/>">
+						</div>
+					</c:if>
+				</c:forEach>
 			</div>
 			
 			<h4 class="mb-3">결제수단</h4>
@@ -122,18 +127,16 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlinecard" id="card1" value="option1" checked>
-					  <label class="form-check-label" for="card1">1</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlinecard" id="card2" value="option2">
-					  <label class="form-check-label" for="card2">2</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlinecard" id="card3" value="option3">
-					  <label class="form-check-label" for="card3">3</label>
-					</div>
+					<c:forEach items="${listc }" var="listc" varStatus="status">
+						<c:if test="${listc.memberSeq eq sessSeq }">
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="inlinecard" id="card1" value="option1" checked>
+							  <label class="form-check-label" for="card1">
+							  	<input type="text" class="form-control" value="<c:out value="${listc.card }"/>">
+							  </label>
+							</div>
+						</c:if>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -177,7 +180,6 @@
 </form>
 
 
-
 <!-- 
 <footer class="container-fluid bg-light text-center p-2" style="clear: both;">
 	<div>
@@ -197,7 +199,6 @@
 	<span class="m-auto"><i class="fa-solid fa-copyright"></i> copyright</span>
 </footer>
  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -205,6 +206,9 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
+var form = $("form[name=purchaseform]");
+
 </script>
 </body>
 </html>

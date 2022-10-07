@@ -16,6 +16,12 @@ import com.yg.infra.modules.member.MemberVo;
 import com.yg.infra.modules.memberAddr.MemberAddr;
 import com.yg.infra.modules.memberAddr.MemberAddrServiceImpl;
 import com.yg.infra.modules.memberAddr.MemberAddrVo;
+import com.yg.infra.modules.memberCard.MemberCard;
+import com.yg.infra.modules.memberCard.MemberCardServiceImpl;
+import com.yg.infra.modules.memberCard.MemberCardVo;
+import com.yg.infra.modules.memberTel.MemberTel;
+import com.yg.infra.modules.memberTel.MemberTelServiceImpl;
+import com.yg.infra.modules.memberTel.MemberTelVo;
 import com.yg.infra.modules.product.Product;
 import com.yg.infra.modules.product.ProductServiceImpl;
 import com.yg.infra.modules.product.ProductVo;
@@ -33,6 +39,10 @@ public class PurchaseController {
 	MemberServiceImpl servicem;
 	@Autowired
 	MemberAddrServiceImpl servicema;
+	@Autowired
+	MemberTelServiceImpl servicet;
+	@Autowired
+	MemberCardServiceImpl servicec;
 	
 	@RequestMapping(value = "purchaseListX")
 	public String purchaseListX(@ModelAttribute("vo") PurchaseVo vo, Model model) throws Exception {
@@ -41,6 +51,7 @@ public class PurchaseController {
 		model.addAttribute("list", list);
 		return "infra/purchase/xdmin/purchaseListX";
 	}
+	
 	@RequestMapping(value = "purchaseList")
 	public String purchaseList(@ModelAttribute("vo") PurchaseVo vo, Model model) throws Exception {
 		vo.setParamsPaging(service.selectOneCount(vo));
@@ -50,16 +61,19 @@ public class PurchaseController {
 		model.addAttribute("list", list);
 		return "infra/purchase/xdmin/purchaseList";
 	}
+	
 	@RequestMapping(value = "purchaseForm")
-	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom, MemberAddrVo voma) throws Exception {
-		Purchase item = service.selectOne(vo);
-		model.addAttribute("item", item);
+	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom, MemberAddrVo voma, MemberTelVo vot, MemberCardVo voc) throws Exception {
 		Product itemp = servicep.selectOne(vop);
 		model.addAttribute("itemp", itemp);
 		Member itemm = servicem.selectOne(vom);
 		model.addAttribute("itemm", itemm);
-		MemberAddr itemma = servicema.selectOne(voma);
-		model.addAttribute("listma", itemma);
+		List<MemberAddr> listma = servicema.selectList(voma);
+		model.addAttribute("listma", listma);
+		List<MemberTel> listt = servicet.selectList(vot);
+		model.addAttribute("listt" ,listt);
+		List<MemberCard> listc = servicec.selectList(voc);
+		model.addAttribute("listc", listc);
 		return "infra/product/xdmin/purchaseForm";
 	}
 	

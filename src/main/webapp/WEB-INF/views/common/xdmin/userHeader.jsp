@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       	<c:choose>
       		<c:when test="${sessSeq eq null}">
 				<nav class="navbar navbar-expand-lg mb-4">
@@ -208,10 +207,9 @@
 				            </a>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-<%-- 				            <a class="nav-link" href="/member/memberMyPage?seq=<c:out value="${sessSeq }"/>">  --%>		
-		            <a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)">
+	            			<a class="nav-link" href="javascript:goMyPage(<c:out value="${sessSeq }"/>)">
 				            	<i class="fa-solid fa-user fa-3x"></i></i>
-				            </a>
+			            	</a>
 				          </li>
 				        </ul>
 				      </div>
@@ -317,6 +315,7 @@
 				</div>
       		</c:otherwise>
       	</c:choose>
+      	
 <script>
 var goUrlMyPage = "/member/memberMyPage";
 var goUrlMain = "/Main";
@@ -341,9 +340,12 @@ $("#btnLogout").on("click", function(){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
-	
 });
 
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script>
 goMyPage = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlMyPage).submit();

@@ -49,16 +49,7 @@ public class ProductController {
 		model.addAttribute("item", result);
 		return "infra/product/xdmin/productView";
 	}
-//	
-//	@RequestMapping(value = "purchaseForm")
-//	public String purchaseForm(Model model, @ModelAttribute("vo") ProductVo vo, MemberVo dto) throws Exception {
-//		Product result = service.selectOne(vo);
-//		model.addAttribute("item", result);
-//        Member item2 = servicem.selectOne(dto);
-//		model.addAttribute("item2", item2);
-//		return "infra/product/xdmin/purchaseForm";
-//	}
-//	
+
 	@RequestMapping(value = "productViewX")
 	public String productViewX(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		Product result = service.selectOne(vo);
