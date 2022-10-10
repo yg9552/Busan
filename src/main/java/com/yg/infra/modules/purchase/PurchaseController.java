@@ -77,6 +77,11 @@ public class PurchaseController {
 		return "infra/product/xdmin/purchaseForm";
 	}
 	
+	@RequestMapping(value = "purchaseKsnet")
+	public String purchaseKsnet() throws Exception {
+		return "infra/purchase/xdmin/purchaseKsnet";
+	}
+	
 	@RequestMapping(value = "purchaseInst")
 	public String purchaseInst(@ModelAttribute("vo") PurchaseVo vo, Purchase dto, RedirectAttributes redirectAttributes) throws Exception {
 		

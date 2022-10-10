@@ -20,15 +20,16 @@
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
-	  <!-- userHeader s -->
-			<%@include file="../../../common/xdmin/userHeader.jsp"%>
-	  <!-- userHeader e -->
-<form name="purchaseform" method="post">
+<form name="purchaseform" method="post" target="_parent">
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
+	  <!-- userHeader s -->
+			<%@include file="../../../common/xdmin/userHeader.jsp"%>
+	  <!-- userHeader e -->
+
+
 <div class="container mb-5">
-<input type="hidden" name="memberSeq" value="<c:out value="${sessSeq}"/>"/>
 	<h3>주문결제</h3>
 	<div class="row text-center mb-4 border">
 		<div class="col-5 border p-2">상품명/옵션</div>
@@ -326,11 +327,22 @@
 			  </ul> -->
 			  <div class="card-body">
 			  	<div class="d-grid gap-2 mx-auto">
-				  <a class="btn btn-primary" href="./ordercomplete.html" type="button">주문하기</a>
+				  <a class="btn btn-primary" target="_parent" id="btnOrder" href="javascript:goPurchaseKsnet(<c:out value="${itemp.productSeq }"/>)">주문하기</a>
 				</div>
 			  </div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		var goUrlPurchaseKsnet = "/product/purchaseKsnet";
+		var seq1 = $("input:hidden[name=productSeq]");
+		var seq = $("input:hidden[name=memberSeq]");
+		var form = $("form[name=purchaseform]");
+	
+		goPurchaseKsnet = function(keyValue) {
+			seq1.val(keyValue);
+			form.attr("action", goUrlPurchaseKsnet).submit();
+		}
+		</script>
 	</div>
 </div>
 </form>
@@ -344,11 +356,10 @@ myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
 
-var seq = $("input:hidden[name=productSeq]");
-var form = $("form[name=purchaseform]");
 
 </script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	
     $('#addr2list').hide(); // 초깃값 설정
@@ -484,6 +495,8 @@ $(document).ready(function(){
 		} */
 	});
 });
+
+
 </script>
 
 <!-- 카카오주소 API -->
