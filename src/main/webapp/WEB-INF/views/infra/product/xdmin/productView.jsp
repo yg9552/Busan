@@ -149,7 +149,7 @@
 		</div>
 	</div>
 </form>
-		<div class="container row simple-list-example-scrollspy text-center sticky-top mb-3 mx-auto" id="simple-list-example">
+		<div class="container row simple-list-example-scrollspy text-center sticky-top mb-3 mt-5 mx-auto" id="simple-list-example">
 		  <div class="col-3 bg-light p-2">
 		      <a class="p-1 fs-4" href="#simple-list-item-1">상세정보</a>
 		  </div>

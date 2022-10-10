@@ -61,83 +61,218 @@
 				<div class="col-6">
 					<input class="form-control form-control-sm" type="text" placeholder="" aria-label="수령인" value="<c:if test="${itemm.memberSeq eq sessSeq}"><c:out value="${itemm.nm }"></c:out></c:if>">
 				</div>
+			</div>	
+			<div class="row">	
 				<div class="col-4 mb-3">연락처</div>
+				<div class="col-8">
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="telOptions" id="tel1" value="휴대폰" checked>
+					  <label class="form-check-label" for="tel1">휴대폰</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name=telOptions id="tel2" value="집">
+					  <label class="form-check-label" for="tel2">집</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="telOptions" id="tel3" value="회사">
+					  <label class="form-check-label" for="tel3">회사</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="telOptions" id="tel4" value="직접입력">
+					  <label class="form-check-label" for="tel4">직접입력</label>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="tel1list">	
 				<c:forEach items="${listt }" var="listt" varStatus="status">
-					<c:if test="${listt.memberSeq eq sessSeq }">
-						<div class="col-4">
+					<c:if test="${listt.memberSeq eq sessSeq && listt.div_tel eq 1 }">
+						<div class="col-5 offset-4">
 							<input class="form-control form-control-sm" type="text" aria-label="연락처" value="<c:out value="${listt.tel }"/>">
 						</div>
 					</c:if>
 				</c:forEach>
-				
-				<div class="col-4 mb-3">배송지주소</div>
-				<div class="col-6">
+			</div>
+			<div class="row" id="tel2list">	
+				<c:forEach items="${listt }" var="listt" varStatus="status">
+					<c:if test="${listt.memberSeq eq sessSeq && listt.div_tel eq 2 }">
+						<div class="col-5 offset-4">
+							<input class="form-control form-control-sm" type="text" aria-label="연락처" value="<c:out value="${listt.tel }"/>">
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+			<div class="row" id="tel3list">	
+				<c:forEach items="${listt }" var="listt" varStatus="status">
+					<c:if test="${listt.memberSeq eq sessSeq && listt.div_tel eq 3 }">
+						<div class="col-5 offset-4">
+							<input class="form-control form-control-sm" type="text" aria-label="연락처" value="<c:out value="${listt.tel }"/>">
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+			<div class="row" id="tel4list">	
+				<div class="col-5 offset-4">
+					<input class="form-control form-control-sm" type="text" aria-label="연락처">
+				</div>
+			</div>
+			
+			<div class="row mt-3 mb-3">
+				<div class="col-4">배송지주소</div>
+				<div class="col-8">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-					  <label class="form-check-label" for="inlineRadio1">1</label>
+					  <input class="form-check-input" type="radio" name="addrOptions" id="addr1" value="기본배송지" checked>
+					  <label class="form-check-label" for="addr1">기본배송지</label>
 					</div>
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label" for="inlineRadio2">2</label>
+					  <input class="form-check-input" type="radio" name=addrOptions id="addr2" value="회사">
+					  <label class="form-check-label" for="addr2">회사</label>
 					</div>
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-					  <label class="form-check-label" for="inlineRadio3">3</label>
+					  <input class="form-check-input" type="radio" name="addrOptions" id="addr3" value="기타배송지">
+					  <label class="form-check-label" for="addr3">기타배송지</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="addrOptions" id="addr4" value="직접입력">
+					  <label class="form-check-label" for="addr4">직접입력</label>
 					</div>
 				</div>
+			</div>
+			<div class="row" id="addr1list">
 				<c:forEach items="${listma }" var="listma" varStatus="status">
-					<c:if test="${listma.memberSeq eq sessSeq }">
+					<c:if test="${listma.memberSeq eq sessSeq && listma.addr_defaultNy eq 1 }">
 						<div class="col-3 offset-4 mb-3">
-							<input class="form-control form-control-sm" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>">
-							<input class="form-control form-control-sm" type="text" name="maSeq" aria-label="우편번호" value="<c:out value="${listma.maSeq }"/>">
+							<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>" readonly>
+							<input class="form-control form-control-sm" type="hidden" name="maSeq" value="<c:out value="${listma.maSeq }"/>">
 						</div>
 						<div class="col-4">
 							<button class="btn btn-sm btn-outline-dark" type="button">주소찾기</button>
 						</div>
 						<div class="col-4 offset-4 mb-3">
-							<input class="form-control form-control-sm" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>">
+							<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>" readonly>
 						</div>
 						<div class="col-4 mb-3">
-							<input class="form-control form-control-sm" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${listma.addr_detail }"/>">
+							<input class="form-control form-control-sm bg-white" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${listma.addr_detail }"/>" readonly>
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+				
+			<div class="row" id="addr2list">
+				<c:forEach items="${listma }" var="listma" varStatus="status">
+					<c:if test="${listma.memberSeq eq sessSeq && listma.div_addr eq 2 }">
+						<div class="col-3 offset-4 mb-3">
+							<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>" readonly>
+							<input class="form-control form-control-sm" type="hidden" name="maSeq" value="<c:out value="${listma.maSeq }"/>">
+						</div>
+						<div class="col-4">
+							<button class="btn btn-sm btn-outline-dark bg-white" type="button">주소찾기</button>
+						</div>
+						<div class="col-4 offset-4 mb-3">
+							<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>">
+						</div>
+						<div class="col-4 mb-3">
+							<input class="form-control form-control-sm bg-white" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${listma.addr_detail }"/>">
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+				
+			<div class="row" id="addr3list">
+				<c:forEach items="${listma }" var="listma" varStatus="status">
+					<c:if test="${listma.memberSeq eq sessSeq && listma.div_addr eq 3 }">
+						<div class="col-3 offset-4 mb-3">
+							<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>" readonly>
+							<input class="form-control form-control-sm" type="hidden" name="maSeq" value="<c:out value="${listma.maSeq }"/>">
+						</div>
+						<div class="col-4">
+							<button class="btn btn-sm btn-outline-dark bg-white" type="button">주소찾기</button>
+						</div>
+						<div class="col-4 offset-4 mb-3">
+							<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>" readonly>
+						</div>
+						<div class="col-4 mb-3">
+							<input class="form-control form-control-sm bg-white" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${listma.addr_detail }"/>" readonly>
 						</div>
 					</c:if>
 				</c:forEach>
 			</div>
 			
+			<div class="row" id="addr4list">
+				<div class="col-3 offset-4 mb-3">
+					<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호">
+				</div>
+				<div class="col-4">
+					<button class="btn btn-sm btn-outline-dark bg-white" type="button">주소찾기</button>
+				</div>
+				<div class="col-4 offset-4 mb-3">
+					<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소">
+				</div>
+				<div class="col-4 mb-3">
+					<input class="form-control form-control-sm bg-white" type="text" name="addr_detail" aria-label="상세주소">
+				</div>
+			</div>
+			
+			
 			<h4 class="mb-3">결제수단</h4>
 			<div class="row">
-				<div class="col mb-3">
+				<div class="col-4 mb-3">
 					<div class="form-check mb-5">
-					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-					  <label class="form-check-label" for="exampleRadios1">
+					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions1" value="카드결제" checked>
+					  <label class="form-check-label" for="payOptions1">
 					    카드결제
 					  </label>
 					</div>
 					<div class="form-check mb-5">
-					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-					  <label class="form-check-label" for="exampleRadios2">
+					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions2" value="계좌이체">
+					  <label class="form-check-label" for="payOptions2">
 					    계좌이체
 					  </label>
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-					  <label class="form-check-label" for="exampleRadios3">
+					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions3" value="일반결제">
+					  <label class="form-check-label" for="payOptions3">
 					    일반결제
 					  </label>
 					</div>
 				</div>
-				<div class="col">
+				<div class="col-8" id="pay1">
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="cardOptions" id="card1" value="등록카드1" checked>
+					  <label class="form-check-label" for="card1">등록카드1</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name=cardOptions id="card2" value="등록카드2">
+					  <label class="form-check-label" for="card2">등록카드2</label>
+					</div>
+					<div class="form-check form-check-inline mb-3">
+					  <input class="form-check-input" type="radio" name="cardOptions" id="card3" value="등록카드3">
+					  <label class="form-check-label" for="card3">등록카드3</label>
+					</div>
+					
 					<c:forEach items="${listc }" var="listc" varStatus="status">
-						<c:if test="${listc.memberSeq eq sessSeq }">
-							<div class="form-check form-check-inline">
-							  <input class="form-check-input" type="radio" name="inlinecard" id="card1" value="option1" checked>
-							  <label class="form-check-label" for="card1">
-							  	<input type="text" class="form-control" value="<c:out value="${listc.card }"/>">
-							  </label>
+						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 1}">
+							<div class="col-4 mb-3" id="card1list">
+								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
+							</div>
+						</c:if>
+					</c:forEach>
+					<c:forEach items="${listc }" var="listc" varStatus="status">
+						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 2}">
+							<div class="col-4 mb-3" id="card2list">
+								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
+							</div>
+						</c:if>
+					</c:forEach>
+					<c:forEach items="${listc }" var="listc" varStatus="status">
+						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 3}">
+							<div class="col-4 mb-3" id="card3list">
+								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
 							</div>
 						</c:if>
 					</c:forEach>
 				</div>
+				<div class="col-8" id="pay2"></div>
+				<div class="col-8" id="pay3"></div>
 			</div>
 		</div>
 		<div class="col-4">
@@ -180,25 +315,6 @@
 </form>
 
 
-<!-- 
-<footer class="container-fluid bg-light text-center p-2" style="clear: both;">
-	<div>
-		<a class="navbar-brand" href="../main/main.html"><img src="../image/lgo.png" alt="" width="100" height="40" class="d-inline-block mb-2"></a>
-	</div>
-	<span class="fs-6 fw-light">회사명 : OOO | 대표자 : OOO | 사업자등록번호 : 000 | 통신판매신고번호 : 000 | 개인정보관리책임자 : OOO | 전화번호 : 000</span><br>
-	<ul class="list-inline">
-		<li class="list-inline-item"><a href="https://www.navercorp.com" data-clk="intronhn">회사소개</a></li>
-		<li class="list-inline-item"><a href="https://recruit.navercorp.com/" data-clk="recruit">인재채용</a></li>
-		<li class="list-inline-item"><a href="https://www.navercorp.com/naver/proposalGuide" data-clk="contact">제휴제안</a></li>
-		<li class="list-inline-item"><a href="/policy/service.html" data-clk="service">이용약관</a></li>
-		<li class="list-inline-item"><a href="/policy/privacy.html" data-clk="privacy"><strong>개인정보처리방침</strong></a></li>
-		<li class="list-inline-item"><a href="/policy/youthpolicy.html" data-clk="youth">청소년보호정책</a></li>
-		<li class="list-inline-item"><a href="/policy/spamcheck.html" data-clk="policy">정책</a></li>
-		<li class="list-inline-item"><a href="https://help.naver.com/" data-clk="helpcenter">고객센터</a></li>
-	</ul>
-	<span class="m-auto"><i class="fa-solid fa-copyright"></i> copyright</span>
-</footer>
- -->
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -210,6 +326,143 @@ myModal.addEventListener('shown.bs.modal', () => {
 var seq = $("input:hidden[name=productSeq]");
 var form = $("form[name=purchaseform]");
 
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+    $('#addr2list').hide(); // 초깃값 설정
+    $('#addr3list').hide();	// 초깃값 설정
+    $('#addr4list').hide();	// 초깃값 설정
+    $('#tel2list').hide();	// 초깃값 설정
+    $('#tel3list').hide();	// 초깃값 설정
+    $('#tel4list').hide();	// 초깃값 설정
+    $('#card2list').hide();	// 초깃값 설정
+    $('#card3list').hide();	// 초깃값 설정
+    $('#pay2').hide();	// 초깃값 설정
+    $('#pay3').hide();	// 초깃값 설정
+	
+    //전화번호
+	$("input[name='telOptions']").change(function(){
+		// 기본배송지 선택 시.
+		if($("input[name='telOptions']:checked").val() == '휴대폰'){
+			$('#tel2list').hide();
+			$('#tel3list').hide();
+			$('#tel4list').hide();
+			$('#tel1list').show();
+		}	
+		// 회사 선택 시.
+		else if($("input[name='telOptions']:checked").val() == '집'){
+			$('#tel1list').hide();
+			$('#tel3list').hide();
+			$('#tel4list').hide();
+			$('#tel2list').show();
+		}
+		// 기타배송지 선택 시.
+		else if($("input[name='telOptions']:checked").val() == '회사'){
+			$('#tel1list').hide();
+			$('#tel2list').hide();
+			$('#tel4list').hide();
+			$('#tel3list').show();
+		}
+		// 직접입력 선택 시.
+		else if($("input[name='telOptions']:checked").val() == '직접입력'){
+			$('#tel1list').hide();
+			$('#tel2list').hide();
+			$('#tel3list').hide();
+			$('#tel4list').show();
+		}
+	});
+    
+    //배송지
+	$("input[name='addrOptions']").change(function(){
+		// 기본배송지 선택 시.
+		if($("input[name='addrOptions']:checked").val() == '기본배송지'){
+			$('#addr2list').hide();
+			$('#addr3list').hide();
+			$('#addr4list').hide();
+			$('#addr1list').show();
+		}	
+		// 회사 선택 시.
+		else if($("input[name='addrOptions']:checked").val() == '회사'){
+			$('#addr1list').hide();
+			$('#addr3list').hide();
+			$('#addr4list').hide();
+			$('#addr2list').show();
+		}
+		// 기타배송지 선택 시.
+		else if($("input[name='addrOptions']:checked").val() == '기타배송지'){
+			$('#addr1list').hide();
+			$('#addr2list').hide();
+			$('#addr4list').hide();
+			$('#addr3list').show();
+		}
+		// 직접입력 선택 시.
+		else if($("input[name='addrOptions']:checked").val() == '직접입력'){
+			$('#addr1list').hide();
+			$('#addr2list').hide();
+			$('#addr3list').hide();
+			$('#addr4list').show();
+		}
+	});
+    
+    //카드
+	$("input[name='cardOptions']").change(function(){
+		// 등록카드1 선택 시.
+		if($("input[name='cardOptions']:checked").val() == '등록카드1'){
+			$('#card2list').hide();
+			$('#card3list').hide();
+			$('#card1list').show();
+		}	
+		// 등록카드2 선택 시.
+		else if($("input[name='cardOptions']:checked").val() == '등록카드2'){
+			$('#card1list').hide();
+			$('#card3list').hide();
+			$('#card2list').show();
+		}
+		// 등록카드3 선택 시.
+		else if($("input[name='cardOptions']:checked").val() == '등록카드3'){
+			$('#card1list').hide();
+			$('#card2list').hide();
+			$('#card3list').show();
+		}
+		// 직접입력 선택 시.
+		/* else if($("input[name='addrOptions']:checked").val() == '직접입력'){
+			$('#addr1list').hide();
+			$('#addr2list').hide();
+			$('#addr3list').hide();
+			$('#addr4list').show();
+		} */
+	});
+    
+    //결제방법
+	$("input[name='payOptions']").change(function(){
+		// 카드결제 선택 시.
+		if($("input[name='payOptions']:checked").val() == '카드결제'){
+			$('#pay2').hide();
+			$('#pay3').hide();
+			$('#pay1').show();
+		}	
+		// 계좌이체 선택 시.
+		else if($("input[name='payOptions']:checked").val() == '계좌이체'){
+			$('#pay1').hide();
+			$('#pay2').hide();
+			$('#pay2').show();
+		}
+		// 일반결제 선택 시.
+		else if($("input[name='payOptions']:checked").val() == '일반결제'){
+			$('#pay1').hide();
+			$('#pay2').hide();
+			$('#pay3').show();
+		}
+		// 직접입력 선택 시.
+		/* else if($("input[name='addrOptions']:checked").val() == '직접입력'){
+			$('#addr1list').hide();
+			$('#addr2list').hide();
+			$('#addr3list').hide();
+			$('#addr4list').show();
+		} */
+	});
+});
 </script>
 </body>
 </html>
