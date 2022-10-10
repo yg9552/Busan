@@ -218,9 +218,9 @@
 			<div class="row">
 				<div class="col-4 mb-3">
 					<div class="form-check mb-5">
-					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions1" value="카드결제" checked>
+					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions1" value="간편결제" checked>
 					  <label class="form-check-label" for="payOptions1">
-					    카드결제
+					    간편결제
 					  </label>
 					</div>
 					<div class="form-check mb-5">
@@ -457,8 +457,8 @@ $(document).ready(function(){
     
     //결제방법
 	$("input[name='payOptions']").change(function(){
-		// 카드결제 선택 시.
-		if($("input[name='payOptions']:checked").val() == '카드결제'){
+		// 간편결제 선택 시.
+		if($("input[name='payOptions']:checked").val() == '간편결제'){
 			$('#pay2').hide();
 			$('#pay3').hide();
 			$('#pay1').show();
