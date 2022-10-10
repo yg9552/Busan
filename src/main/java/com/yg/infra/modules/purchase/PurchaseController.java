@@ -78,7 +78,13 @@ public class PurchaseController {
 	}
 	
 	@RequestMapping(value = "purchaseKsnet")
-	public String purchaseKsnet() throws Exception {
+	public String purchaseKsnet(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom, MemberTelVo vot) throws Exception {
+		Product itemp = servicep.selectOne(vop);
+		model.addAttribute("itemp", itemp);
+		Member itemm = servicem.selectOne(vom);
+		model.addAttribute("itemm", itemm);
+		List<MemberTel> listt = servicet.selectList(vot);
+		model.addAttribute("listt" ,listt);
 		return "infra/purchase/xdmin/purchaseKsnet";
 	}
 	

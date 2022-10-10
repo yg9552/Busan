@@ -63,7 +63,7 @@
         <td width="25">&nbsp;</td>
         <td width="505" align="center">
 <table border='0' cellpadding='0' cellspacing='0' width='500' align='center'>
-
+	<thead style="display: none;">
     <tr>
         <td height="40" style="padding:0px 0px 0px 15px; ">
 			<img src="../../../../../resources/image/ico_tit3.gif" width="30" height="30" align="absmiddle"> <strong>고객에게 보여지지 않아야 하는 설정값 항목<strong></td>
@@ -106,17 +106,18 @@
         </tr>
       </table></td>
     </tr>
+    </thead>
     <tr>
       <td height="40" style="padding:0px 0px 0px 15px; ">
     <!--옵션정보 : 옵션 사항 입니다. 설정 안하거나 값을 보내지 않을경우 default 값으로 설정됩니다.-->
-    <img src="../../../../../resources/image/ico_tit4.gif" width="30" height="30" align="absmiddle"> <strong>고객에게 보여주는 항목</strong></td>
+    <img src="../../../../../resources/image/ico_tit4.gif" width="30" height="30" align="absmiddle"> <strong>결제하기</strong></td>
     </tr>
     <tr>
       <td align="center"><table width="400" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="110"><img src="../../../../../resources/image/ico_right.gif" width="11" height="11" align="absmiddle"> 상품명</td> 
 		      <!--상품명 50Byte(한글 25자) 입니다. ' " ` 는 사용하실수 없습니다. 따옴표,쌍따옴표,백쿼테이션 -->
-          <td width="290"><input type='text' name='sndGoodname' value='당근10kg' size='30'></td>
+          <td width="290"><input type='text' name='sndGoodname' value='<c:out value="${itemp.product_name }"></c:out>' size='30'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
@@ -124,7 +125,7 @@
         <tr>
           <td width="110"><img src="../../../../../resources/image/ico_right.gif" width="11" height="11" align="absmiddle"> 금액</td> 
 		  <!--금액은 ,없이 입력 -->
-          <td width="290"><input type='text' name='sndAmount' value='1004' size='15' maxlength='9'></td>
+          <td width="290"><input type='text' name='sndAmount' value='<c:out value="${itemp.totalprice }" />' size='15' maxlength='9'>원</td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
@@ -139,7 +140,7 @@
         <tr>
           <td width="110"><img src="../../../../../resources/image/ico_right.gif" width="11" height="11" align="absmiddle"> 전자우편</td> 
 		      <!--KSPAY에서 결제정보를 메일로 보내줍니다.(신용카드거래에만 해당)-->
-          <td width="290"><input type='text' name='sndEmail' value='kspay@carrot.co.kr' size='30'></td>
+          <td width="290"><input type='text' name='sndEmail' value='<c:out value="${itemm.email}"></c:out>' size='30'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
@@ -147,7 +148,7 @@
         <tr>
           <td width="110"><img src="../../../../../resources/image/ico_right.gif" width="11" height="11" align="absmiddle"> 이동전화</td> 
 		      <!--전화번호 value 값에 숫자만 넣게 해주시길 바랍니다. : '-' 가 들어가면 안됩니다.-->
-          <td width="290"><input type='text' name='sndMobile' value='01112341234' size='12' maxlength='12'></td>
+          <td width="290"><input type='text' name='sndMobile' value='<c:forEach items="${listt }" var="listt" varStatus="status"><c:if test="${listt.memberSeq eq sessSeq && listt.div_tel eq 1 }"><c:out value="${listt.tel }"/></c:if></c:forEach>' size='12' maxlength='12'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>

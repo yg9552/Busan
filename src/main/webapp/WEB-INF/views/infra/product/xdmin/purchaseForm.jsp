@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
-<form name="purchaseform" method="post" target="_parent">
+<form name="purchaseform" method="post">
 <!-- *Vo.jsp s -->
 <%@include file="productVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
@@ -327,7 +327,7 @@
 			  </ul> -->
 			  <div class="card-body">
 			  	<div class="d-grid gap-2 mx-auto">
-				  <a class="btn btn-primary" target="_parent" id="btnOrder" href="javascript:goPurchaseKsnet(<c:out value="${itemp.productSeq }"/>)">주문하기</a>
+				  <a class="btn btn-primary" id="btnOrder" href="javascript:goPurchaseKsnet(<c:out value="${itemp.productSeq }"/>)">주문하기</a>
 				</div>
 			  </div>
 			</div>
@@ -340,13 +340,14 @@
 	
 		goPurchaseKsnet = function(keyValue) {
 			seq1.val(keyValue);
+			form.attr("target", "_blank");
 			form.attr("action", goUrlPurchaseKsnet).submit();
-		}
+		} 
+		
 		</script>
 	</div>
 </div>
 </form>
-
 
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
