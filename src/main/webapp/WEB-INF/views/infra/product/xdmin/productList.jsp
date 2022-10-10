@@ -11,10 +11,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>prodList</title>
-	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
 	  <!-- userHeader s -->
@@ -62,54 +62,6 @@
 					</a>
 				</div>
 			</c:forEach>
-			<div class="col-3">
-				<a href="./prodView.html">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/coffee-g8719fce7c_640.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">커피콩</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">상품가격</li>
-						    <li class="list-group-item">배송정보</li>
-						    <li class="list-group-item">원산지</li>
-						    <li class="list-group-item">적립금</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
-			<div class="col-3">
-				<a href="#">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/basict.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">BASIC T-SHIRT</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">상품가격</li>
-						    <li class="list-group-item">배송정보</li>
-						    <li class="list-group-item">원산지</li>
-						    <li class="list-group-item">적립금</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
-			<div class="col-3">
-				<a href="./prodView2.html">
-					<div class="card" style="width: 18rem;">
-	  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
-	  					<div class="card-body">
-	    					<h5 class="card-title">더블 폭스헤드 반팔 티셔츠</h5>
-	  					</div>
-					  	<ul class="list-group list-group-flush">
-						    <li class="list-group-item">상품가격</li>
-						    <li class="list-group-item">배송정보</li>
-						    <li class="list-group-item">원산지</li>
-						    <li class="list-group-item">적립금</li>
-					  	</ul>
-					</div>
-				</a>
-			</div>
 		</div>
 		<!-- pagination s -->
 			<%@include file="../../../common/xdmin/pagination.jsp"%>
