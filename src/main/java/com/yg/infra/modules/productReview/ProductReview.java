@@ -10,6 +10,9 @@ public class ProductReview {
 	private String contents;
 	private Date rvRegtime;
 	private Integer DelNy;
+	private String id;
+	private String nm;
+	private String product_name;
 	
 	public String getRvSeq() {
 		return rvSeq;
@@ -52,6 +55,24 @@ public class ProductReview {
 	}
 	public void setDelNy(Integer delNy) {
 		DelNy = delNy;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNm() {
+		return nm;
+	}
+	public void setNm(String nm) {
+		this.nm = nm;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	
 }

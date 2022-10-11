@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public class ProductReviewDao {
 
 	@Inject
-	@Resource(name = "sqlSesstion")
+	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
 	public static String namespace = "com.yg.infra.modules.productReview.ProductReviewMapper";

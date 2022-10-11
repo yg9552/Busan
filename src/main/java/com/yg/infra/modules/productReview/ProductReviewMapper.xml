@@ -15,7 +15,7 @@
 			<if test="memberSeq != null and !memberSeq.equals('')">AND a.memberSeq = #{memberSeq}</if>
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND purchaseSeq LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 1">AND rvSeq LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 2">AND nm LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
@@ -41,7 +41,7 @@
 	    <include refid="Base.selectListLowerForMysql" />
 	</select>
 	
-	<select id="selectOneCount" resultMap="Integer">
+	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>
