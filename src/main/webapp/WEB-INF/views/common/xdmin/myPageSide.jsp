@@ -3,9 +3,8 @@
 <div class="col-3">
 	<div class="card">
 	  <div class="card-body p-4 text-center">
-	    <h5 class="card-title"><c:out value="${sessName }"/>님은</h5>
-	    <h5 class="card-title text-danger">VIP</h5>
-	    <p class="card-text">입니다</p>
+	    <h5 class="card-title text-warning"><c:out value="${sessName }"/>님</h5>
+	    <h5 class="card-title">환영합니다!</h5>
 	  </div>
 	  <ul class="list-group list-group-flush text-center">
 	    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>

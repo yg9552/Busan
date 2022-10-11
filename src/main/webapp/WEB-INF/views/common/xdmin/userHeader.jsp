@@ -70,7 +70,7 @@
 					    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 					      <ul class="navbar-nav mx-auto">
 					        <li class="nav-item dropdown me-4">
-					          <a class="nav-link dropdown-toggle white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					            신상품
 					          </a>
 					          <ul class="dropdown-menu dropdown-menu-dark">

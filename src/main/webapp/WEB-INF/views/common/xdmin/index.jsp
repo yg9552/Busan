@@ -54,7 +54,7 @@
     <!-- plugins:js -->
     <script type="text/javascript">
 
-	var goUrlxdminLogin = "/member/xdminLogin"; 			/* #-> */
+	var goUrlxdminLogin = "/xdminMain"; 		/* #-> */
 	var goUrlmemberLogin = "/Main"; 			/* #-> */
 	
 	$("#xdmin").click(function(){

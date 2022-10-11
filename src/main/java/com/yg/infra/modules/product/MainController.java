@@ -24,6 +24,13 @@ public class MainController {
 		
 		return "infra/product/xdmin/Main";
 	}
+	
+	@RequestMapping(value = "/xdminMain")
+	public String xdminMain(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+		
+		return "common/xdmin/xdminMain";
+	}
+	
 	@RequestMapping(value = "/")
 	public String start() throws Exception {
 		return "common/xdmin/index";

@@ -12,7 +12,7 @@
 		left join member b on a.memberSeq = b.memberSeq
 		left join product c on a.productSeq = c.productSeq
 		WHERE 1=1
-		AND a.memberSeq = b.memberSeq
+			<if test="memberSeq != null and !memberSeq.equals('')">AND a.memberSeq = #{memberSeq}</if>
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
 			<choose>
