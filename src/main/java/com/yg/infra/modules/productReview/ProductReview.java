@@ -1,0 +1,57 @@
+package com.yg.infra.modules.productReview;
+
+import java.sql.Date;
+
+public class ProductReview {
+	private String rvSeq;
+	private String memberSeq;
+	private String productSeq;
+	private String title;
+	private String contents;
+	private Date rvRegtime;
+	private Integer DelNy;
+	
+	public String getRvSeq() {
+		return rvSeq;
+	}
+	public void setRvSeq(String rvSeq) {
+		this.rvSeq = rvSeq;
+	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
+	}
+	public String getProductSeq() {
+		return productSeq;
+	}
+	public void setProductSeq(String productSeq) {
+		this.productSeq = productSeq;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	public Date getRvRegtime() {
+		return rvRegtime;
+	}
+	public void setRvRegtime(Date rvRegtime) {
+		this.rvRegtime = rvRegtime;
+	}
+	public Integer getDelNy() {
+		return DelNy;
+	}
+	public void setDelNy(Integer delNy) {
+		DelNy = delNy;
+	}
+	
+}
