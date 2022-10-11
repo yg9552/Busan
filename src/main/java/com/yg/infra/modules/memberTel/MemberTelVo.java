@@ -8,6 +8,7 @@ public class MemberTelVo extends BaseVo{
 	private Integer shOption;
 	private Integer shDelNy;
 	private String mtSeq;
+	private String memberSeq;
 	
 	public String getShValue() {
 		return shValue;
@@ -32,6 +33,12 @@ public class MemberTelVo extends BaseVo{
 	}
 	public void setMtSeq(String mtSeq) {
 		this.mtSeq = mtSeq;
+	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
 	}
 	
 }
