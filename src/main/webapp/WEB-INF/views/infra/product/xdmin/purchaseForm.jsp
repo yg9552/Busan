@@ -310,11 +310,11 @@
 				      <div class="accordion-body">
 				        <div class="row g-1">
 				        	<div class="col-6">총금액</div>
-				        	<div class="col-6"><c:out value="${itemp.totalprice }"></c:out></div>
+				        	<div class="col-6"><fmt:formatNumber value="${itemp.totalprice }" pattern="#,###"/>원</div>
 				        	<div class="col-6">할인율</div>
 				        	<div class="col-6"><c:out value="${itemp.discount_percent }"></c:out>%</div>
 				        	<div class="col-6">배송비</div>
-				        	<div class="col-6"><c:out value="${itemp.deliverycost }"></c:out>원</div>
+				        	<div class="col-6"><fmt:formatNumber value="${itemp.deliverycost }" pattern="#,###"/>원</div>
 				        </div>
 				      </div>
 				    </div>

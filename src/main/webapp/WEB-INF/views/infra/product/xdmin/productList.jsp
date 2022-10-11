@@ -43,13 +43,27 @@
 		  					</div>
 						  	<ul class="list-group list-group-flush">
 							    <li class="list-group-item"> 가격 : <fmt:formatNumber value="${list.price}" pattern="#,###"/>원</li>
-							    <li class="list-group-item text-danger"> 할인가: <fmt:formatNumber value="${list.discountprice}" pattern="#,###"/>원</li>
+							    <c:choose>
+							    	<c:when test="${list.discount_percent eq 0 }"></c:when>
+							    	<c:otherwise>
+							    		<li class="list-group-item text-danger"> 할인가: <fmt:formatNumber value="${list.discountprice}" pattern="#,###"/>원</li>
+							    	</c:otherwise>
+							    </c:choose>
+							    <%-- 
 							    <li class="list-group-item"> 배송정보 : 
 							    <c:forEach items="${listCodeDeliInfo}" var="listDeliInfo" varStatus="statusDeliinfo">
 									<c:if test="${list.deliveryinfo eq listDeliInfo.seq}"><c:out value="${listDeliInfo.name }"/></c:if>
 								</c:forEach>
 							    </li>
-	   						    <li class="list-group-item"> 배송비 : <fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원 </li>
+							     --%>
+	   						    <c:choose>
+							    	<c:when test="${list.deliverycost eq 0 }">
+							    		<li class="list-group-item text-danger"> 배송비 : 무료배송 </li>
+							    	</c:when>
+							    	<c:otherwise>
+							    		<li class="list-group-item"> 배송비 : <fmt:formatNumber value="${list.deliverycost}" pattern="#,###"/>원 </li>
+							    	</c:otherwise>
+							    </c:choose>
 							    <li class="list-group-item"> 원산지 :
 							    	<c:forEach items="${listCodeOrigin}" var="listOrigin" varStatus="statusOrigin">
 										<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>

@@ -69,34 +69,45 @@
 				</div>
 				<div class="col-6">
 					<h5 class="">
-						<input class="form-control bg-white border-white" type="text" name="price" value="<fmt:formatNumber value="${item.price}" pattern="#,###"/>원" disabled>
+						<input class="form-control bg-white border-white my-2 p-0" type="text" name="price" value="<fmt:formatNumber value="${item.price}" pattern="#,###"/>원" disabled>
 					</h5>
 				</div>
-				<div class="col-6 mb-3">
-					<h5 class="mt-2">할인가격</h5>
-				</div>
-				<div class="col-6">
-					<h5 class="">
-						<input class="form-control bg-white border-white" type="text" name="price" value="<fmt:formatNumber value="${item.discountprice}" pattern="#,###"/>원" disabled>
-					</h5>
-				</div>
+				<c:choose>
+					<c:when test="${item.discount_percent eq 0 }"></c:when>
+					<c:otherwise>
+						<div class="col-6 mb-3">
+							<h5 class="mt-2">할인가격</h5>
+						</div>
+						<div class="col-6">
+			    			<input class="form-control bg-white border-white p-0 my-2" type="text" name="price" value="<fmt:formatNumber value="${item.discountprice}" pattern="#,###"/>원" disabled>
+			    		</div>
+			    	</c:otherwise>
+			    </c:choose>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">적립금</h5>
 				</div>
 				<div class="col-6 text-start">
-					<input class="form-control bg-white border-white" type="text" name="reward" value="<fmt:formatNumber value="${item.reserve}" pattern="#,###"/>원" disabled>
+					<input class="form-control bg-white border-white p-0 my-2" type="text" name="reward" value="<fmt:formatNumber value="${item.reserve}" pattern="#,###"/>원" disabled>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">무이자할부</h5>
 				</div>
 				<div class="col-6 text-start">
-					<input class="form-control bg-white border-white" type="text" name="reward" value="10개월" disabled>
+					<input class="form-control bg-white border-white p-0 my-2" type="text" name="reward" value="10개월" disabled>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">배송비</h5>
 				</div>
 				<div class="col-6 text-start">
-					<input class="form-control bg-white border-white" type="text" name="deliverycost" value="<fmt:formatNumber value="${item.deliverycost}" pattern="#,###"/>원" disabled>
+					<c:choose>
+				    	<c:when test="${item.deliverycost eq 0 }">
+				    		<input class="form-control bg-white border-white" type="hidden" name="deliverycost" value="<fmt:formatNumber value="${item.deliverycost}" pattern="#,###"/>원" disabled>
+				    		<input class="form-control bg-white border-white p-0 my-2" type="text" value="무료배송" disabled>
+				    	</c:when>
+				    	<c:otherwise>
+				    		<input class="form-control bg-white border-white p-0 my-2" type="text" name="deliverycost" value="<fmt:formatNumber value="${item.deliverycost}" pattern="#,###"/>원" disabled>
+				    	</c:otherwise>
+				    </c:choose>
 				</div>
 				<div class="col-6 mb-3">
 					<h5 class="mt-2">배송정보</h5>
