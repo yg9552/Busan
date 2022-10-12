@@ -287,39 +287,42 @@
 		      
 	      <div id="simple-list-item-3"></div>
 	      
-	      	<h4 class="mt-5 mb-3">Q&A</h4>
-	      	<button type="button" class="btn btn-dark mb-3">상품Q&A작성하기</button>
-		      <br>
-		      <table class="table text-center">
-				  <thead>
-				    <tr>
-				      <th scope="col">답변상태</th>
-				      <th scope="col" class="w-75">제목</th>
-				      <th scope="col">작성자</th>
-				      <th scope="col">작성일</th>
-				    </tr>
-				  </thead>
-				  <tbody class="table-group-divider">
-				    <tr>
-				      <td>답변완료</td>
-				      <td><a href="#">정품인가요?</a></td>
-				      <td>Mark</td>
-				      <td>2022.08.02</td>
-				    </tr>
-				    <tr>
-				      <td>답변미완료</td>
-				      <td><A href="#">정사이즈인가요?</A></td>
-				      <td>Thornton</td>
-				      <td>2022.08.02</td>
-				    </tr>
-				    <tr>
-				      <td>답변완료</td>
-				      <td><a href="#"></a></td>
-				      <td>Larry the Bird</td>
-				      <td>2022.08.01</td>
-				    </tr>
-				  </tbody>
-				</table>
+	      <h4 class="mt-5 mb-3">Q&A</h4>
+	      <button type="button" class="btn btn-dark mb-3">상품Q&A작성하기</button>
+	      <table class="table text-center table-hover">
+	      	<thead>
+			    <tr>
+			      <th scope="col" style="width: 100px;">답변상태</th>
+			      <th scope="col" >제목</th>
+			      <th scope="col" style="width: 100px;">작성자</th>
+			      <th scope="col" style="width: 300px;">작성시간</th>
+			    </tr>
+			  </thead>
+			  <tbody class="table-group-divider">
+			      	<c:choose>
+						<c:when test="${fn:length(listqa) eq 0}">
+							<tr>
+								<td colspan="4">Q&A가 없습니다!</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${listqa}" var="listqa" varStatus="status">
+							    <tr>
+							      <td>
+							      	<c:choose>
+							      		<c:when test="${listqa.answerNy eq 0 }">답변대기</c:when>
+							      		<c:otherwise>답변완료</c:otherwise>
+							      	</c:choose>
+							      </td>
+							      <td><a href="#"><c:out value="${listqa.title }"></c:out></a></td>
+							      <td><c:out value="${listqa.id }"></c:out></td>
+							      <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${listqa.qaRegtime}"/></td>
+							    </tr>
+						    </c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
 		      <br>
 		      <br>
 		      <br>
