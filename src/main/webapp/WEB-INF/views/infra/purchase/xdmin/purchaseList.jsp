@@ -46,7 +46,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<!-- 
 	<div class="text-center mb-3">
 		<div class="row">
 			<div class="col">
@@ -72,6 +72,7 @@
 			</div>
 		</div>
 	</div>
+	 -->
 	<div class="row text-center w-75 m-auto">
 		<c:choose>
 			<c:when test="${fn:length(list) eq 0}">
@@ -84,15 +85,17 @@
 							<div class="col-3">
 								<img alt=".." src="../image/basict.png" style="width: 150px; height: 150px;">
 							</div>
-								<div class="col my-auto">
+								<div class="col">
 									<h4><c:out value="${list.product_name }"/></h4>
 									<span><c:out value="${list.price }"/>원</span>
 									 | <span>2022.07.21</span>
 								</div>
-							<div class="col-3 my-auto">
+							<div class="col-2">
 								<span>배송완료</span>
+								<button type="button" class="btn btn-sm btn-dark">리뷰작성하기</button>
 							</div>
 						</div>
+						
 					</div>
 				</c:forEach>
 			</c:otherwise>

@@ -39,107 +39,105 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">리뷰목록</h4>
+                    <form autocomplete="off" name="formList" id="formList" method="post">
+                    <input type="hidden" name="mainkey">
+                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+                    <input type="hidden" name="checkboxSeqArray">
+                    <input type="hidden" name="rvSeq" value="<c:out value="${vo.rvSeq }"/>">
+                    <div class="row mb-3">
+                    	<div class="col-1">
+                    		<select class="form-control" id="shDelNy" name="shDelNy">
+		                        <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+		                        <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+		                        <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
+		                    </select>
+                    	</div>
+                    	<div class="col-1">
+                    		<select class="form-control">
+		                        <option>수정일</option>
+		                        <option>N</option>
+		                        <option>Y</option>
+		                    </select>
+                    	</div>
+                    	<div class="col">
+                    		<input type="text" class="form-control" placeholder="시작일">
+                    	</div>
+                    	<div class="col">
+                    		<input type="text" class="form-control" placeholder="종료일">
+                    	</div>
+                    	<div class="col-1">
+                    		<select class="form-control" id="shOption" name="shOption">
+		                        <option value="" <c:if test="${empty vo.shOption}">selected</c:if>> 검색구분 </option>
+		                        <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>> 상품번호 </option>
+		                        <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>> 상품명 </option>
+		                        <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>> 브랜드 코드 </option>
+		                    </select>
+                    	</div>
+                    	<div class="col">
+                    		<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" class="form-control" placeholder="검색어">
+                    	</div>
+                    	<div class="col-auto my-auto">
+                    		<button type="submit" class="btn btn-inverse-danger btn-fw">검색</button>
+                    		<a role="button" class="btn btn-inverse-warning" id="btnReset"><i class="fa-solid fa-rotate"></i></a>
+                    	</div>
+                    </div>
+                    </form>
                     <div class="table-responsive">
                       <table class="table table-dark text-success text-center mb-3">
                         <thead>
                           <tr>
                             <th></th>
+                            <th> # </th>
                             <th> 아이디 </th>
                             <th> 내용 </th>
                             <th> 상품명 </th>
+                            <th> 삭제여부 </th>
                             <th> 작성일 </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> N </td>
-                            <td><a href="#"> $ 77.99 </a></td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> Y </td>
-                            <td><a href="#"> $245.30 </a></td>
-                            <td> July 1, 2015 </td>
-                            <td> July 1, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> N </td>
-                            <td><a href="#"> $138.00 </a></td>
-                            <td> Apr 12, 2015 </td>
-                            <td> Apr 12, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> N </td>
-                            <td><a href="#"> $ 77.99 </a></td>
-                            <td> May 15, 2015 </td>
-                            <td> May 15, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> N </td>
-                            <td><a href="#"> $ 160.25 </a></td>
-                            <td> May 03, 2015 </td>
-                            <td> May 03, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> N </td>
-                            <td><a href="#"> $ 123.21 </a></td>
-                            <td> April 05, 2015 </td>
-                            <td> April 05, 2015 </td>
-                          </tr>
-                          <tr>
-                            <td>
-								<div class="form-check form-check-flat form-check-success">
-			                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
-			                    </div>
-							</td>
-                            <td> N </td>
-                            <td><a href="#"> $ 150.00 </a></td>
-                            <td> June 16, 2015 </td>
-                            <td> June 16, 2015 </td>
-                          </tr>
+	                        <c:choose>
+	                        	<c:when test="${fn:length(list) eq 0}">
+                        		<tr>
+                        			<td colspan="10">
+                        				There is no date!
+                        			</td>
+                        		</tr>
+								</c:when>
+								<c:otherwise>
+			                        <c:forEach items="${list}" var="list" varStatus="status">
+			                          <tr>
+			                            <td>
+											<div class="form-check form-check-flat form-check-success">
+						                        <label class="form-check-label"><input type="checkbox" class="form-check-input"></label>
+						                    </div>
+										</td>
+										<td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
+									    <td> <c:out value="${list.id }"/></td>
+									    <td> <a href="javascript:goView(<c:out value="${list.rvSeq }"/>)"> <c:out value="${list.title }"/> </a></td>
+									    <td> <c:out value="${list.product_name }"/> </td>
+									    <td> <c:out value="${list.delNy }"/> </td>
+									    <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.rvRegtime}"/></td>
+			                          </tr>
+			                        </c:forEach>
+		                        </c:otherwise>
+	                        </c:choose>
                         </tbody>
                       </table>
                     </div>
-                    <div class="row justify-content-between">
-	                  	<div class="col-auto me-auto">
-	                  		<a href="#" class="btn btn-inverse-primary btn-fw">검색</a>
-	                  	</div>
-	                  	<div class="col-auto">
-	                  		<a href="./reviewComment.html" class="btn btn-inverse-success btn-fw">답글쓰기</a>
-	                  		<button type="button" class="btn btn-inverse-danger btn-fw">삭제</button>
-	                  	</div>
-                  	</div>
+                    <!-- pagination s -->
+						<%@include file="../../../common/xdmin/pagination.jsp"%>
+					<!-- pagination e -->
+                    <div class="row">
+						<div class="col">
+							<button type="button" class="btn btn-success" id="btnForm">리뷰등록 <i class="fa-solid fa-pencil"></i></button>
+						</div>
+						<div class="col-auto">
+							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
+							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
+						</div>
+					</div>
                   </div>
                 </div>
               </div>

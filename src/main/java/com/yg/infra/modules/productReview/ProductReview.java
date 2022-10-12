@@ -1,6 +1,7 @@
 package com.yg.infra.modules.productReview;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+
 
 public class ProductReview {
 	private String rvSeq;
@@ -8,7 +9,7 @@ public class ProductReview {
 	private String productSeq;
 	private String title;
 	private String contents;
-	private Date rvRegtime;
+	private Timestamp rvRegtime;
 	private Integer DelNy;
 	private String id;
 	private String nm;
@@ -44,12 +45,6 @@ public class ProductReview {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Date getRvRegtime() {
-		return rvRegtime;
-	}
-	public void setRvRegtime(Date rvRegtime) {
-		this.rvRegtime = rvRegtime;
-	}
 	public Integer getDelNy() {
 		return DelNy;
 	}
@@ -73,6 +68,12 @@ public class ProductReview {
 	}
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+	public Timestamp getRvRegtime() {
+		return rvRegtime;
+	}
+	public void setRvRegtime(Timestamp rvRegtime) {
+		this.rvRegtime = rvRegtime;
 	}
 	
 }

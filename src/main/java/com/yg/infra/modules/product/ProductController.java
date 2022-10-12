@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yg.infra.modules.member.MemberServiceImpl;
+import com.yg.infra.modules.productReview.ProductReview;
+import com.yg.infra.modules.productReview.ProductReviewServiceImpl;
+import com.yg.infra.modules.productReview.ProductReviewVo;
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -21,6 +24,9 @@ public class ProductController {
 	
 	@Autowired
 	MemberServiceImpl servicem;
+	
+	@Autowired
+	ProductReviewServiceImpl servicerv;
 	
 	@RequestMapping(value = "productList")
 	public String productList(Model model,@ModelAttribute("vo") ProductVo vo) throws Exception {
@@ -44,9 +50,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "productView")
-	public String productView(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
+	public String productView(Model model, @ModelAttribute("vo") ProductVo vo, @ModelAttribute("vorv") ProductReviewVo vorv) throws Exception {
+		vorv.setParamsPaging(servicerv.selectOneCount(vorv));
+		vorv.setProductSeq(vo.getProductSeq());
+		System.out.println(vorv.getProductSeq());
 		Product result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		List<ProductReview> listrv = servicerv.selectList(vorv);
+		model.addAttribute("listrv", listrv);
 		return "infra/product/xdmin/productView";
 	}
 

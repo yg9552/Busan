@@ -224,7 +224,6 @@
 		    
 	      	<h4 class="mt-5">상품리뷰</h4>
 	      	<div class="border border-dark border-2 mb-3"></div>
-	      	
 	      	<div class="row bg-light text-center">
 	      		<div class="col-6">사용자총평점</div>
 	      		<div class="col-6">전체리뷰수</div>
@@ -234,24 +233,36 @@
       			</div>
 	      		<div class="col-6 p-5">
 	      			<i class="fa-solid fa-comment-dots fa-2x"></i>
-	      			<br><span class="fs-4">1 건</span>
+	      			<br><span class="fs-4"><c:out value="${vorv.totalRows }"></c:out>건</span>
 	      		</div>
 	      	</div>
-		      <h6 class="mt-3 mb-3">리뷰 1건</h6>
+		      <h6 class="mt-3 mb-3">리뷰 <c:out value="${vorv.totalRows }"></c:out>건</h6>
 		      <div class="border border-dark border-1 opacity-50 mb-3"></div>
-		      <a href="#">
-		      	<div>
-		      		<div class="float-end bg-dark"  style="width: 150px; height: 150px;">
-		      			<img alt="" src="">
-		      		</div>
-		      		<span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span>
-		      		<span class="fs-5">4</span><br>
-		      		<span class="text-secondary">id:asge46</span> <span class="text-secondary">22.08.03</span>
-		      		<div>
-		      			리뷰내용
-		      		</div>
-		      	</div>
-		      </a>
+		      	<c:choose>
+					<c:when test="${fn:length(listrv) eq 0}">
+						<div class="col-12 p-4">리뷰가 없습니다!</div>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${listrv }" var="listrv" varStatus="status">
+							<a href="#">
+								<div class="row justify-content-between mb-3">
+								    <div class="col-4">
+								      <span class="text-secondary"><c:out value="${listrv.id }"></c:out> | <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${listrv.rvRegtime}"/></span>
+								      <div>
+					      				<c:out value="${listrv.title }"></c:out>
+					      			  </div>
+					      			  <div>
+					      				<c:out value="${listrv.contents }"></c:out>
+					      			  </div>
+								    </div>
+								    <div class="col-4 bg-dark" style="width: 150px; height: 150px;">
+								      <img alt="" src="">
+								    </div>
+								</div>
+							</a>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 		      <br>
 		      <br>
 		      <br>
