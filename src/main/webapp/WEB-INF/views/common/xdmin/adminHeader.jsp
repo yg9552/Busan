@@ -90,7 +90,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="../Q&A/Q&AMain.html">
+            <a class="nav-link" href="/product/productQAListX">
               <span class="menu-icon">
                 <i class="mdi mdi-comment-question-outline"></i>
               </span>
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="./reviewMain.html">
+            <a class="nav-link" href="/product/productReviewListX">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>

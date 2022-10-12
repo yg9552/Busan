@@ -36,7 +36,7 @@
 				    ,b.nm
 				    ,c.product_name
 	    	<include refid="selectCommon" />
-		    ORDER BY a.purchaseSeq DESC    
+		    ORDER BY a.rvSeq DESC    
 			<include refid="Base.orderByLimitForMysql" />
 	    <include refid="Base.selectListLowerForMysql" />
 	</select>
