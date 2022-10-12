@@ -26,4 +26,7 @@ public class ProductReviewDao {
 	public int selectOneCount(ProductReviewVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	public int insert(ProductReview dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
 }

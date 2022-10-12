@@ -8,6 +8,7 @@ public class ProductReviewVo extends BaseVo{
 	private Integer shDelNy;
 	private String productSeq;
 	private String memberSeq;
+	private String rvSeq;
 	
 	public String getShValue() {
 		return shValue;
@@ -38,6 +39,12 @@ public class ProductReviewVo extends BaseVo{
 	}
 	public void setMemberSeq(String memberSeq) {
 		this.memberSeq = memberSeq;
+	}
+	public String getRvSeq() {
+		return rvSeq;
+	}
+	public void setRvSeq(String rvSeq) {
+		this.rvSeq = rvSeq;
 	}
 	
 	

@@ -61,4 +61,28 @@
 		WHERE 1=1
 		AND a.rvSeq = #{rvSeq}
 	</select>
+	
+	<insert id="insert">
+	INSERT INTO productReview(
+	    rvSeq
+	    ,productSeq
+	    ,memberSeq
+	    ,title
+	    ,contents
+	    ,rvRegtime
+	    ,DelNy
+	    )
+	VALUES(
+	    ,{rvSeq }
+	    ,{productSeq }
+	    ,{memberSeq }
+	    ,{title }
+	    ,{contents }
+	    ,{rvRegtime }
+	    ,{DelNy }
+	    )
+	    <selectKey resultType="String" keyProperty="rvSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 </mapper>

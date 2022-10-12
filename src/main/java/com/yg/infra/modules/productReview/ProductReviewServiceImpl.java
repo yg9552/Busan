@@ -29,6 +29,12 @@ public class ProductReviewServiceImpl implements ProductReviewService{
 		return dao.selectOneCount(vo);
 	}
 
+	@Override
+	public int insert(ProductReview dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insert(dto);
+	}
+
 	
 	
 }
