@@ -12,11 +12,10 @@
 		left join product c on a.productSeq = c.productSeq
 		WHERE 1=1
 			<if test="productSeq != null and !productSeq.equals('')">AND a.productSeq = #{productSeq}</if>
-			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND a.DelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND qaSeq LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND nm LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 1">AND title LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</sql>

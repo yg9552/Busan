@@ -90,7 +90,7 @@
                     		<a role="button" class="btn btn-inverse-warning" id="btnReset"><i class="fa-solid fa-rotate"></i></a>
                     	</div>
                     </div>
-                    </form>
+                    
                     <div class="row mt-3 mb-3">
 				  		<div class="col my-auto">
 				  			Total : <c:out value="${vo.totalRows }"></c:out>
@@ -103,7 +103,7 @@
 							</select>
 				  		</div>
 				  	</div>
-				  	
+				  	</form>
 				  	<c:set var="listCodebrandMFC" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
 				  	<c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
                     <div class="table-responsive">
