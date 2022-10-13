@@ -1,6 +1,10 @@
 package com.yg.infra.modules.product;
 
-public class Product {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.yg.infra.common.base.Base;
+
+public class Product extends Base{
 
 	private String productSeq;
 	private String product_name;
@@ -19,7 +23,9 @@ public class Product {
 	private int totalprice;
 	private int discountprice;
 	
-	
+	private MultipartFile[] ifmmUploadedProfileImage;
+	private MultipartFile[] ifmmUploadedImage;
+	private MultipartFile[] ifmmUploadedFile;
 	
 	public String getProductSeq() {
 		return productSeq;
@@ -117,6 +123,24 @@ public class Product {
 	}
 	public void setDiscountprice(int discountprice) {
 		this.discountprice = discountprice;
+	}
+	public MultipartFile[] getIfmmUploadedProfileImage() {
+		return ifmmUploadedProfileImage;
+	}
+	public void setIfmmUploadedProfileImage(MultipartFile[] ifmmUploadedProfileImage) {
+		this.ifmmUploadedProfileImage = ifmmUploadedProfileImage;
+	}
+	public MultipartFile[] getIfmmUploadedImage() {
+		return ifmmUploadedImage;
+	}
+	public void setIfmmUploadedImage(MultipartFile[] ifmmUploadedImage) {
+		this.ifmmUploadedImage = ifmmUploadedImage;
+	}
+	public MultipartFile[] getIfmmUploadedFile() {
+		return ifmmUploadedFile;
+	}
+	public void setIfmmUploadedFile(MultipartFile[] ifmmUploadedFile) {
+		this.ifmmUploadedFile = ifmmUploadedFile;
 	}
 	
 	

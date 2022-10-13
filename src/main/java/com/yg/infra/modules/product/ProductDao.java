@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class ProductDao {
 	
@@ -46,4 +47,6 @@ public class ProductDao {
 	public int selectOneCount(ProductVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	//	uploaded
+	public int insertUploaded(Product dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
 }
