@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yg.infra.common.base.Base;
 
-public class Product extends Base{
+public class Product extends Base {
 
 	private String productSeq;
 	private String product_name;
@@ -23,9 +23,9 @@ public class Product extends Base{
 	private int totalprice;
 	private int discountprice;
 	
-	private MultipartFile[] ifmmUploadedProfileImage;
-	private MultipartFile[] ifmmUploadedImage;
-	private MultipartFile[] ifmmUploadedFile;
+	private MultipartFile[] productUploadedProfileImage;
+	private MultipartFile[] productUploadedImage;
+	private MultipartFile[] productUploadedFile;
 	
 	public String getProductSeq() {
 		return productSeq;
@@ -124,24 +124,25 @@ public class Product extends Base{
 	public void setDiscountprice(int discountprice) {
 		this.discountprice = discountprice;
 	}
-	public MultipartFile[] getIfmmUploadedProfileImage() {
-		return ifmmUploadedProfileImage;
+	public MultipartFile[] getProductUploadedProfileImage() {
+		return productUploadedProfileImage;
 	}
-	public void setIfmmUploadedProfileImage(MultipartFile[] ifmmUploadedProfileImage) {
-		this.ifmmUploadedProfileImage = ifmmUploadedProfileImage;
+	public void setProductUploadedProfileImage(MultipartFile[] productUploadedProfileImage) {
+		this.productUploadedProfileImage = productUploadedProfileImage;
 	}
-	public MultipartFile[] getIfmmUploadedImage() {
-		return ifmmUploadedImage;
+	public MultipartFile[] getProductUploadedImage() {
+		return productUploadedImage;
 	}
-	public void setIfmmUploadedImage(MultipartFile[] ifmmUploadedImage) {
-		this.ifmmUploadedImage = ifmmUploadedImage;
+	public void setProductUploadedImage(MultipartFile[] productUploadedImage) {
+		this.productUploadedImage = productUploadedImage;
 	}
-	public MultipartFile[] getIfmmUploadedFile() {
-		return ifmmUploadedFile;
+	public MultipartFile[] getProductUploadedFile() {
+		return productUploadedFile;
 	}
-	public void setIfmmUploadedFile(MultipartFile[] ifmmUploadedFile) {
-		this.ifmmUploadedFile = ifmmUploadedFile;
+	public void setProductUploadedFile(MultipartFile[] productUploadedFile) {
+		this.productUploadedFile = productUploadedFile;
 	}
+	
 	
 	
 	
