@@ -83,8 +83,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "productInst")
 	public String productInst(@ModelAttribute("vo") ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
-		int result = service.insert(dto);
-		System.out.println(result);
+		service.insert(dto);
 		
 		vo.setProductSeq(dto.getProductSeq());
 		
