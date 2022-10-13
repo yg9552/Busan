@@ -75,7 +75,7 @@
     <!-- plugins:js -->
     <script type="text/javascript">
 
-	var goUrlMain = "/xdminMain"; 			/* #-> */
+	var goUrlMain = "/xdminMain";
 	
 	$("#btnLogin").on("click", function(){
 		$.ajax({

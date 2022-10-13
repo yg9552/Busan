@@ -54,11 +54,30 @@
     <!-- plugins:js -->
     <script type="text/javascript">
 
-	var goUrlxdminLogin = "/xdminMain"; 		/* #-> */
+	var goUrlxdminLogin = "/member/xdminLogin"; 		/* #-> */
 	var goUrlmemberLogin = "/Main"; 			/* #-> */
 	
 	$("#xdmin").click(function(){
 		$(location).attr("href", goUrlxdminLogin)
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/member/logoutProc"
+			/* ,data : $("#formLogout").serialize() */
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = goUrlxdminLogin;
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
 	});
 	$("#user").click(function(){
 		$(location).attr("href", goUrlmemberLogin)
