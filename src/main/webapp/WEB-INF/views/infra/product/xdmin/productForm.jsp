@@ -217,7 +217,9 @@
 	        		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
               }
               var extArray1 = new Array();
-              extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];              </script>
+              extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];              
+              
+              </script>
               
               
               <script type="text/javascript">
