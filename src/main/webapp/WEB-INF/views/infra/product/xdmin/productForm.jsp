@@ -254,7 +254,7 @@
 	        	$("#btnSave").on("click", function(){
 	        		if (validationInst() == false) return false;
 	        	   	/* form.attr("action", goUrlInst).submit(); */
-	        	}); 
+	        	});
 	        	
 	        	$("#btnList").on("click", function(){
 		    		formVo.attr("action", goUrlList).submit();

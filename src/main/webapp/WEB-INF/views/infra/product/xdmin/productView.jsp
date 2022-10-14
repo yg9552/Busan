@@ -288,7 +288,7 @@
 	      <div id="simple-list-item-3"></div>
 	      
 	      <h4 class="mt-5 mb-3">Q&A</h4>
-	      <button type="button" class="btn btn-dark mb-3">상품Q&A작성하기</button>
+	      <button type="button" class="btn btn-dark mb-3" id="btnQAForm">상품Q&A작성하기</button>
 	      <table class="table text-center table-hover">
 	      	<thead>
 			    <tr>
@@ -395,6 +395,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 <script type="text/javascript">
 
 	var goUrlPurchaseForm = "/product/purchaseForm";
+	var goUrlQAForm = "/product/productQAForm";
 	
 	var seq = $("input:hidden[name=productSeq]");
 	//var memberseq = $("input:hidden[name=memberSeq]");
@@ -405,6 +406,9 @@ myModal.addEventListener('shown.bs.modal', () => {
 		form.attr("action", goUrlPurchaseForm).submit();
 	}
 	
+	$("#btnQAForm").on("click", function(){
+	   	form.attr("action", goUrlQAForm).submit();
+	});
 </script>
 </body>
 </html>
