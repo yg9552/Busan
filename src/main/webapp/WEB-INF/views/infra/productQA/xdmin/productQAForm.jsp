@@ -25,30 +25,30 @@
 	  <!-- userHeader e -->
 	  <form name="form" method="post">
 	  <!-- *Vo.jsp s -->
-		<%@include file="../../product/xdmin/productVo.jsp"%>		<!-- #-> -->
+		<%@include file="productQAVo.jsp"%>		<!-- #-> -->
 	  <!-- *Vo.jsp e -->
-		  <div class="container">
+		  <div class="container w-75">
 		  	<h3 class="mb-4 mt-4 text-left">Q&A작성</h3>
-		  	<div class="mb-3 w-50">
+		  	<div class="mb-3">
 			  <label for="product_name" class="form-label">상품명</label>
 			  <input type="text" class="form-control" id="product_name" name="product_name" value='<c:out value="${itemp.product_name }"></c:out>'>
-			  <input type="hidden" name="productSeq" value="<c:out value="${item.productSeq}"/><c:out value="${vo.productSeq}"/>"/>
-			  <input type="hidden" name="memberSeq" value="<c:out value="${item.memberSeq}"/><c:out value="${vo.memberSeq}"/>"/>
+			  <input type="hidden" name="answerNy" value="0">
+			  <input type="hidden" name="delNy" value="0">
 			</div>
-		  	<div class="mb-3 w-50">
-			  <label for="title" class="form-label">제목</label>
-			  <input type="text" class="form-control" id="title" name="title" value="${item.title }">
+		  	<div class="mb-3">
+			  <label for="title" class="form-label">질문</label>
+			  <input type="text" class="form-control" id="title" name="title" value="<c:out value="${item.title }"></c:out>">
 			</div>
-			<div class="mb-3 w-50">
-			  <label for="question" class="form-label">질문</label>
-			  <textarea class="form-control" id="question" name="question" value="${item.question }" rows="3"></textarea>
+			<div class="mb-3">
+			  <label for="question" class="form-label">상세내용</label>
+			  <textarea class="form-control" id="question" name="question" value="<c:out value="${item.qustion }"></c:out>" rows="3"></textarea>
 			</div>
-			<div class="row w-50">
+			<div class="row">
 				<div class="col">
 					<button type="button" class="btn btn-sm btn-dark mb-3" id="btnView">돌아가기</button>
 				</div>
 				<div class="col-auto">
-					<button type="button" class="btn btn-sm btn-success mb-3" id="btnView">Q&A등록</button>
+					<button type="button" class="btn btn-sm btn-success mb-3" id="btnSave">Q&A등록</button>
 				</div>
 			</div>
 		  </div>
@@ -60,7 +60,7 @@
 	  </form>
 <script type="text/javascript">
 	var goUrlView = "/product/productView"; 		/* #-> */
-	var goUrlInst = "/product/productInst"; 		/* #-> */
+	var goUrlInst = "/product/productQAInst"; 		/* #-> */
 	
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");
