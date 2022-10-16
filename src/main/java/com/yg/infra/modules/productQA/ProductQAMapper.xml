@@ -64,4 +64,56 @@
 		WHERE 1=1
 		AND a.qaSeq = #{qaSeq}
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO productQA(
+			qaSeq
+			,title
+			,question
+			,qaRegtime
+			,answerNY
+			,productSeq
+			,memberSeq
+			,DelNy
+			)
+		VALUES(
+			#{qaSeq }
+			,#{title }
+			,#{question }
+			,#{qaRegtime }
+			,0
+			,#{productSeq }
+			,#{memberSeq }
+			,0
+			)
+		<selectKey resultType="String" keyProperty="qaSeq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+	UPDATE productQA
+		SET
+		qaSeq = {#qaSeq }
+		,title = {#title }
+		,question = {#question }
+		,qaRegtime = {#qaRegtime }
+		,answerNY = {#answerNY }
+		,productSeq = {#productSeq }
+		,memberSeq = {#memberSeq }
+		,DelNy = {#DelNy }
+	WHERE qaSeq = {#qaSeq}
+	</update>
+	
+	<update id="answer">
+		UPDATE productQA
+		SET
+			answerNy = 1
+		WHERE 
+			qaSeq = #{qaSeq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM productQA WHERE qaSeq = {#qaSeq}
+	</delete>
 </mapper>

@@ -29,5 +29,29 @@ public class ProductQAServiceImpl implements ProductQAService{
 		return dao.selectOneCount(vo);
 	}
 
+	@Override
+	public int insert(ProductQA dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insert(dto);
+	}
+
+	@Override
+	public int update(ProductQA dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.update(dto);
+	}
+
+	@Override
+	public int answer(ProductQA dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.answer(dto);
+	}
+
+	@Override
+	public int delete(ProductQAVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.delete(vo);
+	}
+
 	
 }

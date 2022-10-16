@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yg.infra.modules.product.Product;
 import com.yg.infra.modules.product.ProductServiceImpl;
@@ -37,5 +38,34 @@ public class ProductQAController {
 		model.addAttribute("itemp", itemp);
 		
 		return "infra/productQA/xdmin/productQAForm";
+	}
+	
+	@RequestMapping(value = "/productQAInst")
+	public String productQAInst(@ModelAttribute("vo") ProductQAVo vo, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.insert(dto);
+		vo.setQaSeq(dto.getQaSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productView";
+	}
+
+	@RequestMapping(value = "productQAUpdt")
+	public String productQAUpdt(@ModelAttribute("vo") ProductQAVo vo, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productQAListX";
+	}
+	
+	@RequestMapping(value = "productQAAns")
+	public String productQAAns(@ModelAttribute("vo") ProductQAVo vo, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.answer(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productQAListX";
+	}
+	
+	@RequestMapping(value = "productQADele")
+	public String productQADele(ProductQAVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/productQAListX";
 	}
 }

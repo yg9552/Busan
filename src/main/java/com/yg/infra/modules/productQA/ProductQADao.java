@@ -26,4 +26,16 @@ public class ProductQADao {
 	public int selectOneCount(ProductQAVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	public int insert(ProductQA dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
+	public int update(ProductQA dto) {
+		return sqlSession.update(namespace + ".update", dto);
+	}
+	public int answer(ProductQA dto) {
+		return sqlSession.update(namespace + ".answer", dto);
+	}
+	public int delete(ProductQAVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
 }
