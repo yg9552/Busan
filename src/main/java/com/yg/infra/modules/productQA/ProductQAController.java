@@ -1,10 +1,7 @@
 package com.yg.infra.modules.productQA;
 
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +24,7 @@ public class ProductQAController {
 	@Autowired
 	ProductServiceImpl servicep;
 	
-	@RequestMapping(value = "/productQAListX")
+	@RequestMapping(value = "productQAListX")
 	public String productQAListX(@ModelAttribute("vo") ProductQAVo vo, Model model) throws Exception {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<ProductQA> list = service.selectList(vo);
@@ -35,17 +32,17 @@ public class ProductQAController {
 		return "infra/productQA/xdmin/productQAListX";
 	}
 
-	@RequestMapping(value = "/productQAForm")
-	public String productQAForm(@ModelAttribute("vo") ProductQAVo vo, ProductVo vop, Model model) throws Exception {
-		Product itemp = servicep.selectOne(vop);
+	@RequestMapping(value = "productQAForm")
+	public String productQAForm(@ModelAttribute("vo") ProductQAVo voqa, ProductVo vo, Model model) throws Exception {
+		Product itemp = servicep.selectOne(vo);
 		model.addAttribute("itemp", itemp);
 		return "infra/productQA/xdmin/productQAForm";
 	}
 	
-	@RequestMapping(value = "/productQAInst")
-	public String productQAInst(@ModelAttribute("vo") ProductQAVo vo, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "productQAInst")
+	public String productQAInst(@ModelAttribute("vo") ProductVo vo, @ModelAttribute("voqa") ProductQAVo voqa, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
-		vo.setQaSeq(dto.getQaSeq());
+		voqa.setQaSeq(dto.getQaSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/product/productView";
 	}

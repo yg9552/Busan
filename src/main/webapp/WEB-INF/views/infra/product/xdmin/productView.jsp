@@ -309,6 +309,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${listqa}" var="listqa" varStatus="status">
+								<c:if test="${listqa.delNy eq 0 }">
 							    <tr>
 							      <td>
 							      	<c:choose>
@@ -320,6 +321,7 @@
 							      <td><c:out value="${listqa.id }"></c:out></td>
 							      <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${listqa.qaRegtime}"/></td>
 							    </tr>
+							    </c:if>
 						    </c:forEach>
 						</c:otherwise>
 					</c:choose>

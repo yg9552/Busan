@@ -67,8 +67,7 @@
 	
 	<insert id="insert">
 		INSERT INTO productQA(
-			qaSeq
-			,title
+			title
 			,question
 			,qaRegtime
 			,answerNY
@@ -77,8 +76,7 @@
 			,DelNy
 			)
 		VALUES(
-			#{qaSeq }
-			,#{title }
+			#{title }
 			,#{question }
 			,NOW()
 			,0
@@ -94,15 +92,14 @@
 	<update id="update">
 	UPDATE productQA
 		SET
-		qaSeq = {#qaSeq }
-		,title = {#title }
-		,question = {#question }
-		,qaRegtime = {#qaRegtime }
-		,answerNY = {#answerNY }
-		,productSeq = {#productSeq }
-		,memberSeq = {#memberSeq }
-		,DelNy = {#DelNy }
-	WHERE qaSeq = {#qaSeq}
+		title = #{title }
+		,question = #{question }
+		,qaRegtime = #{qaRegtime }
+		,answerNY = #{answerNY }
+		,productSeq = #{productSeq }
+		,memberSeq = #{memberSeq }
+		,DelNy = #{DelNy }
+	WHERE qaSeq = #{qaSeq}
 	</update>
 	
 	<update id="answer">
@@ -114,6 +111,6 @@
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM productQA WHERE qaSeq = {#qaSeq}
+		DELETE FROM productQA WHERE qaSeq = #{qaSeq}
 	</delete>
 </mapper>
