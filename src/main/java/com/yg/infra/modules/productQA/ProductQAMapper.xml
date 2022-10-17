@@ -80,7 +80,7 @@
 			#{qaSeq }
 			,#{title }
 			,#{question }
-			,#{qaRegtime }
+			,NOW()
 			,0
 			,#{productSeq }
 			,#{memberSeq }

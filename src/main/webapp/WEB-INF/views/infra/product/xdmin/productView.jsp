@@ -224,6 +224,7 @@
 		    
 	      	<h4 class="mt-5">상품리뷰</h4>
 	      	<div class="border border-dark border-2 mb-3"></div>
+	      	<%-- 
 	      	<div class="row bg-light text-center">
 	      		<div class="col-6">사용자총평점</div>
 	      		<div class="col-6">전체리뷰수</div>
@@ -236,6 +237,7 @@
 	      			<br><span class="fs-4"><c:out value="${vorv.totalRows }"></c:out>건</span>
 	      		</div>
 	      	</div>
+	      	 --%>
 		      <h6 class="mt-3 mb-3">리뷰 <c:out value="${vorv.totalRows }"></c:out>건</h6>
 		      <div class="border border-dark border-1 opacity-50 mb-3"></div>
 		      	<c:choose>

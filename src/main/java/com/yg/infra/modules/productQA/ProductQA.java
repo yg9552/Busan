@@ -44,6 +44,7 @@ public class ProductQA {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
+	
 	public Timestamp getQaRegtime() {
 		return qaRegtime;
 	}

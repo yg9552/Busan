@@ -1,7 +1,10 @@
 package com.yg.infra.modules.productQA;
 
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +39,6 @@ public class ProductQAController {
 	public String productQAForm(@ModelAttribute("vo") ProductQAVo vo, ProductVo vop, Model model) throws Exception {
 		Product itemp = servicep.selectOne(vop);
 		model.addAttribute("itemp", itemp);
-		
 		return "infra/productQA/xdmin/productQAForm";
 	}
 	
