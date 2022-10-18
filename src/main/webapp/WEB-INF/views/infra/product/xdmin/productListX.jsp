@@ -198,7 +198,7 @@
 	      	var goUrlUele = "/product/productUele";			/* #-> */
 	      	var goUrlDele = "/product/productDele";			/* #-> */
 	      	var goUrlForm = "/product/productForm";			/* #-> */
-	      	var goUrlView = "/product/productViewX";			/* #-> */
+      		var goUrlView = "/product/productViewX";		/* #-> */
 	      	
 	      	
 	      	var seq = $("input:hidden[name=productSeq]");

@@ -28,6 +28,7 @@
 			    ,a.question
 			    ,a.qaRegtime
 			    ,a.answerNY
+			    ,a.qaAnswer
 			    ,a.productSeq
 			    ,a.memberSeq
 			    ,a.DelNy
@@ -52,6 +53,7 @@
 		    ,a.question
 		    ,a.qaRegtime
 		    ,a.answerNY
+		    ,a.qaAnswer
 		    ,a.productSeq
 		    ,a.memberSeq
 		    ,a.DelNy
@@ -105,7 +107,8 @@
 	<update id="answer">
 		UPDATE productQA
 		SET
-			answerNy = 1
+			qaAnswer = #{qaAnswer }
+			,answerNy = 1
 		WHERE 
 			qaSeq = #{qaSeq}
 	</update>

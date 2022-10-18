@@ -39,6 +39,12 @@ public class ProductQAController {
 		return "infra/productQA/xdmin/productQAForm";
 	}
 	
+	@RequestMapping(value = "productQAViewX")
+	public String productQAViewX(@ModelAttribute("vo") ProductQAVo vo, Model model) throws Exception {
+		ProductQA item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		return "infra/productQA/xdmin/productQAViewX";
+	}
 	@RequestMapping(value = "productQAInst")
 	public String productQAInst(@ModelAttribute("vo") ProductVo vo, @ModelAttribute("voqa") ProductQAVo voqa, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
@@ -58,7 +64,7 @@ public class ProductQAController {
 	public String productQAAns(@ModelAttribute("vo") ProductQAVo vo, ProductQA dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.answer(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/product/productQAListX";
+		return "redirect:/product/productQAViewX";
 	}
 	
 	@RequestMapping(value = "productQADele")

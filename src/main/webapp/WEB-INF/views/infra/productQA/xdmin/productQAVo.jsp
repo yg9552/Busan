@@ -16,3 +16,4 @@
 
 <input type="hidden" name="productSeq" value="<c:out value="${vo.productSeq}"/>"/>
 <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq}"/>"/>
+<input type="hidden" name="qaSeq" value="<c:out value="${vo.qaSeq}"/>"/>

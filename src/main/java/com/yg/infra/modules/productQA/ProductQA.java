@@ -14,6 +14,8 @@ public class ProductQA {
 	private String id;
 	private String nm;
 	private String product_name;
+	private String qaAnswer;
+	
 	public String getQaSeq() {
 		return qaSeq;
 	}
@@ -81,5 +83,12 @@ public class ProductQA {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
+	public String getQaAnswer() {
+		return qaAnswer;
+	}
+	public void setQaAnswer(String qaAnswer) {
+		this.qaAnswer = qaAnswer;
+	}
+	
 
 }
