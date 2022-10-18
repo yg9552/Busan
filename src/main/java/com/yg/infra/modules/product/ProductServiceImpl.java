@@ -39,9 +39,7 @@ public class ProductServiceImpl implements ProductService {
 	public int insert(Product dto) throws Exception {
 		// TODO Auto-generated method stub
 		
-		uploadFiles(dto.getProductUploadedProfileImage(), dto, "productUploaded", 1);
-    	uploadFiles(dto.getProductUploadedImage(), dto, "productUploaded", 2);
-    	uploadFiles(dto.getProductUploadedFile(), dto, "productUploaded", 3);
+		uploadFiles(dto.getUploadImg(), dto, "infrMemberUploaded", 2, dto.getUploadImgMaxNumber());
     	
 		return dao.insert(dto);
 	}
@@ -65,50 +63,52 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type) throws Exception {
+	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
 		// TODO Auto-generated method stub
-		int j = 0;
-    	for(MultipartFile multipartFile : multipartFiles) {
-    			
-    		if(!multipartFile.isEmpty()) {
-    		
-    			String className = dto.getClass().getSimpleName().toString().toLowerCase();		
-    			String fileName = multipartFile.getOriginalFilename();
-    			String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-    			String uuid = UUID.randomUUID().toString();
-    			String uuidFileName = uuid + "." + ext;
-    			String pathModule = className;
-    			String nowString = UtilDateTime.nowString();
-    			String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-    			String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
-    			String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
-    			
-    			File uploadPath = new File(path);
-    			
-    			if (!uploadPath.exists()) {
-    				uploadPath.mkdir();
-    			} else {
-    				// by pass
-    			}
-    			  
-    			multipartFile.transferTo(new File(path + uuidFileName));
-    			
-    			dto.setPath(pathForView);
-    			dto.setOriginalName(fileName);
-    			dto.setUuidName(uuidFileName);
-    			dto.setExt(ext);
-    			dto.setSize(multipartFile.getSize());
-    			
-	    		dto.setTableName(tableName);
-	    		dto.setType(type);
-	    		dto.setDefaultNy(j == 0 ? 1 : 0);
-	    		dto.setSort(j + 1);
-	    		dto.setPseq(dto.getProductSeq());
+		System.out.println(" dto.getUploadImgMaxNumber() : " + dto.getUploadImgMaxNumber());
+		
+		for(int i=0; i<multipartFiles.length; i++) {
+	    	
+			if(!multipartFiles[i].isEmpty()) {
+				
+				System.out.println(i + ": multipartFiles[i].getOriginalFilename() : " + multipartFiles[i].getOriginalFilename());
+				
+				String className = dto.getClass().getSimpleName().toString().toLowerCase();		
+				String fileName = multipartFiles[i].getOriginalFilename();
+				String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+				String uuid = UUID.randomUUID().toString();
+				String uuidFileName = uuid + "." + ext;
+				String pathModule = className;
+				String nowString = UtilDateTime.nowString();
+				String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
+				String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+				String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+				
+				File uploadPath = new File(path);
+				
+				if (!uploadPath.exists()) {
+					uploadPath.mkdir();
+				} else {
+					// by pass
+				}
+				  
+				multipartFiles[i].transferTo(new File(path + uuidFileName));
+				
+				dto.setPath(pathForView);
+				dto.setOriginalName(fileName);
+				dto.setUuidName(uuidFileName);
+				dto.setExt(ext);
+				dto.setSize(multipartFiles[i].getSize());
+				
+				dto.setTableName(tableName);
+				dto.setType(type);
+//				dto.setDefaultNy(j == 0 ? 1 : 0);
+				dto.setSort(maxNumber + i + 1);
+				dto.setPseq(dto.getProductSeq());
 
 				dao.insertUploaded(dto);
-				j++;
     		}
-    	}
+		}
 	}
 	
 	
