@@ -48,6 +48,22 @@
 	    color: white;
 	    text-shadow: 2px 2px 2px black;
 	}
+	
+	.addScroll{
+		overflow-y:auto;
+		height: 200px;
+		background-color:#2A3038;
+		padding-top:5px; 
+		padding-left:5px;
+	}
+ 	
+	.input-file-button{
+		padding: 4px 25px;
+		background-color:#FF6600;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+	}
 	</style>
   </head>
   <body>
@@ -148,7 +164,7 @@
 			                        <option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>> Y </option>
 		                    </select>
 	                    </div>
-	                    
+	                    <!-- 
 	                    <div class="form-group">
 							<label for="fileInput">사진첨부</label>
 							<input id="fileInput" filestyle="" multiple type="file" data-class-button="btn btn-default" data-class-input="form-control" data-button-text="" data-icon-name="fa fa-upload" class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
@@ -162,38 +178,207 @@
 							</div>
 						</div>
 						
-	                    <!-- 이미지 들어오는 부분 -->
+	                    //이미지 들어오는 부분
 						<div id="multipleContainer"></div>
-						
+						 -->
 						<div class="row mt-sm-4">
 							<div class="col-sm-6 mt-3 mt-sm-0">
 					        	<c:set var="type" value="2"/>		<!-- #-> -->
 					        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
-					        	<input type="hidden" id="uploadImgMaxNumber" name="uploadImgMaxNumber"/>
-					        	<input type="hidden" id="uploadImgDeleteSeq" name="uploadImgDeleteSeq"/>
-					        	<input type="hidden" id="uploadImgDeletePathFile" name="uploadImgDeletePathFile"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
 					            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
-					 			<input class="form-control form-control-sm" id="uploadImg" name="uploadImg" type="file" multiple="multiple" style="display: none;" onChange="upload('uploadImg', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
-								<div id="uploadImgPreview" class="addScroll">
+					 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="imgupload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+								<div id="<c:out value="${name }"/>Preview" class="addScroll">
 									<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
 										<c:if test="${listUploaded.type eq type }">
-											<%-- <input type="hidden" id="uploadImgSeq_<c:out value="${type }"/>_<c:out value="${statusUploaded.index }"/>" name="uploadImgSeq" value="<c:out value="${listUploaded.seq }"/>"> --%>
-											<%-- <input type="hidden" id="uploadImgSeq_<c:out value="${type }"/>_<c:out value="${statusUploaded.index }"/>" name="uploadImgSeq" value="<c:out value="${listUploaded.seq }"/>"> --%>
-											<%-- <input type="hidden" id="uploadImgPathFile_<c:out value="${type }"/>_<c:out value="${statusUploaded.index }"/>" name="uploadImgPathFile" value="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"> --%>
-											<%-- <input type="hidden" id="uploadImgProcess_<c:out value="${type }"/>_<c:out value="${statusUploaded.index }"/>" name="uploadImgProcess" value="2"> --%>
-											<input type="hidden" id="uploadImgSort_<c:out value="${type }"/>_<c:out value="${statusUploaded.index }"/>" name="uploadImgSort" value="1">
-											<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${statusUploaded.index }"/>" style="display: inline-block; height: 95px;">
-												<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px">
-												<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('uploadImg', <c:out value="${type }"/>,<c:out value="${statusUploaded.index }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+											<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+												<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
+												<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
 											</div>
 										</c:if>
 									</c:forEach>
 								</div>
 					        </div>
 						</div>
+						<script type="text/javascript">
+						imgupload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+		            		
+//		          		objName 과 seq 는 jsp 내에서 유일 하여야 함.
+//		          		memberProfileImage: 1
+//		          		memberImage: 2
+//		          		memberFile : 3
+
+//		          		uiType: 1 => 이미지형
+//		          		uiType: 2 => 파일형
+//		          		uiType: 3 => 프로필형
+
+		          		var files = $("#" + objName +"")[0].files;
+		          		var filePreview = $("#" + objName +"Preview");
+		          		var numbering = [];
+		          		var maxNumber = 0;
+		          		
+		          		if(uiType == 1) {
+		          			var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > div > img").length;
+		          			var tagIds = document.querySelectorAll("#" + objName + "Preview > div");
+		          			
+		          			for(var i=0; i<tagIds.length; i++){
+		          				var tagId = tagIds[i].getAttribute("id").split("_");
+		          				numbering.push(tagId[2]);
+		          			}
+		          			
+		          			if(uploadedFilesCount > 0){
+		          				numbering.sort();
+		          				maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+		          			}
+		          		} else if(uiType == 2){
+		          			var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > li").length;
+		          			var tagIds = document.querySelectorAll("#" + objName + "Preview > li");
+
+		          			for(var i=0; i<tagIds.length; i++){
+		          				var tagId = tagIds[i].getAttribute("id").split("_");
+		          				numbering.push(tagId[2]);
+		          			}
+		          			
+		          			if(uploadedFilesCount > 0){
+		          				numbering.sort();
+		          				maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+		          			}
+		          		} else {
+		          			// by pass
+		          		}
+		          		
+		          		$("#" + objName + "MaxNumber").val(maxNumber);
+
+		          		var totalFileSize = 0;
+		          		var filesCount = files.length;
+		          		var filesArray = [];
+		          		
+		          		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+		          		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+		          		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+		          		
+		          		if(checkUploadedTotalFileNumber(files, allowedMaxTotalFileNumber, filesCount, uploadedFilesCount) == false) { return false; }
+		          		
+		          		for (var i=0; i<filesCount; i++) {
+		          			if(checkUploadedExt(files[i].name, seq, allowedExtdiv) == false) { return false; }
+		          			if(checkUploadedEachFileSize(files[i], seq, allowedEachFileSize) == false) { return false; }
+
+		          			totalFileSize += files[i].size;
+		          			
+		          			filesArray.push(files[i]);
+		          		}
+
+		          		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
+		          		
+		          		if (uiType == 1) {
+		          			for (var i=0; i<filesArray.length; i++) {
+		          				var file = filesArray[i];
+
+		          				var picReader = new FileReader();
+		          			    picReader.addEventListener("load", addEventListenerCustom (objName, seq, i, file, filePreview, maxNumber));
+		          			    picReader.readAsDataURL(file);
+		          			}			
+		          		} else if(uiType == 2) {
+		          			for (var i = 0 ; i < filesCount ; i++) {
+		          				addUploadLi(objName, seq, i, $("#" + objName +"")[0].files[i].name, filePreview, maxNumber);
+		          			}
+		          		} else if (uiType == 3) {
+		          			var fileReader = new FileReader();
+		          			 fileReader.onload = function () {
+		          				 $("#uploadImgProfilePreview").attr("src", fileReader.result);		/* #-> */
+		          			 }	
+		          			 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
+		          		} else {
+		          			return false;
+		          		}
+		          		return false;
+		          	}
+
+			              var extArray1 = new Array();
+			              extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];              
+			              
+			              addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumber) { 
+			            		return function(event) {
+			            			var imageFile = event.target;
+			            			var sort = parseInt(maxNumber) + i;
+
+			            			var divImage = "";
+			            			divImage += '<div id="imgDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
+			            			divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
+			            			divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
+			            			divImage += '</div> ';
+			            			
+			            			filePreview.append(divImage);
+			            	    };
+			            	}
+			              
+			              delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
+			          		
+				          		$("#imgDiv_"+type+"_"+sort).remove();
+				          		
+				          		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+				          		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+	
+				          		if(objDeleteSeq.val() == "") {
+				          			objDeleteSeq.val(deleteSeq);
+				          		} else {
+				          			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+				          		}
+				          		
+				          		if(objDeletePathFile.val() == "") {
+				          			objDeletePathFile.val(pathFile);
+				          		} else {
+				          			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+				          		}
+			          		}
+			            	
+			            	
+			            	addUploadLi = function (objName, type, i, name, filePreview, maxNumber){
+	
+				          		var sort = parseInt(maxNumber) + i;
+				          		
+				          		var li ="";
+				          		li += '<input type="hidden" id="'+ objName +'Process_'+type+'_'+ sort +'" name="'+ objName +'Process" value="1">';
+				          		li += '<input type="hidden" id="'+ objName +'Sort_'+type+'_'+ sort +'" name="'+ objName +'Sort" value="'+ sort +'">';
+				          		li += '<li id="li_'+type+'_'+sort+'" class="list-group-item d-flex justify-content-between align-items-center">';
+				          		li += name;
+				          		li +='<span class="badge bg-danger rounded-pill" onClick="delLi(0,'+ type +','+ sort +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+				          		li +='</li>';
+				          		
+				          		filePreview.append(li);
+				          	}
+			          	
+			            	
+			          	/* delLi = function(objName, type, sort, deleteSeq, pathFile) {
+			          		
+			          		$("#li_"+type+"_"+sort).remove();
+
+			          		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+			          		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+
+			          		if(objDeleteSeq.val() == "") {
+			          			objDeleteSeq.val(deleteSeq);
+			          		} else {
+			          			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+			          		}
+			          		
+			          		if(objDeletePathFile.val() == "") {
+			          			objDeletePathFile.val(pathFile);
+			          		} else {
+			          			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+			          	} */
+			            	
+			            	openViewer = function (type, sort) {
+			          		var str = '<c:set var="tmp" value="'+ type +'"/>';
+			          		$("#modalImgViewer").append(str);
+			          		$("#modalImgViewer").modal("show");
+			          	}
+						</script>
 	                    <!-- <button type="button" class="btn btn-danger" id="btnTest">테스트</button> -->
 	                    
-                      	<div class="row">
+                      	<div class="row mt-3">
 							<div class="col">
 								<button type="button" class="btn btn-success mr-2" id="btnSave">상품등록</button>
 							</div>
@@ -212,117 +397,19 @@
                 </div>
               </div>
               <script type="text/javascript">
-              $("#btnTest").on("click", function(){
-	        		if (upload("fileInput", 1, 5, 1, 0, 0, 1) == false) {
-	        			alert("실패");
-	        			return false;
-	        		} else {
-	        			alert("성공");
-	        		}
-	          });
-              
-              upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType){
-            	  	var totalFileSize = 0;
-	          		var obj = $("#" + objName +"")[0].files;	
-	          		var fileCount = obj.length;
-	          		
-	          		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
-	        		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
-	        		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
-              		
-	        		if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; }
-	        		for (var i = 0 ; i < fileCount ; i++) {
-	        			/* if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, 1) == false) { return false; } */
-	        			if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
-	        			if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
-
-	        			totalFileSize += $("#" + objName +"")[0].files[i].size;
-	        		}
-	        		alert(totalFileSize);
-	        		
-	        		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
-              }
-              var extArray1 = new Array();
-              extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];              
-              
-              addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumber) { 
-          		return function(event) {
-          			var imageFile = event.target;
-          			var index = parseInt(i) + parseInt(maxNumber);
-          			var sort = index + 1;
-
-          			var divImage = "";
-          			divImage += '<input type="hidden" id="'+ objName +'Process_'+type+'_'+ index +'" name="'+ objName +'Process" value="1">';
-          			divImage += '<input type="hidden" id="'+ objName +'Sort_'+type+'_'+ index +'" name="'+ objName +'Sort" value="'+ sort +'">';
-          			divImage += '<div id="imgDiv_'+type+'_'+ index +'" style="display: inline-block; height: 95px;">';
-          			divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
-          			divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ index +')">X</span></div>';
-          			divImage += '</div> ';
-          			
-          			filePreview.append(divImage);
-          	    };
-          	}
+//              $("#btnTest").on("click", function(){
+//	        		if (upload("fileInput", 1, 5, 1, 0, 0, 1) == false) {
+//	        			alert("실패");
+//	        			return false;
+//	        		} else {
+//	        			alert("성공");
+//	        		}
+//	          });
+                            
           	
-          	
-          	delImgDiv = function(objName, type, index, deleteSeq, pathFile) {
-          		
-          		$("#imgDiv_"+type+"_"+index).remove();
-          		
-          		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
-          		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
-
-          		if(objDeleteSeq.val() == "") {
-          			objDeleteSeq.val(deleteSeq);
-          		} else {
-          			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
-          		}
-          		
-          		if(objDeletePathFile.val() == "") {
-          			objDeletePathFile.val(pathFile);
-          		} else {
-          			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
-          		}
-          	}
-          	
-          	
-          	addUploadLi = function (objName, type, i, name, filePreview, maxNumber){
-          		var index = parseInt(i) + parseInt(maxNumber);
-          		var sort = index + 1;
-          		
-          		var li ="";
-          		li += '<input type="hidden" id="'+ objName +'Process_'+type+'_'+ index +'" name="'+ objName +'Process" value="1">';
-          		li += '<input type="hidden" id="'+ objName +'Sort_'+type+'_'+ index +'" name="'+ objName +'Sort" value="'+ sort +'">';
-          		li += '<li id="li_'+type+'_'+index+'" class="list-group-item d-flex justify-content-between align-items-center">';
-          		li += name;
-          		li +='<span class="badge bg-danger rounded-pill" onClick="delLi(0,'+ type +','+ index +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
-          		li +='</li>';
-          		
-          		filePreview.append(li);
-          	}
-          	
-          	
-          	delLi = function(objName, type, index, deleteSeq, pathFile) {
-          		$("#li_"+type+"_"+index).remove();
-
-          		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
-          		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
-
-          		if(objDeleteSeq.val() == "") {
-          			objDeleteSeq.val(deleteSeq);
-          		} else {
-          			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
-          		}
-          		
-          		if(objDeletePathFile.val() == "") {
-          			objDeletePathFile.val(pathFile);
-          		} else {
-          			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
-          		}
-          	}
               </script>
               
-              
-              <script type="text/javascript">
+              <!-- <script type="text/javascript">
               	validationInst = function() {
               		var obj = document.getElementById("fileInput").files;
               		
@@ -337,7 +424,7 @@
               			alert(obj[i].name + " : " + obj[i].size);
               		}
               	}
-              </script>
+              </script> -->
               <script type="text/javascript">
               
         		var goUrlList = "/product/productListX"; 		/* #-> */
@@ -352,8 +439,8 @@
 	        	var formVo = $("form[name=formVo]");
 	        	
 	        	$("#btnSave").on("click", function(){
-	        		if (validationInst() == false) return false;
-	        	   	/* form.attr("action", goUrlInst).submit(); */
+	        		/* if (validationInst() == false) return false; */
+	        	   	form.attr("action", goUrlInst).submit();
 	        	});
 	        	
 	        	$("#btnList").on("click", function(){
@@ -361,69 +448,6 @@
 		    	});
 	        	
               </script>
-              
-              <!-- 이미지첨부 -->
-              <script type="text/javascript">
-				$(document).ready(function(){
-					$("#fileInput").on('change', function(){  // 값이 변경되면
-						if(window.FileReader){  // modern browser
-							var filename = $(this)[0].files[0].name;
-						} else {  // old IE
-				 			var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
-						}
-				
-				 		// 추출한 파일명 삽입
-						$("#userfile").val(filename);
-					});
-				});
-				
-				function readMultipleImage(input) {
-				    const multipleContainer = document.getElementById('multipleContainer')
-				    
-				    if(input.files) {
-				        console.log(input.files)
-				        const fileArr = Array.from(input.files)
-				        const $colDiv1 = document.createElement('div')
-				        const $colDiv2 = document.createElement('div')
-				        $colDiv1.classList.add('column')
-				        $colDiv2.classList.add('column')
-				        fileArr.forEach((file, index) => {
-				            const reader = new FileReader()
-				            const $imgDiv = document.createElement('div')   
-				            const $img = document.createElement('img')
-				            $img.classList.add('image')
-				            const $label = document.createElement('label')
-				            $label.classList.add('image-label')
-				            $label.textContent = file.name
-				            $imgDiv.appendChild($img)
-				            $imgDiv.appendChild($label)
-				            reader.onload = e => {
-				                $img.src = e.target.result
-				                
-				                //$imgDiv.style.width = ($img.naturalWidth) * 0.2 + "px"
-				                //$imgDiv.style.height = ($img.naturalHeight) * 0.2 + "px"
-				            }
-				            
-				            console.log(file.name)
-				            if(index % 2 == 0) {
-				                $colDiv1.appendChild($imgDiv)
-				            } else {
-				                $colDiv2.appendChild($imgDiv)
-				            }
-				            
-				            reader.readAsDataURL(file)
-				        })
-				        multipleContainer.appendChild($colDiv1)
-				        multipleContainer.appendChild($colDiv2)
-				    }
-				}
-				// 이벤트 리스너
-				document.getElementById('fileInput').addEventListener('change', (e) => {
-				    readMultipleImage(e.target);
-				})
-				
-				
-				</script>
 									
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
@@ -452,5 +476,64 @@
     <script src="../../../../../resources/assets/js/settings.js"></script>
     <script src="../../../../../resources/assets/js/todolist.js"></script>
     <!-- endinject -->
+    <!-- 이미지첨부 -->
+    <!-- <script type="text/javascript">
+    $(document).ready(function(){
+		$("#fileInput").on('change', function(){  // 값이 변경되면
+			if(window.FileReader){  // modern browser
+				var filename = $(this)[0].files[0].name;
+			} else {  // old IE
+	 			var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+			}
+	
+	 		// 추출한 파일명 삽입
+			$("#userfile").val(filename);
+		});
+	});
+    function readMultipleImage(input) {
+	    const multipleContainer = document.getElementById('multipleContainer')
+	    
+	    if(input.files) {
+	        console.log(input.files)
+	        const fileArr = Array.from(input.files)
+	        const $colDiv1 = document.createElement('div')
+	        const $colDiv2 = document.createElement('div')
+	        $colDiv1.classList.add('column')
+	        $colDiv2.classList.add('column')
+	        fileArr.forEach((file, index) => {
+	            const reader = new FileReader()
+	            const $imgDiv = document.createElement('div')   
+	            const $img = document.createElement('img')
+	            $img.classList.add('image')
+	            const $label = document.createElement('label')
+	            $label.classList.add('image-label')
+	            $label.textContent = file.name
+	            $imgDiv.appendChild($img)
+	            $imgDiv.appendChild($label)
+	            reader.onload = e => {
+	                $img.src = e.target.result
+	                
+	                //$imgDiv.style.width = ($img.naturalWidth) * 0.2 + "px"
+	                //$imgDiv.style.height = ($img.naturalHeight) * 0.2 + "px"
+	            }
+	            
+	            console.log(file.name)
+	            if(index % 2 == 0) {
+	                $colDiv1.appendChild($imgDiv)
+	            } else {
+	                $colDiv2.appendChild($imgDiv)
+	            }
+	            
+	            reader.readAsDataURL(file)
+	        })
+	        multipleContainer.appendChild($colDiv1)
+	        multipleContainer.appendChild($colDiv2)
+	    }
+	}
+	// 이벤트 리스너
+	document.getElementById('fileInput').addEventListener('change', (e) => {
+	    readMultipleImage(e.target);
+	})
+    </script> -->
   </body>
 </html>
