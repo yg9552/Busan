@@ -73,6 +73,7 @@ public class ProductController {
 	public String productViewX(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		Product result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "infra/product/xdmin/productViewX"; 
 	}
 	
