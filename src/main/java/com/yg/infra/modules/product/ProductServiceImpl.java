@@ -110,6 +110,12 @@ public class ProductServiceImpl implements ProductService {
     		}
 		}
 	}
+
+	@Override
+	public List<Product> selectListUploaded(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectListUploaded(vo);
+	}
 	
 	
 
