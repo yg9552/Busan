@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MAIN</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
   	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
@@ -28,19 +28,30 @@
 		sessId: <c:out value="${sessId }"/><br>
 	  </div>
 <div class="container mb-5">
-	<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-	  <div class="carousel-inner" style="width: 1296px; height: 600px;">
-	    <div class="carousel-item active">
-	      <img src="../../../../../resources/image/bg1.png" class="d-block w-100" alt="...">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="../../../../../resources/image/bg3.png" class="d-block w-100" alt="...">
-	    </div>
-	  </div>
-	</div>
+	 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner" style="width: 1296px; height: 600px;">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg1.png" class="d-block w-100" alt="...">
+    
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
+    
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg3.png" class="d-block w-100" alt="...">
+    
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 </div>
 
 <c:set var="listCodeOrigin" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
@@ -128,6 +139,7 @@
 		});
 	} );
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
