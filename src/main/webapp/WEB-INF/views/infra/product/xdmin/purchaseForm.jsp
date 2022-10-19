@@ -43,7 +43,7 @@
 			<span><c:out value="${itemp.product_name }"></c:out></span>
 		</div>
 		<div class="col-1 p-3 my-auto">
-			<input class="form-control text-center border border-white" type="number" placeholder="1">
+			<input class="form-control text-center border border-white" type="number" value="1" name="quantity">
 		</div>
 		<div class="col-2 p-3 my-auto">
 			<fmt:formatNumber value="${itemp.price}" pattern="#,###"/>원

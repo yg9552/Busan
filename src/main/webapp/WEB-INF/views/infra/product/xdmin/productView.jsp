@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
+
 <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 <!-- userHeader e -->
@@ -387,7 +388,9 @@
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
+<script type="text/javascript">
 
+</script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -395,6 +398,7 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
 </script>
 <script type="text/javascript">
 

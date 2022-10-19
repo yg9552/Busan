@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 	public int insert(Product dto) throws Exception {
 		// TODO Auto-generated method stub
 		
-		uploadFiles(dto.getUploadImg(), dto, "infrMemberUploaded", 2, dto.getUploadImgMaxNumber());
+		uploadFiles(dto.getUploadImg(), dto, "productUploaded", 2, dto.getUploadImgMaxNumber());
     	
 		return dao.insert(dto);
 	}
@@ -65,13 +65,9 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(" dto.getUploadImgMaxNumber() : " + dto.getUploadImgMaxNumber());
-		
 		for(int i=0; i<multipartFiles.length; i++) {
 	    	
 			if(!multipartFiles[i].isEmpty()) {
-				
-				System.out.println(i + ": multipartFiles[i].getOriginalFilename() : " + multipartFiles[i].getOriginalFilename());
 				
 				String className = dto.getClass().getSimpleName().toString().toLowerCase();		
 				String fileName = multipartFiles[i].getOriginalFilename();
