@@ -99,7 +99,7 @@ public class ProductServiceImpl implements ProductService {
 				dto.setTableName(tableName);
 				dto.setType(type);
 //				dto.setDefaultNy(j == 0 ? 1 : 0);
-				dto.setSort(maxNumber + i + 1);
+				dto.setSort(maxNumber + i);
 				dto.setPseq(dto.getProductSeq());
 
 				dao.insertUploaded(dto);
