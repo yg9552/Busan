@@ -99,8 +99,8 @@ public class PurchaseController {
 	@RequestMapping(value = "purchaseInst")
 	public String purchaseInst(@ModelAttribute("vo") PurchaseVo vo, Purchase dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println(result);
+		service.insert(dto);
+		
 		vo.setPurchaseSeq(dto.getPurchaseSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "infra/product/xdmin/Main";
