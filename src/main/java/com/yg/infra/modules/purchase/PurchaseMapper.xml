@@ -30,9 +30,9 @@
 				,a.memberSeq
 				,a.productSeq
 				,a.quantity
-				,a.memberAddr_seq
+				,a.maSeq
 				,a.paytype
-				,a.memberCard_seq
+				,a.mcSeq
 				,b.nm
 				,b.id
 				,c.product_name
@@ -54,9 +54,9 @@
 			,a.memberSeq
 			,a.productSeq
 			,a.quantity
-			,a.memberAddr_seq
+			,a.maSeq
 			,a.paytype
-			,a.memberCard_seq
+			,a.mcSeq
 			,b.product_name
 			,b.price
 		FROM purchase a
@@ -70,17 +70,17 @@
 			memberSeq
 			,productSeq
 			,quantity
-			,memberAddr_seq
+			,maSeq
 			,paytype
-			,memberCard_seq
+			,mcSeq
 			)
 			VALUES(
 			#{memberSeq }
 			,#{productSeq }
 			,#{quantity }
-			,#{memberAddr_seq }
+			,#{maSeq }
 			,#{paytype }
-			,#{memberCard_seq }
+			,#{mcSeq }
 			)
 		<selectKey resultType="String" keyProperty="purchaseSeq" order="AFTER">
 			SELECT last_insert_id()

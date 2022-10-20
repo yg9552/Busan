@@ -255,6 +255,7 @@
 						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 1}">
 							<div class="col-4 mb-3" id="card1list">
 								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
+								<input class="form-control" type="hidden" name="card" value="<c:out value="${listc.mcSeq }"/>" readonly>
 							</div>
 						</c:if>
 					</c:forEach>
@@ -262,6 +263,7 @@
 						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 2}">
 							<div class="col-4 mb-3" id="card2list">
 								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
+								<input class="form-control" type="hidden" name="card" value="<c:out value="${listc.mcSeq }"/>" readonly>
 							</div>
 						</c:if>
 					</c:forEach>
@@ -269,6 +271,7 @@
 						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 3}">
 							<div class="col-4 mb-3" id="card3list">
 								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
+								<input class="form-control" type="hidden" name="card" value="<c:out value="${listc.mcSeq }"/>" readonly>
 							</div>
 						</c:if>
 					</c:forEach>

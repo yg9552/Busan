@@ -5,8 +5,8 @@ public class Purchase {
 	private String purchaseSeq;
 	private String memberSeq;
 	private String productSeq;
-	private String memberAddr_seq;
-	private String memberCard_seq;
+	private String maSeq;
+	private String mcSeq;
 	private Integer paytype;
 	private Integer quantity;
 	
@@ -37,17 +37,18 @@ public class Purchase {
 	public void setProductSeq(String productSeq) {
 		this.productSeq = productSeq;
 	}
-	public String getMemberAddr_seq() {
-		return memberAddr_seq;
+	
+	public String getMaSeq() {
+		return maSeq;
 	}
-	public void setMemberAddr_seq(String memberAddr_seq) {
-		this.memberAddr_seq = memberAddr_seq;
+	public void setMaSeq(String maSeq) {
+		this.maSeq = maSeq;
 	}
-	public String getMemberCard_seq() {
-		return memberCard_seq;
+	public String getMcSeq() {
+		return mcSeq;
 	}
-	public void setMemberCard_seq(String memberCard_seq) {
-		this.memberCard_seq = memberCard_seq;
+	public void setMcSeq(String mcSeq) {
+		this.mcSeq = mcSeq;
 	}
 	public Integer getPaytype() {
 		return paytype;
