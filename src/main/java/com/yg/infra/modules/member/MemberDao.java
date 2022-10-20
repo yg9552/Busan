@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class MemberDao {
 
@@ -59,4 +61,8 @@ public class MemberDao {
 	public Member selectOneLogin(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
 	}
+	
+	//uploaded
+	public int insertUploaded(Member dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
+	public List<Member> selectListUploaded(MemberVo vo){ return sqlSession.selectList(namespace + ".selectListUploaded", vo); }
 }

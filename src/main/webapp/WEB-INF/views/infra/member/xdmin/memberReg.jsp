@@ -26,7 +26,7 @@
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
 
-<form class="needs-validation" novalidate autocomplete="off" name="form" id="form">
+<form class="needs-validation" novalidate autocomplete="off" name="form" id="form" method="post">
 <!-- *Vo.jsp s -->
 <%@include file="memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
@@ -143,6 +143,25 @@
 	  				<label for="lng">경도</label>
 				</div>
 		  	</div>
+		  	<div class="col-sm-6 mt-3 mt-sm-0">
+	        	<c:set var="type" value="2"/>		<!-- #-> -->
+	        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
+	        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+	        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+	        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
+	            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
+	 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+				<div id="<c:out value="${name }"/>Preview" class="addScroll">
+					<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+						<c:if test="${listUploaded.type eq type }">
+							<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+								<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
+								<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+	        </div>
 		  </div>
 		  <div class="row text-center">
     		<div class="col">
@@ -227,38 +246,38 @@ $("#id").on("focusout", function(){
 </script>
 
 <script type="text/javascript">
-              
-          		var goUrlList = "/member/memberList"; 			/* #-> */
-		      	var goUrlInst = "/member/memberInst"; 			/* #-> */
-		      	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
-		      	var goUrlUele = "/member/memberUele";			/* #-> */
-		      	var goUrlDele = "/member/memberDele";			/* #-> */
-		      	var goUrlForm = "/member/memberForm";			/* #-> */
-		      	var goUrlView = "/member/memberView";			/* #-> */
-              	
-	        	var form = $("form[name=form]");
-	        	var formVo = $("form[name=formVo]");
-	        	
-	        	$("#btnSave").on("click", function(){
-	        	   	form.attr("action", goUrlInst).submit();
-	        	}); 
-	        	
-	        	$("#btnList").on("click", function(){
-		    		formVo.attr("action", goUrlList).submit();
-		    	});
-	        	
-	        	$("#btnAddressReset").on("click", function(){
-		      		$("#sample4_postcode").val("");
-		      		$("#sample4_roadAddress").val("");
-		      		$("#sample4_jibunAddress").val("");
-		      		$("#sample4_detailAddress").val("");
-		      		$("#sample4_extraAddress").val("");
-		      		$("#guide").val("");
-		      	});
-	        	
-	        	
-              </script>
-              
+       
+	var goUrlList = "/member/memberList"; 			/* #-> */
+ 	var goUrlInst = "/member/memberInst"; 			/* #-> */
+ 	var goUrlUpdt = "/member/memberUpdt";			/* #-> */
+ 	var goUrlUele = "/member/memberUele";			/* #-> */
+ 	var goUrlDele = "/member/memberDele";			/* #-> */
+ 	var goUrlForm = "/member/memberForm";			/* #-> */
+ 	var goUrlView = "/member/memberView";			/* #-> */
+       	
+  	var form = $("form[name=form]");
+  	var formVo = $("form[name=formVo]");
+  	
+  	$("#btnSave").on("click", function(){
+  	   	form.attr("action", goUrlInst).submit();
+  	}); 
+  	
+  	$("#btnList").on("click", function(){
+	formVo.attr("action", goUrlList).submit();
+	});
+  	
+  	$("#btnAddressReset").on("click", function(){
+ 		$("#sample4_postcode").val("");
+ 		$("#sample4_roadAddress").val("");
+ 		$("#sample4_jibunAddress").val("");
+ 		$("#sample4_detailAddress").val("");
+ 		$("#sample4_extraAddress").val("");
+ 		$("#guide").val("");
+ 	});
+  	
+  	
+</script>
+
               <!-- 비밀번호체크 -->
               <script type="text/javascript">
               $("#passwordConfirm").on("focusout", function passConfirm() {

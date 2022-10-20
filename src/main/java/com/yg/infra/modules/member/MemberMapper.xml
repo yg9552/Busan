@@ -187,5 +187,20 @@
 		    <!-- AND UseNy = 1 -->
     </select>
 	
-	
+	<select id="selectListUploaded" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+		FROM busan.memberUploaded
+		WHERE 1=1
+			AND delNy = 0
+			AND pseq = #{memberSeq}
+		ORDER BY
+			type, sort
+	</select>
 </mapper>
