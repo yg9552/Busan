@@ -103,6 +103,6 @@ public class PurchaseController {
 		
 		vo.setPurchaseSeq(dto.getPurchaseSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "infra/product/xdmin/Main";
+		return "infra/purchase/xdmin/purchaseKsnet";
 	}
 }
