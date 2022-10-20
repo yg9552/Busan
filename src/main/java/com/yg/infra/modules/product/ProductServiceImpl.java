@@ -62,7 +62,6 @@ public class ProductServiceImpl implements ProductService {
 		return dao.delete(vo);
 	}
 
-	@Override
 	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
 		// TODO Auto-generated method stub
 		for(int i=0; i<multipartFiles.length; i++) {
