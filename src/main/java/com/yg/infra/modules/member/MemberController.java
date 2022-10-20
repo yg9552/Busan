@@ -60,7 +60,7 @@ public class MemberController {
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberView";
+		return "redirect:/Main";
 	}
 	
 	@RequestMapping(value = "memberView")
