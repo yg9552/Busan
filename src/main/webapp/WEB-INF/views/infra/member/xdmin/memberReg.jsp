@@ -26,7 +26,7 @@
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
 
-<form class="needs-validation" novalidate autocomplete="off" name="form" id="form" method="post">
+<form class="needs-validation" novalidate autocomplete="off" name="form" id="form" method="post" enctype="multipart/form-data">
 <!-- *Vo.jsp s -->
 <%@include file="memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
