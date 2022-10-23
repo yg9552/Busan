@@ -19,7 +19,7 @@
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
-	
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mfnayvqkam"></script>
 </head>
 <body>
 	  <!-- userHeader s -->
@@ -158,6 +158,17 @@
 <%@include file="memberVo.jsp"%>		<!-- #-> -->
 <!-- *Vo.jsp e -->
 </form>
+<div id="map" style="width:100%;height:400px;"></div>
+    <script type="text/javascript">
+        var map = null;
+
+        function initMap() {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(37.3595704, 127.105399),
+                zoom: 10
+            });
+        }
+    </script>
 <script type="text/javascript">
 
 //Example starter JavaScript for disabling form submissions if there are invalid fields
