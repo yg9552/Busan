@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
       	<c:choose>
       		<c:when test="${sessSeq eq null}">
 				<nav class="navbar navbar-expand-lg mb-4">
@@ -70,7 +71,7 @@
 					    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 					      <ul class="navbar-nav mx-auto">
 					        <li class="nav-item dropdown me-4">
-					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="goList">
 					            신상품
 					          </a>
 					          <ul class="dropdown-menu dropdown-menu-dark">
@@ -225,7 +226,7 @@
 					    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 					      <ul class="navbar-nav mx-auto">
 					        <li class="nav-item dropdown me-4">
-					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="goList">
 					            신상품
 					          </a>
 					          <ul class="dropdown-menu dropdown-menu-dark">
@@ -315,10 +316,13 @@
 				</div>
       		</c:otherwise>
       	</c:choose>
-      	
+      	<a id="back-to-top" href="#" class="btn btn-primary back-to-top-css" role="button" data-toggle="tooltip" data-placement="left">
+			<i class="fa-solid fa-arrow-up"></i>
+		</a>
 <script>
 var goUrlMyPage = "/member/memberMyPage";
 var goUrlMain = "/Main";
+var goUrlProductList = "/product/productList";
 
 $("#btnLogout").on("click", function(){
 	$.ajax({
@@ -342,11 +346,34 @@ $("#btnLogout").on("click", function(){
 	});
 });
 
+$("#goList").on("click", function(){
+	location.href = goUrlProductList;
+});
 
-</script>
-<script>
 goMyPage = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlMyPage).submit();
 }
+
+$(document).ready(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+    // scroll body to 0px on click
+    $('#back-to-top').click(function () {
+        $('#back-to-top').tooltip('hide');
+        $('body,html').animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    });
+
+    $('#back-to-top').tooltip('show');
+
+});
+
 </script>

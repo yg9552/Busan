@@ -38,6 +38,7 @@
             <div class="page-header">
               <h3 class="page-title"> Q&A관리 </h3>
             </div>
+            <form autocomplete="off" name="formList" id="formList" method="post">
             <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
@@ -48,7 +49,7 @@
                     <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
                     <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
                     <input type="hidden" name="checkboxSeqArray">
-                    <input type="hidden" name="productSeq" value="<c:out value="${vo.productSeq }"/>">
+                    <input type="hidden" name="qaSeq" value="<c:out value="${vo.qaSeq }"/>">
 	                    <div class="row mb-3">
 	                    	<div class="col-1">
 	                    		<select class="form-control" id="shDelNy" name="shDelNy">
@@ -131,7 +132,7 @@
 									      		<c:otherwise>답변완료</c:otherwise>
 									      	</c:choose>
 							      	 	</td>
-			                            <td><a href="javascript:goView(<c:out value="${list.qaSeq }"/>)"> <c:out value="${list.title }"></c:out> </a></td>
+			                            <td><a class="text-danger" href="javascript:goView(<c:out value="${list.qaSeq }"/>)"> <c:out value="${list.title }"></c:out> </a></td>
 			                            <td> <c:out value="${list.product_name }"></c:out> </td>
 			                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.qaRegtime}"/> </td>
 			                          </tr>
@@ -141,6 +142,9 @@
                         </tbody>
                       </table>
                     </div>
+                    <!-- pagination s -->
+						<%@include file="../../../common/xdmin/pagination.jsp"%>
+					<!-- pagination e -->
                     <div class="row">
 						<div class="col">
 							<button type="button" class="btn btn-primary" id="btnForm">답변작성 <i class="fa-solid fa-pencil"></i></button>
@@ -154,6 +158,8 @@
                 </div>
               </div>
             </div>
+            </form>
+            
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
@@ -184,13 +190,27 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
-    <script type="text/javascript">
-    const myModal = document.getElementById('myModal')
-    const myInput = document.getElementById('myInput')
-
-    myModal.addEventListener('shown.bs.modal', () => {
-      myInput.focus()
-    })
-    </script>
+	<script type="text/javascript">
+		 var goUrlList = "/product/productQAListX"; 		/* #-> */
+		 var goUrlView = "/product/productQAViewX";			/* #-> */
+		 
+		 var seq = $("input:hidden[name=qaSeq]");
+		 
+		 var form = $("form[name=formList]");
+	 
+	 	goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+	 	
+	 	goView = function(keyValue) {
+    		seq.val(keyValue);
+    		form.attr("action", goUrlView).submit();
+    	}
+	 	
+	 	$("#btnReset").on("click", function() {
+    		$(location).attr("href", goUrlList);
+    	});
+	 </script>
   </body>
 </html>

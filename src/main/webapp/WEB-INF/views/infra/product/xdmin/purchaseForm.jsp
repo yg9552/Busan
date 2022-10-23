@@ -43,7 +43,7 @@
 			<span><c:out value="${itemp.product_name }"></c:out></span>
 		</div>
 		<div class="col-1 p-3 my-auto">
-			<input class="form-control text-center border border-white" type="number" placeholder="1">
+			<input class="form-control text-center border border-white" type="number" value="1" name="quantity">
 		</div>
 		<div class="col-2 p-3 my-auto">
 			<fmt:formatNumber value="${itemp.price}" pattern="#,###"/>원
@@ -162,7 +162,6 @@
 					<c:if test="${listma.memberSeq eq sessSeq && listma.div_addr eq 2 }">
 						<div class="col-3 offset-4 mb-3">
 							<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>" readonly>
-							<input class="form-control form-control-sm" type="hidden" name="maSeq" value="<c:out value="${listma.maSeq }"/>">
 						</div>
 						<div class="col-4 offset-4 mb-3">
 							<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>">
@@ -179,7 +178,6 @@
 					<c:if test="${listma.memberSeq eq sessSeq && listma.div_addr eq 3 }">
 						<div class="col-3 offset-4 mb-3">
 							<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>" readonly>
-							<input class="form-control form-control-sm" type="hidden" name="maSeq" value="<c:out value="${listma.maSeq }"/>">
 						</div>
 						<div class="col-4 offset-4 mb-3">
 							<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소" value="<c:out value="${listma.addr }"/>" readonly>
@@ -219,19 +217,19 @@
 			<div class="row">
 				<div class="col-4 mb-3">
 					<div class="form-check mb-5">
-					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions1" value="간편결제" checked>
+					  <input class="form-check-input" type="radio" name="paytype" id="payOptions1" value="1" checked>
 					  <label class="form-check-label" for="payOptions1">
 					    간편결제
 					  </label>
 					</div>
 					<div class="form-check mb-5">
-					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions2" value="계좌이체">
+					  <input class="form-check-input" type="radio" name="paytype" id="payOptions2" value="2">
 					  <label class="form-check-label" for="payOptions2">
 					    계좌이체
 					  </label>
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="payOptions" id="payOptions3" value="일반결제">
+					  <input class="form-check-input" type="radio" name="paytype" id="payOptions3" value="3">
 					  <label class="form-check-label" for="payOptions3">
 					    일반결제
 					  </label>
@@ -255,6 +253,7 @@
 						<c:if test="${listc.memberSeq eq sessSeq && listc.div_memberCard eq 1}">
 							<div class="col-4 mb-3" id="card1list">
 								<input class="form-control form-control-sm bg-white" type="text" name="card" value="<c:out value="${listc.card }"/>" readonly style="width: 150px;">
+								<input class="form-control" type="hidden" name="mcSeq" value="<c:out value="${listc.mcSeq }"/>" readonly>
 							</div>
 						</c:if>
 					</c:forEach>
@@ -332,8 +331,10 @@
 			  </div>
 			</div>
 		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 		var goUrlPurchaseKsnet = "/product/purchaseKsnet";
+		var goUrlInst = "/product/purchaseInst"; 		/* #-> */
 		var seq1 = $("input:hidden[name=productSeq]");
 		var seq = $("input:hidden[name=memberSeq]");
 		var form = $("form[name=purchaseform]");
@@ -342,8 +343,12 @@
 			seq1.val(keyValue);
 			form.attr("target", "_blank");
 			form.attr("action", goUrlPurchaseKsnet).submit();
-		} 
-		
+		}
+		/* 
+		$("#btnOrder").on("click", function(){
+    	   	form.attr("action", goUrlInst).submit();
+    	});
+		 */
 		</script>
 	</div>
 </div>
@@ -468,21 +473,21 @@ $(document).ready(function(){
 	});
     
     //결제방법
-	$("input[name='payOptions']").change(function(){
+	$("input[name='paytype']").change(function(){
 		// 간편결제 선택 시.
-		if($("input[name='payOptions']:checked").val() == '간편결제'){
+		if($("input[name='paytype']:checked").val() == 1){
 			$('#pay2').hide();
 			$('#pay3').hide();
 			$('#pay1').show();
 		}	
 		// 계좌이체 선택 시.
-		else if($("input[name='payOptions']:checked").val() == '계좌이체'){
+		else if($("input[name='paytype']:checked").val() == 2){
 			$('#pay1').hide();
 			$('#pay2').hide();
 			$('#pay2').show();
 		}
 		// 일반결제 선택 시.
-		else if($("input[name='payOptions']:checked").val() == '일반결제'){
+		else if($("input[name='paytype']:checked").val() == 3){
 			$('#pay1').hide();
 			$('#pay2').hide();
 			$('#pay3').show();

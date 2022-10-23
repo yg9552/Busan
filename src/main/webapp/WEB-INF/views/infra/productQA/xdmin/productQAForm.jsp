@@ -55,7 +55,7 @@
 	  </form>
 	  <form name="formVo" id="formVo" method="post">
 		<!-- *Vo.jsp s -->
-		<%@include file="../../product/xdmin/productVo.jsp"%>		<!-- #-> -->
+		<%@include file="productQAVo.jsp"%>		<!-- #-> -->
 		<!-- *Vo.jsp e -->
 	  </form>
 <script type="text/javascript">

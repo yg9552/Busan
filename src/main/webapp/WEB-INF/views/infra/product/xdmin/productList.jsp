@@ -21,7 +21,7 @@
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 	  <!-- userHeader e -->
 	<div class="container text-center">
-	<form name="formList">
+	<form name="formList" method="post">
 	<input type="hidden" name="mainkey">
     <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
     <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">

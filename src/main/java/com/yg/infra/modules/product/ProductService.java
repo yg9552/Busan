@@ -15,5 +15,6 @@ public interface ProductService {
 	public int uelete(Product dto) throws Exception;
 	public int delete(ProductVo vo) throws Exception;
 	
-	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type) throws Exception;
+	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception;
+	public List<Product> selectListUploaded(ProductVo vo) throws Exception;
 }

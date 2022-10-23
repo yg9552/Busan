@@ -23,10 +23,15 @@ public class Product extends Base {
 	private int totalprice;
 	private int discountprice;
 	
-	private MultipartFile[] productUploadedProfileImage;
-	private MultipartFile[] productUploadedImage;
-	private MultipartFile[] productUploadedFile;
-	
+	private MultipartFile[] uploadImg;
+	private Integer[] uploadImgSort;
+	private String[] uploadImgDeleteSeq;
+	private String[] uploadImgDeletePathFile;	
+	private Integer uploadImgMaxNumber;
+	private MultipartFile[] uploadFile;
+	private Integer[] uploadFileSort;
+	private String[] uploadFileDeleteSeq;
+	private String[] uploadFileDeletePathFile;
 	public String getProductSeq() {
 		return productSeq;
 	}
@@ -124,24 +129,61 @@ public class Product extends Base {
 	public void setDiscountprice(int discountprice) {
 		this.discountprice = discountprice;
 	}
-	public MultipartFile[] getProductUploadedProfileImage() {
-		return productUploadedProfileImage;
+	public MultipartFile[] getUploadImg() {
+		return uploadImg;
 	}
-	public void setProductUploadedProfileImage(MultipartFile[] productUploadedProfileImage) {
-		this.productUploadedProfileImage = productUploadedProfileImage;
+	public void setUploadImg(MultipartFile[] uploadImg) {
+		this.uploadImg = uploadImg;
 	}
-	public MultipartFile[] getProductUploadedImage() {
-		return productUploadedImage;
+	public Integer[] getUploadImgSort() {
+		return uploadImgSort;
 	}
-	public void setProductUploadedImage(MultipartFile[] productUploadedImage) {
-		this.productUploadedImage = productUploadedImage;
+	public void setUploadImgSort(Integer[] uploadImgSort) {
+		this.uploadImgSort = uploadImgSort;
 	}
-	public MultipartFile[] getProductUploadedFile() {
-		return productUploadedFile;
+	public String[] getUploadImgDeleteSeq() {
+		return uploadImgDeleteSeq;
 	}
-	public void setProductUploadedFile(MultipartFile[] productUploadedFile) {
-		this.productUploadedFile = productUploadedFile;
+	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
+		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
 	}
+	public String[] getUploadImgDeletePathFile() {
+		return uploadImgDeletePathFile;
+	}
+	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
+		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
+	}
+	public Integer getUploadImgMaxNumber() {
+		return uploadImgMaxNumber;
+	}
+	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
+		this.uploadImgMaxNumber = uploadImgMaxNumber;
+	}
+	public MultipartFile[] getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile[] uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public Integer[] getUploadFileSort() {
+		return uploadFileSort;
+	}
+	public void setUploadFileSort(Integer[] uploadFileSort) {
+		this.uploadFileSort = uploadFileSort;
+	}
+	public String[] getUploadFileDeleteSeq() {
+		return uploadFileDeleteSeq;
+	}
+	public void setUploadFileDeleteSeq(String[] uploadFileDeleteSeq) {
+		this.uploadFileDeleteSeq = uploadFileDeleteSeq;
+	}
+	public String[] getUploadFileDeletePathFile() {
+		return uploadFileDeletePathFile;
+	}
+	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
+		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
+	}
+	
 	
 	
 	

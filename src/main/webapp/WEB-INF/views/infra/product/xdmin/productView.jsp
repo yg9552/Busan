@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 </head>
 <body>
+
 <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
 <!-- userHeader e -->
@@ -224,6 +225,7 @@
 		    
 	      	<h4 class="mt-5">상품리뷰</h4>
 	      	<div class="border border-dark border-2 mb-3"></div>
+	      	<%-- 
 	      	<div class="row bg-light text-center">
 	      		<div class="col-6">사용자총평점</div>
 	      		<div class="col-6">전체리뷰수</div>
@@ -236,6 +238,7 @@
 	      			<br><span class="fs-4"><c:out value="${vorv.totalRows }"></c:out>건</span>
 	      		</div>
 	      	</div>
+	      	 --%>
 		      <h6 class="mt-3 mb-3">리뷰 <c:out value="${vorv.totalRows }"></c:out>건</h6>
 		      <div class="border border-dark border-1 opacity-50 mb-3"></div>
 		      	<c:choose>
@@ -307,6 +310,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${listqa}" var="listqa" varStatus="status">
+								<c:if test="${listqa.delNy eq 0 }">
 							    <tr>
 							      <td>
 							      	<c:choose>
@@ -318,6 +322,7 @@
 							      <td><c:out value="${listqa.id }"></c:out></td>
 							      <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${listqa.qaRegtime}"/></td>
 							    </tr>
+							    </c:if>
 						    </c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -383,7 +388,9 @@
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
+<script type="text/javascript">
 
+</script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -391,6 +398,7 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
 </script>
 <script type="text/javascript">
 

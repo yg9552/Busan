@@ -54,14 +54,13 @@ public class MemberController {
 	@RequestMapping(value = "memberInst")
 	public String memberInst(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
 		vo.setMemberSeq(dto.getMemberSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberView";
+		return "redirect:/Main";
 	}
 	
 	@RequestMapping(value = "memberView")

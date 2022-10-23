@@ -17,3 +17,26 @@ a {
 #btnLogout{
 	cursor: pointer;
 }
+.back-to-top-css {
+	    cursor: pointer;
+	    position: fixed;
+	    bottom: 10px;
+	    right: 10px;
+	    display: none;
+}
+
+.addScroll{
+		overflow-y:auto;
+		height: 200px;
+		background-color:#E9ECEF;
+		padding-top:5px; 
+		padding-left:5px;
+	}
+ 	
+	.input-file-button{
+		padding: 4px 25px;
+		background-color:#FF6600;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+	}
