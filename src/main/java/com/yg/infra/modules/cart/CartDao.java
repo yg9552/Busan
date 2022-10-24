@@ -15,13 +15,13 @@ public class CartDao {
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.yg.infra.modules.cart.cartMapper";
+	private static String namespace = "com.yg.infra.modules.cart.CartMapper";
 	
 	public List<Cart> selectList(CartVo vo) {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	public Cart selectOne(CartVo vo) {
-		return sqlSession.selectOne(namespace + "selectOne", vo);
+		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
 	public int selectOneCount(CartVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);

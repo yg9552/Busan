@@ -152,7 +152,7 @@
 					</select>
 				</div>
 				<div class="d-grid gap-2 col-6 mx-auto">
-				  <button class="btn btn-lg btn-outline-primary" type="button">장바구니</button>
+				  <button class="btn btn-lg btn-outline-primary" type="button" id="btnCart">장바구니</button>
 				</div>
 				<div class="d-grid gap-2 col-6 mx-auto">
 				  <a class="btn btn-lg btn-primary" href="javascript:goPurchase(<c:out value="${item.productSeq }"/>)">주문하기</a>
@@ -404,6 +404,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 
 	var goUrlPurchaseForm = "/product/purchaseForm";
 	var goUrlQAForm = "/product/productQAForm";
+	var goUrlCartInst = "/member/cartInst";
 	
 	var seq = $("input:hidden[name=productSeq]");
 	//var memberseq = $("input:hidden[name=memberSeq]");
@@ -416,6 +417,10 @@ myModal.addEventListener('shown.bs.modal', () => {
 	
 	$("#btnQAForm").on("click", function(){
 	   	form.attr("action", goUrlQAForm).submit();
+	});
+	
+	$("#btnCart").on("click", function(){
+	   	form.attr("action", goUrlCartInst).submit();
 	});
 </script>
 </body>

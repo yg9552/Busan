@@ -203,7 +203,7 @@
 							</div>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-				            <a class="nav-link" href="../member/mypageCart.html">
+				            <a class="nav-link" href="javascript:goCartList(<c:out value="${sessSeq }"/>)">
 				            	<i class="fa-solid fa-cart-shopping fa-3x"></i>
 				            </a>
 				          </li>
@@ -323,6 +323,7 @@
 var goUrlMyPage = "/member/memberMyPage";
 var goUrlMain = "/Main";
 var goUrlProductList = "/product/productList";
+var goUrlCartList = "/member/cartList";
 
 $("#btnLogout").on("click", function(){
 	$.ajax({
@@ -353,6 +354,11 @@ $("#goList").on("click", function(){
 goMyPage = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlMyPage).submit();
+}
+
+goCartList = function(keyValue) {
+	seq.val(keyValue);
+	form.attr("action", goUrlCartList).submit();
 }
 
 $(document).ready(function () {

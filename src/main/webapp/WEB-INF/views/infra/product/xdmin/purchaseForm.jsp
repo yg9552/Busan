@@ -338,17 +338,25 @@
 		var seq1 = $("input:hidden[name=productSeq]");
 		var seq = $("input:hidden[name=memberSeq]");
 		var form = $("form[name=purchaseform]");
-	
+	/* 
 		goPurchaseKsnet = function(keyValue) {
 			seq1.val(keyValue);
 			form.attr("target", "_blank");
 			form.attr("action", goUrlPurchaseKsnet).submit();
 		}
-		/* 
-		$("#btnOrder").on("click", function(){
-    	   	form.attr("action", goUrlInst).submit();
-    	});
 		 */
+		$("#btnOrder").on("click", function(){
+			goPurchaseKsnet = function(keyValue) {
+    			seq1.val(keyValue);
+    			form.attr("target", "_blank");
+    			form.attr("action", goUrlPurchaseKsnet).submit();
+    		}
+			
+    	   	form.attr("action", goUrlInst).submit();
+    	   	
+    	   	
+    	});
+		 
 		</script>
 	</div>
 </div>

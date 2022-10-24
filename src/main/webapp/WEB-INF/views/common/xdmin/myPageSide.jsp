@@ -7,10 +7,10 @@
 	    <h5 class="card-title">환영합니다!</h5>
 	  </div>
 	  <ul class="list-group list-group-flush text-center">
-	    <li class="list-group-item"><a href="javascript:goView(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
+	    <li class="list-group-item"><a href="javascript:goMod(<c:out value="${sessSeq }"/>)">개인정보수정</a></li>
 	    <%-- <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)"">주문내역</a></li> --%>
-	    <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)"">주문내역</a></li>
-	    <li class="list-group-item"><a href="./mypageCart.html">장바구니</a></li>
+	    <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)">주문내역</a></li>
+	    <li class="list-group-item"><a href="javascript:goCartList(<c:out value="${sessSeq }"/>)">장바구니</a></li>
 	  </ul>
 	</div>
 </div>
@@ -22,19 +22,25 @@
 	var goUrlUele = "/member/memberUele";			/* #-> */
 	var goUrlDele = "/member/memberDele";			/* #-> */
 	var goUrlForm = "/member/memberForm";			/* #-> */
-	var goUrlView = "/member/memberMod";			/* #-> */
+	var goUrlMod = "/member/memberMod";			/* #-> */
 	var goUrlPurchaseList = "/product/purchaseList";			/* #-> */
+	var goUrlCartList = "/member/cartList";
 	
 	var seq = $("input:hidden[name=memberSeq]");
 	var form = $("form[name=mypageForm]");
 
-goView = function(keyValue) {
+	goMod = function(keyValue) {
 	seq.val(keyValue);
-	form.attr("action", goUrlView).submit();
-}
+	form.attr("action", goUrlMod).submit();
+	}
 	
 	goPurchaseList = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlPurchaseList).submit();
-}
+	}
+	goCartList = function(keyValue) {
+	seq.val(keyValue);
+	form.attr("action", goUrlCartList).submit();
+	}
+	
 </script>

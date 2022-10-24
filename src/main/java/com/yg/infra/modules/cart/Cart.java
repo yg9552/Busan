@@ -9,6 +9,8 @@ public class Cart {
 	private String product_name;
 	private String id;
 	private String price;
+	private Integer deliverycost;
+	private Integer discount_percent;
 	
 	public String getCartSeq() {
 		return cartSeq;
@@ -57,6 +59,18 @@ public class Cart {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public Integer getDeliverycost() {
+		return deliverycost;
+	}
+	public void setDeliverycost(Integer deliverycost) {
+		this.deliverycost = deliverycost;
+	}
+	public Integer getDiscount_percent() {
+		return discount_percent;
+	}
+	public void setDiscount_percent(Integer discount_percent) {
+		this.discount_percent = discount_percent;
 	}
 	
 }

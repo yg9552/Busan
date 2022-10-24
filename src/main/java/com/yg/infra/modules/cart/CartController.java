@@ -38,7 +38,7 @@ public class CartController {
 		vo.setCartSeq(dto.getCartSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "infra/cart/xdmin/cartList";
+		return "redirect:/member/cartList";
 	}
 
 }
