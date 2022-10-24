@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -38,6 +39,13 @@ public class CartController {
 		vo.setCartSeq(dto.getCartSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
+		return "redirect:/member/cartList";
+	}
+	
+	@RequestMapping(value = "cartDele")
+	public String cartDele(@ModelAttribute("vo") CartVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/member/cartList";
 	}
 

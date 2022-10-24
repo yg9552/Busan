@@ -36,7 +36,7 @@
 			<div class="row text-center mb-4">
 				<div class="col-1 border p-2">
 					<div>
-					  <input class="form-check-input" type="checkbox" name="">
+					  <input class="form-check-input" type="checkbox" name="" id="Allcheck">
 					</div>
 				</div>
 				<div class="col-5 border p-2">상품명/옵션</div>
@@ -52,7 +52,7 @@
 						<c:forEach items="${list }" var="list" varStatus="status">
 							<div class="col-1 p-3 my-auto">
 								<div>
-								  <input class="form-check-input" type="checkbox" name="">
+								  <input class="form-check-input chBox" type="checkbox" name="cartSeq" value="${list.cartSeq }">
 								</div>
 							</div>
 							<div class="col-5 p-3">
@@ -85,10 +85,48 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div class="col text-center">
-				<a href="../order/purchase.html" class="btn btn-primary">주문하기</a>
+			<div class="row">
+				<div class="col">
+					<a href="../order/purchase.html" class="btn btn-primary">주문하기</a>
+				</div>
+				<div class="col-auto">
+					<button type="button" class="btn btn-danger" id="btnDel">삭제하기</a>
+				</div>
 			</div>
 		</div>
 	</div>
  </form>
+ <form name="formVo" id="formVo" method="post">
+<!-- *Vo.jsp s -->
+<%@include file="cartVo.jsp"%>		<!-- #-> -->
+<!-- *Vo.jsp e -->
+</form>
 </body>
+<script type="text/javascript">
+var goUrlDele = "/member/cartDele";			/* #-> */
+
+var form = $("form[name=mypageForm]");
+var formVo = $("form[name=formVo]");
+
+$("#Allcheck").click(function(){
+	 var chk = $("#Allcheck").prop("checked");
+	 if(chk) {
+	  $(".chBox").prop("checked", true);
+	 } else {
+	  $(".chBox").prop("checked", false);
+	 }
+});
+$(".chBox").click(function(){
+	  $("#Allcheck").prop("checked", false);
+ });
+ 
+$("#btnDel").on("click", function(){
+	if(!confirm("삭제 하시겠습니까?")){
+	return false;
+}else{
+	form.attr("action", goUrlDele).submit();
+}
+	
+});
+</script>
+</html>

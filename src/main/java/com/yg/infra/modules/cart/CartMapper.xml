@@ -77,4 +77,8 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<delete id="delete">
+		DELETE FROM cart WHERE cartSeq = #{cartSeq}
+	</delete>
 </mapper>

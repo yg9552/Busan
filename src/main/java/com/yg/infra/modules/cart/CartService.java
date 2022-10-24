@@ -7,5 +7,6 @@ public interface CartService {
 	public Cart selectOne(CartVo vo) throws Exception;
 	public int selectOneCount(CartVo vo) throws Exception;
 	public int insert(Cart dto) throws Exception;
+	public int delete(CartVo vo) throws Exception;
 
 }

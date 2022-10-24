@@ -29,5 +29,7 @@ public class CartDao {
 	public int insert(Cart dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
-	
+	public int delete(CartVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
 }
