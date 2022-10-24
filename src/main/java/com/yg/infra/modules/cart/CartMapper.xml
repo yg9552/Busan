@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.yg.infra.modules.cart.CartMapper">
+	<resultMap type="com.yg.infra.modules.card.Cart" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		FROM cart a
+		left join member b on a.memberSeq = b.memberSeq
+		left join product c on a.productSeq = c.productSeq
+		WHERE 1=1
+		<if test="memberSeq != null and !memberSeq.equals('')">AND a.memberSeq = #{memberSeq}</if>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND purchaseSeq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND nm LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resulyMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.cartSeq
+				,a.memberSeq
+				,a.productSeq
+				,a.DelNy
+				,b.id
+				,b.nm
+				,c.product_name
+				,c.price
+				,c.discount_percent
+			<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.cartSeq
+			,a.memberSeq
+			,a.productSeq
+			,a.DelNy
+			,b.id
+			,b.nm
+			,c.product_name
+			,c.price
+			,c.discount_percent
+		FROM cart a
+		left join member b on a.memberSeq = b.memberSeq
+		left join product c on a.productSeq = c.productSeq
+		WHERE 1=1
+			AND a.memberSeq = #{memberSeq}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO cart(
+			memberSeq
+			,productSeq
+			,DelNy
+			)
+			VALUES(
+			#{memberSeq}
+			,#{productSeq}
+			,0
+			)
+		<selectKey resultType="String" keyProperty="cartSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+</mapper>
