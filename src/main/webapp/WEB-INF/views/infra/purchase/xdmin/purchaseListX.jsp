@@ -118,9 +118,9 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 			                          <tr>
 			                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
-			                            <td><a href="javascript:goView(<c:out value="${list.purchaseSeq }"/>)"> <c:out value="${list.nm }"/> </a></td>
+			                            <td> <c:out value="${list.nm }"/> </td>
 			                            <td> <c:out value="${list.id }"/> </td>
-			                            <td> <c:out value="${list.product_name }"/> </td>
+			                            <td><a href="javascript:goView(<c:out value="${list.purchaseSeq }"/>)"> <c:out value="${list.product_name }"/> </a></td>
 			                            <td> <c:out value="${list.price }"/> </td>
 			                            <td> <c:out value="${list.quantity }"/> </td>
 			                          </tr>
@@ -135,7 +135,6 @@
 						<!-- pagination e -->
 						<div class="row">
 							<div class="col">
-								<button type="button" class="btn btn-success" id="btnForm">번호등록 <i class="fa-solid fa-pencil"></i></button>
 							</div>
 							<div class="col-auto">
 								<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
@@ -148,7 +147,7 @@
               </div>
               
               <script type="text/javascript">
-            	var goUrlList = "/member/memberAddrList"; 			/* #-> */
+            	var goUrlList = "/product/purchaseListX"; 			/* #-> */
     	      	var goUrlInst = "/member/memberAddrInst"; 			/* #-> */
     	      	var goUrlUpdt = "/member/memberAddrUpdt";			/* #-> */
     	      	var goUrlUele = "/member/memberAddrUele";			/* #-> */
