@@ -33,6 +33,7 @@
 				,a.maSeq
 				,a.paytype
 				,a.mcSeq
+				,a.regtime
 				,b.nm
 				,b.id
 				,c.product_name
@@ -73,6 +74,7 @@
 			,maSeq
 			,paytype
 			,mcSeq
+			,regtime
 			)
 			VALUES(
 			#{memberSeq }
@@ -81,6 +83,7 @@
 			,#{maSeq }
 			,#{paytype }
 			,#{mcSeq }
+			,NOW()
 			)
 		<selectKey resultType="String" keyProperty="purchaseSeq" order="AFTER">
 			SELECT last_insert_id()

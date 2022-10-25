@@ -1,5 +1,7 @@
 package com.yg.infra.modules.purchase;
 
+import java.sql.Timestamp;
+
 public class Purchase {
 
 	private String purchaseSeq;
@@ -9,6 +11,7 @@ public class Purchase {
 	private String mcSeq;
 	private Integer paytype;
 	private Integer quantity;
+	private Timestamp regtime;
 	
 	//member
 	private String nm;
@@ -85,6 +88,12 @@ public class Purchase {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public Timestamp getRegtime() {
+		return regtime;
+	}
+	public void setRegtime(Timestamp regtime) {
+		this.regtime = regtime;
 	}
 	
 	

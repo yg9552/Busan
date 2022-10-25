@@ -88,14 +88,13 @@
 								<div class="col">
 									<h4><c:out value="${list.product_name }"/></h4>
 									<span><c:out value="${list.price }"/>원</span>
-									 | <span>2022.07.21</span>
+									 | <span><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regtime}"/></span>
 								</div>
 							<div class="col-2">
 								<span>배송완료</span>
 								<button type="button" class="btn btn-sm btn-dark">리뷰작성하기</button>
 							</div>
 						</div>
-						
 					</div>
 				</c:forEach>
 			</c:otherwise>

@@ -96,7 +96,6 @@
 		SET
 		title = #{title }
 		,question = #{question }
-		,qaRegtime = #{qaRegtime }
 		,answerNY = #{answerNY }
 		,productSeq = #{productSeq }
 		,memberSeq = #{memberSeq }
