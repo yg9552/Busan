@@ -19,11 +19,8 @@
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
-<<<<<<< HEAD
 	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mfnayvqkam"></script>
-=======
 	<script src="/resources/xdmin/js/commonXdmin.js"></script>
->>>>>>> branch 'main' of https://github.com/yg9552/Busan.git
 </head>
 <body>
 	  <!-- userHeader s -->
