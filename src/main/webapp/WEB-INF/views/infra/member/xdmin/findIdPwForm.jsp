@@ -68,8 +68,8 @@
 		  				<label for="id">아이디</label>
 					</div>
 					<div class="form-floating mb-3">
-		  				<input type="email" class="form-control" id="email" name="email">
-		  				<label for="email">이메일</label>
+		  				<input type="email" class="form-control" id="email2" name="email">
+		  				<label for="email2">이메일</label>
 					</div>
 					<div class="form-group d-grid gap-2">
 						<button id="btnFindPw" type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#findpwmodal">비밀번호찾기</button>
@@ -146,7 +146,7 @@
 			,type: "post"
 			/* ,dataType:"json" */
 			,url: "/member/findPw"
-			,data : { "id" : $("#id").val(), "email" : $("#email").val() }
+			,data : { "id" : $("#id").val(), "email" : $("#email2").val() }
 			,success: function(response) {
 				if(response.rt == "success") {
 					document.getElementById("findPwFail").style.display = "none";

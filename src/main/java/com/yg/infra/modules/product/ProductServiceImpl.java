@@ -4,12 +4,17 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yg.infra.common.constants.Constants;
 import com.yg.infra.common.util.UtilDateTime;
+import com.yg.infra.common.util.UtilRegMod;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -17,6 +22,22 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDao dao;
 	
+	@Override
+	public void setRegMod(Product dto) throws Exception {
+		// TODO Auto-generated method stub
+		//HttpServletRequest httpServletRequest = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+		
+		//dto.setRegIp(UtilRegMod.getClientIp(httpServletRequest));
+		//.setRegSeq(UtilRegMod.getSessionSeq(httpServletRequest));
+		//dto.setRegDeviceCd(UtilRegMod.getDevice());
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		
+		//dto.setModIp(UtilRegMod.getClientIp(httpServletRequest));
+		//dto.setModSeq(UtilRegMod.getSessionSeq(httpServletRequest));
+		//dto.setModDeviceCd(UtilRegMod.getDevice());
+		dto.setModDateTime(UtilDateTime.nowDate());
+	}
+
 	@Override
 	public List<Product> selectList(ProductVo vo) throws Exception {
 		List<Product> list = dao.selectList(vo);

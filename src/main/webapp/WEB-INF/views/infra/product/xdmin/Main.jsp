@@ -115,6 +115,9 @@
 				</c:if>
 			</c:forEach>
 		</div>
+	                    <!-- pagination s -->
+						<%@include file="../../../common/xdmin/pagination.jsp"%>
+						<!-- pagination e -->
 		</form>
 		
 </div>
@@ -122,26 +125,7 @@
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
 
-<script>
-	$( function() {
-		$( "#dateStart" ).datepicker({
-	    	changeYear: true, 
-	    	dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
-	    	yearRange:"1900:2023",
-	    	monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-			dateFormat: "yy.mm.dd"
-		});
-		$( "#dateEnd").datepicker({
-			changeYear: true, 
-	    	dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
-	    	yearRange:"1900:2023",
-	    	monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-			dateFormat: "yy.mm.dd"
-		});
-	} );
-</script>
 
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
@@ -163,7 +147,10 @@ goView = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlView).submit();
 }
-
+goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlMain).submit();
+	}
 
 </script>
 </body>

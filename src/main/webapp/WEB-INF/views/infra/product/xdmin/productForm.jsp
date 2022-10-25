@@ -131,8 +131,8 @@
                         <div class="form-group">
 	                        <label for="deliveryinfo">배송정보</label>
 	                        <select class="form-control" id="deliveryinfo" name="deliveryinfo" >
-			                        <option value="1" <c:if test="${item.deliveryinfo eq 1}">selected</c:if>> 국내배송 </option>
-			                        <option value="2" <c:if test="${item.deliveryinfo eq 2}">selected</c:if>> 해외배송 </option>
+			                        <option value="1" <c:if test="${item.deliveryinfo eq 1001}">selected</c:if>> 국내배송 </option>
+			                        <option value="2" <c:if test="${item.deliveryinfo eq 1002}">selected</c:if>> 해외배송 </option>
 		                    </select>
 	                    </div>
                         <div class="form-group">
