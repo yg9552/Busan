@@ -16,6 +16,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yg.infra.common.constants.Constants;
 import com.yg.infra.common.util.UtilSecurity;
+import com.yg.infra.modules.cart.CartServiceImpl;
+import com.yg.infra.modules.cart.CartVo;
+import com.yg.infra.modules.productQA.ProductQAServiceImpl;
+import com.yg.infra.modules.productQA.ProductQAVo;
+import com.yg.infra.modules.productReview.ProductReviewServiceImpl;
+import com.yg.infra.modules.productReview.ProductReviewVo;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -23,6 +29,12 @@ public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
+	@Autowired
+	ProductQAServiceImpl serviceqa;
+	@Autowired
+	ProductReviewServiceImpl servicerv;
+	@Autowired
+	CartServiceImpl servicecart;
 	
 	@RequestMapping(value = "memberList")
 	public String memberList(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception{
@@ -121,7 +133,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberMyPage")
-	public String memberMyPage(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	public String memberMyPage(@ModelAttribute("vo") MemberVo vo, Model model, @ModelAttribute("voqa") ProductQAVo voqa, @ModelAttribute("voct") CartVo voct, @ModelAttribute("vorv") ProductReviewVo vorv) throws Exception {
+		voqa.setParamsPaging(serviceqa.selectOneCount(voqa));
+		vorv.setParamsPaging(servicerv.selectOneCount(vorv));
+		voct.setParamsPaging(servicecart.selectOneCount(voct));
+		
 		Member item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		return "infra/member/xdmin/memberMyPage";

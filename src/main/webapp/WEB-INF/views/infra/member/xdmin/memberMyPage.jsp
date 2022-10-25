@@ -34,16 +34,17 @@
 		<!-- side s -->
 		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
 		<!-- side e -->
+		<c:set var = "total" value = "${vorv.totalRows + voqa.totalRows}" />
 		<div class="col-9">
 			<div class="row text-center border rounded p-2">
 				<div class="col-3"><a href="#"><i class="fa-solid fa-truck fa-2x"></i><br>주문배송</a></div>
 				<div class="col-3"><a href="#"><i class="fa-solid fa-coins fa-2x"></i><br>적립금</a></div>
-				<div class="col-3"><a href="#"><i class="fa-solid fa-cart-shopping fa-2x"></i><br>장바구니</a></div>
+				<div class="col-3"><a href="javascript:goCartList(<c:out value="${sessSeq }"/>)"><i class="fa-solid fa-cart-shopping fa-2x"></i><br>장바구니</a></div>
 				<div class="col-3"><a href="#"><i class="fa-solid fa-user-pen fa-2x"></i><br>내가작성한글</a></div>
 				<div class="col-3 p-4 fs-3">0건</div>
 				<div class="col-3 p-4 fs-3"><c:out value="${item.reserve }"/>원</div>
-				<div class="col-3 p-4 fs-3">0개</div>
-				<div class="col-3 p-4 fs-3">0개</div>
+				<div class="col-3 p-4 fs-3"><c:out value="${voct.totalRows }"/>개</div>
+				<div class="col-3 p-4 fs-3"><c:out value="${total }"></c:out>건</div>
 			</div>
 		</div>
 	</div>

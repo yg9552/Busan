@@ -87,7 +87,7 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<a href="../order/purchase.html" class="btn btn-primary">주문하기</a>
+					<a href="#" class="btn btn-primary">주문하기</a>
 				</div>
 				<div class="col-auto">
 					<button type="button" class="btn btn-danger" id="btnDel">삭제하기</a>
