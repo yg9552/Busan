@@ -131,8 +131,8 @@
                         <div class="form-group">
 	                        <label for="deliveryinfo">배송정보</label>
 	                        <select class="form-control" id="deliveryinfo" name="deliveryinfo" >
-			                        <option value="1" <c:if test="${item.deliveryinfo eq 1001}">selected</c:if>> 국내배송 </option>
-			                        <option value="2" <c:if test="${item.deliveryinfo eq 1002}">selected</c:if>> 해외배송 </option>
+			                        <option value="1001" <c:if test="${item.deliveryinfo eq 1001}">selected</c:if>> 국내배송 </option>
+			                        <option value="1002" <c:if test="${item.deliveryinfo eq 1002}">selected</c:if>> 해외배송 </option>
 		                    </select>
 	                    </div>
                         <div class="form-group">
@@ -185,17 +185,38 @@
 							<div class="col-sm-6 mt-3 mt-sm-0">
 					        	<c:set var="type" value="2"/>		<!-- #-> -->
 					        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
-					        	<input type="hidden" id="uploadImgMaxNumber" name="uploadImgMaxNumber" value="0"/>
-					        	<input type="hidden" id="uploadImgDeleteSeq" name="uploadImgDeleteSeq"/>
-					        	<input type="hidden" id="uploadImgDeletePathFile" name="uploadImgDeletePathFile"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
 					            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
-					 			<input class="form-control form-control-sm" id="uploadImg" name="uploadImg" type="file" multiple="multiple" style="display: none;" onChange="upload('uploadImg', 2, 0, 1, 0, 0, 1);">
-								<div id="uploadImgPreview" class="addScroll">
+					 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+								<div id="<c:out value="${name }"/>Preview" class="addScroll">
 									<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
 										<c:if test="${listUploaded.type eq type }">
-											<div id="imgDiv_2_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+											<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
 												<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
-												<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('uploadImg', 2,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+												<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+					        </div>
+						</div>
+						<div class="row mt-sm-4">
+							<div class="col-sm-6 mt-3 mt-sm-0">
+					        	<c:set var="type" value="3"/>		<!-- #-> -->
+					        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
+					        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
+					            <label for="uploadImg" class="form-label input-file-button">상세정보이미지첨부</label>
+					 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+								<div id="<c:out value="${name }"/>Preview" class="addScroll">
+									<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+										<c:if test="${listUploaded.type eq type }">
+											<div id="imgDiv2_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+												<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
+												<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
 											</div>
 										</c:if>
 									</c:forEach>
@@ -311,6 +332,20 @@
 			            			divImage += '</div> ';
 			            			
 			            			filePreview.append(divImage);
+			            	    };
+			            	}
+			              addEventListenerCustom2 = function (objName, type, i, file, filePreview, maxNumber) { 
+			            		return function(event) {
+			            			var imageFile = event.target;
+			            			var sort = parseInt(maxNumber) + i;
+
+			            			var divImage2 = "";
+			            			divImage2 += '<div id="imgDiv2_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
+			            			divImage2 += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
+			            			divImage2 += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
+			            			divImage2 += '</div> ';
+			            			
+			            			filePreview.append(divImage2);
 			            	    };
 			            	}
 			              

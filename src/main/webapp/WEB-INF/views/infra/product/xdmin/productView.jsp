@@ -36,15 +36,13 @@
 		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 		  </div>
 		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img src="../../../../../resources/image/26650739290.png" class="d-block" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="../../../../../resources/image/26650739290.png" class="d-block" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="../../../../../resources/image/26650739290.png" class="d-block" alt="...">
-		    </div>
+		  	<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+		  		<c:if test="${listUploaded.type eq 2 }">
+				    <div class="carousel-item active">
+				      <img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="d-block" alt="...">
+				    </div>
+			    </c:if>
+		    </c:forEach>
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
