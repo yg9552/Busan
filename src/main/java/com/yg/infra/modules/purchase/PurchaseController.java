@@ -56,7 +56,7 @@ public class PurchaseController {
 	}
 	
 	@RequestMapping(value = "purchaseList")
-	public String purchaseList(@ModelAttribute("vo") PurchaseVo vo, Model model, HttpServletRequest httpServletRequest) throws Exception {
+	public String purchaseList(@ModelAttribute("vo") PurchaseVo vo, Model model, HttpServletRequest httpServletRequest, ProductVo vop) throws Exception {
 		HttpSession httpSession =  httpServletRequest.getSession();
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");
 		
@@ -67,6 +67,7 @@ public class PurchaseController {
 		//Purchase item = service.selectOne(vo);
 		//model.addAttribute("item", item);
 		model.addAttribute("list", list);
+		model.addAttribute("listUploaded", servicep.selectListUploaded(vop));
 		return "infra/purchase/xdmin/purchaseList";
 	}
 	

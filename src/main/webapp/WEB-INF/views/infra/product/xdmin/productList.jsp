@@ -38,7 +38,7 @@
 					<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
 						<div class="card" style="width: 18rem;">
 							<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-								<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq list.productSeq }">
+								<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq list.productSeq && listUploaded.sort eq 0}">
 			  						<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="card-img-top" alt="..." style="width: 286px; height: 286px;">
 			  					</c:if>
 		  					</c:forEach>

@@ -17,6 +17,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -37,11 +38,20 @@
 		  </div>
 		  <div class="carousel-inner">
 		  	<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-		  		<c:if test="${listUploaded.type eq 2 }">
-				    <div class="carousel-item active">
-				      <img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="d-block" alt="...">
-				    </div>
-			    </c:if>
+		  		<c:choose>
+		  			<c:when test="${listUploaded.type eq 2 && listUploaded.sort eq 0}">
+		  				<div class="carousel-item active">
+					      <img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="d-block" alt="...">
+					    </div>
+		  			</c:when>
+		  			<c:otherwise>
+		  				<c:if test="${listUploaded.type eq 2 }">
+						    <div class="carousel-item">
+						      <img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="d-block" alt="...">
+						    </div>
+					    </c:if>
+				    </c:otherwise>
+		  		</c:choose>
 		    </c:forEach>
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

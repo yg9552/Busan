@@ -40,7 +40,7 @@
 		<div class="col-2 border p-2">총합계</div>
 		<div class="col-5">
 			<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-				<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq itemp.productSeq }">
+				<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq itemp.productSeq && listUploaded.sort eq 0}">
 					<img alt="..." src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" style="width: 100px; height: 100px">
 				</c:if>
 			</c:forEach>

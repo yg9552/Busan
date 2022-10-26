@@ -83,14 +83,18 @@
 					<div class="col-12">
 						<div class="row border rounded mb-3">
 							<div class="col-3">
-								<img alt=".." src="../image/basict.png" style="width: 150px; height: 150px;">
+								<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+									<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq list.productSeq && listUploaded.sort eq 0}">
+										<img alt=".." src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" style="width: 150px; height: 150px;">
+									</c:if>
+								</c:forEach>
 							</div>
-								<div class="col">
+								<div class="col mt-5">
 									<h4><c:out value="${list.product_name }"/></h4>
 									<span><c:out value="${list.price }"/>원</span>
 									 | <span><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regtime}"/></span>
 								</div>
-							<div class="col-2">
+							<div class="col-2 mt-5">
 								<span>배송완료</span>
 								<button type="button" class="btn btn-sm btn-dark">리뷰작성하기</button>
 							</div>
