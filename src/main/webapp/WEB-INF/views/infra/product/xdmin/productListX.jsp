@@ -161,7 +161,12 @@
 												<c:if test="${list.origin_code eq listOrigin.seq}"><c:out value="${listOrigin.name }"/></c:if>
 											</c:forEach>
 									    </td>
-									    <td> <c:out value="${list.delNy }"/> </td>
+									    <td> 
+									    	<c:choose>
+							      				<c:when test="${list.delNy eq 0 }">N</c:when>
+							      				<c:otherwise>Y</c:otherwise>
+							      			</c:choose> 
+							      		</td>
 									    <td></td>
 									    <td></td>
 			                          </tr>
