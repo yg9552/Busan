@@ -83,10 +83,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int insert(Product dto) throws Exception {
 		// TODO Auto-generated method stub
+		dao.insert(dto);
 		
 		uploadFiles(dto.getUploadImg(), dto, "productUploaded", 2, dto.getUploadImgMaxNumber());
+		uploadFiles(dto.getUploadImg2(), dto, "productUploaded", 3, dto.getUploadImg2MaxNumber());
     	
-		return dao.insert(dto);
+		return 1;
 	}
 
 	@Override

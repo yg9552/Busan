@@ -28,6 +28,11 @@ public class Product extends Base {
 	private String[] uploadImgDeleteSeq;
 	private String[] uploadImgDeletePathFile;	
 	private Integer uploadImgMaxNumber;
+	private MultipartFile[] uploadImg2;
+	private Integer[] uploadImg2Sort;
+	private String[] uploadImg2DeleteSeq;
+	private String[] uploadImg2DeletePathFile;	
+	private Integer uploadImg2MaxNumber;
 	private MultipartFile[] uploadFile;
 	private Integer[] uploadFileSort;
 	private String[] uploadFileDeleteSeq;
@@ -182,6 +187,36 @@ public class Product extends Base {
 	}
 	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
 		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
+	}
+	public MultipartFile[] getUploadImg2() {
+		return uploadImg2;
+	}
+	public void setUploadImg2(MultipartFile[] uploadImg2) {
+		this.uploadImg2 = uploadImg2;
+	}
+	public Integer[] getUploadImg2Sort() {
+		return uploadImg2Sort;
+	}
+	public void setUploadImg2Sort(Integer[] uploadImg2Sort) {
+		this.uploadImg2Sort = uploadImg2Sort;
+	}
+	public String[] getUploadImg2DeleteSeq() {
+		return uploadImg2DeleteSeq;
+	}
+	public void setUploadImg2DeleteSeq(String[] uploadImg2DeleteSeq) {
+		this.uploadImg2DeleteSeq = uploadImg2DeleteSeq;
+	}
+	public String[] getUploadImg2DeletePathFile() {
+		return uploadImg2DeletePathFile;
+	}
+	public void setUploadImg2DeletePathFile(String[] uploadImg2DeletePathFile) {
+		this.uploadImg2DeletePathFile = uploadImg2DeletePathFile;
+	}
+	public Integer getUploadImg2MaxNumber() {
+		return uploadImg2MaxNumber;
+	}
+	public void setUploadImg2MaxNumber(Integer uploadImg2MaxNumber) {
+		this.uploadImg2MaxNumber = uploadImg2MaxNumber;
 	}
 	
 	
