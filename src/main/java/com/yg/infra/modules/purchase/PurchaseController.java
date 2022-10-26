@@ -82,6 +82,7 @@ public class PurchaseController {
 		model.addAttribute("listt" ,listt);
 		List<MemberCard> listc = servicec.selectList(voc);
 		model.addAttribute("listc", listc);
+		model.addAttribute("listUploaded", servicep.selectListUploaded(vop));
 		return "infra/product/xdmin/purchaseForm";
 	}
 	

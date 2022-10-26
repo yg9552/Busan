@@ -37,7 +37,11 @@
 				<div class="col-3 mb-3">
 					<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
 						<div class="card" style="width: 18rem;">
-		  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
+							<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+								<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq list.productSeq }">
+			  						<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="card-img-top" alt="..." style="width: 286px; height: 286px;">
+			  					</c:if>
+		  					</c:forEach>
 		  					<div class="card-body">
 		    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
 		  					</div>

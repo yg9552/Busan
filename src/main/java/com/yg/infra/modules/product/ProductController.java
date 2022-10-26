@@ -37,6 +37,7 @@ public class ProductController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "infra/product/xdmin/productList";
 	}
 	

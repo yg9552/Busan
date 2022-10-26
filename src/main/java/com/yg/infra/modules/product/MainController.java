@@ -21,7 +21,7 @@ public class MainController {
 		
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "infra/product/xdmin/Main";
 	}
 	

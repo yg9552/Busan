@@ -56,19 +56,19 @@
 	</div>
 </div>
 
-
+<!-- 
 <div class="container mt-5 text-center mb-4">
-		<hr class="w-25 m-auto mb-3">
-		<div class="row">
-			<div class="d-grid gap-2 col-3 mx-auto">
-			  <button class="btn btn-warning btn-lg text-uppercase" type="button">kakao</button>
-			  <button class="btn btn-success btn-lg text-uppercase" type="button">naver</button>
-			  <button class="btn btn-outline-dark btn-lg text-uppercase" type="button">google</button>
-			  <button class="btn btn-primary btn-lg text-uppercase" type="button">facebook</button>
-			</div>
+	<hr class="w-25 m-auto mb-3">
+	<div class="row">
+		<div class="d-grid gap-2 col-3 mx-auto">
+		  <button class="btn btn-warning btn-lg text-uppercase" type="button">kakao</button>
+		  <button class="btn btn-success btn-lg text-uppercase" type="button">naver</button>
+		  <button class="btn btn-outline-dark btn-lg text-uppercase" type="button">google</button>
+		  <button class="btn btn-primary btn-lg text-uppercase" type="button">facebook</button>
 		</div>
 	</div>
-
+</div>
+ -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $('#id, #password').on('keypress', function(e){

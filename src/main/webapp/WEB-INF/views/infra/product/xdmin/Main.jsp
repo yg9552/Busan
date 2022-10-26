@@ -33,15 +33,12 @@
       <div class="carousel-inner" style="width: 1296px; height: 600px;">
         <div class="carousel-item active" data-bs-interval="2000">
           <img src="../../../../../resources/image/bg1.png" class="d-block w-100" alt="...">
-    
         </div>
         <div class="carousel-item" data-bs-interval="2000">
           <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
-    
         </div>
         <div class="carousel-item" data-bs-interval="2000">
           <img src="../../../../../resources/image/bg3.png" class="d-block w-100" alt="...">
-    
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -72,7 +69,11 @@
 					<div class="col-3 mb-3">
 						<a href="javascript:goView(<c:out value="${list.productSeq }"/>)">
 							<div class="card" style="width: 18rem;">
-			  					<img src="../../../../../resources/image/26650739290.20220517095259.png" class="card-img-top" alt="...">
+								<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+							  		<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq list.productSeq }">
+			  							<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="card-img-top" alt="..." style="width: 286px; height: 286px;">
+	  								</c:if>
+  								</c:forEach>
 			  					<div class="card-body">
 			    					<h5 class="card-title"> <c:out value="${list.product_name }"/> </h5>
 			  					</div>
@@ -116,7 +117,7 @@
 			</c:forEach>
 		</div>
 	                    <!-- pagination s -->
-						<%@include file="../../../common/xdmin/pagination.jsp"%>
+						<%-- <%@include file="../../../common/xdmin/pagination.jsp"%> --%>
 						<!-- pagination e -->
 		</form>
 		

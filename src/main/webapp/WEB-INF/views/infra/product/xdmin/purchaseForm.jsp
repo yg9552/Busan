@@ -38,8 +38,12 @@
 		<div class="col-1 border p-2">할인율</div>
 		<div class="col-1 border p-2">배송비</div>
 		<div class="col-2 border p-2">총합계</div>
-		<div class="col-5 p-2">
-			<img alt="..." src="../image/26650739290.20220517095259.png" style="width: 100px; height: 100px">
+		<div class="col-5">
+			<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+				<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq itemp.productSeq }">
+					<img alt="..." src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" style="width: 100px; height: 100px">
+				</c:if>
+			</c:forEach>
 			<span><c:out value="${itemp.product_name }"></c:out></span>
 		</div>
 		<div class="col-1 p-3 my-auto">

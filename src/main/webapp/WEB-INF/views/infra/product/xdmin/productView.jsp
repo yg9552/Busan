@@ -208,17 +208,13 @@
 		      	</div>
 		      	<span><a href="#simple-list-item-3"><i class="fa-solid fa-circle-exclamation"></i> 상품정보 관련 문의사항은 Q&A에 남겨주세요</a></span>
 		      </div>
-		      <div class="text-center">
-			  	<img src="../../../../../resources/image/prod_1.png" class="rounded" alt="...">
-			  </div>
-			  <div class="text-center">
-			  	<img src="../../../../../resources/image/prod_2.png" class="rounded" alt="...">
-			  </div>
-		      <div class="text-center">
-		      	<h5>Size Info</h5>
-			  	<img src="../../../../../resources/image/size.png" class="rounded" alt="...">
-			  </div>
-			  
+		      <c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+		      	<c:if test="${listUploaded.type eq 3 }">
+			      <div class="text-center">
+				  	<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" alt="...">
+				  </div>
+			  	</c:if>
+			  </c:forEach>
 		    <div id="simple-list-item-2"></div>
 		    
 	      	<h4 class="mt-5">상품리뷰</h4>

@@ -144,7 +144,7 @@
 		DELETE FROM product WHERE productSeq = #{productSeq}
 	</delete>
 	
-		<select id="selectListUploaded" resultMap="resultMapObj">
+	<select id="selectListUploaded" resultMap="resultMapObj">
 		SELECT 
 			seq
 			,type
@@ -153,10 +153,11 @@
 			,path
 			,originalName
 			,uuidName
+			,pseq
 		FROM busan.productUploaded
 		WHERE 1=1
 			AND delNy = 0
-			AND pseq = #{productSeq}
+			<if test="productSeq != null and !productSeq.equals('')">AND pseq = #{productSeq}</if>
 		ORDER BY
 			type, sort
 	</select>
