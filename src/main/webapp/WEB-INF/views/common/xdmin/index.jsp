@@ -31,17 +31,9 @@
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="row w-100 m-0">
-          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
-            <div class="card col-lg-4 mx-auto">
-              <div class="card-body px-5 py-5">
-                <a id="xdmin" style="cursor: pointer"><h3 class="text-center mb-3">관리자화면</h3></a>
-              </div>
-            </div>
-            <div class="card col-lg-4 mx-auto">
-              <div class="card-body px-5 py-5">
-                <a id="user" style="cursor: pointer"><h3 class="text-center mb-3">사용자화면</h3></a>
-              </div>
-            </div>
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg row">
+            <a id="user" style="cursor: pointer" class="col-6 text-white text-center"><h3 class="text-center p-5">사용자화면</h3></a>
+            <a id="xdmin" style="cursor: pointer" class="col-6 text-white text-center"><h3 class="text-center p-5">관리자화면</h3></a>
           </div>
           <!-- content-wrapper ends -->
         </div>

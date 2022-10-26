@@ -36,6 +36,7 @@
         </div>
         <div class="carousel-item" data-bs-interval="2000">
           <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
+    
         </div>
         <div class="carousel-item" data-bs-interval="2000">
           <img src="../../../../../resources/image/bg3.png" class="d-block w-100" alt="...">

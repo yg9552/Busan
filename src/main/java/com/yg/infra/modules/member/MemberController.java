@@ -72,7 +72,12 @@ public class MemberController {
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/Main";
+		return "infra/member/xdmin/memberRegCompl";
+	}
+	
+	@RequestMapping(value = "memberRegCompl")
+	public String memberRegCompl() throws Exception {
+		return "infra/member/xdmin/memberRegCompl";
 	}
 	
 	@RequestMapping(value = "memberView")
