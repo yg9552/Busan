@@ -33,15 +33,17 @@
 <div class="container mb-5">
 	 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner" style="width: 1296px; height: 600px;">
-        <div class="carousel-item active" data-bs-interval="2000">
+      	<div class="carousel-item active" data-bs-interval="2000">
+          <img src="../../../../../resources/image/hoody_con02.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
           <img src="../../../../../resources/image/bg1.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item" data-bs-interval="2000">
-          <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
-    
+          <img src="../../../../../resources/image/hoody_con02.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item" data-bs-interval="2000">
-          <img src="../../../../../resources/image/bg3.png" class="d-block w-100" alt="...">
+          <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
