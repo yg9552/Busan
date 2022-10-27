@@ -28,13 +28,13 @@
 			<div class="row justify-content-center">
 				<div class="col-11 mb-3">
 					<label for="id">아이디</label>
-                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${dto.id }"></c:out>">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${dto.id }"></c:out>yg9552">
 				</div>
 			</div>
 			<div class="row justify-content-center mb-5">
 				<div class="col-11">
 				  <label for="password" class="form-label">비밀번호</label>
-				  <input type="password" class="form-control" id="password" name="password" placeholder="암호" value="<c:out value="${dto.password }"></c:out>">
+				  <input type="password" class="form-control" id="password" name="password" placeholder="암호" value="<c:out value="${dto.password }"></c:out>4567">
 				</div>
 			</div>
 			<div class="row">

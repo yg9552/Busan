@@ -330,7 +330,8 @@
 			  </ul> -->
 			  <div class="card-body">
 			  	<div class="d-grid gap-2 mx-auto">
-				  <a class="btn btn-primary" id="btnOrder" href="javascript:goPurchaseKsnet(<c:out value="${itemp.productSeq }"/>)">주문하기</a>
+				  <a class="btn btn-primary" href="javascript:goPurchaseKsnet(<c:out value="${itemp.productSeq }"/>)">주문하기</a>
+				  <!-- <a class="btn btn-primary" id="btnOrder">주문하기</a> -->
 				</div>
 			  </div>
 			</div>
@@ -348,11 +349,11 @@
 			form.attr("target", "_blank");
 			form.attr("action", goUrlPurchaseKsnet).submit();
 		}
-		/* 
+		
 		$("#btnOrder").on("click", function(){
     	   	form.attr("action", goUrlInst).submit();
     	});
-		  */
+		  
 		</script>
 	</div>
 </div>

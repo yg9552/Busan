@@ -58,7 +58,11 @@
 							<div class="col-5 p-3">
 								<div class="row">
 									<div class="col">
-										<img alt="..." src="../image/0220416093432.jpg" style="width: 100px; height: 100px;">
+										<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+											<c:if test="${listUploaded.type eq 2 && listUploaded.pseq eq list.productSeq && listUploaded.sort eq 0}">
+												<img alt="..." src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" style="width: 100px; height: 100px;">
+											</c:if>
+										</c:forEach>
 									</div>
 									<div class="col my-auto">
 										<h5><c:out value="${list.product_name }"/></h5>

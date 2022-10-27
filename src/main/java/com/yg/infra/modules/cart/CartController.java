@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yg.infra.modules.product.ProductServiceImpl;
+import com.yg.infra.modules.product.ProductVo;
+
 
 @Controller
 @RequestMapping(value = "/member/")
 public class CartController {
 	@Autowired
 	CartServiceImpl service;
+	@Autowired
+	ProductServiceImpl servicep;
 	
 	@RequestMapping(value = "cartList")
-	public String cartList(@ModelAttribute("vo") CartVo vo, Model model, HttpServletRequest httpServletRequest) throws Exception {
+	public String cartList(@ModelAttribute("vo") CartVo vo, Model model, HttpServletRequest httpServletRequest, ProductVo vop) throws Exception {
 		HttpSession httpSession =  httpServletRequest.getSession();
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");
 		
@@ -29,6 +34,7 @@ public class CartController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<Cart> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		model.addAttribute("listUploaded", servicep.selectListUploaded(vop));
 		return "infra/cart/xdmin/cartList";
 	}
 	@RequestMapping(value = "cartInst")
