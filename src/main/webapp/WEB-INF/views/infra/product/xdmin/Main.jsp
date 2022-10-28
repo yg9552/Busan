@@ -30,9 +30,61 @@
 		sessName: <c:out value="${sessName }"/><br>
 		sessId: <c:out value="${sessId }"/><br>
 	  </div>
-<div class="container mb-5">
+<div class="d-none d-lg-block container mb-5">
 	 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner" style="width: 1296px; height: 600px;">
+      	<div class="carousel-item active" data-bs-interval="2000">
+          <img src="../../../../../resources/image/hoody_con02.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg1.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/hoody_con02.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>
+<div class="container mb-5 d-none d-sm-block d-lg-none">
+	 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner" style="width: 768px; height: 300px;">
+      	<div class="carousel-item active" data-bs-interval="2000">
+          <img src="../../../../../resources/image/hoody_con02.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg1.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/hoody_con02.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../../../../resources/image/bg2.png" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>
+<div class="container mb-5 d-sm-none">
+	 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner" style="width: 360px; height: 150px;">
       	<div class="carousel-item active" data-bs-interval="2000">
           <img src="../../../../../resources/image/hoody_con02.jpg" class="d-block w-100" alt="...">
         </div>
@@ -163,7 +215,27 @@ $('.autoplay').slick({
 	  arrows : false,
 	  pauseOnHover : true,
 	  autoplaySpeed: 2000,
-	  draggable : true
+	  draggable : true,
+	  responsive: [ // 반응형 웹 구현 옵션
+          {  
+            breakpoint: 1260, //화면 사이즈 1360px
+            settings: {
+              slidesToShow: 3
+            } 
+          },
+          {  
+            breakpoint: 960, //화면 사이즈 1360px
+            settings: {
+              slidesToShow: 2
+            } 
+          },
+          { 
+            breakpoint: 768, //화면 사이즈 768px
+            settings: {    
+              slidesToShow: 1
+            } 
+          }
+        ]
 	});
 </script>
 </body>
