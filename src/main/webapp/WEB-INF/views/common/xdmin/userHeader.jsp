@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+		<form name="formList" method="post">
       	<c:choose>
       		<c:when test="${sessSeq eq null}">
 				<nav class="navbar navbar-expand-lg mb-4">
@@ -33,10 +33,11 @@
 							      <div class="modal-header fs-4">
 							      	<div class="row justify-content-center">
 							      		<div class="col">
-							      			<input type="search" name="">
+							      			<input type="hidden" value="2" name="shOption">
+							      			<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>">
 							      		</div>
 							      		<div class="col">
-							      			<button type="button" class="btn btn-success">검색</button>
+							      			<button type="button" class="btn btn-success" id="btnSearch">검색</button>
 							      		</div>
 							      	</div>
 							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -46,7 +47,7 @@
 							</div>
 				          </li>
 				          <li class="nav-item" style="font-size: 0.5rem;">
-				            <a class="nav-link" href="./mypageCart.html">
+				            <a class="nav-link" href="/member/memberLogin">
 				            	<i class="fa-solid fa-cart-shopping fa-3x"></i>
 				            </a>
 				          </li>
@@ -190,10 +191,11 @@
 							      <div class="modal-header fs-4">
 							      	<div class="row justify-content-center">
 							      		<div class="col">
-							      			<input type="search" name="">
+							      			<input type="hidden" value="2" name="shOption">
+							      			<input type="search" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>">
 							      		</div>
 							      		<div class="col">
-							      			<button type="button" class="btn btn-success">검색</button>
+							      			<button type="button" class="btn btn-success" id="btnSearch">검색</button>
 							      		</div>
 							      	</div>
 							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -316,6 +318,7 @@
 				</div>
       		</c:otherwise>
       	</c:choose>
+      	</form>
       	<a id="back-to-top" href="#" class="btn btn-primary back-to-top-css" role="button" data-toggle="tooltip" data-placement="left">
 			<i class="fa-solid fa-arrow-up"></i>
 		</a>
@@ -324,6 +327,9 @@ var goUrlMyPage = "/member/memberMyPage";
 var goUrlMain = "/Main";
 var goUrlProductList = "/product/productList";
 var goUrlCartList = "/member/cartList";
+var goUrlList = "/product/productList"; 		/* #-> */
+
+var form2 = $("form[name=formList]");
 
 $("#btnLogout").on("click", function(){
 	$.ajax({
@@ -347,6 +353,10 @@ $("#btnLogout").on("click", function(){
 	});
 });
 
+$("#btnSearch").on("click", function(){
+	form2.attr("action", goUrlList).submit();
+});
+
 $("#goList").on("click", function(){
 	location.href = goUrlProductList;
 });
@@ -356,8 +366,7 @@ goMyPage = function(keyValue) {
 	form.attr("action", goUrlMyPage).submit();
 }
 
-goCartList = function(keyValue) {
-	seq.val(keyValue);
+goCartList = function() {
 	form.attr("action", goUrlCartList).submit();
 }
 

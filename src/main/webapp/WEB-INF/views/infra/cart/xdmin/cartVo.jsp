@@ -16,4 +16,4 @@
 
 <input type="hidden" name="productSeq" value="<c:out value="${vo.productSeq}"/>"/>
 <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/>
-<input type="hidden" name="memberSeq" value="<c:out value="${vo.cartSeq}"/>"/>
+<input type="hidden" name="cartSeq" value="<c:out value="${vo.cartSeq}"/>"/>
