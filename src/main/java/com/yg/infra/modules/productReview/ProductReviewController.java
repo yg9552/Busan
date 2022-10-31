@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yg.infra.modules.product.Product;
+import com.yg.infra.modules.product.ProductServiceImpl;
+import com.yg.infra.modules.product.ProductVo;
+
 @Controller
 @RequestMapping(value = "/product/")
 public class ProductReviewController {
 
 	@Autowired
 	ProductReviewServiceImpl service;
+	
+	@Autowired
+	ProductServiceImpl servicep;
 	
 	@RequestMapping(value = "productReviewListX")
 	public String productReviewListX(@ModelAttribute("vo") ProductReviewVo vo, Model model) throws Exception {
@@ -24,12 +31,18 @@ public class ProductReviewController {
 		return "infra/productReview/xdmin/productReviewListX";
 	}
 	
+	@RequestMapping(value = "productReviewForm")
+	public String productReviewForm(@ModelAttribute("vorv") ProductReviewVo vorv, ProductVo vo, Model model) throws Exception {
+		Product itemp = servicep.selectOne(vo);
+		model.addAttribute("itemp", itemp);
+		return "infra/productReview/xdmin/productReviewForm";
+	}
+	
 	@RequestMapping(value = "productReviewInst")
-	public String productReviewInst(@ModelAttribute("vo") ProductReviewVo vo, ProductReview dto, RedirectAttributes redirectAttributes) throws Exception {
-		int result = service.insert(dto);
-		System.out.println(result);
+	public String productReviewInst(@ModelAttribute("vorv") ProductReviewVo vorv, ProductVo vo, ProductReview dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.insert(dto);
 		
-		vo.setRvSeq(dto.getRvSeq());
+		vorv.setRvSeq(dto.getRvSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/product/productView";
