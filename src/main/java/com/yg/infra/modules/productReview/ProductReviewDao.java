@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class ProductReviewDao {
 
@@ -29,4 +31,8 @@ public class ProductReviewDao {
 	public int insert(ProductReview dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
+	
+	//upload
+	public int insertUploaded(ProductReview dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
+	public List<ProductReview> selectListUploaded(ProductReviewVo vo){ return sqlSession.selectList(namespace + ".selectListUploaded", vo); }
 }

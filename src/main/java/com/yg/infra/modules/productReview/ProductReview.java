@@ -2,8 +2,12 @@ package com.yg.infra.modules.productReview;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
 
-public class ProductReview {
+import com.yg.infra.common.base.Base;
+
+
+public class ProductReview extends Base{
 	private String rvSeq;
 	private String memberSeq;
 	private String productSeq;
@@ -14,6 +18,11 @@ public class ProductReview {
 	private String id;
 	private String nm;
 	private String product_name;
+	private MultipartFile[] uploadImg;
+	private Integer[] uploadImgSort;
+	private String[] uploadImgDeleteSeq;
+	private String[] uploadImgDeletePathFile;	
+	private Integer uploadImgMaxNumber;
 	
 	public String getRvSeq() {
 		return rvSeq;
@@ -74,6 +83,36 @@ public class ProductReview {
 	}
 	public void setRvRegtime(Timestamp rvRegtime) {
 		this.rvRegtime = rvRegtime;
+	}
+	public MultipartFile[] getUploadImg() {
+		return uploadImg;
+	}
+	public void setUploadImg(MultipartFile[] uploadImg) {
+		this.uploadImg = uploadImg;
+	}
+	public Integer[] getUploadImgSort() {
+		return uploadImgSort;
+	}
+	public void setUploadImgSort(Integer[] uploadImgSort) {
+		this.uploadImgSort = uploadImgSort;
+	}
+	public String[] getUploadImgDeleteSeq() {
+		return uploadImgDeleteSeq;
+	}
+	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
+		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
+	}
+	public String[] getUploadImgDeletePathFile() {
+		return uploadImgDeletePathFile;
+	}
+	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
+		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
+	}
+	public Integer getUploadImgMaxNumber() {
+		return uploadImgMaxNumber;
+	}
+	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
+		this.uploadImgMaxNumber = uploadImgMaxNumber;
 	}
 	
 }

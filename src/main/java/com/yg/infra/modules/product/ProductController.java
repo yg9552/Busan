@@ -68,6 +68,7 @@ public class ProductController {
 		List<ProductQA> listqa = serviceqa.selectList(voqa);
 		model.addAttribute("listqa", listqa);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
+		model.addAttribute("listReviewUploaded", servicerv.selectListUploaded(vorv));
 		return "infra/product/xdmin/productView";
 	}
 

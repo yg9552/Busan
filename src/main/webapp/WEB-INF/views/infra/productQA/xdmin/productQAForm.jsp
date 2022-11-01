@@ -33,7 +33,7 @@
 			  <label for="product_name" class="form-label">상품명</label>
 			  <input type="text" class="form-control" id="product_name" name="product_name" value='<c:out value="${itemp.product_name }"></c:out>'>
 			  <input type="hidden" name="answerNy" value="0">
-			  <input type="hidden" name="delNy" value="0">
+			  <input type="hidden" name="DelNy" value="0">
 			</div>
 		  	<div class="mb-3">
 			  <label for="title" class="form-label">질문</label>

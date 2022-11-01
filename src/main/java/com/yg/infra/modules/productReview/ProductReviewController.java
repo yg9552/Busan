@@ -32,19 +32,19 @@ public class ProductReviewController {
 	}
 	
 	@RequestMapping(value = "productReviewForm")
-	public String productReviewForm(@ModelAttribute("vorv") ProductReviewVo vorv, ProductVo vo, Model model) throws Exception {
-		Product itemp = servicep.selectOne(vo);
+	public String productReviewForm(@ModelAttribute("vo") ProductReviewVo vo, @ModelAttribute("vop") ProductVo vop, Model model) throws Exception {
+		Product itemp = servicep.selectOne(vop);
 		model.addAttribute("itemp", itemp);
 		return "infra/productReview/xdmin/productReviewForm";
 	}
 	
 	@RequestMapping(value = "productReviewInst")
-	public String productReviewInst(@ModelAttribute("vorv") ProductReviewVo vorv, ProductVo vo, ProductReview dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String productReviewInst(@ModelAttribute("vo") ProductReviewVo vo, ProductVo vop, ProductReview dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 		
-		vorv.setRvSeq(dto.getRvSeq());
+		vo.setRvSeq(dto.getRvSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/product/productView";
+		return "redirect:/product/purchaseList";
 	}
 }

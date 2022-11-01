@@ -262,9 +262,13 @@
 					      				<c:out value="${listrv.contents }"></c:out>
 					      			  </div>
 								    </div>
-								    <div class="col-4 bg-dark" style="width: 150px; height: 150px;">
-								      <img alt="" src="">
-								    </div>
+								    <c:forEach items="${listReviewUploaded}" var="listReviewUploaded" varStatus="statusUploaded">
+									    <c:if test="${listReviewUploaded.type eq 2 && listReviewUploaded.pseq eq listrv.rvSeq && listReviewUploaded.sort eq 0}">
+										    <div class="col-4" style="width: 150px; height: 150px;">
+										      <img style="width: 150px; height: 150px;" alt="<c:out value="${listReviewUploaded.path }"/><c:out value="${listReviewUploaded.uuidName }"/>" src="<c:out value="${listReviewUploaded.path }"/><c:out value="${listReviewUploaded.uuidName }"/>">
+										    </div>
+									    </c:if>
+								    </c:forEach>
 								</div>
 							</a>
 						</c:forEach>

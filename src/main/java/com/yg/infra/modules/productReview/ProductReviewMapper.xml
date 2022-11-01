@@ -64,8 +64,7 @@
 	
 	<insert id="insert">
 	INSERT INTO productReview(
-	    rvSeq
-	    ,productSeq
+	    productSeq
 	    ,memberSeq
 	    ,title
 	    ,contents
@@ -73,16 +72,33 @@
 	    ,DelNy
 	    )
 	VALUES(
-	    ,{rvSeq }
-	    ,{productSeq }
-	    ,{memberSeq }
-	    ,{title }
-	    ,{contents }
-	    ,{rvRegtime }
-	    ,{DelNy }
+	    #{productSeq }
+	    ,#{memberSeq }
+	    ,#{title }
+	    ,#{contents }
+	    ,NOW()
+	    ,0
 	    )
 	    <selectKey resultType="String" keyProperty="rvSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id="selectListUploaded" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,pseq
+		FROM busan.productReviewUploaded
+		WHERE 1=1
+			AND delNy = 0
+			<if test="rvSeq != null and !rvSeq.equals('')">AND pseq = #{rvSeq}</if>
+		ORDER BY
+			type, sort
+	</select>
 </mapper>

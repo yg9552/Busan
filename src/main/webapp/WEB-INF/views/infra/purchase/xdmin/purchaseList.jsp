@@ -20,10 +20,11 @@
 
 </head>
 <body>
-<form name="mypageForm" method="post">
+
 <!-- userHeader s -->
 			<%@include file="../../../common/xdmin/userHeader.jsp"%>
  <!-- userHeader e -->
+<form name="mypageForm" method="post">
  <!-- *Vo.jsp s -->
 <%@include file="purchaseVo.jsp"%>		<!-- # -->
 <!-- *Vo.jsp e -->
@@ -96,7 +97,7 @@
 								</div>
 							<div class="col-2 mt-5">
 								<span>배송완료</span>
-								<button type="button" class="btn btn-sm btn-dark">리뷰작성하기</button>
+								<a type="button" class="btn btn-sm btn-dark" href="javascript:goReviewform(<c:out value="${list.productSeq }"/>)">리뷰작성하기</a>
 							</div>
 						</div>
 					</div>
@@ -109,7 +110,16 @@
       <!-- userFooter s -->
 			<%@include file="../../../common/xdmin/userFooter.jsp"%>
 	  <!-- userFooter e -->
+<script type="text/javascript">
+var goUrlReviewForm = "/product/productReviewForm";
+var form = $("form[name=mypageForm]");
+var seq = $("input:hidden[name=productSeq]");
 
+goReviewform = function(keyValue) {
+	seq.val(keyValue);
+	form.attr("action", goUrlReviewForm).submit();
+}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
 const myModal = document.getElementById('myModal')
