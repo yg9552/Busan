@@ -38,11 +38,11 @@
                 <form>
                   <div class="form-group">
                     <label for="id">관리자아이디 *</label>
-                    <input type="text" class="form-control p_input" id="id">
+                    <input type="text" class="form-control p_input" id="id" value="yg9552">
                   </div>
                   <div class="form-group">
                     <label for="password">암호 *</label>
-                    <input type="password" class="form-control p_input" id="password">
+                    <input type="password" class="form-control p_input" id="password" value="4567">
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                   </div>
