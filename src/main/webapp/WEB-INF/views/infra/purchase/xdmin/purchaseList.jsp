@@ -47,19 +47,19 @@
 			</div>
 		</div>
 	</div>
-	<!-- 
+	
 	<div class="text-center mb-3">
 		<div class="row">
 			<div class="col">
 				<div class="btn-group" role="group" aria-label="Basic outlined example">
-				  <button type="button" class="btn btn-outline-primary">1월</button>
-				  <button type="button" class="btn btn-outline-primary">2월</button>
-				  <button type="button" class="btn btn-outline-primary">3월</button>
-				  <button type="button" class="btn btn-outline-primary">4월</button>
-				  <button type="button" class="btn btn-outline-primary">5월</button>
-				  <button type="button" class="btn btn-outline-primary">6월</button>
-				  <button type="button" class="btn btn-outline-primary">7월</button>
-				  <button type="button" class="btn btn-outline-primary">8월</button>
+				  <button type="button" class="btn btn-outline-primary ready">1월</button>
+				  <button type="button" class="btn btn-outline-primary ready">2월</button>
+				  <button type="button" class="btn btn-outline-primary ready">3월</button>
+				  <button type="button" class="btn btn-outline-primary ready">4월</button>
+				  <button type="button" class="btn btn-outline-primary ready">5월</button>
+				  <button type="button" class="btn btn-outline-primary ready">6월</button>
+				  <button type="button" class="btn btn-outline-primary ready">7월</button>
+				  <button type="button" class="btn btn-outline-primary ready">8월</button>
 				</div>
 			</div>
 			<div class="col-3">
@@ -69,11 +69,11 @@
 				<input class="form-control" type="text" id="datepicker2">
 			</div>
 			<div class="col-1">
-				<button type="button" class="btn btn-success">조회</button>
+				<button type="button" class="btn btn-success ready">조회</button>
 			</div>
 		</div>
 	</div>
-	 -->
+	
 	<div class="row text-center w-75 m-auto">
 		<c:choose>
 			<c:when test="${fn:length(list) eq 0}">
@@ -119,6 +119,11 @@ goReviewform = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlReviewForm).submit();
 }
+
+$(".ready").on("click", function(){
+    // 원하는 작업이 있다면 여기서 하면 된다.
+    alert("준비중입니다!");
+});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -128,6 +133,8 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
+
 </script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <!-- datepicker -->

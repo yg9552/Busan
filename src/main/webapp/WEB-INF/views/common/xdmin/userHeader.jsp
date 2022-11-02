@@ -72,7 +72,7 @@
 					    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 					      <ul class="navbar-nav mx-auto">
 					        <li class="nav-item dropdown me-4">
-					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="goList">
+					          <a class="nav-link dropdown-toggle white" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="goList">
 					            신상품
 					          </a>
 					          <ul class="dropdown-menu dropdown-menu-dark">
@@ -228,7 +228,7 @@
 					    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 					      <ul class="navbar-nav mx-auto">
 					        <li class="nav-item dropdown me-4">
-					          <a class="nav-link dropdown-toggle white" href="/product/productList" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="goList">
+					          <a class="nav-link dropdown-toggle white" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="goList">
 					            신상품
 					          </a>
 					          <ul class="dropdown-menu dropdown-menu-dark">
@@ -358,6 +358,10 @@ $("#btnSearch").on("click", function(){
 });
 
 $("#goList").on("click", function(){
+	location.href = goUrlProductList;
+});
+
+$(".dropdown-item").on("click", function(){
 	location.href = goUrlProductList;
 });
 

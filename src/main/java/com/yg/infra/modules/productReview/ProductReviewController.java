@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.yg.infra.modules.product.Product;
 import com.yg.infra.modules.product.ProductServiceImpl;
 import com.yg.infra.modules.product.ProductVo;
+import com.yg.infra.modules.purchase.PurchaseVo;
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -39,10 +40,10 @@ public class ProductReviewController {
 	}
 	
 	@RequestMapping(value = "productReviewInst")
-	public String productReviewInst(@ModelAttribute("vo") ProductReviewVo vo, ProductVo vop, ProductReview dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String productReviewInst(@ModelAttribute("vo") ProductReviewVo vorv, ProductVo vop, ProductReview dto, @ModelAttribute PurchaseVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 		
-		vo.setRvSeq(dto.getRvSeq());
+		vorv.setRvSeq(dto.getRvSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/product/purchaseList";
