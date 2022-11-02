@@ -35,7 +35,7 @@
 		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
 		<!-- side e -->
 		<c:set var = "total" value = "${vorv.totalRows + voqa.totalRows}" />
-		<div class="col-9">
+		<div class="d-none d-lg-block col-9">
 			<div class="row text-center border rounded p-2">
 				<div class="col-3"><a href="#"><i class="fa-solid fa-truck fa-2x"></i><br>주문배송</a></div>
 				<div class="col-3"><a href="#"><i class="fa-solid fa-coins fa-2x"></i><br>적립금</a></div>

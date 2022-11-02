@@ -18,6 +18,7 @@ import com.yg.infra.common.constants.Constants;
 import com.yg.infra.common.util.UtilSecurity;
 import com.yg.infra.modules.cart.CartServiceImpl;
 import com.yg.infra.modules.cart.CartVo;
+import com.yg.infra.modules.product.ProductVo;
 import com.yg.infra.modules.productQA.ProductQAServiceImpl;
 import com.yg.infra.modules.productQA.ProductQAVo;
 import com.yg.infra.modules.productReview.ProductReviewServiceImpl;
@@ -138,7 +139,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberMyPage")
-	public String memberMyPage(@ModelAttribute("vo") MemberVo vo, Model model, @ModelAttribute("voqa") ProductQAVo voqa, @ModelAttribute("voct") CartVo voct, @ModelAttribute("vorv") ProductReviewVo vorv) throws Exception {
+	public String memberMyPage(@ModelAttribute("vo") MemberVo vo, Model model, @ModelAttribute("voqa") ProductQAVo voqa, @ModelAttribute("voct") CartVo voct, @ModelAttribute("vorv") ProductReviewVo vorv, @ModelAttribute("vop") ProductVo vop) throws Exception {
 		voqa.setParamsPaging(serviceqa.selectOneCount(voqa));
 		vorv.setParamsPaging(servicerv.selectOneCount(vorv));
 		voct.setParamsPaging(servicecart.selectOneCount(voct));

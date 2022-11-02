@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 
-<div class="col-3">
+<div class="col-12 col-lg-3">
 	<div class="card">
 	  <div class="card-body p-4 text-center">
 	    <h5 class="card-title text-warning"><c:out value="${sessName }"/>님</h5>

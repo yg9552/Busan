@@ -40,7 +40,7 @@ public class ProductReviewController {
 	}
 	
 	@RequestMapping(value = "productReviewInst")
-	public String productReviewInst(@ModelAttribute("vo") ProductReviewVo vorv, ProductVo vop, ProductReview dto, @ModelAttribute PurchaseVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	public String productReviewInst(@ModelAttribute("vo") ProductReviewVo vorv, ProductVo vop, ProductReview dto, @ModelAttribute("vo") PurchaseVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 		
 		vorv.setRvSeq(dto.getRvSeq());
