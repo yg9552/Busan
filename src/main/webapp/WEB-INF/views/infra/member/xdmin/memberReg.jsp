@@ -132,14 +132,14 @@
 	  				<label for="sample4_detailAddress">상세주소</label>
 				</div>
 		  	</div>
-		  	<div class="col-6 d-none">
+		  	<div class="col-6">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="lat" name="lat">
 	  				<label for="lat">위도</label>
 				</div>
 		  	</div>
 		  	<div class="col-6">
-		  		<div class="form-floating d-none">
+		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="lng" name="lng">
 	  				<label for="lng">경도</label>
 				</div>
