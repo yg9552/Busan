@@ -186,7 +186,7 @@
 							<button type="button" class="btn btn-success" id="btnForm">상품등록 <i class="fa-solid fa-pencil"></i></button>
 						</div>
 						<div class="col-auto">
-							<a class="btn btn-warning" role="button"><i class="fa-solid fa-power-off"></i></a>
+							<a class="btn btn-warning" role="button" id="btnExcel"><i class="fa-solid fa-power-off"></i></a>
 							<a class="btn btn-danger mx-auto" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
 						</div>
 					</div>
@@ -205,7 +205,7 @@
 	      	var goUrlForm = "/product/productForm";			/* #-> */
       		var goUrlView = "/product/productViewX";		/* #-> */
 	      	
-	      	
+      		var excelUri = "/product/excelDownload";					/* #-> */
 	      	var seq = $("input:hidden[name=productSeq]");
 	      	var form = $("form[name=formList]");
 	      	
@@ -213,6 +213,10 @@
 	      		$("input:hidden[name=thisPage]").val(thisPage);
 	      		form.attr("action", goUrlList).submit();
 	      	}
+	      	
+	    	$("#btnExcel").click(function() {
+	    		form.attr("action", excelUri).submit();
+	    	});
 	      	
 	      	$('#btnForm').on("click", function() {
 	    		goForm(0);                
