@@ -186,8 +186,8 @@
 							<button type="button" class="btn btn-success" id="btnForm">상품등록 <i class="fa-solid fa-pencil"></i></button>
 						</div>
 						<div class="col-auto">
-							<a class="btn btn-warning" href="#" role="button"><i class="fa-solid fa-power-off"></i></a>
-							<a class="btn btn-danger mx-auto" href="#exampleModalToggle" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
+							<a class="btn btn-warning" role="button"><i class="fa-solid fa-power-off"></i></a>
+							<a class="btn btn-danger mx-auto" role="button">삭제 <i class="fa-solid fa-trash-can"></i></a>
 						</div>
 					</div>
                   </div>
