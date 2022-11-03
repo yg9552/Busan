@@ -8,11 +8,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>
+      video { max-width: 80%; display: block; margin: 20px auto; }
+    </style>
 </head>
 <body>
 publicCorona1List
-
+aaa : <c:out value="${datacount }"/>
+<br>aaa : <c:out value="${coordtype }"/>
+<%-- 
 <br>aaa : <c:out value="${resultCode }"/>
 <br>aaa : <c:out value="${resultMsg }"/>
 <br>aaa : <c:out value="${pageNo }"/>
@@ -20,13 +24,20 @@ publicCorona1List
 <br>aaa : <c:out value="${numOfRows }"/>
 <br>aaa : <c:out value="${items }"/>
 <br>aaa : <c:out value="${fn:length(items) }"/>
-
-<c:forEach items="${items}" var="item" varStatus="status">
-	<c:out value="${item.YYYY }"/>
-	<br><c:out value="${item.MM }"/>	
-	<br><c:out value="${item.KIT_PROD_QTY }"/>	
-	<br><c:out value="${item.KIT_EXPRT_QTY }"/>	
-	<br><c:out value="${item.KIT_STOCK_QTY }"/>	
+ --%>
+ 
+<c:forEach items="${data}" var="item" varStatus="status">
+	<c:out value="${item.roadsectionid }"/>
+	<br><c:out value="${item.coordx }"/>	
+	<br><c:out value="${item.coordy }"/>	
+	<br><c:out value="${item.cctvresolution }"/>	
+	<br><c:out value="${item.filecreatetime }"/>	
+	<br><c:out value="${item.cctvtype }"/>	
+	<br><c:out value="${item.cctvformat }"/>	
+	<br><c:out value="${item.cctvname }"/>	
+	<br><c:out value="${item.cctvurl }"/>
+	<video muted autoplay loop src="<c:out value="${item.cctvurl }"/>" type="video/mp4">
+    </video>
 </c:forEach>
 
 </body>

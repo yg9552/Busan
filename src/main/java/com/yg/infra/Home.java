@@ -11,8 +11,19 @@ public class Home {
 	public int totalCount;
 	public int numOfRows;
 	public String dataType;
+	public String coordtype;
+	public String datacount;
+	
+	public String response;
 
-	public Object[] items;
+	public String getResponse() {
+		return response;
+	}
+	public void setResponse(String response) {
+		this.response = response;
+	}
+	//	public Object[] items;
+	public Object[] data;
 	public String YYYY;
 	public String MM;
 	public String KIT_PROD_QTY;
@@ -24,6 +35,15 @@ public class Home {
 	public String cityAreaId;
 	public String kmaTci;
 	public String tciGrade;
+	public String roadsectionid;
+	public String coordx;
+	public String coordy;
+	public String cctvresolution;
+	public String filecreatetime;
+	public String cctvtype;
+	public String cctvformat;
+	public String cctvname;
+	public String cctvurl;
 //	----------
 	public Object getHeader() {
 		return header;
@@ -67,12 +87,11 @@ public class Home {
 	public void setNumOfRows(int numOfRows) {
 		this.numOfRows = numOfRows;
 	}
-	public Object[] getItems() {
-		return items;
-	}
-	public void setItems(Object[] items) {
-		this.items = items;
-	}
+
+	/*
+	 * public Object[] getItems() { return items; } public void setItems(Object[]
+	 * items) { this.items = items; }
+	 */
 	public String getYYYY() {
 		return YYYY;
 	}
@@ -144,6 +163,78 @@ public class Home {
 	}
 	public void setTciGrade(String tciGrade) {
 		this.tciGrade = tciGrade;
+	}
+	public String getCoordtype() {
+		return coordtype;
+	}
+	public void setCoordtype(String coordtype) {
+		this.coordtype = coordtype;
+	}
+	public String getDatacount() {
+		return datacount;
+	}
+	public void setDatacount(String datacount) {
+		this.datacount = datacount;
+	}
+	public Object[] getData() {
+		return data;
+	}
+	public void setData(Object[] data) {
+		this.data = data;
+	}
+	public String getRoadsectionid() {
+		return roadsectionid;
+	}
+	public void setRoadsectionid(String roadsectionid) {
+		this.roadsectionid = roadsectionid;
+	}
+	public String getCoordx() {
+		return coordx;
+	}
+	public void setCoordx(String coordx) {
+		this.coordx = coordx;
+	}
+	public String getCoordy() {
+		return coordy;
+	}
+	public void setCoordy(String coordy) {
+		this.coordy = coordy;
+	}
+	public String getCctvresolution() {
+		return cctvresolution;
+	}
+	public void setCctvresolution(String cctvresolution) {
+		this.cctvresolution = cctvresolution;
+	}
+	public String getFilecreatetime() {
+		return filecreatetime;
+	}
+	public void setFilecreatetime(String filecreatetime) {
+		this.filecreatetime = filecreatetime;
+	}
+	public String getCctvtype() {
+		return cctvtype;
+	}
+	public void setCctvtype(String cctvtype) {
+		this.cctvtype = cctvtype;
+	}
+	public String getCctvformat() {
+		return cctvformat;
+	}
+	public void setCctvformat(String cctvformat) {
+		this.cctvformat = cctvformat;
+	}
+	public String getCctvname() {
+		return cctvname;
+	}
+	public void setCctvname(String cctvname) {
+		this.cctvname = cctvname;
+	}
+	public String getCctvurl() {
+		return cctvurl;
+	}
+	public void setCctvurl(String cctvurl) {
+		this.cctvurl = cctvurl;
 	}
 	
 }
