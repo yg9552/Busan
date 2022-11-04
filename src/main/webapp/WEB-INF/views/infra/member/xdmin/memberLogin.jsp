@@ -56,19 +56,30 @@
 	</div>
 </div>
 
-<!-- 
+<form name="form">
+	<input type="hidden" name="nm"/>
+	<input type="hidden" name="snsId"/>
+	<input type="hidden" name="phone"/>
+	<input type="hidden" name="email"/>
+	<input type="hidden" name="gender"/>
+	<input type="hidden" name="dob"/>
+	<input type="hidden" name="snsImg"/>
+	<input type="hidden" name="token"/>
+</form>
+
 <div class="container mt-5 text-center mb-4">
 	<hr class="w-25 m-auto mb-3">
 	<div class="row">
 		<div class="d-grid gap-2 col-3 mx-auto">
-		  <button class="btn btn-warning btn-lg text-uppercase" type="button">kakao</button>
-		  <button class="btn btn-success btn-lg text-uppercase" type="button">naver</button>
+		  <button class="btn btn-warning btn-lg text-uppercase" type="button" id="kakaoBtn">kakao 로그인</button>
+		  <!-- <button class="btn btn-success btn-lg text-uppercase" type="button">naver</button>
 		  <button class="btn btn-outline-dark btn-lg text-uppercase" type="button">google</button>
-		  <button class="btn btn-primary btn-lg text-uppercase" type="button">facebook</button>
+		  <button class="btn btn-primary btn-lg text-uppercase" type="button">facebook</button> -->
 		</div>
 	</div>
 </div>
- -->
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $('#id, #password').on('keypress', function(e){
@@ -100,6 +111,79 @@ $("#btnLogin").on("click", function(){
 		}
 	});
 	
+});
+
+Kakao.init('fff4722d1b0684553d2d53d2ea3f7fe9');
+console.log(Kakao.isInitialized());
+
+$("#kakaoBtn").on("click", function() {
+	/* Kakao.Auth.authorize({
+	      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+	    }); */
+	
+	Kakao.Auth.login({
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  
+	        	  var accessToken = Kakao.Auth.getAccessToken();
+	        	  Kakao.Auth.setAccessToken(accessToken);
+
+	        	  var account = response.kakao_account;
+	        	  
+	        	  console.log(response)
+	        	  console.log("email : " + account.email);
+	        	  console.log("nm : " + account.name);
+	        	  console.log("nickname : " + account.profile.nickname);
+	        	  console.log("picture : " + account.gender);
+	        	  console.log("picture : " + account.birthday);
+	        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+      	  
+	        	  $("input[name=snsId]").val("카카오로그인");
+	        	  $("input[name=name]").val(account.profile.nickname);
+	        	  $("input[name=phone]").val(account.profile.phone_number);
+	        	  $("input[name=email]").val(account.email);
+	        	  $("input[name=dob]").val(account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+	        	  $("input[name=snsImg]").val(account.profile.thumbnail_image_url);
+	        	  $("input[name=token]").val(accessToken);
+	        	  
+	        	  if (account.gender === "male") {
+	        		  $("input[name=gender]").val(5);
+      		  } else {
+      			  $("input[name=gender]").val(6);
+ 			  } 
+	        	  
+	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+			
+	        	  $.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/kakaoLoginProc"
+				,data: {"name": $("input[name=name]").val(), "snsId": $("input[name=snsId]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/Main";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
 });
 
 </script>

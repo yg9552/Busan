@@ -185,6 +185,18 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.selectListUploaded(vo);
 	}
+
+	@Override
+	public Member snsLoginCheck(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int kakaoInst(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

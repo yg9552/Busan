@@ -123,7 +123,6 @@
 			,email_code
 			,dob
 			,DelNy
-			,memberRegDate
 			)
 		VALUES(
 			#{nm }
@@ -134,7 +133,24 @@
 			,#{email_code }
 			,#{dob }
 			,0
-			,#{memberRegDate }
+			)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="kakaoInst">
+		INSERT INTO member(
+			nm
+			,id
+			,email
+			,DelNy
+			)
+		VALUES(
+			#{nm }
+			,#{id }
+			,#{email }
+			,0
 			)
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()

@@ -25,6 +25,8 @@ public class Member extends Base{
 	private Integer memberRegDate;
 	private Integer memberGender;
 	private String phonenum;
+	private String token;
+	
 	
 	private MultipartFile[] uploadImgProfile;
 	private Integer uploadImgProfileMaxNumber;
@@ -200,6 +202,12 @@ public class Member extends Base{
 	}
 	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
 		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	
