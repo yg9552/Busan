@@ -189,13 +189,13 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member snsLoginCheck(Member dto) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.snsLoginCheck(dto);
 	}
 
 	@Override
 	public int kakaoInst(Member dto) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.kakaoInst(dto);
 	}
 	
 	

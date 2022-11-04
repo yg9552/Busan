@@ -38,9 +38,11 @@
 			<exclude-mapping path="/member/memberLogin" />
 			<exclude-mapping path="/member/memberReg" />
 			<exclude-mapping path="/member/memberInst" />
+			<exclude-mapping path="/member/kakaoInst" />
 			<exclude-mapping path="/member/memberRegCompl" />
 			<exclude-mapping path="/member/xdminLogin" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/member/kakaoLoginProc" />
 			<exclude-mapping path="/member/findIdPwForm" />
 			<exclude-mapping path="/member/checkId" />
 			<exclude-mapping path="/member/findId" />

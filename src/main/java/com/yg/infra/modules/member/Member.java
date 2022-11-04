@@ -1,5 +1,6 @@
 package com.yg.infra.modules.member;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Member extends Base{
 	private Date dob;
 	private Integer DelNy;
 	private Integer reserve;
-	private Integer memberRegDate;
+	private Timestamp memberRegDate;
 	private Integer memberGender;
 	private String phonenum;
 	private String token;
@@ -95,10 +96,10 @@ public class Member extends Base{
 	public void setReserve(Integer reserve) {
 		this.reserve = reserve;
 	}
-	public Integer getMemberRegDate() {
+	public Timestamp getMemberRegDate() {
 		return memberRegDate;
 	}
-	public void setMemberRegDate(Integer memberRegDate) {
+	public void setMemberRegDate(Timestamp memberRegDate) {
 		this.memberRegDate = memberRegDate;
 	}
 	public Integer getMemberGender() {

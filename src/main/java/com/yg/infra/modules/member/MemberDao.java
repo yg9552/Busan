@@ -28,6 +28,9 @@ public class MemberDao {
 	public int insert(Member dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
+	public int kakaoInst(Member dto) {
+		return sqlSession.insert(namespace + ".kakaoInst", dto);
+	}
 	public int update(Member dto) { return sqlSession.update(namespace + ".update", dto); }
 	public int updatePw(Member dto) {return sqlSession.update(namespace + ".updatePw",dto); }
 	public int uelete(Member dto) { return sqlSession.update(namespace + ".uelete", dto); }
@@ -45,7 +48,9 @@ public class MemberDao {
 	public int selectOneIdCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);
 	}
-	
+	public Member snsLoginCheck(Member dto) {
+		return sqlSession.selectOne(namespace + ".snsLoginCheck", dto);
+	}
 	//id Pw find
 	public Member selectFindId(Member dto) {
 		return sqlSession.selectOne(namespace + ".selectFindId", dto);

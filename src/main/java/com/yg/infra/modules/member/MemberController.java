@@ -253,7 +253,7 @@ public class MemberController {
 	}
 
 	 public void session(Member dto, HttpSession httpSession) {
-	     httpSession.setAttribute("sessSeq", dto.getSeq());    
+	     httpSession.setAttribute("sessSeq", dto.getMemberSeq());    
 	     httpSession.setAttribute("sessId", dto.getId());
 	     httpSession.setAttribute("sessName", dto.getNm());
 	     httpSession.setAttribute("sessEmail", dto.getEmail());

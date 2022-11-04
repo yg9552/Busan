@@ -57,6 +57,15 @@
 		AND id = #{id}
 	</select>
 	
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		SELECT
+			*
+		FROM member a
+		WHERE 1=1
+		AND a.email = #{email}
+		AND a.nm = #{nm}
+	</select>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.memberSeq
@@ -144,13 +153,17 @@
 			nm
 			,id
 			,email
+			,gender_code
 			,DelNy
+			,token
 			)
 		VALUES(
 			#{nm }
 			,#{id }
 			,#{email }
+			,#{gender_code }
 			,0
+			,#{token }
 			)
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()
