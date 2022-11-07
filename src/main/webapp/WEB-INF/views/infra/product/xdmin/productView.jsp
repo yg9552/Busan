@@ -414,12 +414,12 @@ myModal.addEventListener('shown.bs.modal', () => {
 	var goUrlQAForm = "/product/productQAForm";
 	var goUrlCartInst = "/member/cartInst";
 	
-	var seq = $("input:hidden[name=productSeq]");
+	var seq2 = $("input:hidden[name=productSeq]");
 	//var memberseq = $("input:hidden[name=memberSeq]");
 	var form = $("form[name=viewForm]");
 	
 	goPurchase = function(keyValue) {
-		seq.val(keyValue);
+		seq2.val(keyValue);
 		form.attr("action", goUrlPurchaseForm).submit();
 	}
 	

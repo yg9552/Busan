@@ -24,19 +24,15 @@
 <form method="post" id="formLogin" name="formLogin" autocomplete="on">
 	<div class="container mt-4 text-center mb-4">
 		<h3 class="mb-4">로그인</h3>
-		<div class="border rounded m-auto w-25 mb-3 p-3">
-			<div class="row justify-content-center">
-				<div class="col-11 mb-3">
-					<label for="id">아이디</label>
-                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디" value="<c:out value="${dto.id }"></c:out>">
-				</div>
+		<div class="border rounded m-auto mb-3 p-3 col-lg-4">
+			<div class="mb-3">
+			  <label for="id" class="form-label text-start">아이디</label>
+			  <input type="text" class="form-control" id="id" name="id" value="<c:out value="${dto.id }"></c:out>">
 			</div>
-			<div class="row justify-content-center mb-5">
-				<div class="col-11">
+				<div class="mb-5">
 				  <label for="password" class="form-label">비밀번호</label>
-				  <input type="password" class="form-control" id="password" name="password" placeholder="암호" value="<c:out value="${dto.password }"></c:out>">
+				  <input type="password" class="form-control" id="password" name="password" value="<c:out value="${dto.password }"></c:out>">
 				</div>
-			</div>
 			<div class="row">
 				<div class="d-grid gap-2 col mx-auto">
 				  <button class="btn btn-info btn-lg" type="button" id="btnLogin">로그인</button>
@@ -46,7 +42,7 @@
 	</div>
 </form>
 
-<div class="container w-25 m-auto text-center">
+<div class="container m-auto text-center">
 	<div class="row justify-content-center">
 		<div class="col">
 			<a href="/member/xdminLogin">관리자 로그인</a> | 
@@ -65,10 +61,10 @@
 </form>
 
 <div class="container mt-5 text-center mb-4">
-	<hr class="w-25 m-auto mb-3">
+	<hr class="w-100 w-lg-25 m-auto mb-3">
 	<div class="row">
-		<div class="d-grid gap-2 col-3 mx-auto">
-		  <button class="btn btn-warning btn-lg text-uppercase" type="button" id="kakaoBtn">kakao 로그인</button>
+		<div class="d-inline-block gap-2 mx-auto">
+		  <a type="button" id="kakaoBtn"><img alt="kakao" src="/resources/images/kakao_login_large_narrow.png" class="h-75"></a>
 		  <!-- <button class="btn btn-success btn-lg text-uppercase" type="button">naver</button>
 		  <button class="btn btn-outline-dark btn-lg text-uppercase" type="button">google</button>
 		  <button class="btn btn-primary btn-lg text-uppercase" type="button">facebook</button> -->

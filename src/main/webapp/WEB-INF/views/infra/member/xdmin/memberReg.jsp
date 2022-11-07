@@ -98,32 +98,32 @@
 	  				<label for="email">이메일</label>
 				</div>
 		  	</div>
-		  	<div class="col-3">
+		  	<div class="col-lg-6">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="sample4_postcode" name="sample4_postcode">
 	  				<label for="sample4_postcode">우편번호</label>
 				</div>
 		  	</div>
-		  	<div class="col">
-	    		<button type="button" class="btn btn-info btn-lg my-1" onclick="sample4_execDaumPostcode()">주소찾기</button>
+		  	<div class="d-grid gap-2 col-lg-6 mx-auto">
+	    		<button type="button" class="btn btn-info my-1" onclick="sample4_execDaumPostcode()">주소찾기</button>
 	  		</div>
-	  		<div class="col-6">
-		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="sample4_extraAddress" name="sample4_extraAddress">
-	  				<label for="sample4_extraAddress">참고항목</label>
-				</div>
-		  	</div>
-		  	<div class="col-6">
+		  	<div class="col-lg-6">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="sample4_roadAddress" name="sample4_roadAddress">
 	  				<label for="sample4_roadAddress">도로명주소</label>
 				</div>
 		  	</div>
-		  	<div class="col-6">
+		  	<div class="col-lg-6">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="sample4_jibunAddress" name="sample4_jibunAddress">
 	  				<input type="hidden" class="form-control" id="guide" name="guide">
 	  				<label for="sample4_jibunAddress">지번주소</label>
+				</div>
+		  	</div>
+		  	<div class="col-lg-6">
+		  		<div class="form-floating">
+	  				<input type="text" class="form-control" id="sample4_extraAddress" name="sample4_extraAddress">
+	  				<label for="sample4_extraAddress">참고항목</label>
 				</div>
 		  	</div>
 		  	<div class="col-12">
@@ -132,14 +132,14 @@
 	  				<label for="sample4_detailAddress">상세주소</label>
 				</div>
 		  	</div>
-		  	<div class="col-6">
-		  		<div class="form-floating">
+		  	<div class="col-lg-6">
+		  		<div class="form-floating d-none">
 	  				<input type="text" class="form-control" id="lat" name="lat">
 	  				<label for="lat">위도</label>
 				</div>
 		  	</div>
-		  	<div class="col-6">
-		  		<div class="form-floating">
+		  	<div class="col-lg-6">
+		  		<div class="form-floating d-none">
 	  				<input type="text" class="form-control" id="lng" name="lng">
 	  				<label for="lng">경도</label>
 				</div>

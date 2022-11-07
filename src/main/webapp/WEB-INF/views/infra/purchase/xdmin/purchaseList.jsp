@@ -113,10 +113,10 @@
 <script type="text/javascript">
 var goUrlReviewForm = "/product/productReviewForm";
 var form = $("form[name=mypageForm]");
-var seq = $("input:hidden[name=productSeq]");
+var seq2 = $("input:hidden[name=productSeq]");
 
 goReviewform = function(keyValue) {
-	seq.val(keyValue);
+	seq2.val(keyValue);
 	form.attr("action", goUrlReviewForm).submit();
 }
 

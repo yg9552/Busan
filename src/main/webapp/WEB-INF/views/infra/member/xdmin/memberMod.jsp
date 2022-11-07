@@ -30,28 +30,15 @@
 		<!-- side s -->
 		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
 		<!-- side e -->
-		<div class="col-9">
+		<div class="col-lg-9 mt-3">
 			<h5 class="mb-3 text-center">개인정보수정</h5>
 			<form name="mypageForm" id="viewform" method="post" autocomplete="off">
 			<!-- *Vo.jsp s -->
 			<%@include file="memberVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
-				<div class="w-50 mx-auto">
+				<div class="mx-auto">
 				  <div class="row g-3 mb-3">
-				  	<div class="col-12">
-				  		<div class="form-floating">
-			  				<input type="text" readonly class="form-control" id="nm" name="nm" value="<c:out value="${item.nm }"></c:out>">
-			  				<label for="nm">이름</label>
-						</div>
-				  	</div>
-				  	<div class="col-8">
-				  		<div class="form-floating">
-			  				<input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>" maxlength="20" readonly>
-			  				<label for="id">아이디</label>
-			  				<div class="valid-feedback" id="idFeedback"></div>
-						</div>
-				  	</div>
-				  	<div class="col-4 my-4">
+				  	<div class="d-grid gap-2 col-lg-7 mx-auto">
 						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#pwchange">
 						  비밀번호변경
 						</button>
@@ -81,13 +68,13 @@
 						  </div>
 						</div>
 				  	</div>
-				  	<div class="col-12">
+				  	<div class="col-lg-6">
 				  		<div class="form-floating">
 				  			<input type="text" class="form-control" id="datepicker" name="dob" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${item.dob}"/>">
 			  				<label for="datepicker">생년월일</label>
 						</div>
 				  	</div>
-				  	<div class="col-12">
+				  	<div class="col-lg-6">
 					    <div class="form-floating">
 					      <select class="form-select" id="gender_code" name="gender_code">
 					        <option selected>선택</option>
@@ -98,13 +85,13 @@
 					      <label for="gender_code">성별</label>
 					    </div>
 				  	</div>
-				  	<div class="col-12">
+				  	<div class="col-lg-6">
 				  		<div class="form-floating">
 			  				<input type="text" class="form-control" id="floatingInputtel" placeholder="연락처" value="숫자만 입력하세요" required="required">
 			  				<label for="floatingInputtel">연락처 <i class="fa-solid fa-mobile-button"></i></label>
 						</div>
 				  	</div>
-				  	<div class="col-12">
+				  	<div class="col-lg-6">
 				  		<div class="form-floating">
 			  				<input type="text" class="form-control" id="floatingInputtel2" placeholder="연락처" value="숫자만 입력하세요">
 			  				<label for="floatingInputtel2">연락처 <i class="fa-solid fa-phone-flip"></i></label>
@@ -138,11 +125,12 @@
 						</div>
 				  	</div>
 				  </div>
-		  <div class="row text-center">
+		  <div class="row">
     		<div class="col">
       			<button type="button" class="btn btn-warning" id="btnSave">수정</button>
-      			<button type="reset" class="btn btn-danger">초기화</button>
-      			<button type="button" class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button>
+      			<!-- <button type="button" class="btn btn-danger mx-auto" id="btnUelete">삭제 <i class="fa-solid fa-trash-can"></i></button> -->
+    		</div>
+    		<div class="col-auto">
     			<button type="button" class="btn btn-danger mr-2" id="btnDelete">회원탈퇴<i class="fa-solid fa-trash-can"></i></button>
     		</div>
   		</div>

@@ -329,6 +329,7 @@ var goUrlProductList = "/product/productList";
 var goUrlCartList = "/member/cartList";
 var goUrlList = "/product/productList"; 		/* #-> */
 
+var seq = $("input:hidden[name=memberSeq]");
 var form2 = $("form[name=formList]");
 
 $("#btnLogout").on("click", function(){
