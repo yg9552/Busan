@@ -91,13 +91,16 @@
 				</div>
 			</div>
 			<div class="row" id="tel1list">	
-				<c:forEach items="${listt }" var="listt" varStatus="status">
+				<%-- <c:forEach items="${listt }" var="listt" varStatus="status">
 					<c:if test="${listt.memberSeq eq sessSeq && listt.div_tel eq 1 }">
 						<div class="col-5 offset-4">
 							<input class="form-control form-control-sm" type="text" aria-label="연락처" value="<c:out value="${listt.tel }"/>">
 						</div>
 					</c:if>
-				</c:forEach>
+				</c:forEach> --%>
+				<div class="col-5 offset-4">
+					<input class="form-control form-control-sm" type="text" aria-label="연락처" value="<c:out value="${itemm.tel }"/>">
+				</div>
 			</div>
 			<div class="row" id="tel2list">	
 				<c:forEach items="${listt }" var="listt" varStatus="status">
@@ -145,7 +148,7 @@
 				</div>
 			</div>
 			<div class="row" id="addr1list">
-				<c:forEach items="${listma }" var="listma" varStatus="status">
+				<%-- <c:forEach items="${listma }" var="listma" varStatus="status">
 					<c:if test="${listma.memberSeq eq sessSeq && listma.addr_defaultNy eq 1 }">
 						<div class="col-3 offset-4 mb-3">
 							<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${listma.zip }"/>" readonly>
@@ -158,7 +161,16 @@
 							<input class="form-control form-control-sm bg-white" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${listma.addr_detail }"/>" readonly>
 						</div>
 					</c:if>
-				</c:forEach>
+				</c:forEach> --%>
+				<div class="col-3 offset-4 mb-3">
+					<input class="form-control form-control-sm bg-white" type="text" name="zip" aria-label="우편번호" value="<c:out value="${itemm.zip }"/>" readonly>
+				</div>
+				<div class="col-4 offset-4 mb-3">
+					<input class="form-control form-control-sm bg-white" type="text" name="addr" aria-label="주소" value="<c:out value="${itemm.addr }"/>" readonly>
+				</div>
+				<div class="col-4 mb-3">
+					<input class="form-control form-control-sm bg-white" type="text" name="addr_detail" aria-label="상세주소" value="<c:out value="${itemm.addr_detail }"/>" readonly>
+				</div>
 			</div>
 				
 			<div class="row" id="addr2list">

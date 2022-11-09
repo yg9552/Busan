@@ -38,7 +38,10 @@
 			,a.email_code
 			,a.gender_code
 			,a.memberRegDate
-			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.memberSeq) as phonenum
+			,a.tel
+			,a.zip
+			,a.addr
+			,a.addr_detail
 			<include refid="selectCommon"></include>
 			ORDER BY a.memberSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
@@ -78,7 +81,10 @@
 			,a.reserve
 			,a.DelNy
 			,a.memberRegDate
-			,(select tel from memberTel aa where 1=1 and aa.tel_defaultNy = 1 and a.memberSeq = aa.memberSeq) as phonenum
+			,a.tel
+			,a.zip
+			,a.addr
+			,a.addr_detail
 		FROM member a
 		WHERE 1=1
 		AND a.memberSeq = #{memberSeq}
@@ -132,6 +138,12 @@
 			,email_code
 			,dob
 			,DelNy
+			,addr
+		    ,addr_detail
+		    ,zip
+		    ,memberAddrLat
+		    ,memberAddrLng
+		    ,tel
 			)
 		VALUES(
 			#{nm }
@@ -142,6 +154,12 @@
 			,#{email_code }
 			,#{dob }
 			,0
+			,#{addr }
+		    ,#{addr_detail }
+		    ,#{zip }
+		    ,#{memberAddrLat }
+		    ,#{memberAddrLng }
+		    ,#{tel }
 			)
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()
@@ -232,4 +250,47 @@
 		ORDER BY
 			type, sort
 	</select>
+	
+	<insert id="insertAddress">
+		INSERT INTO memberAddr(
+		    memberSeq
+		    ,div_addr
+		    ,addr_defaultNy
+		    ,addr
+		    ,addr_detail
+		    ,zip
+		    ,DelNy
+		    ,memberAddrLat
+		    ,memberAddrLng
+			)
+		VALUES(
+		    #{memberSeq }
+		    ,#{div_addr }
+		    ,1
+		    ,#{addr }
+		    ,#{addr_detail }
+		    ,#{zip }
+		    ,#{memberAddrLat }
+		    ,#{memberAddrLng }
+		    )
+	</insert>
+	
+	<insert id="insertPhone">
+		INSERT INTO memberTel(
+		    memberSeq
+		    ,div_tel
+		    ,tel_defaultNy
+		    ,tel
+		    ,tel_company_code
+		    ,DelNy
+		    )
+		VALUES(
+		    #{memberSeq }
+		    ,#{div_tel }
+		    ,1
+		    ,#{tel }
+		    ,#{tel_company_code }
+		    ,0
+		    )
+	</insert>
 </mapper>

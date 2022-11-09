@@ -82,14 +82,8 @@
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="floatingInputtel" placeholder="연락처" value="숫자만 입력하세요" required="required">
+	  				<input type="text" class="form-control" id="floatingInputtel" placeholder="연락처" required="required" name="tel">
 	  				<label for="floatingInputtel">연락처 <i class="fa-solid fa-mobile-button"></i></label>
-				</div>
-		  	</div>
-		  	<div class="col-12">
-		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="floatingInputtel2" placeholder="연락처" value="숫자만 입력하세요">
-	  				<label for="floatingInputtel2">연락처 <i class="fa-solid fa-phone-flip"></i></label>
 				</div>
 		  	</div>
 		  	<div class="col-12">
@@ -100,7 +94,7 @@
 		  	</div>
 		  	<div class="col-lg-6">
 		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="sample4_postcode" name="sample4_postcode">
+	  				<input type="text" class="form-control" id="sample4_postcode" name="zip">
 	  				<label for="sample4_postcode">우편번호</label>
 				</div>
 		  	</div>
@@ -109,7 +103,7 @@
 	  		</div>
 		  	<div class="col-lg-6">
 		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="sample4_roadAddress" name="sample4_roadAddress">
+	  				<input type="text" class="form-control" id="sample4_roadAddress" name="addr">
 	  				<label for="sample4_roadAddress">도로명주소</label>
 				</div>
 		  	</div>
@@ -128,19 +122,19 @@
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="sample4_detailAddress" name="sample4_detailAddress">
+	  				<input type="text" class="form-control" id="sample4_detailAddress" name="addr_detail">
 	  				<label for="sample4_detailAddress">상세주소</label>
 				</div>
 		  	</div>
 		  	<div class="col-lg-6">
 		  		<div class="form-floating d-none">
-	  				<input type="text" class="form-control" id="lat" name="lat">
+	  				<input type="text" class="form-control" id="lat" name="memberAddrLat">
 	  				<label for="lat">위도</label>
 				</div>
 		  	</div>
 		  	<div class="col-lg-6">
 		  		<div class="form-floating d-none">
-	  				<input type="text" class="form-control" id="lng" name="lng">
+	  				<input type="text" class="form-control" id="lng" name="memberAddrLng">
 	  				<label for="lng">경도</label>
 				</div>
 		  	</div>

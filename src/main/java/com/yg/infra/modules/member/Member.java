@@ -28,7 +28,39 @@ public class Member extends Base{
 	private String phonenum;
 	private String token;
 	
+	//address
+	private String maSeq;
+	private Integer div_addr;
+	private Integer addr_defaultNy;
+	private String addr;
+	private String addr_detail;
+	private String zip;
+	private String memberAddrLat;
+	private String memberAddrLng;
 	
+	private String[] maSeqArray;
+	private Integer[] div_addrArray;
+	private Integer[] addr_defaultNyArray;
+	private String[] addrArray;
+	private String[] addr_detailArray;
+	private String[] zipArray;
+	private String[] memberAddrLatArray;
+	private String[] memberAddrLngArray;
+	
+	//Phone
+	private String mtSeq;
+	private String tel;
+	private Integer tel_company_code;
+	private Integer div_tel;
+	private Integer tel_defaultNy;
+    
+	private String[] mtSeqArray;
+	private String[] telArray;
+	private Integer[] tel_company_codeArray;
+	private Integer[] div_telArray;
+	private Integer[] tel_defaultNyArray;
+	
+	//uploaded
 	private MultipartFile[] uploadImgProfile;
 	private Integer uploadImgProfileMaxNumber;
 	private String[] uploadImgProfileDeleteSeq;
@@ -209,6 +241,162 @@ public class Member extends Base{
 	}
 	public void setToken(String token) {
 		this.token = token;
+	}
+	public String getMaSeq() {
+		return maSeq;
+	}
+	public void setMaSeq(String maSeq) {
+		this.maSeq = maSeq;
+	}
+	public Integer getDiv_addr() {
+		return div_addr;
+	}
+	public void setDiv_addr(Integer div_addr) {
+		this.div_addr = div_addr;
+	}
+	public Integer getAddr_defaultNy() {
+		return addr_defaultNy;
+	}
+	public void setAddr_defaultNy(Integer addr_defaultNy) {
+		this.addr_defaultNy = addr_defaultNy;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getAddr_detail() {
+		return addr_detail;
+	}
+	public void setAddr_detail(String addr_detail) {
+		this.addr_detail = addr_detail;
+	}
+	public String getZip() {
+		return zip;
+	}
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+	public String getMemberAddrLat() {
+		return memberAddrLat;
+	}
+	public void setMemberAddrLat(String memberAddrLat) {
+		this.memberAddrLat = memberAddrLat;
+	}
+	public String getMemberAddrLng() {
+		return memberAddrLng;
+	}
+	public void setMemberAddrLng(String memberAddrLng) {
+		this.memberAddrLng = memberAddrLng;
+	}
+	public String getMtSeq() {
+		return mtSeq;
+	}
+	public void setMtSeq(String mtSeq) {
+		this.mtSeq = mtSeq;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public Integer getTel_company_code() {
+		return tel_company_code;
+	}
+	public void setTel_company_code(Integer tel_company_code) {
+		this.tel_company_code = tel_company_code;
+	}
+	public Integer getDiv_tel() {
+		return div_tel;
+	}
+	public void setDiv_tel(Integer div_tel) {
+		this.div_tel = div_tel;
+	}
+	public Integer getTel_defaultNy() {
+		return tel_defaultNy;
+	}
+	public void setTel_defaultNy(Integer tel_defaultNy) {
+		this.tel_defaultNy = tel_defaultNy;
+	}
+	public String[] getMaSeqArray() {
+		return maSeqArray;
+	}
+	public void setMaSeqArray(String[] maSeqArray) {
+		this.maSeqArray = maSeqArray;
+	}
+	public Integer[] getDiv_addrArray() {
+		return div_addrArray;
+	}
+	public void setDiv_addrArray(Integer[] div_addrArray) {
+		this.div_addrArray = div_addrArray;
+	}
+	public Integer[] getAddr_defaultNyArray() {
+		return addr_defaultNyArray;
+	}
+	public void setAddr_defaultNyArray(Integer[] addr_defaultNyArray) {
+		this.addr_defaultNyArray = addr_defaultNyArray;
+	}
+	public String[] getAddrArray() {
+		return addrArray;
+	}
+	public void setAddrArray(String[] addrArray) {
+		this.addrArray = addrArray;
+	}
+	public String[] getAddr_detailArray() {
+		return addr_detailArray;
+	}
+	public void setAddr_detailArray(String[] addr_detailArray) {
+		this.addr_detailArray = addr_detailArray;
+	}
+	public String[] getZipArray() {
+		return zipArray;
+	}
+	public void setZipArray(String[] zipArray) {
+		this.zipArray = zipArray;
+	}
+	public String[] getMemberAddrLatArray() {
+		return memberAddrLatArray;
+	}
+	public void setMemberAddrLatArray(String[] memberAddrLatArray) {
+		this.memberAddrLatArray = memberAddrLatArray;
+	}
+	public String[] getMemberAddrLngArray() {
+		return memberAddrLngArray;
+	}
+	public void setMemberAddrLngArray(String[] memberAddrLngArray) {
+		this.memberAddrLngArray = memberAddrLngArray;
+	}
+	public String[] getMtSeqArray() {
+		return mtSeqArray;
+	}
+	public void setMtSeqArray(String[] mtSeqArray) {
+		this.mtSeqArray = mtSeqArray;
+	}
+	public String[] getTelArray() {
+		return telArray;
+	}
+	public void setTelArray(String[] telArray) {
+		this.telArray = telArray;
+	}
+	public Integer[] getTel_company_codeArray() {
+		return tel_company_codeArray;
+	}
+	public void setTel_company_codeArray(Integer[] tel_company_codeArray) {
+		this.tel_company_codeArray = tel_company_codeArray;
+	}
+	public Integer[] getDiv_telArray() {
+		return div_telArray;
+	}
+	public void setDiv_telArray(Integer[] div_telArray) {
+		this.div_telArray = div_telArray;
+	}
+	public Integer[] getTel_defaultNyArray() {
+		return tel_defaultNyArray;
+	}
+	public void setTel_defaultNyArray(Integer[] tel_defaultNyArray) {
+		this.tel_defaultNyArray = tel_defaultNyArray;
 	}
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 @Repository
 public class MemberDao {
 
@@ -35,6 +36,12 @@ public class MemberDao {
 	public int updatePw(Member dto) {return sqlSession.update(namespace + ".updatePw",dto); }
 	public int uelete(Member dto) { return sqlSession.update(namespace + ".uelete", dto); }
 	public int delete(MemberVo vo) { return sqlSession.delete(namespace + ".delete", vo); }
+	
+	//address
+	public int insertAddress(Member dto) { return sqlSession.insert(namespace + ".insertAddress", dto); }
+	
+	//Phone
+	public int insertPhone(Member dto) { return sqlSession.insert(namespace + ".insertPhone", dto); }
 	
 	//paging
 	public int selectOneCount(MemberVo vo) {
