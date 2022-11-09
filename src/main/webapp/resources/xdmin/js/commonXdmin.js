@@ -1,6 +1,5 @@
 document.write("<script src='/resources/common/js/common.js'></script>");
 document.write("<script src='/resources/xdmin/js/constantsXdmin.js'></script>");
-document.write("<script src='/resources/xdmin/js/validationXdmin.js'></script>");
 
 divSearchControl = function() {
     var screenWidth = $(window).width();

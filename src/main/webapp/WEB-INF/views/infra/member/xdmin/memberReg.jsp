@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../../../../../resources/assets/css/usercommon.css">
 	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mfnayvqkam"></script>
 	<script src="/resources/xdmin/js/commonXdmin.js"></script>
+	<script src="/resources/xdmin/js/validationXdmin.js"></script>
 </head>
 <body>
 	  <!-- userHeader s -->
@@ -40,6 +41,7 @@
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="nm" name="nm" value="<c:out value="${item.nm }"></c:out>">
 	  				<label for="nm">이름</label>
+	  				<div class="valid-feedback" id="nmFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-12">
@@ -54,6 +56,7 @@
 		  		<div class="form-floating">
 	  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
 	  				<label for="password">비밀번호</label>
+	  				<div class="invalid-feedback" id="passwordFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-12">
@@ -72,7 +75,6 @@
 		  	<div class="col-12">
 			    <div class="form-floating">
 			      <select class="form-select" id="gender_code" name="gender_code">
-			        <option selected>선택</option>
 			        <option value="201" <c:if test="${item.gender_code eq 201}">selected</c:if>> 남성 </option>
                     <option value="202" <c:if test="${item.gender_code eq 202}">selected</c:if>> 여성 </option>
                     <option value="203" <c:if test="${item.gender_code eq 203}">selected</c:if>> 기타 </option>
@@ -82,14 +84,16 @@
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
-	  				<input type="text" class="form-control" id="floatingInputtel" placeholder="연락처" required="required" name="tel">
-	  				<label for="floatingInputtel">연락처 <i class="fa-solid fa-mobile-button"></i></label>
+	  				<input type="text" class="form-control" id="tel" placeholder="연락처" required="required" name="tel">
+	  				<label for="tel">연락처 <i class="fa-solid fa-mobile-button"></i></label>
+	  				<div class="invalid-feedback" id="telFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
 	  				<input type="email" class="form-control" id="email" name="email" value="<c:out value="${item.email }"></c:out>">
 	  				<label for="email">이메일</label>
+	  				<div class="invalid-feedback" id="emailFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-lg-6">
@@ -191,7 +195,9 @@
 //id check ajax
 $("#id").on("focusout", function(){
 
-//	if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+//  if(!checkId('id',2,0,"영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+//	document.getElementById("idFeedback").classList.remove('valid-feedback');
+//		document.getElementById("idFeedback").classList.add('invalid-feedback');
 //		return false;
 //	} else {
 	$.ajax({
@@ -245,9 +251,34 @@ $("#id").on("focusout", function(){
        	
   	var form = $("form[name=form]");
   	var formVo = $("form[name=formVo]");
+  	$("#nm").on("focusout", function(){
+		if(!checkNull('nm', 2, "이름은 특수문자, 공백없이 입력해 주세요")) {
+			return false;
+		} 
+	});
+  	
+  	$("#email").on("focusout", function(){
+		if(!checkEmail('email',2,0,"이메일 주소를 올바르게 입력해 주세요")) {
+			return false;
+		} 
+	});
+  	$("#tel").on("focusout", function(){
+		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호를 입력해주세요")) {
+			return false;
+		} 
+	});
+  	$("#password").on("focusout", function(){
+		if(!checkPassword('password',2,0,"영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) {
+			return false;
+		} 
+	});
   	
   	$("#btnSave").on("click", function(){
-  	   	form.attr("action", goUrlInst).submit();
+  		if (validationInst() == false){
+   			return false;
+   		} else {
+   			form.attr("action", goUrlInst).submit();
+   		}
   	}); 
   	
   	$("#btnList").on("click", function(){
@@ -263,216 +294,49 @@ $("#id").on("focusout", function(){
  		$("#guide").val("");
  	});
   	
-  	upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
-  		
-//		objName 과 seq 는 jsp 내에서 유일 하여야 함.
-//		memberProfileImage: 1
-//		memberImage: 2
-//		memberFile : 3
-
-//		uiType: 1 => 이미지형
-//		uiType: 2 => 파일형
-//		uiType: 3 => 프로필형
-
-		var files = $("#" + objName +"")[0].files;
-		var filePreview = $("#" + objName +"Preview");
-		var numbering = [];
-		var maxNumber = 0;
-		
-		if(uiType == 1) {
-			var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > div > img").length;
-			var tagIds = document.querySelectorAll("#" + objName + "Preview > div");
-			
-			for(var i=0; i<tagIds.length; i++){
-				var tagId = tagIds[i].getAttribute("id").split("_");
-				numbering.push(tagId[2]);
-			}
-			
-			if(uploadedFilesCount > 0){
-				numbering.sort();
-				maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
-			}
-		} else if(uiType == 2){
-			var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > li").length;
-			var tagIds = document.querySelectorAll("#" + objName + "Preview > li");
-
-			for(var i=0; i<tagIds.length; i++){
-				var tagId = tagIds[i].getAttribute("id").split("_");
-				numbering.push(tagId[2]);
-			}
-			
-			if(uploadedFilesCount > 0){
-				numbering.sort();
-				maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
-			}
-		} else {
-			// by pass
-		}
-		
-		$("#" + objName + "MaxNumber").val(maxNumber);
-
-		var totalFileSize = 0;
-		var filesCount = files.length;
-		var filesArray = [];
-		
-		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
-		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
-		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
-		
-		if(checkUploadedTotalFileNumber(files, allowedMaxTotalFileNumber, filesCount, uploadedFilesCount) == false) { return false; }
-		
-		for (var i=0; i<filesCount; i++) {
-			if(checkUploadedExt(files[i].name, seq, allowedExtdiv) == false) { return false; }
-			if(checkUploadedEachFileSize(files[i], seq, allowedEachFileSize) == false) { return false; }
-
-			totalFileSize += files[i].size;
-			
-			filesArray.push(files[i]);
-		}
-
-		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
-		
-		if (uiType == 1) {
-			for (var i=0; i<filesArray.length; i++) {
-				var file = filesArray[i];
-
-				var picReader = new FileReader();
-			    picReader.addEventListener("load", addEventListenerCustom (objName, seq, i, file, filePreview, maxNumber));
-			    picReader.readAsDataURL(file);
-			}			
-		} else if(uiType == 2) {
-			for (var i = 0 ; i < filesCount ; i++) {
-				addUploadLi(objName, seq, i, $("#" + objName +"")[0].files[i].name, filePreview, maxNumber);
-			}
-		} else if (uiType == 3) {
-			var fileReader = new FileReader();
-			 fileReader.onload = function () {
-				 $("#uploadImgProfilePreview").attr("src", fileReader.result);		/* #-> */
-			 }	
-			 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
-		} else {
-			return false;
-		}
-		return false;
+  	validationInst = function() {
+		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
+		if(!checkPassword('password', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
+		if(validationUpdt() == false) return false;
 	}
-  	var extArray1 = new Array();
-    extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];   
-	
-	addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumber) { 
-		return function(event) {
-			var imageFile = event.target;
-			var sort = parseInt(maxNumber) + i;
-
-			var divImage = "";
-			divImage += '<div id="imgDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
-			divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
-			divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
-			divImage += '</div> ';
-			
-			filePreview.append(divImage);
-	    };
-	}
-	
-	
-	delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
-		
-		$("#imgDiv_"+type+"_"+sort).remove();
-		
-		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
-		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
-
-		if(objDeleteSeq.val() == "") {
-			objDeleteSeq.val(deleteSeq);
-		} else {
-			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
-		}
-		
-		if(objDeletePathFile.val() == "") {
-			objDeletePathFile.val(pathFile);
-		} else {
-			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
-		}
-	}
-	
-	
-	addUploadLi = function (objName, type, i, name, filePreview, maxNumber){
-
-		var sort = parseInt(maxNumber) + i;
-		
-		var li ="";
-		li += '<input type="hidden" id="'+ objName +'Process_'+type+'_'+ sort +'" name="'+ objName +'Process" value="1">';
-		li += '<input type="hidden" id="'+ objName +'Sort_'+type+'_'+ sort +'" name="'+ objName +'Sort" value="'+ sort +'">';
-		li += '<li id="li_'+type+'_'+sort+'" class="list-group-item d-flex justify-content-between align-items-center">';
-		li += name;
-		li +='<span class="badge bg-danger rounded-pill" onClick="delLi(0,'+ type +','+ sort +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
-		li +='</li>';
-		
-		filePreview.append(li);
-	}
-	
-	
-	delLi = function(objName, type, sort, deleteSeq, pathFile) {
-		
-		$("#li_"+type+"_"+sort).remove();
-
-		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
-		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
-
-		if(objDeleteSeq.val() == "") {
-			objDeleteSeq.val(deleteSeq);
-		} else {
-			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
-		}
-		
-		if(objDeletePathFile.val() == "") {
-			objDeletePathFile.val(pathFile);
-		} else {
-			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
-		}
-	}
-	
-	openViewer = function (type, sort) {
-		var str = '<c:set var="tmp" value="'+ type +'"/>';
-		$("#modalImgViewer").append(str);
-		$("#modalImgViewer").modal("show");
-	}
+  	
 </script>
 
-              <!-- 비밀번호체크 -->
-              <script type="text/javascript">
-              $("#passwordConfirm").on("focusout", function passConfirm() {
-  	          	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
-  	          	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
-  	          	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
-  	          		var password = document.getElementById('password');					//비밀번호 
-  	          		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
-  	          		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
-  	          		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
-  	          		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
-  	          		
-  	          		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
-  	          			document.getElementById("password").classList.add('is-valid');
-  						document.getElementById("password").classList.remove('is-invalid');
-  						passwordConfirm.classList.add('is-valid');
-  						passwordConfirm.classList.remove('is-invalid');
-  	          			document.getElementById('confirmMsg').classList.remove('invalid-feedback');
-  	          			document.getElementById('confirmMsg').classList.add('valid-feedback');
-  	          			document.getElementById("confirmMsg").innerText = "비밀번호 일치";
-  	          			//confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
-  	          			//confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
-  	          		}else{
-  	          			document.getElementById("password").classList.remove('is-valid');
-  						document.getElementById("password").classList.add('is-invalid');
-  						passwordConfirm.classList.remove('is-valid');
-  						passwordConfirm.classList.add('is-invalid');
-  	          			document.getElementById('confirmMsg').classList.add('invalid-feedback');
-  	          			document.getElementById('confirmMsg').classList.remove('valid-feedback');
-  	          			document.getElementById("confirmMsg").innerText = "비밀번호 불일치";
-  	          			//confirmMsg.style.color = wrongColor;
-  	          			//confirmMsg.innerHTML ="비밀번호 불일치";
-  	          		}
-  	          	});	
-              </script>
+<!-- 비밀번호체크 -->
+<script type="text/javascript">
+      $("#passwordConfirm").on("focusout", function passConfirm() {
+     	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+     	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+     	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+     		var password = document.getElementById('password');					//비밀번호 
+     		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
+     		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+     		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+     		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+     		
+     		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+     			document.getElementById("password").classList.add('is-valid');
+				document.getElementById("password").classList.remove('is-invalid');
+				passwordConfirm.classList.add('is-valid');
+				passwordConfirm.classList.remove('is-invalid');
+     			document.getElementById('confirmMsg').classList.remove('invalid-feedback');
+     			document.getElementById('confirmMsg').classList.add('valid-feedback');
+     			document.getElementById("confirmMsg").innerText = "비밀번호 일치";
+     			//confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+     			//confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+     		}else{
+     			document.getElementById("password").classList.remove('is-valid');
+				document.getElementById("password").classList.add('is-invalid');
+				passwordConfirm.classList.remove('is-valid');
+				passwordConfirm.classList.add('is-invalid');
+     			document.getElementById('confirmMsg').classList.add('invalid-feedback');
+     			document.getElementById('confirmMsg').classList.remove('valid-feedback');
+     			document.getElementById("confirmMsg").innerText = "비밀번호 불일치";
+     			//confirmMsg.style.color = wrongColor;
+     			//confirmMsg.innerHTML ="비밀번호 불일치";
+     		}
+     	});	
+      </script>
               
               <!-- 카카오주소 API -->
               <script>

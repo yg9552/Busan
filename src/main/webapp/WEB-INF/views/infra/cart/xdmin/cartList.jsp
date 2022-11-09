@@ -91,7 +91,7 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<a href="#" class="btn btn-primary">주문하기</a>
+					<a href="#" class="btn btn-primary ready">주문하기</a>
 				</div>
 				<div class="col-auto">
 					<button type="button" class="btn btn-danger" id="btnDel">삭제하기</a>
@@ -126,11 +126,15 @@ $(".chBox").click(function(){
  
 $("#btnDel").on("click", function(){
 	if(!confirm("삭제 하시겠습니까?")){
-	return false;
-}else{
+		return false;
+	} else {
 	form.attr("action", goUrlDele).submit();
 }
 	
+});
+
+$(".ready").on("click", function(){
+    alert("준비중입니다!");
 });
 </script>
 </html>

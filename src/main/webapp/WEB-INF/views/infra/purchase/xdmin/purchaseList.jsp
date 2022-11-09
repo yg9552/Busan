@@ -121,7 +121,6 @@ goReviewform = function(keyValue) {
 }
 
 $(".ready").on("click", function(){
-    // 원하는 작업이 있다면 여기서 하면 된다.
     alert("준비중입니다!");
 });
 </script>
