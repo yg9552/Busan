@@ -161,4 +161,88 @@
 		ORDER BY
 			type, sort
 	</select>
+	
+	<!-- purchase -->
+	<sql id="selectCommonPurchase">
+		FROM purchase a
+		left join member b on a.memberSeq = b.memberSeq
+		left join product c on a.productSeq = c.productSeq
+		WHERE 1=1
+			<if test="memberSeq != null and !memberSeq.equals('')">AND a.memberSeq = #{memberSeq}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
+			<choose>
+				<when test="shOption == 1">AND purchaseSeq LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND nm LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
+	</sql>
+	
+	<select id="selectListPurchase" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.purchaseSeq
+				,a.memberSeq
+				,a.productSeq
+				,a.quantity
+				,a.maSeq
+				,a.paytype
+				,a.mcSeq
+				,a.regtime
+				,b.nm
+				,b.id
+				,c.product_name
+				,c.price
+			<include refid="selectCommon" />
+			ORDER BY a.purchaseSeq DESC    
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCountPurchase" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOnePurchase" resultMap="resultMapObj">
+		SELECT
+			a.purchaseSeq
+			,a.memberSeq
+			,a.productSeq
+			,a.quantity
+			,a.maSeq
+			,a.paytype
+			,a.mcSeq
+			,b.product_name
+			,b.price
+		FROM purchase a
+		left join product b on b.productSeq = a.productSeq
+		WHERE 1=1
+		AND a.memberSeq = #{memberSeq}
+	</select>
+	
+	<insert id="insertPurchase">
+		INSERT INTO purchase(
+			memberSeq
+			,productSeq
+			,quantity
+			,maSeq
+			,paytype
+			,mcSeq
+			,regtime
+			)
+			VALUES(
+			#{memberSeq }
+			,#{productSeq }
+			,#{quantity }
+			,#{maSeq }
+			,#{paytype }
+			,#{mcSeq }
+			,NOW()
+			)
+		<selectKey resultType="String" keyProperty="purchaseSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 </mapper>

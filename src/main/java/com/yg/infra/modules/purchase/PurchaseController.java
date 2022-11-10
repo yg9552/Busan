@@ -70,7 +70,7 @@ public class PurchaseController {
 		model.addAttribute("listUploaded", servicep.selectListUploaded(vop));
 		return "infra/purchase/xdmin/purchaseList";
 	}
-	
+	/*
 	@RequestMapping(value = "purchaseForm")
 	public String purchaseForm(@ModelAttribute("vo") PurchaseVo vo, Model model, ProductVo vop, MemberVo vom, MemberAddrVo voma, MemberTelVo vot, MemberCardVo voc) throws Exception {
 		Product itemp = servicep.selectOne(vop);
@@ -105,6 +105,7 @@ public class PurchaseController {
 		
 		vo.setPurchaseSeq(dto.getPurchaseSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/product/purchaseForm";
+		return "redirect:/product/purchaseList";
 	}
+	*/
 }

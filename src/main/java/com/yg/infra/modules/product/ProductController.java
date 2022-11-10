@@ -19,13 +19,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yg.infra.modules.code.CodeServiceImpl;
+import com.yg.infra.modules.member.Member;
 import com.yg.infra.modules.member.MemberServiceImpl;
+import com.yg.infra.modules.member.MemberVo;
+import com.yg.infra.modules.memberAddr.MemberAddr;
+import com.yg.infra.modules.memberAddr.MemberAddrServiceImpl;
+import com.yg.infra.modules.memberAddr.MemberAddrVo;
+import com.yg.infra.modules.memberCard.MemberCard;
+import com.yg.infra.modules.memberCard.MemberCardServiceImpl;
+import com.yg.infra.modules.memberCard.MemberCardVo;
+import com.yg.infra.modules.memberTel.MemberTel;
+import com.yg.infra.modules.memberTel.MemberTelServiceImpl;
+import com.yg.infra.modules.memberTel.MemberTelVo;
 import com.yg.infra.modules.productQA.ProductQA;
 import com.yg.infra.modules.productQA.ProductQAServiceImpl;
 import com.yg.infra.modules.productQA.ProductQAVo;
 import com.yg.infra.modules.productReview.ProductReview;
 import com.yg.infra.modules.productReview.ProductReviewServiceImpl;
 import com.yg.infra.modules.productReview.ProductReviewVo;
+import com.yg.infra.modules.purchase.Purchase;
+import com.yg.infra.modules.purchase.PurchaseVo;
 
 @Controller
 @RequestMapping(value = "/product/")
@@ -40,6 +53,12 @@ public class ProductController {
 	ProductReviewServiceImpl servicerv;
 	@Autowired
 	ProductQAServiceImpl serviceqa;
+	@Autowired
+	MemberAddrServiceImpl servicema;
+	@Autowired
+	MemberTelServiceImpl servicet;
+	@Autowired
+	MemberCardServiceImpl servicec;
 	
 	@RequestMapping(value = "productList")
 	public String productList(Model model,@ModelAttribute("vo") ProductVo vo) throws Exception {
@@ -125,6 +144,44 @@ public class ProductController {
 		service.delete(vo);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/product/productListX";
+	}
+	
+	//purchase
+	@RequestMapping(value = "purchaseForm")
+	public String purchaseForm(@ModelAttribute("vo") ProductVo vo, Model model, MemberVo vom, MemberAddrVo voma, MemberTelVo vot, MemberCardVo voc) throws Exception {
+		Product itemp = service.selectOne(vo);
+		model.addAttribute("itemp", itemp);
+		Member itemm = servicem.selectOne(vom);
+		model.addAttribute("itemm", itemm);
+		List<MemberAddr> listma = servicema.selectList(voma);
+		model.addAttribute("listma", listma);
+		List<MemberTel> listt = servicet.selectList(vot);
+		model.addAttribute("listt" ,listt);
+		List<MemberCard> listc = servicec.selectList(voc);
+		model.addAttribute("listc", listc);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
+		return "infra/product/xdmin/purchaseForm";
+	}
+	
+	@RequestMapping(value = "purchaseInst")
+	public String purchaseInst(@ModelAttribute("vo") ProductVo vo, Product dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.insertPurchase(dto);
+		
+		vo.setPurchaseSeq(dto.getPurchaseSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/product/purchaseList";
+	}
+	
+	@RequestMapping(value = "purchaseKsnet")
+	public String purchaseKsnet(@ModelAttribute("vo") ProductVo vo, Model model, MemberVo vom, MemberTelVo vot) throws Exception {
+		Product itemp = service.selectOne(vo);
+		model.addAttribute("itemp", itemp);
+		Member itemm = servicem.selectOne(vom);
+		model.addAttribute("itemm", itemm);
+		List<MemberTel> listt = servicet.selectList(vot);
+		model.addAttribute("listt" ,listt);
+		return "infra/purchase/xdmin/purchaseKsnet";
 	}
 	
 	@RequestMapping("excelDownload")

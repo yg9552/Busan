@@ -37,7 +37,9 @@
 		<h3 class="mb-4 mt-4 text-center">회원가입</h3>	
 		<div class="w-50 mx-auto">
 		  <div class="row g-3 mb-3">
-		  	<span class="text-danger" style="font-size: 5px;">* 필수입력사항</span>
+		  	<div class="col">
+		  		<div class="text-danger d-inline fs-6">*</div> <div class="text-danger d-inline" style="font-size: 5px;">필수입력사항</div>
+		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="nm" name="nm" value="<c:out value="${item.nm }"></c:out>">

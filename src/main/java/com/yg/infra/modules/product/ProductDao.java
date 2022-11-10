@@ -48,7 +48,21 @@ public class ProductDao {
 	public int selectOneCount(ProductVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	public int selectOneCountPurchase(ProductVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCountPurchase", vo);
+	}
 	//	uploaded
 	public int insertUploaded(Product dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
 	public List<Product> selectListUploaded(ProductVo vo){ return sqlSession.selectList(namespace + ".selectListUploaded", vo); }
+	
+	//purchase
+	public List<Product> selectListPurchase(ProductVo vo){
+		return sqlSession.selectList(namespace + ".selectListPurchase", vo);
+	}
+	public Product selectOnePurchase(ProductVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOnePurchase", vo);
+	}
+	public int insertPurchase(Product dto) {
+		return sqlSession.insert(namespace + ".insertPurchase", dto);
+	}
 }

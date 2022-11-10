@@ -116,6 +116,30 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return dao.selectListUploaded(vo);
 	}
+
+	@Override
+	public List<Product> selectListPurchase(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectListPurchase(vo);
+	}
+
+	@Override
+	public Product selectOnePurchase(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOnePurchase(vo);
+	}
+
+	@Override
+	public int selectOneCountPurchase(ProductVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCountPurchase(vo);
+	}
+
+	@Override
+	public int insertPurchase(Product dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insertPurchase(dto);
+	}
 	
 	
 

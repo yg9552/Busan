@@ -1,5 +1,7 @@
 package com.yg.infra.modules.product;
 
+import java.sql.Timestamp;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yg.infra.common.base.Base;
@@ -22,6 +24,19 @@ public class Product extends Base {
 	private Integer DelNy;
 	private int totalprice;
 	private int discountprice;
+	
+	//purchase
+	private String purchaseSeq;
+	private String memberSeq;
+	private Timestamp regtime;
+	private String maSeq;
+	private String mcSeq;
+	private Integer paytype;
+	private Integer quantity;
+	
+	//member
+	private String nm;
+	private String id;
 	
 	private MultipartFile[] uploadImg;
 	private Integer[] uploadImgSort;
@@ -218,10 +233,60 @@ public class Product extends Base {
 	public void setUploadImg2MaxNumber(Integer uploadImg2MaxNumber) {
 		this.uploadImg2MaxNumber = uploadImg2MaxNumber;
 	}
-	
-	
-	
-	
+	public String getPurchaseSeq() {
+		return purchaseSeq;
+	}
+	public void setPurchaseSeq(String purchaseSeq) {
+		this.purchaseSeq = purchaseSeq;
+	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
+	}
+	public Timestamp getRegtime() {
+		return regtime;
+	}
+	public void setRegtime(Timestamp regtime) {
+		this.regtime = regtime;
+	}
+	public String getMaSeq() {
+		return maSeq;
+	}
+	public void setMaSeq(String maSeq) {
+		this.maSeq = maSeq;
+	}
+	public String getMcSeq() {
+		return mcSeq;
+	}
+	public void setMcSeq(String mcSeq) {
+		this.mcSeq = mcSeq;
+	}
+	public Integer getPaytype() {
+		return paytype;
+	}
+	public void setPaytype(Integer paytype) {
+		this.paytype = paytype;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	public String getNm() {
+		return nm;
+	}
+	public void setNm(String nm) {
+		this.nm = nm;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 	
 }

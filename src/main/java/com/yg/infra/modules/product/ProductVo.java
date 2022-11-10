@@ -9,6 +9,7 @@ public class ProductVo extends BaseVo {
 	private Integer shDelNy;
 	private String productSeq;
 	private String memberSeq;
+	private String purchaseSeq;
 	
 	
 	public String getShValue() {
@@ -40,6 +41,12 @@ public class ProductVo extends BaseVo {
 	}
 	public void setMemberSeq(String memberSeq) {
 		this.memberSeq = memberSeq;
+	}
+	public String getPurchaseSeq() {
+		return purchaseSeq;
+	}
+	public void setPurchaseSeq(String purchaseSeq) {
+		this.purchaseSeq = purchaseSeq;
 	}
 
 	
