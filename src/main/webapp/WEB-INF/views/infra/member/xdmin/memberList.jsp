@@ -126,7 +126,7 @@
 			                            <td><a href="javascript:goView(<c:out value="${list.memberSeq }"/>)"> <c:out value="${list.id }"/> </a></td>
 			                            <td> <c:out value="${list.nm }"/> </td>
 			                            <td> <c:out value="${list.email }"/> </td>
-			                            <td> <c:out value="${list.phonenum }"/> </td>
+			                            <td> <c:out value="${list.tel }"/> </td>
 			                            <td> 
 			                            	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
 												<c:if test="${list.gender_code eq listGender.seq}"><c:out value="${listGender.name }"/></c:if>

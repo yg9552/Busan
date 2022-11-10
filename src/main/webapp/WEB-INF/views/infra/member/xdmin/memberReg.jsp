@@ -12,9 +12,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>회원가입</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
-  	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
 	<script src="https://kit.fontawesome.com/144448c071.js" crossorigin="anonymous"></script>
@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mfnayvqkam"></script>
 	<script src="/resources/xdmin/js/commonXdmin.js"></script>
 	<script src="/resources/xdmin/js/validationXdmin.js"></script>
+	
 </head>
 <body>
 	  <!-- userHeader s -->
@@ -36,26 +37,26 @@
 		<h3 class="mb-4 mt-4 text-center">회원가입</h3>	
 		<div class="w-50 mx-auto">
 		  <div class="row g-3 mb-3">
+		  	<span class="text-danger" style="font-size: 5px;">* 필수입력사항</span>
 		  	<div class="col-12">
-		  		<input type="hidden" id="DelNy" name="DelNy" value="0">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="nm" name="nm" value="<c:out value="${item.nm }"></c:out>">
-	  				<label for="nm">이름</label>
-	  				<div class="valid-feedback" id="nmFeedback"></div>
+	  				<label for="nm">이름<span class="text-danger fs-5">*</span></label>
+	  				<div class="invalid-feedback" id="nmFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
 		  			<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
 	  				<input type="text" class="form-control" id="id" name="id" value="<c:out value="${item.id }"></c:out>" maxlength="20">
-	  				<label for="id">아이디</label>
-	  				<div class="valid-feedback" id="idFeedback"></div>
+	  				<label for="id">아이디<span class="text-danger fs-5">*</span></label>
+	  				<div class="invalid-feedback" id="idFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
 	  				<input type="password" class="form-control" id="password" name="password" value="<c:out value="${item.password }"></c:out>">
-	  				<label for="password">비밀번호</label>
+	  				<label for="password">비밀번호<span class="text-danger fs-5">*</span></label>
 	  				<div class="invalid-feedback" id="passwordFeedback"></div>
 				</div>
 		  	</div>
@@ -85,14 +86,14 @@
 		  	<div class="col-12">
 		  		<div class="form-floating">
 	  				<input type="text" class="form-control" id="tel" placeholder="연락처" required="required" name="tel">
-	  				<label for="tel">연락처 <i class="fa-solid fa-mobile-button"></i></label>
+	  				<label for="tel">연락처 <i class="fa-solid fa-mobile-button"></i><span class="text-danger fs-5">*</span></label>
 	  				<div class="invalid-feedback" id="telFeedback"></div>
 				</div>
 		  	</div>
 		  	<div class="col-12">
 		  		<div class="form-floating">
 	  				<input type="email" class="form-control" id="email" name="email" value="<c:out value="${item.email }"></c:out>">
-	  				<label for="email">이메일</label>
+	  				<label for="email">이메일<span class="text-danger fs-5">*</span></label>
 	  				<div class="invalid-feedback" id="emailFeedback"></div>
 				</div>
 		  	</div>
@@ -238,7 +239,6 @@ $("#id").on("focusout", function(){
 });
 
 </script>
-<script src="/resources/xdmin/js/commonXdmin.js"></script>
 <script type="text/javascript">
        
 	var goUrlList = "/member/memberList"; 			/* #-> */
@@ -251,24 +251,21 @@ $("#id").on("focusout", function(){
        	
   	var form = $("form[name=form]");
   	var formVo = $("form[name=formVo]");
+  	
   	$("#nm").on("focusout", function(){
-		if(!checkNull('nm', 2, "이름은 특수문자, 공백없이 입력해 주세요")) {
+		if(!checkOnlyKorean('nm',2,0,"이름은 한글로 특수문자, 공백없이 입력해 주세요")) {
 			return false;
 		} 
 	});
   	
-  	$("#email").on("focusout", function(){
-		if(!checkEmail('email',2,0,"이메일 주소를 올바르게 입력해 주세요")) {
-			return false;
-		} 
-	});
-  	$("#tel").on("focusout", function(){
-		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호를 입력해주세요")) {
-			return false;
-		} 
-	});
   	$("#password").on("focusout", function(){
 		if(!checkPassword('password',2,0,"영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) {
+			return false;
+		} 
+	});
+  	
+  	$("#tel").on("focusout", function(){
+		if(!checkOnlyNumber('tel',2,0,0,0,0," - 없이 휴대전화 번호를 입력해주세요")) {
 			return false;
 		} 
 	});
@@ -295,9 +292,10 @@ $("#id").on("focusout", function(){
  	});
   	
   	validationInst = function() {
+		if(!checkOnlyKorean('nm', 2, 0, "이름은 특수문자, 공백없이 입력해 주세요")) return false;
 		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
 		if(!checkPassword('password', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
-		if(validationUpdt() == false) return false;
+		if(!checkEmail('email', 2, 0, "이메일 주소를 올바르게 입력해 주세요")) return false;
 	}
   	
 </script>
@@ -326,7 +324,7 @@ $("#id").on("focusout", function(){
      			//confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
      		}else{
      			document.getElementById("password").classList.remove('is-valid');
-				document.getElementById("password").classList.add('is-invalid');
+				/* document.getElementById("password").classList.add('is-invalid'); */
 				passwordConfirm.classList.remove('is-valid');
 				passwordConfirm.classList.add('is-invalid');
      			document.getElementById('confirmMsg').classList.add('invalid-feedback');

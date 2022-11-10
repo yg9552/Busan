@@ -1,5 +1,5 @@
 
-
+/*
 $.datepicker.setDefaults({
 	showMonthAfterYear: true,
     changeYear: true,
@@ -20,7 +20,7 @@ $.datepicker.setDefaults({
     }
 
 });
-
+*/
 // 이미지 전용
 var extArray1 = new Array();
 extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];
