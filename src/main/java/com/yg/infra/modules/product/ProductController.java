@@ -37,8 +37,6 @@ import com.yg.infra.modules.productQA.ProductQAVo;
 import com.yg.infra.modules.productReview.ProductReview;
 import com.yg.infra.modules.productReview.ProductReviewServiceImpl;
 import com.yg.infra.modules.productReview.ProductReviewVo;
-import com.yg.infra.modules.purchase.Purchase;
-import com.yg.infra.modules.purchase.PurchaseVo;
 
 @Controller
 @RequestMapping(value = "/product/")
