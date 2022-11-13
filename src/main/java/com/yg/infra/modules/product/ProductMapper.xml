@@ -194,7 +194,7 @@
 				,b.id
 				,c.product_name
 				,c.price
-			<include refid="selectCommon" />
+			<include refid="selectCommonPurchase" />
 			ORDER BY a.purchaseSeq DESC    
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
