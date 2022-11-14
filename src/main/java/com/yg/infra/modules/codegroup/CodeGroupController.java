@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping(value = "/codeGroup/")
 public class CodeGroupController {
@@ -34,6 +35,19 @@ public class CodeGroupController {
 		model.addAttribute("list", list);
 
 		return "infra/codegroup/xdmin/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupAjaxList")
+	public String codeGroupAjaxList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
+		return "infra/codegroup/xdmin/codeGroupAjaxList";
+	}
+	
+	@RequestMapping(value = "codeGroupAjaxLita")
+	public String codeGroupAjaxLita(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
+		vo.setParamsPaging(service.selectOneCount(vo));
+		List<CodeGroup> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		return "infra/codegroup/xdmin/codeGroupAjaxLita";
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
