@@ -18,7 +18,7 @@
             
 	function _submit(_frm)
 	{
-		_frm.sndReply.value = getLocalUrl("kspay_wh_rcv.jsp") ;
+		_frm.sndReply.value = getLocalUrl("kspay_wh_rcv") ;
 		_pay(_frm);
 	}
 	function getLocalUrl(mypage) 
@@ -29,7 +29,7 @@
 	// goResult() - 함수설명 : 결재완료후 결과값을 지정된 결과페이지(kspay_wh_result.jsp)로 전송합니다.
 	function goResult(){
 		document.KSPayWeb.target = "";
-		document.KSPayWeb.action = "./kspay_wh_result.jsp";
+		document.KSPayWeb.action = "kspay_wh_result";
 		document.KSPayWeb.submit();
 	}
 	// eparamSet() - 함수설명 : 결재완료후 (kspay_wh_rcv.jsp로부터)결과값을 받아 지정된 결과페이지(kspay_wh_result.jsp)로 전송될 form에 세팅합니다.

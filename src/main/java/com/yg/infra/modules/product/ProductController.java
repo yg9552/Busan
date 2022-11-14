@@ -182,6 +182,16 @@ public class ProductController {
 		return "infra/purchase/xdmin/purchaseKsnet";
 	}
 	
+	@RequestMapping(value = "kspay_wh_rcv")
+	public String kspay_wh_rcv(@ModelAttribute("vo") ProductVo vo) throws Exception {
+		return "infra/purchase/xdmin/kspay_wh_rcv";
+	}
+	
+	@RequestMapping(value = "kspay_wh_result")
+	public String kspay_wh_result(@ModelAttribute("vo") ProductVo vo) throws Exception {
+		return "infra/purchase/xdmin/kspay_wh_result";
+	}
+	
 	@RequestMapping("excelDownload")
     public void excelDownload(ProductVo vo, HttpServletResponse httpServletResponse) throws Exception {
 		
