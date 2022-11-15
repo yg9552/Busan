@@ -23,6 +23,7 @@ public interface MemberService {
 	public Member selectFindPw(Member dto) throws Exception;
 	public Member snsLoginCheck(Member dto) throws Exception;
 	public int kakaoInst(Member dto) throws Exception;
+	public int naverInst(Member dto) throws Exception;
 	//public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type, int maxNumber) throws Exception;
 	List<Member> selectListUploaded(MemberVo vo) throws Exception;
 }

@@ -332,24 +332,42 @@ var goUrlList = "/product/productList"; 		/* #-> */
 var seq = $("input:hidden[name=memberSeq]");
 var form2 = $("form[name=formList]");
 
-$("#btnLogout").on("click", function(){
+/* $("#btnLogout").on("click", function(){
 	$.ajax({
 		async: true 
 		,cache: false
-		,type: "post"
+		,type: "post" */
 		/* ,dataType:"json" */
-		,url: "/member/logoutProc"
+//		,url: "/member/logoutProc"
 		/* ,data : $("#formLogout").serialize() */
-		,data: {}
+/* 		,data: {}
 		,success: function(response) {
 			if(response.rt == "success") {
 				location.href = goUrlMain;
 			} else {
+				localStorage.clear();
+				location.href = goUrlMain;
 				// by pass
 			}
 		}
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+}); */
+
+$("#btnLogout").on("click", function() {
+	$.ajax({
+		type: "post"
+		,url: "/member/logoutProc"
+		,data: {}
+		,success : function(response) {
+			if (response.rt == "success") {
+				window.location.href = "/";
+			} else {
+				localStorage.clear();
+				window.location.href = "/";
+			}
 		}
 	});
 });

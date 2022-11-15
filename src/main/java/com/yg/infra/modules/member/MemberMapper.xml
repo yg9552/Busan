@@ -188,6 +188,30 @@
 		</selectKey>
 	</insert>
 	
+	<insert id="naverInst">
+		INSERT INTO member(
+			nm
+			,id
+			,email
+			,gender_code
+			,tel
+			,token
+			,DelNy
+			)
+		VALUES(
+			#{nm }
+			,#{id }
+			,#{email }
+			,#{gender_code }
+			,#{tel }
+			,#{token }
+			,0
+			)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 	<update id="update">
 		UPDATE member
 		SET

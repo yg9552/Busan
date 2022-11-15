@@ -178,6 +178,12 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.kakaoInst(dto);
 	}
+
+	@Override
+	public int naverInst(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.naverInst(dto);
+	}
 	
 	
 	/*

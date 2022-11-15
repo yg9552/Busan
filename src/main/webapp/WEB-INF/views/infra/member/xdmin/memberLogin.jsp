@@ -69,17 +69,26 @@
 		  <button class="btn btn-outline-dark btn-lg text-uppercase" type="button">google</button>
 		  <button class="btn btn-primary btn-lg text-uppercase" type="button">facebook</button> -->
 		</div>
+		<div class="d-inline-block gap-2 mx-auto">
+		  <a type="button" id="naverBtn"><img alt="naver" src="/resources/images/btnG.png" style="width: 275px;"></a>
+		</div>
+		<div class="btn_login_wrap">
+			<div id="naverIdLogin"></div>
+        </div>
 	</div>
 </div>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 $('#id, #password').on('keypress', function(e){
 	  if(e.keyCode == '13'){
 	  	$('#btnLogin').click();
 	  }
 });
+
 
 var goUrlMain = "/Main"; 			/* #-> */
 
@@ -144,7 +153,7 @@ $("#kakaoBtn").on("click", function() {
 	        	  
 	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
 			
-	        	  $.ajax({
+	        $.ajax({
 				async: true
 				,cache: false
 				,type:"POST"
@@ -173,6 +182,116 @@ $("#kakaoBtn").on("click", function() {
 	      },
 	    })
 });
+
+ $('#naverBtn').on('click', function(){
+				
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "hdglUamDVMsO6ZhDM_0C",
+				callbackUrl: "http://localhost:8080/member/memberLogin",
+				isPopup: true
+			}
+		);
+		
+		naverLogin.init();
+		
+		naverLogin.getLoginStatus(function (status) {
+			
+			if(!status)
+				naverLogin.authorize();
+               else
+                   setLoginStatus();  //하늘님 메소드 실행 -> Ajax
+		});
+		
+	 	function setLoginStatus() {
+			
+	 		if (naverLogin.user.gender == 'M'){
+	 			$("input[name=gender_code]").val(201);
+	 		} else {
+	 			$("input[name=gender_code]").val(202);
+	 		} 
+	 		
+	 			$.ajax({
+	 				async: true
+	 				,cache: false
+	 				,type:"POST"
+	 				,url: "/member/naverLoginProc"
+	 				,data: {"nm": naverLogin.user.name, "id": "네이버로그인", "tel": naverLogin.user.mobile, "email": naverLogin.user.email, "gender_code": $("input[name=gender_code]").val(), "token": naverLogin.user.id}
+	 				,success : function(response) {
+	 					if (response.rt == "fail") {
+	 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+	 						return false;
+	 					} else {
+	 						location.href = "/Main";
+	 					}
+	 				},
+	 				error : function(jqXHR, status, error) {
+	 					alert("알 수 없는 에러 [ " + error + " ]");
+	 				}
+	 			});
+	 		}
+		
+}); 
+
+/* naver login test s */
+	
+	/* var naverLogin = new naver.LoginWithNaverId(
+	{
+		clientId: "b8EhDTV3tvvAE_gRRBoJ",
+		callbackUrl: "http://localhost:8080/userLogin",
+		isPopup: false,
+		loginButton: {color: "green", type: 3, height: 70} 
+	}
+); */
+	/* var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "hdglUamDVMsO6ZhDM_0C",
+			callbackUrl: "http://localhost:8080/member/memberLogin",
+			isPopup: false,
+			callbackHandle: true,
+			loginButton: {color: "green", type: 3, height: 70} 
+		}
+	);
+
+	naverLogin.init();
+
+	window.addEventListener('load', function () {
+		naverLogin.getLoginStatus(function (status) {
+			if (status) {  */
+				/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+/* 				setLoginStatus();
+			}
+		});
+	}); */
+	
+/*  	function setLoginStatus() {
+		
+	if (naverLogin.user.gender == 'M'){
+		$("input[name=gender_code]").val(201);
+	} else {
+		$("input[name=gender_code]").val(202);
+	} 
+	
+		$.ajax({
+			async: true
+			,cache: false
+			,type:"POST"
+			,url: "/member/naverLoginProc"
+			,data: {"nm": naverLogin.user.name, "id": "네이버로그인", "tel": naverLogin.user.mobile, "email": naverLogin.user.email, "gender_code": $("input[name=gender_code]").val(), "token": naverLogin.user.id}
+			,success : function(response) {
+				if (response.rt == "fail") {
+					alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+					return false;
+				} else {
+					location.href = "/Main";
+				}
+			},
+			error : function(jqXHR, status, error) {
+				alert("알 수 없는 에러 [ " + error + " ]");
+			}
+		});
+	}  */
+/* naver login test e */
 
 </script>
 

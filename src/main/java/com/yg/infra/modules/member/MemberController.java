@@ -251,6 +251,30 @@ public class MemberController {
 		}
 		return returnMap;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "naverLoginProc")
+	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+		Member naverLogin = service.snsLoginCheck(dto);
+		
+		if (naverLogin == null) {
+			service.naverInst(dto);
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(naverLogin, httpSession);
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
 
 	 public void session(Member dto, HttpSession httpSession) {
 	     httpSession.setAttribute("sessSeq", dto.getMemberSeq());    
@@ -271,4 +295,24 @@ public class MemberController {
 		return returnMap;
 	}
 	
+//	@ResponseBody
+//	@RequestMapping(value = "logoutProc")
+//	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+//		Map<String, Object> returnMap = new HashMap<String, Object>();
+//		
+//		String sns = httpSession.getAttribute("sessSns").toString();
+//		System.out.println("test : " + sns);
+//		
+//		if (sns.equals("1")) {
+//		    System.out.println("네이버 로그아웃 왜 안됨?");
+//		    httpSession.invalidate();
+//		    returnMap.put("rt", "naver");
+//		} else {
+//		    httpSession.invalidate();
+//		    returnMap.put("rt", "success");
+//		}
+//
+//		return returnMap;
+//	}
+//	
 }
