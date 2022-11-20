@@ -27,11 +27,11 @@
 		<div class="border rounded m-auto mb-3 p-3 col-lg-4">
 			<div class="mb-3">
 			  <label for="id" class="form-label text-start">아이디</label>
-			  <input type="text" class="form-control" id="id" name="id" value="<c:out value="${dto.id }"></c:out>">
+			  <input type="text" class="form-control" id="id" name="id" value="yg9552<c:out value="${dto.id }"></c:out>">
 			</div>
 				<div class="mb-5">
 				  <label for="password" class="form-label">비밀번호</label>
-				  <input type="password" class="form-control" id="password" name="password" value="<c:out value="${dto.password }"></c:out>">
+				  <input type="password" class="form-control" id="password" name="password" value="<c:out value="4567${dto.password }"></c:out>">
 				</div>
 			<div class="row">
 				<div class="d-grid gap-2 col mx-auto">
