@@ -182,11 +182,19 @@ $("#kakaoBtn").on("click", function() {
 	      },
 	    })
 });
-
+/* 
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "hdglUamDVMsO6ZhDM_0C",
 			callbackUrl: "http://localhost:8080/member/memberLogin",
+			isPopup: false
+		}
+	);
+	 */
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "DVwf0LRaXmYFwuCNRPld",
+			callbackUrl: "http://3.36.94.90/member/memberLogin",
 			isPopup: false
 		}
 	);
