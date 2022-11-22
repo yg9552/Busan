@@ -23,7 +23,7 @@ public class ChatController {
 	@RequestMapping(value="")
 	public String chat(HttpSession httpSession,Model model) throws Exception {
 		
-		List<Chat> list = service.selectChatListFromOne((int)httpSession.getAttribute("sessSeq"));
+		List<Chat> list = service.selectChatListFromOne(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()));
 		
 		model.addAttribute("list", list);
 		
@@ -37,7 +37,7 @@ public class ChatController {
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		
-		Chat newChat = service.createChat((int)httpSession.getAttribute("sessSeq"),dto.getCuMember());
+		Chat newChat = service.createChat(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()),dto.getCuMember());
 		
 		if(newChat != null) {
 			result.put("rt", "success");

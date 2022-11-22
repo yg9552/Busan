@@ -326,14 +326,14 @@
 	
   //Firebase 프로젝트에서 추출한 정보 입력
 	const firebaseConfig = {
-  		apiKey: "",
-  		authDomain: "",
-  		databaseURL: "",
-  		projectId: "",
-  		storageBucket: "",
-  		messagingSenderId: "",
-  		appId: ""
-	};		
+    	apiKey: "AIzaSyBJ1Evq6PYrV5kmtkgeoHKO8GTEva4od_s",
+    	authDomain: "myproject-cec23.firebaseapp.com",
+    	databaseURL: "https://myproject-cec23-default-rtdb.firebaseio.com",
+    	projectId: "myproject-cec23",
+    	storageBucket: "myproject-cec23.appspot.com",
+    	messagingSenderId: "488914161510",
+    	appId: "1:488914161510:web:49024da5d7541403d282a7"
+  	};		
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
 
