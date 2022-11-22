@@ -11,6 +11,7 @@
 	    <%-- <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)"">주문내역</a></li> --%>
 	    <li class="list-group-item"><a href="javascript:goPurchaseList(<c:out value="${sessSeq }"/>)">주문내역</a></li>
 	    <li class="list-group-item"><a href="javascript:goCartList(<c:out value="${sessSeq }"/>)">장바구니</a></li>
+	    <li class="list-group-item"><a href="/chat/">채팅하기</a></li>
 	  </ul>
 	</div>
 </div>
