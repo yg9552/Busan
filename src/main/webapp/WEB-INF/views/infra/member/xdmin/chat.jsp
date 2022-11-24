@@ -272,7 +272,7 @@
 	                            
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
 	                            		
-																		<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
+										<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
 		                                    <div class="d-flex bd-highlight">
 		                                        <div class="img_cont">
 																								<!-- 아래 path 와 uuidname 도 본인의 dto field에 맞게 수정 -->
