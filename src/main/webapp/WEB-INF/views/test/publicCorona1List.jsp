@@ -36,8 +36,7 @@ aaa : <c:out value="${datacount }"/>
 	<br><c:out value="${item.cctvformat }"/>	
 	<br><c:out value="${item.cctvname }"/>	
 	<br><c:out value="${item.cctvurl }"/>
-	<video muted autoplay loop src="<c:out value="${item.cctvurl }"/>" type="video/mp4">
-    </video>
+	<embed src="<c:out value="${item.cctvurl }"/>">
 </c:forEach>
 
 </body>
