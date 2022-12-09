@@ -73,7 +73,6 @@ public class ProductController {
 		
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
-		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
