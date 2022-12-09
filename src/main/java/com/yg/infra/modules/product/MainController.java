@@ -28,7 +28,6 @@ public class MainController {
 	public String main(Model model, @ModelAttribute("vo") ProductVo vo) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
-		
 		List<Product> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
