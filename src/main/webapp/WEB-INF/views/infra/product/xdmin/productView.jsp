@@ -243,7 +243,7 @@
 	      		</div>
 	      	</div>
 	      	 --%>
-		      <h6 class="mt-3 mb-3">리뷰 <c:out value="${vorv.totalRows }"></c:out>건</h6>
+		      <h6 class="mt-3 mb-3">리뷰 <c:out value="${vorv.totalRows }" />건</h6>
 		      <div class="border border-dark border-1 opacity-50 mb-3"></div>
 		      	<c:choose>
 					<c:when test="${fn:length(listrv) eq 0}">
