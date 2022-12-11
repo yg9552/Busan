@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html lang="ko">
   <head>
@@ -143,14 +142,14 @@
 	    			,cache: false
 	    			,type: "post"
 	    			/* ,dataType:"json" */
-	    			,url: goUrlLita
+	    			,url: "/codeGroup/codeGroupAjaxLita"
 	    			,data : $("#formList").serialize()
 	    			/* ,data : {  } */
 	    			,success: function(response) {
 	    				$("#lita").empty();
 	    				$("#lita").append(response);
-	   // 				window.location.hash = '#page' + page;
-	  //  				page++;
+	    				window.location.hash = '#page' + page;
+	    				page++;
 
 	    			}
 	    			,error : function(jqXHR, textStatus, errorThrown){
@@ -165,7 +164,7 @@
 	    			,cache: false
 	    			,type: "post"
 	    			/* ,dataType:"json" */
-	    			,url: goUrlLita
+	    			,url: "/codeGroup/codeGroupAjaxLita"
 	    			,data : $("#formList").serialize()
 	    			/* ,data : {  } */
 	    			,success: function(response) {
