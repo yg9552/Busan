@@ -44,7 +44,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">코드그룹 관리</h4>
-                    <form name="formList" id="formList" autocomplete="off" method="get"> <!-- action="/codeGroup/codeGroupList" -->
+                    <form name="formList" id="formList" autocomplete="off" method="post"> <!-- action="/codeGroup/codeGroupList" -->
 	                    <input type="hidden" name="mainkey">
 	                    <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
 	                    <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">

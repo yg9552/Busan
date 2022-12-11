@@ -39,6 +39,7 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupAjaxList")
 	public String codeGroupAjaxList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 		return "infra/codegroup/xdmin/codeGroupAjaxList";
 	}
 	
