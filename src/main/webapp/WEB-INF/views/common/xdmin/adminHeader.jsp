@@ -116,7 +116,7 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/codeGroup/codeGroupList"> 코드그룹 관리 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/codeGroup/codeGroupAjaxList"> 코드그룹 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="/code/codeList"> 코드 관리 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="/member/xdminLogin"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="/"> Main </a></li>
