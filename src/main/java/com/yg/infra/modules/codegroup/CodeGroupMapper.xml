@@ -122,7 +122,6 @@
 		UPDATE CodeGroup
 		SET
 			DelNy = 1
-			<!-- <include refid="Base.updateModColumnValue" /> -->
 		WHERE seq = #{seq}	
 	</update>
 	
