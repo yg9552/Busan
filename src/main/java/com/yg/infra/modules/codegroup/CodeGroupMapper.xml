@@ -112,7 +112,6 @@
 			CodeGroupCode = #{CodeGroupCode}
 			,name = #{name}
 			,CodeGroupNameEN = #{CodeGroupNameEN}
-			
 		WHERE
 			seq = #{seq}
 	</update>
