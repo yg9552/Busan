@@ -104,6 +104,5 @@
 			Code
 		WHERE 1=1
 			AND DelNy = 0
-		    <!-- AND UseNy = 1 -->
     </select>
 </mapper>
