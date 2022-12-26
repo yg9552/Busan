@@ -126,7 +126,4 @@
 	<delete id="delete">
 		DELETE FROM CodeGroup WHERE seq = #{seq}
 	</delete>
-	
-
-	
 </mapper>
