@@ -185,9 +185,8 @@
 	      	var goUrlUpdt = "/code/codeUpdt";			/* #-> */
 	      	var goUrlUele = "/code/codeUele";			/* #-> */
 	      	var goUrlDele = "/code/codeDele";			/* #-> */
-	      	var goUrlForm = "/code/codeForm";				/* #-> */
-	      	var goUrlView = "/code/codeView";				/* #-> */
-	      	
+	      	var goUrlForm = "/code/codeForm";			/* #-> */
+	      	var goUrlView = "/code/codeView";			/* #-> */
 	      	
 	      	var seq = $("input:hidden[name=codeSeq]");
 	      	var form = $("form[name=formList]");
