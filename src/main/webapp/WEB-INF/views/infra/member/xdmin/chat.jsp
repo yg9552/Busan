@@ -252,9 +252,9 @@
 	<div class="container">
 	<div class="row">
 	<!-- side s -->
-		<%@include file="../../../common/xdmin/myPageSide.jsp"%>
+		<%-- <%@include file="../../../common/xdmin/myPageSide.jsp"%> --%>
 	<!-- side e --> 
-	<div class="col-lg-9">
+	<div class="col-lg-12">
         <div class="page-content">
         	<form id="mainForm" method="POST">
         		<input type="hidden" id="selectedRoom">
