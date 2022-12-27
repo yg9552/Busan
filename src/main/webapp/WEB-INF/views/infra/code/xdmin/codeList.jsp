@@ -214,7 +214,6 @@
 	    	$("#btnReset").on("click", function() {
 	    		$(location).attr("href", goUrlList);
 	    	});
-	      	
           </script>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
