@@ -174,8 +174,6 @@
 	    				$("#lita").empty();
 	    				$("#lita").append(response);
 	    				window.location.hash = '#page' + page;
-	    	
-
 	    			}
 	    			,error : function(jqXHR, textStatus, errorThrown){
 	    				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
