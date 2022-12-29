@@ -181,7 +181,6 @@
 	    		});
 	    	});
 	    	
-	    	
 	    	function setHash() {
 	    		if(location.hash == "" || location.hash == null){
 	    			alert("hash is empty");
